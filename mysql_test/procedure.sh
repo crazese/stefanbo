@@ -44,8 +44,8 @@ cp $PWD/src/xtrabackup_plugin /usr/bin/xtrabackup
 
 #
 #Perform a full backup
-mkdir -p /data/backup/mysql
-xtrabackup_plugin --backup --datadir=/var/lib/mysql --target-dir=/data/backups/mysql/
+#mkdir -p /data/backup/mysql
+#xtrabackup_plugin --backup --datadir=/var/lib/mysql --target-dir=/data/backups/mysql/
 
 
 
