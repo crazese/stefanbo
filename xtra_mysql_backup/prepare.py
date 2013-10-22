@@ -154,7 +154,7 @@ class Prepare:
             list_of_dir = sorted(os.listdir(self.inc_dir))
 
             for i in list_of_dir:
-                if i == min(os.listdir(self.inc_dir)):
+                if i == max(os.listdir(self.inc_dir)):
                     print"""
                     ######################################################################
                     #  Preparing very first inc backup. First inc backup dir/name is %s  # 
@@ -164,20 +164,6 @@ class Prepare:
                     args = '%s %s %s/%s --incremental-dir=%s/%s' % (self.backup_tool, self.xtrabck,
                                                                     self.full_dir, self.recent_full_backup_file(),
                                                                     self.inc_dir, i)
-                    args = shlex.split(args)
-                    fb = subprocess.Popen(args, stdout=subprocess.PIPE)
-                    print(str(fb.stdout.read()))
-                else:
-                    print"""
-                    ######################################################################
-                    #  Preparing inc backups in sequence, New Inc backup dir/name is %s  #
-                    ######################################################################
-                    """ % i
-                    time.sleep(3)
-                    args = '%s --apply-log %s/%s --incremental-dir=%s/%s' % (self.backup_tool,
-                                                                             self.full_dir,
-                                                                             self.recent_full_backup_file(),
-                                                                             self.inc_dir, i)
                     args = shlex.split(args)
                     fb = subprocess.Popen(args, stdout=subprocess.PIPE)
                     print(str(fb.stdout.read()))
