@@ -192,10 +192,8 @@ def last_full_backup_date(self):
 
     def full_backup(self):
         # Taking Full backup
-        # useroption = --user=root --password=123456
-        # xtra = --defaults-file=/etc/mysql/my.cnf --port=3306 --socket=/var/run/mysqld/mysqld.sock
         #innobackupex --user=root --password=123456 
-        #-defaults-file=/etc/mysql/my.cnf --port=3306 --socket=/var/run/mysqld/mysqld.sock
+        #-defaults-file=/etc/mysql/my.cnf 
         #--database=test_db1 
         #/home/mysql/backup/20131022
         args = '%s %s %s %s' % (self.backup_tool, self.myuseroption, self.xtrabck, self.full_dir)
@@ -206,7 +204,7 @@ def last_full_backup_date(self):
 
     def inc_backup(self):
         # Taking Incremental backup
-        #innobackupex 
+
         recent_bck = self.recent_full_backup_file()
         args = '%s %s %s --incremental %s --incremental-basedir %s/%s' % (
             self.backup_tool, self.myuseroption, self.xtrabck, self.inc_dir, self.full_dir, recent_bck)

@@ -1,21 +1,16 @@
-#/usr/bin/env python
-#
-# Backup MySQL with innobackupex tool in python script
-# Using the 2.0.0 Xtrabackup
-# tested with MySQL Ver 14.14 Distrib 5.1.70, for debian-linux-gnu (x86_64) using readline 6.1
-# Improved by stefan_bo / stefan_bo@163.com
-# #############################################################################################
-
-import os, io 
-import ConfigParser, subprocess, shlex, shutil
+# Backup script for MySQL DB (using the latest version of Xtrabackup)(tested with MySQL 5.6.12 on Ubuntu 12.04)
+# Originally developed by Jahangir Shabiyev /
+# Improved by Shahriyar Rzayev / rzayev.sehriyar@gmail.com
+import os
+import ConfigParser
+import subprocess
+import shlex
+import shutil
 import mysql.connector
+import time
 from datetime import datetime
 from mysql.connector import errorcode
-import time
-
-now=time.strftime("%Y%m%d", time.localtime())
-ipadd="192.168.1.202"
-
+import io
 
 bckconf="""
 [MySQL]
@@ -27,26 +22,25 @@ xtra = --defaults-file=/etc/mysql/my.cnf --port=3306 --socket=/var/run/mysqld/my
 datadir = /var/lib/mysql
 
 [Backup]
-backupdir = /home/mysql/backup/%s
+backupdir = /home/sh/backup
 backup_tool = /usr/bin/innobackupex
 
 [Remote]
 remote_conn = root@192.168.1.201
-remote_dir = /home/mysql/backup/%s
-""" % (now, ipadd)
+remote_dir = /home/test/bak_set
+"""
 
-# Creating backup class
+# Creating Backup class
 
 class Backup:
     def __init__(self, conf='bckconf'):
         con = ConfigParser.RawConfigParser()
-		con.readfp(io.BytesIO(bckconf))
-		bolme = con.sections()
-		bolme.reverse()
-
-		DB = bolme[0]
-		self.mysql        = con.get(DB, "mysql")
-		self.mycnf        = con.get(DB, "mycnf")
+        con.readfp(io.BytesIO(bckconf))
+        bolme = con.sections()
+        bolme.reverse()
+        DB = bolme[0]
+        self.mysql        = con.get(DB, "mysql")
+        self.mycnf        = con.get(DB, "mycnf")
         self.mysqladmin   = con.get(DB, "mysqladmin")
         self.myuseroption = con.get(DB, "useroption")
         self.xtrabck      = con.get(DB, "xtra")
@@ -61,45 +55,42 @@ class Backup:
         RM = bolme[2]
         self.remote_conn  = con.get(RM, "remote_conn")
         self.remote_dir   = con.get(RM, "remote_dir")
+
         statusargs = '%s %s status' % (self.mysqladmin, self.myuseroption)
         statusargs = shlex.split(statusargs)
-
         myadmin = subprocess.Popen(statusargs, stdout=subprocess.PIPE)
-
         if not ('Uptime' in str(myadmin.stdout.read())):
-        	print """ Mysql Server is Not UP """
+            print('Server is NOT Up')
         else:
-        	print " Mysql Server is Up! "
+            print('Server is Up')
 
         if not os.path.exists(self.mycnf):
-        	print """ Please Check Mysql configuration file path """
+            print('Check MySQL configuration file path')
 
         if not os.path.exists(self.mysql):
-        	print """ Please Check Mysql """
+            print('Check MySQL')
 
         if not os.path.exists(self.mysqladmin):
-        	print """ Please Check mysqladmin """
+            print('Check MySQL Admin')
 
         if not os.path.exists(self.backup_tool):
-        	print """ Please Check backup tool innobackupex """
+            print('Check backup tool')
 
-        if not os.path.exists(self.backupdir):
-        	print """ %s doesn't exists , Please Check core backup directory """ % self.backupdir
-        	os.makedirs(self.backupdir)
-        	print """ %s has been created sucessful ! """ % self.backupdir
+        if not (os.path.exists(self.backupdir)):
+            print('Check core backup directory')
 
-        if not os.path.exists(self.full_dir):
-        	print """ Full directory is not exists. Creating full backup directory %s """ % self.full_dir
-        	os.makedirs(self.full_dir)
-        	print """ %s has been created sucessful ! """ % self.full_dir
+        if not (os.path.exists(self.full_dir)):
+            print('Full directory is not exist. Creating full backup directory...')
+            os.makedirs(self.backupdir + '/full')
+            print('Created')
 
-        if not os.path.exists(self.inc_dir):
-        	print """ Increment directory is not exists. Creating Increment backup  directory %s """ % self.inc_dir
-        	os.makedirs(self.inc_dir)
-        	print """ %s has been created sucessful ! """ % self.inc_dir
+        if not (os.path.exists(self.inc_dir)):
+            print('Increment directory is not exist. Creating increment backup directory...')
+            os.makedirs(self.backupdir + '/inc')
+            print('Created')
 
-        	
-def last_full_backup_date(self):
+
+    def last_full_backup_date(self):
         # Finding last full backup date from dir/folder name
 
         max = self.recent_full_backup_file()
@@ -179,6 +170,26 @@ def last_full_backup_date(self):
                 print(err)
 
 
+
+
+
+    def clean_full_backup_dir(self):
+        # Deleting full backup after taking new full backup
+
+        for i in os.listdir(self.full_dir):
+            rm_dir = self.full_dir + '/' + i
+            if i != max(os.listdir(self.full_dir)):
+                shutil.rmtree(rm_dir)
+
+
+    def clean_inc_backup_dir(self):
+        # Deleting incremental backups after taking new fresh full backup
+
+        for i in os.listdir(self.inc_dir):
+            rm_dir = self.inc_dir + '/' + i
+            shutil.rmtree(rm_dir)
+
+
     def copy_backup_to_remote_host(self):
         # Copying backup directory to remote server
         print("#################################################################################################")
@@ -192,12 +203,7 @@ def last_full_backup_date(self):
 
     def full_backup(self):
         # Taking Full backup
-        # useroption = --user=root --password=123456
-        # xtra = --defaults-file=/etc/mysql/my.cnf --port=3306 --socket=/var/run/mysqld/mysqld.sock
-        #innobackupex --user=root --password=123456 
-        #-defaults-file=/etc/mysql/my.cnf --port=3306 --socket=/var/run/mysqld/mysqld.sock
-        #--database=test_db1 
-        #/home/mysql/backup/20131022
+
         args = '%s %s %s %s' % (self.backup_tool, self.myuseroption, self.xtrabck, self.full_dir)
         args = shlex.split(args)
         fb = subprocess.Popen(args, stdout=subprocess.PIPE)
@@ -206,7 +212,7 @@ def last_full_backup_date(self):
 
     def inc_backup(self):
         # Taking Incremental backup
-        #innobackupex 
+
         recent_bck = self.recent_full_backup_file()
         args = '%s %s %s --incremental %s --incremental-basedir %s/%s' % (
             self.backup_tool, self.myuseroption, self.xtrabck, self.inc_dir, self.full_dir, recent_bck)
@@ -215,7 +221,7 @@ def last_full_backup_date(self):
         print(str(ib.stdout.read()))
 
 
-    def main_backup(self):
+    def all_backup(self):
         """
          This function firstly checks for full backup directory if it is empty takes full backup.
          If it is not empty then checks for full backup time.if the recent full backup taken 1 day ago takes full backup
@@ -237,6 +243,28 @@ def last_full_backup_date(self):
             # Copying backups to remote server
             self.copy_backup_to_remote_host()
 
+        elif self.last_full_backup_date() == 1:
+            print("################################################################")
+            print("Your full backup is timeout : Taking new Full Backup!")
+            print("################################################################")
+
+            time.sleep(3)
+
+            # Flushing logs
+            self.mysql_connection_flush_logs()
+
+            # Taking fullbackup
+            self.full_backup()
+
+            # Removing old full backups
+            self.clean_full_backup_dir()
+
+            # Removing inc backups
+            self.clean_inc_backup_dir()
+
+            # Copying backups to remote server
+            self.copy_backup_to_remote_host()
+
         else:
             print("################################################################")
             print("You have a full backup. "
@@ -253,4 +281,4 @@ def last_full_backup_date(self):
 
 
 b = Backup()
-b.main_backup()
+b.all_backup()

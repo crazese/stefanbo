@@ -38,27 +38,24 @@ easy_install mysql-connector-python
 #build the mysql version 5.1
 cd percona-*
 PWD=$(pwd)
-$PWD/utils/build.sh plugin 
-
+AUTO_DOWNLOAD="yes" ./utils/build.sh innodb51_builtin
 # After this you’ll need to copy innobackupex 
 # (in the root folder used to retrieve Percona XtraBackup) 
 # and the corresponding xtrabackup binary (in the src folder) 
 # to some directory listed in the PATH environment variable
 cp $PWD/innobackupex /usr/bin/
-cp $PWD/src/xbcrypt /usr/bin/
 cp $PWD/src/xbstream /usr/bin/
-cp $PWD/src/xtrabackup_plugin /usr/bin/xtrabackup 
+cp $PWD/src/xtrabackup_51 /usr/bin/xtrabackup 
 
 
 
 #Perform a full backup
-<<<<<<< HEAD
+#<<<<<<< HEAD
 #mkdir -p /data/backup/mysql
 #xtrabackup_plugin --backup --datadir=/var/lib/mysql --target-dir=/data/backups/mysql/
 =======
 mkdir -p /data/backup/mysql
 xtrabackup --backup --datadir=/var/lib/mysql --target-dir=/data/backups/mysql/
->>>>>>> e9e3173a2984b82a33321b46ee102144defe0a5a
 
 
 
