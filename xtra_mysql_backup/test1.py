@@ -47,7 +47,7 @@ class Backup:
 		DB = bolme[0]
 		self.mysql        = con.get(DB, "mysql")
 		self.mycnf        = con.get(DB, "mycnf")
-		self.mysqladmin   = con.get(DB, "mysqladmin")
+        self.mysqladmin   = con.get(DB, "mysqladmin")
         self.myuseroption = con.get(DB, "useroption")
         self.xtrabck      = con.get(DB, "xtra")
         self.datadir      = con.get(DB, "datadir")
@@ -98,8 +98,6 @@ class Backup:
         	os.makedirs(self.inc_dir)
         	print """ %s has been created sucessful ! """ % self.inc_dir
 
-<<<<<<< HEAD
-=======
         	
 def last_full_backup_date(self):
         # Finding last full backup date from dir/folder name
@@ -194,10 +192,8 @@ def last_full_backup_date(self):
 
     def full_backup(self):
         # Taking Full backup
-        # useroption = --user=root --password=123456
-        # xtra = --defaults-file=/etc/mysql/my.cnf --port=3306 --socket=/var/run/mysqld/mysqld.sock
         #innobackupex --user=root --password=123456 
-        #-defaults-file=/etc/mysql/my.cnf --port=3306 --socket=/var/run/mysqld/mysqld.sock
+        #-defaults-file=/etc/mysql/my.cnf 
         #--database=test_db1 
         #/home/mysql/backup/20131022
         args = '%s %s %s %s' % (self.backup_tool, self.myuseroption, self.xtrabck, self.full_dir)
@@ -208,7 +204,7 @@ def last_full_backup_date(self):
 
     def inc_backup(self):
         # Taking Incremental backup
-        #innobackupex 
+
         recent_bck = self.recent_full_backup_file()
         args = '%s %s %s --incremental %s --incremental-basedir %s/%s' % (
             self.backup_tool, self.myuseroption, self.xtrabck, self.inc_dir, self.full_dir, recent_bck)
@@ -252,7 +248,6 @@ def last_full_backup_date(self):
 
             # Copying backups to remote server
             self.copy_backup_to_remote_host()
->>>>>>> 675700e2c3196517ad3e2303de19ab79d4f6889c
 
 
 b = Backup()
