@@ -1,63 +1,50 @@
-# You may add here your
-# server {
-#       ...
-# }
-# statements for each of your virtual hosts to this file
+$mysqlhost="localhost";
+$mysqluser="root";
+$mysqlpwd="123456";
+$mysqldb="authserver";
+$conn=@mysql_connect($mysqlhost,$mysqluser,$mysqlpwd) or die('wrong');
 
-##
-# You should look at the following URL's in order to grasp a solid understanding
-# of Nginx configuration files in order to fully unleash the power of Nginx.
-# http://wiki.nginx.org/Pitfalls
-# http://wiki.nginx.org/QuickStart
-# http://wiki.nginx.org/Configuration
-#
-# Generally, you will want to move this file somewhere, and start with a clean
-# file but keep this around for reference. Or just disable in sites-enabled.
-#
-# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
-##
+mysql_select_db($mysqldb,$conn);
 
-server {
-        listen 80 default_server;
-        listen [::]:80 default_server ipv6only=on;
+$query=mysql_query("select * from ol_serverlist");
 
-        root /var/www/authserver;
-        index index.php index.html index.htm;
-
-        server_name localhost;
-
-        location / {
-                try_files $uri $uri/ /index.html;
-        }
-
-        location /doc/ {
-                alias /usr/share/doc/;
-                autoindex on;
-                allow 127.0.0.1;
-                allow ::1;
-                deny all;
-        }
-
-
-        location ~ \.php$ {
-               fastcgi_split_path_info ^(.+\.php)(/.+)$;
-               # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
-               fastcgi_param  SCRIPT_FILENAME  /var/www/authserver$fastcgi_script_name;
-               # With php5-cgi alone:
-               fastcgi_pass 127.0.0.1:9000;
-               # With php5-fpm:
-               fastcgi_pass unix:/var/run/php5-fpm.sock;
-               fastcgi_index index.php;
-               include fastcgi_params;
-        }
-
-        # deny access to .htaccess files, if Apache's document root
-        # concurs with nginx's one
-        #
-        #location ~ /\.ht {
-        #       deny all;
-        #}
+while($rs=mysql_fetch_array($query)){
+        echo $rs["servername"];
 }
 
 
-cgi.fix_pathinfo = 0;
+
+<?php
+    $pagesize = 5; //每页显示5条记录
+    $host="localhost";
+    $user="auth";
+    $password="123456";
+    $dbname="authserver"; //所查询的库表名；
+    //连接MySQL数据库
+    mysql_connect（"$host"，"$user"，"$password"） or die（"无法连接MySQL数据库服务器！"）;
+    $db = mysql_select_db（"$dbname"） or die（"无法连接数据库！"）;
+    $sql = "select * from ol_serverlist";//生成查询记录数的SQL语句
+    $rst = mysql_query（$sql） or die（"无法执行SQL语句：$sql ！"）; //查询记录数
+    $row = mysql_fetch_array（$rst） or die（"没有更多的记录！"）; /取出一条记录
+    echo $row
+    ?>
+
+<?php
+$con = mysql_connect("localhost","auth","123456");
+if (!$con)
+  {
+  die('Could not connect: ' . mysql_error());
+  }
+
+mysql_select_db("authserver", $con);
+
+$result = mysql_query("SELECT * FROM ol_serverlist");
+echo $result
+while($row = mysql_fetch_array($result))
+  {
+  echo $row;
+  echo "<br />";
+  }
+
+mysql_close($con);
+?>

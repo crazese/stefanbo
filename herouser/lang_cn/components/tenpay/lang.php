@@ -1,0 +1,39 @@
+<?php
+	$tenpay_lang['recharge_success'] = '充值成功，祝您游戏愉快！';
+	$tenpay_lang['ordno'] = '充值订单号';
+	$tenpay_lang['alipay_tradeno'] = '财付通交易号：';
+	$tenpay_lang['remember_msg'] = '请牢记您的充值信息！';
+	$tenpay_lang['return_msg1'] = '支付成功';
+	$tenpay_lang['return_msg2'] = '支付失败';
+	$tenpay_lang['return_msg3'] = '认证签名失败';
+	$tenpay_lang['choose_rechargeable_way'] = '选择充值方式页面';
+	$tenpay_lang['welcome'] = '欢迎您：';
+	$tenpay_lang['balance'] = '账号余额：';
+	$tenpay_lang['gold_ingot'] = '元宝';
+	$tenpay_lang['curr_recharge'] = '本次充值：';
+	$tenpay_lang['yuan'] = '元';
+	$tenpay_lang['choose_rechargeable_way1'] = '选择支付方式';
+	$tenpay_lang['tenpay_wappay'] = '腾讯财付通WAP支付';
+	$tenpay_lang['recharge_title'] = '游戏地带充值';
+	$tenpay_lang['recharge_title1'] = '充值';
+	$tenpay_lang['recharge_title2'] = '充值成功';
+	$tenpay_lang['click_goto'] = '请点击以下链接进入腾讯官方财付通支付网站，您的所有支付流程都将在腾讯官方保护下完成。';
+	$tenpay_lang['message_illegal'] = '非法请求';
+	$tenpay_lang['server1_name'] = '一服 水泊梁山';
+	$tenpay_lang['server2_name'] = '二服 替天行道';
+	$tenpay_lang['server3_name'] = '三服 群雄逐鹿';
+	$tenpay_lang['id_err'] = '游戏ID有误，请返回重新输入！';
+	$tenpay_lang['param_err'] = '参数错误';	
+	$tenpay_lang['recharge_server'] = '充值服务器';
+	$tenpay_lang['nickname'] = '玩家昵称';
+	$tenpay_lang['choose_amt'] = '请选择您的充值金额';
+	$tenpay_lang['input_amt'] = '请选择您的充值金额';
+	$tenpay_lang['other_amt'] = '其他金额';
+	$tenpay_lang['tips'] = '友情提示';
+	$tenpay_lang['tips2'] = '请使用正确的金额。(金额小于1取1元，为小数会取整)';	
+	$tenpay_lang['next_step'] = '下一步';	
+	
+	$tenpay_lang['server4_name'] = '四服 侠肝义胆';
+
+	$tenpay_lang['server5_name'] = '五服 一骑当先';
+	$tenpay_lang['server6_name'] = '六服 威震天下';

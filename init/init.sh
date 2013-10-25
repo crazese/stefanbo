@@ -73,13 +73,14 @@ echo "extension=memcached.so" >> /etc/php5/fpm/php.ini
 echo "extension=apc.so" >> /etc/php5/fpm/php.ini
 echo "apc.shm_size=250m" >> /etc/php5/fpm/php.ini
 echo "cgi.fix_pathinfo = 0" >> /etc/php5/fpm/php.ini
+echo "cgi.fix_pathinfo=1" >> /etc/php5/fpm/php.ini
 ###############################################################################
 
 #unmark the "#"
 sed -n 's/#/;/g' /etc/php5/fpm/conf.d/mcrypt.ini
 
 #build directory
-mkdir -p /var/www/authserver  
+#mkdir -p /var/www/authserver  
 mkdir -p /var/www/herouser
 
 /etc/nginx/sites-available/default 
@@ -92,9 +93,9 @@ server {
         server_name  localhost;
 
         access_log  /var/log/nginx/localhost.80.access.log;
-		root   /var/www/authserver;
-		index  index.php index.html index.htm;
-
+        root   /var/www/herouser;
+        index  index.php index.html index.htm;
+        
         location /doc {
                 root   /usr/share;
                 autoindex on;
@@ -108,10 +109,10 @@ server {
         }
 
         location ~ \.php$ {
-            fastcgi_pass   	127.0.0.1:9000;
-            fastcgi_index  	index.php;
-            fastcgi_params  SCRIPT_FILENAME  /var/www/authserver$fastcgi_script_name;
-            include 		fastcgi_params;
+                fastcgi_pass   127.0.0.1:9000;
+                fastcgi_index  index.php;
+                fastcgi_param  SCRIPT_FILENAME  /var/www/herouser$fastcgi_script_name;
+                include fastcgi_params;
         }
 }
 """
@@ -125,7 +126,7 @@ server {
 	server_name localhost;
 
 	access_log  /var/log/nginx/localhost.81.access.log;
-	root /var/www/herouser;
+	root /var/www/authserver;
 	index index.php index.html index.htm;
 
 	location /doc {
@@ -143,7 +144,7 @@ server {
 	location ~ \.php$ {
 		fastcgi_pass 	127.0.0.1:9000;
 		fastcgi_index 	index.php;
-		fastcgi_params	SCRIPT_FILENAME /var/www/herouser$fastcgi_script_name;
+		fastcgi_params	SCRIPT_FILENAME /var/www/authserver$fastcgi_script_name;
 		include 		fastcgi_params;
 	}
 }
@@ -183,9 +184,15 @@ source /var/www/authserver/authServer/append.sql
 
 create user auth identified by '123456';
 grant all on *.* to auth identified by '123456';
-insert into ol_serverlist values ("","test","192.168.1.203:81","","1","","0","1","1.36");
+insert into ol_serverlist values ("","test","192.168.1.203","","1","","0","1","1.36");
 quit
 EOF
+
+scp -rp root@192.168.1.61:/var/key ./
+
+$_SC['domain'] = '192.168.1.202:81';
+define('USER_SERVER', 'http://192.168.1.202:80/');
+define('KEY_PATH', '/var/key');
 
 
 mysql

@@ -1,0 +1,34 @@
+<?php
+$_g_lang['letter']['no_exper_help'] = '没有任何请求帮助历练的探报！';
+$_g_lang['letter']['all_help_cpl'] = '已帮助所有需要历练的朋友！';
+$_g_lang['letter']['invite_false'] = '邀请已失效！';
+$_g_lang['letter']['ill_request'] = '非法请求！';
+$_g_lang['letter']['meet_cond_invite_false'] = '该好友历练条件已满足，邀请已失效！';
+$_g_lang['letter']['no_find_letter'] = '信件不存在';
+$_g_lang['letter']['no_friend_no_gift'] = '用户已解除好友关系，不能送礼';
+$_g_lang['letter']['today_gift_no_again'] = '你今天已经给过他礼物了，不能再给了';
+$_g_lang['letter']['error_pinfo'] = '帐号数据出错';
+$_g_lang['letter']['gift_no_find'] = '该礼物已被打劫';
+$_g_lang['letter']['pack_full_to_give'] = '包裹已满，无法领取';
+$_g_lang['letter']['get_from_letter_info'] = '获得了%s个%s';
+$_g_lang['letter']['f_get_coins'] = "获得了%s个铜钱";
+$_g_lang['letter']['f_get_silver'] = "获得了%s个银票";
+$_g_lang['letter']['f_get_ingot'] = "获得了%s个元宝";
+$_g_lang['letter']['f_get_grain'] = "获得了%s个军粮";
+$_g_lang['letter']['no_fri_request'] = '没有任何好友请求';
+$_g_lang['letter']['friend_limit'] = '您的好友数已达上限';
+$_g_lang['letter']['no_find_sy_letter'] = '没有任何索要的信件';
+$_g_lang['letter']['error_level'] = '非法请求的等级';
+$_g_lang['letter']['no_find_gift'] = '没有任何可领取的礼物';
+$_g_lang['letter']['pack_full_please_to'] = '您背包已满，请先清理或扩容';
+$_g_lang['letter']['get_all_gift'] = '已领取所有礼物';
+$_g_lang['letter']['no_find_gift_letter'] = '没有任何被赠送礼物的探报';
+$_g_lang['letter']['sys_occupy_public'] = "【群雄逐鹿】 “%s活动”在“%s”的占领者是“%s”，获得额外收益";
+$_g_lang['letter']['sys_big_award_public'] = "【群雄逐鹿】恭喜！“%s”在“%s”中获得令人垂涎的“%s级逐鹿大奖”";
+$_g_lang['letter']['sys_open_award_public'] = "【群雄逐鹿】“%s”打开“%s级逐鹿大奖”";
+$_g_lang['letter']['sys_git_award_public'] = "【群雄逐鹿】本次“%s级逐鹿大奖”开出“%s”";
+$_g_lang['letter']['sys_admin_public'] = "%s";
+$_g_lang['letter']['sys_top_scorer_public'] = "【群雄逐鹿】“%s”在“%s活动”中占领时间最长，荣获得分王大奖";
+
+$_g_lang['letter']['pack_full_please_to'] = $_g_lang['letter']['pack_full_to_give'] = "不能领取！\n背包已满，请先整理或扩容！";
+$_g_lang['letter']['f_get_sw'] = "获得了%s点声望";

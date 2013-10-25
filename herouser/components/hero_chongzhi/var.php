@@ -1,0 +1,335 @@
+<?php
+function getCzfsInfo() {
+	global $chongzhi_lang;
+	if(SYPT ==1) {
+		if(INGAME_PAY_WAY == 1) {
+			$czInfo = array(
+				0=>array(
+					'mc'=>$chongzhi_lang['var_cft'],
+					'czfsid'=>'ZFB',
+					'je'=>array()
+				),
+				1=>array(
+					'mc'=>$chongzhi_lang['var_yd'],
+					'czfsid'=>'SZX',
+					'je'=>array(
+						0=>10,
+						1=>20,
+						2=>30,
+						3=>50,
+						4=>100,
+						5=>300,
+						6=>500
+
+					)
+				),
+				2=>array(
+					'mc'=>$chongzhi_lang['var_lt'],
+					'czfsid'=>'UNICOM',
+					'je'=>array(				
+						0=>20,
+						1=>30,
+						2=>50,
+						3=>100,
+						4=>300,
+						5=>500
+					)
+				),
+				3=>array(
+					'mc'=>$chongzhi_lang['var_dx'],
+					'czfsid'=>'TELECOM',
+					'je'=>array(
+						0=>50,
+						1=>100				
+					)
+				),
+				4=>array(
+					'mc'=>$chongzhi_lang['var_qbk'],
+					'czfsid'=>'QQCARD',
+					'je'=>array(
+						0=>5,
+						1=>10,
+						2=>15,
+						3=>20,
+						4=>30,
+						5=>60,
+						6=>100,
+						7=>200
+					)
+				),
+				5=>array(
+					'mc'=>$chongzhi_lang['var_jwykt'],
+					'czfsid'=>'JUNNET',
+					'je'=>array(
+						0=>1,
+						1=>5,
+						2=>10,
+						3=>15,
+						4=>30,
+						5=>50,
+						6=>100,
+						7=>200,
+						8=>500,
+						9=>1000
+					)
+				),
+				6=>array(
+					'mc'=>$chongzhi_lang['var_sdk'],
+					'czfsid'=>'SNDACARD',
+					'je'=>array(
+						0=>5,
+						1=>10,
+						2=>30,
+						3=>35,
+						4=>45,
+						5=>100,
+						6=>350,
+						7=>1000
+					)
+				)
+			);
+		} else {
+			$czInfo = array(
+				0=>array(
+					'mc'=>$chongzhi_lang['var_yd'],
+					'czfsid'=>'SZX',
+					'je'=>array(
+						0=>10,
+						1=>20,
+						2=>30,
+						3=>50,
+						4=>100,
+						5=>300,
+						6=>500
+					)
+				),
+				1=>array(
+					'mc'=>$chongzhi_lang['var_lt'],
+					'czfsid'=>'UNICOM',
+					'je'=>array(				
+						0=>20,
+						1=>30,
+						2=>50,
+						3=>100,
+						4=>300,
+						5=>500
+					)
+				),
+				2=>array(
+					'mc'=>$chongzhi_lang['var_dx'],
+					'czfsid'=>'TELECOM',
+					'je'=>array(
+						0=>50,
+						1=>100				
+					)
+				),
+				3=>array(
+					'mc'=>$chongzhi_lang['var_cft'],
+					'czfsid'=>'ZFB',
+					'je'=>array()
+				),
+				/*4=>array(
+					'mc'=>$chongzhi_lang['var_dx'],
+					'czfsid'=>'DXCZ',
+					'je'=>array()
+				)*/					
+			);
+		}
+	} else {
+		if(INGAME_PAY_WAY == 1) {
+			$czInfo = array(
+				0=>array(
+					'mc'=>$chongzhi_lang['var_zfb'],
+					'czfsid'=>'ZFB',
+					'je'=>array()
+				),
+				1=>array(
+					'mc'=>$chongzhi_lang['var_yd'],
+					'czfsid'=>'SZX',
+					'je'=>array(
+						0=>10,
+						1=>20,
+						2=>30,
+						3=>50,
+						4=>100,
+						5=>300,
+						6=>500
+					)
+				),
+				2=>array(
+					'mc'=>$chongzhi_lang['var_lt'],
+					'czfsid'=>'UNICOM',
+					'je'=>array(				
+						0=>20,
+						1=>30,
+						2=>50,
+						3=>100,
+						4=>300,
+						5=>500
+					)
+				),
+				3=>array(
+					'mc'=>$chongzhi_lang['var_dx'],
+					'czfsid'=>'TELECOM',
+					'je'=>array(
+						0=>50,
+						1=>100				
+					)
+				),
+				4=>array(
+					'mc'=>$chongzhi_lang['var_qbk'],
+					'czfsid'=>'QQCARD',
+					'je'=>array(
+						0=>5,
+						1=>10,
+						2=>15,
+						3=>20,
+						4=>30,
+						5=>60,
+						6=>100,
+						7=>200
+					)
+				),
+				5=>array(
+					'mc'=>$chongzhi_lang['var_jwykt'],
+					'czfsid'=>'JUNNET',
+					'je'=>array(
+						0=>1,
+						1=>5,
+						2=>10,
+						3=>15,
+						4=>30,
+						5=>50,
+						6=>100,
+						7=>200,
+						8=>500,
+						9=>1000
+					)
+				),
+				6=>array(
+					'mc'=>$chongzhi_lang['var_sdk'],
+					'czfsid'=>'SNDACARD',
+					'je'=>array(
+						0=>5,
+						1=>10,
+						2=>30,
+						3=>35,
+						4=>45,
+						5=>100,
+						6=>350,
+						7=>1000
+					)
+				)
+			);
+		} else {
+			$czInfo = array(
+				0=>array(
+					'mc'=>$chongzhi_lang['var_yd'],
+					'czfsid'=>'SZX',
+					'je'=>array(
+						0=>10,
+						1=>20,
+						2=>30,
+						3=>50,
+						4=>100,
+						5=>300,
+						6=>500
+					)
+				),
+				1=>array(
+					'mc'=>$chongzhi_lang['var_lt'],
+					'czfsid'=>'UNICOM',
+					'je'=>array(				
+						0=>20,
+						1=>30,
+						2=>50,
+						3=>100,
+						4=>300,
+						5=>500
+					)
+				),
+				2=>array(
+					'mc'=>$chongzhi_lang['var_dx'],
+					'czfsid'=>'TELECOM',
+					'je'=>array(
+						0=>50,
+						1=>100				
+					)
+				),
+				3=>array(
+					'mc'=>$chongzhi_lang['var_zfb'],
+					'czfsid'=>'ZFB',
+					'je'=>array()
+				),
+				/*4=>array(
+					'mc'=>$chongzhi_lang['var_dx'],
+					'czfsid'=>'DXCZ',
+					'je'=>array()
+				)*/				
+			);
+		}	
+	}
+	
+	return $czInfo;
+}
+
+function getCzMcInfo() {
+	global $chongzhi_lang;
+	
+	$czmcInfo = array(
+		'SZX'=>$chongzhi_lang['var_yd'],
+		'UNICOM'=>$chongzhi_lang['var_lt'],
+		'TELECOM'=>$chongzhi_lang['var_dx'],
+		'QQCARD'=>$chongzhi_lang['var_qbk'],
+		'JUNNET'=>$chongzhi_lang['var_jwykt'],
+		'SNDACARD'=>$chongzhi_lang['var_sdk']
+	);
+	
+	return $czmcInfo;
+}
+
+function getFailReason($errno) {
+	global $chongzhi_lang;
+	
+	if(INGAME_PAY_WAY == 1) {
+		$err = array(
+				0=>$chongzhi_lang['var_err_0'],
+				1=>$chongzhi_lang['var_err_1'],
+				7=>$chongzhi_lang['var_err_7'],
+				1002=>$chongzhi_lang['var_err_1002'],
+				1003=>$chongzhi_lang['var_err_1003'],
+				1004=>$chongzhi_lang['var_err_1004'],
+				1006=>$chongzhi_lang['var_err_1006'],
+				1007=>$chongzhi_lang['var_err_1007'],
+				1008=>$chongzhi_lang['var_err_1008'],
+				1010=>$chongzhi_lang['var_err_1010'],
+				10000=>$chongzhi_lang['var_err_10000'],
+				2005=>$chongzhi_lang['var_err_2005'],
+				2006=>$chongzhi_lang['var_err_2006'],
+				2007=>$chongzhi_lang['var_err_2007'],
+				2008=>$chongzhi_lang['var_err_2008'],
+				2009=>$chongzhi_lang['var_err_2009'],
+				2010=>$chongzhi_lang['var_err_2010'],
+				2011=>$chongzhi_lang['var_err_2011'],
+				2012=>$chongzhi_lang['var_err_2012'],
+				2013=>$chongzhi_lang['var_err_2013'],
+				2014=>$chongzhi_lang['var_err_2014']
+				);
+	} else {
+		$err = array(
+			101=>$chongzhi_lang['var_err_101'],
+			102=>$chongzhi_lang['var_err_102'],
+			103=>$chongzhi_lang['var_err_103'],
+			104=>$chongzhi_lang['var_err_104'],
+			105=>$chongzhi_lang['var_err_105'],
+			106=>$chongzhi_lang['var_err_106'],
+			107=>$chongzhi_lang['var_err_107'],
+			913=>$chongzhi_lang['var_err_913'],
+			914=>$chongzhi_lang['var_err_914'],
+			915=>$chongzhi_lang['var_err_915'],
+			916=>$chongzhi_lang['var_err_916']
+			);	
+	}
+	
+	return $err[$errno];
+}

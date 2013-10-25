@@ -1,0 +1,39 @@
+<?php
+	$tenpay_lang['recharge_success'] = '儲值成功，祝您遊戲愉快！';
+	$tenpay_lang['ordno'] = '儲值訂單號';
+	$tenpay_lang['alipay_tradeno'] = '財付通交易號：';
+	$tenpay_lang['remember_msg'] = '請牢記您的儲值信息！';
+	$tenpay_lang['return_msg1'] = '支付成功';
+	$tenpay_lang['return_msg2'] = '支付失敗';
+	$tenpay_lang['return_msg3'] = '認證簽名失敗';
+	$tenpay_lang['choose_rechargeable_way'] = '選擇儲值方式頁面';
+	$tenpay_lang['welcome'] = '歡迎您：';
+	$tenpay_lang['balance'] = '帳號餘額：';
+	$tenpay_lang['gold_ingot'] = '元寶';
+	$tenpay_lang['curr_recharge'] = '本次儲值：';
+	$tenpay_lang['yuan'] = '元';
+	$tenpay_lang['choose_rechargeable_way1'] = '選擇支付方式';
+	$tenpay_lang['tenpay_wappay'] = '騰訊財付通WAP支付';
+	$tenpay_lang['recharge_title'] = '遊戲地帶儲值';
+	$tenpay_lang['recharge_title1'] = '儲值';
+	$tenpay_lang['recharge_title2'] = '儲值成功';
+	$tenpay_lang['click_goto'] = '請點擊以下連結進入騰訊官方財付通支付網站，您的所有支付流程都將在騰訊官方保護下完成。';
+	$tenpay_lang['message_illegal'] = '非法請求';
+	$tenpay_lang['server1_name'] = '一服 水泊梁山';
+	$tenpay_lang['server2_name'] = '二服 替天行道';
+	$tenpay_lang['server3_name'] = '三服 群雄逐鹿';
+	$tenpay_lang['id_err'] = '遊戲ID有誤，請返回重新輸入！';
+	$tenpay_lang['param_err'] = '參數錯誤';	
+	$tenpay_lang['recharge_server'] = '儲值伺服器';
+	$tenpay_lang['nickname'] = '玩家昵稱';
+	$tenpay_lang['choose_amt'] = '請選擇您的儲值金額';
+	$tenpay_lang['input_amt'] = '請選擇您的儲值金額';
+	$tenpay_lang['other_amt'] = '其他金額';
+	$tenpay_lang['tips'] = '友情提示';
+	$tenpay_lang['tips2'] = '請使用正確的金額。(金額小於1取1元，為小數會取整)';	
+	$tenpay_lang['next_step'] = '下一步';	
+	
+	$tenpay_lang['server4_name'] = '四服 俠肝義膽';
+
+	$tenpay_lang['server5_name'] = '五服 一騎當先';
+	$tenpay_lang['server6_name'] = '六服 威震天下';
