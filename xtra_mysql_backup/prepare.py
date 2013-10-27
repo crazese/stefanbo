@@ -1,5 +1,7 @@
 # Backup Prepare and Copy-Back Script
 # Originally Developed by Shahriyar Rzayev / rzayev.sehriyar@gmail.com
+# modified by stefanmonkey / stefan_bo@163.com
+# tested with ubuntu 10.04  MySQL 5.1 and python 2.6.5
 import ConfigParser
 import os
 import shlex
@@ -278,27 +280,6 @@ class Prepare:
 
 
     def prepare_backup_and_copy_back(self):
-    # Recovering/Copying Back Prepared Backup
-        print"""
-        ###########################################################################################################
-        #  This script is Preparing full/inc backups!                                                             #
-        #  What do you want to do?                                                                                #
-        #    1. Prepare Backups and keep for future usage.NOTE('Once Prepared Backups Can not be prepared Again') #
-        #    2. Prepare Backups and restore/recover/copy-back immediately")                                       #
-        #    3. Just copy-back previously prepared backups")                                                      #
-        ###########################################################################################################
-        """
-        #prepare = int(input("Please Choose one of options and type 1 or 2 or 3: "))          
-#        
-#        if prepare == 1:
-#            self.prepare_inc_full_backups()
-#        elif prepare == 2:
-#            self.prepare_inc_full_backups()
-#            self.copy_back()
-#        elif prepare == 3:
-#            self.copy_back()
-#        else:
-#            print("Please type 1 or 2 or 3 and nothing more!")
         self.prepare_inc_full_backups()
         self.copy_back()
 

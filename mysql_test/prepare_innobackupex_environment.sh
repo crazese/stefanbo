@@ -6,7 +6,7 @@
 server="hut.jofgame.com"
 username="zhubo"
 passwd="Jof1Game8yzl"
-xtrabackup_PACKAGE=percona-xtrabackup-2.1.5.tar.gz
+xtrabackup_PACKAGE=percona-xtrabackup-2.0.0.tar.gz
 easy_install=setuptools-0.6c11-py2.6.egg
 TEMP=/tmp/XtraBackup
 mkdir -p $TEMP
@@ -50,12 +50,10 @@ cp $PWD/src/xtrabackup_51 /usr/bin/xtrabackup
 
 
 #Perform a full backup
-#<<<<<<< HEAD
 #mkdir -p /data/backup/mysql
 #xtrabackup_plugin --backup --datadir=/var/lib/mysql --target-dir=/data/backups/mysql/
-=======
-mkdir -p /data/backup/mysql
-xtrabackup --backup --datadir=/var/lib/mysql --target-dir=/data/backups/mysql/
+
+
 
 
 
