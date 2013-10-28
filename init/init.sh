@@ -170,10 +170,11 @@ create database hero character set utf8;
 create user hero identified by '123456';
 grant all on *.* to hero identified by '123456';
 
-source /var/www/herouser/hero.sql
-source /var/www/herouser/append.sql
-source /var/www/herouser/ios_app_pay.sql
-source /var/www/herouser/pay.sql
+use hero;
+source /var/www/herouser/hero.sql;
+source /var/www/herouser/append.sql;
+source /var/www/herouser/ios_app_pay.sql;
+source /var/www/herouser/pay.sql;
 quit
 EOF
 
@@ -189,6 +190,18 @@ quit
 EOF
 
 scp -rp root@192.168.1.61:/var/key ./
+#configure the config.php
+#change the database user name
+sed -ni 's/sothink/hero/g' /var/www/herouser/config.php 
+#change the database user passwd
+sed -ni 's/src8351/123456/g' /var/www/herouser/config.php 
+#change the database name
+sed -ni 's/136new/hero/g' /var/www/herouser/config.php 
+#change the domain server ip address
+sed -ni 's/119.79.232.99/192.168.1.203/' /var/www/herouser/config.php
+#change the USER_SERVER (authserver ip)
+sed -ni 's/192.168.1.61:8080/192.168.1.202:80/' /var/www/herouser/config.php
+
 
 $_SC['domain'] = '192.168.1.202:81';
 define('USER_SERVER', 'http://192.168.1.202:80/');
