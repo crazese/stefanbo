@@ -1,0 +1,27 @@
+<?php
+static $user_lang = array(
+	'saveUserInfo_1' => '伺服器人數已達上限',
+	'getLoginInfoForJava_1' => '無角色',
+	'checksid_1' => '連接伺服器失敗！',
+	'register_1' => '當前伺服器繁忙，請稍後再試！',
+	'register_2' => 'QQ新人',
+	'register_3' => '網路錯誤！',
+	'register_4' => '身份驗證失敗，請重新登錄！',
+	'register_5' => '連接UC API失敗！',
+	'register_6' => '獲取使用者資訊失敗！',
+	'register_7' => '非法用戶端請求',
+	'register_8' => '使用者註冊資訊輸入不完整',
+	'register_9' => '該帳號已存在！',
+	'authorize_1' => '非法用戶端請求',
+	'authorize_2' => '該帳號不存在！',
+	'authorize_3' => '帳號與密碼不匹配！',
+	'authorize_4' => '該帳戶因【',
+	'authorize_5' => '】已被凍結！如有疑問請聯繫遊戲客服。客服電話：027-59715110',
+	'register_10' => '請更新新版本！',
+	'xgksdl_1' => '訪問遠端伺服器失敗',
+	'xgksdl_2' => '使用者資訊有誤！',
+	'xgksdl_3' => '用戶名重複！',
+	'xgksdl_4' => '使用者資訊不存在！',	
+	'xgksdl_5' => '角色名非法！',
+	'xgksdl_6' => '用戶名或密碼不能為空'
+);
