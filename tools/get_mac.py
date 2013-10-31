@@ -4,30 +4,25 @@ import re
 from BeautifulSoup import BeautifulSoup
 #get the html contents from urllib2
 #user and pw
-login_user = 'admin'
-login_pw = '59715112'
-auth = 'Basic ' + base64.b64encode(login_user+':'+login_pw)
+user = 'admin'
+pw = '59715112'
 
-#sys_log heads and requset
 sys_log_html= 'http://192.168.1.1/sys_log.htm'
-log_heads = {'Referer': sys_log_html ,
-			 'Authorization' : auth}
-log_request = urllib2.Request(sys_log_html, None, log_heads)
-
-log_response = urllib2.urlopen(log_request)
-
-
-#ipmac_binding heads and requset
 ipmac_binding_html 	= 'http://192.168.1.1/Dhcp_table.htm'
-ipmac_heads = { 'Referer': ipmac_binding_html,
-				'Authorization' : auth }
-ipmac_request = urllib2.Request(ipmac_binding_html, None, ipmac_heads)
 
-ipmac_response = urllib2.urlopen(ipmac_request)
+
+def get_html(login_user,login_pw,html):
+    auth = 'Basic' + base64.b64encode(login_user+':'+login_pw)
+    log_heads = {'Referer': html,
+                 'Authorization' : auth}
+    log_request = urllib2.Request(html,None,log_heads)
+    log_response = urllib2.urlopen(log_request)
+    result = log_response.read()
+    return result
 
 #the contents from html
-log = log_response.read()
-ipmac = ipmac_response.read()
+log = get_html(user,pw,sys_log_html)
+ipmac = get_html(user,pw,ipmac_binding_html)
 
 
 #############################

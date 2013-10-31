@@ -1,24 +1,22 @@
-#-*- encoding: gb2312 -*-
-import HTMLParser
+#!/usr/bin/env python
+#get the html with authorization
 
-class MyParser(HTMLParser.HTMLParser):
-    def __init__(self):
-        HTMLParser.HTMLParser.__init__(self)        
+import urllib2, base64
+import re
+from BeautifulSoup import BeautifulSoup
 
-        
-    def handle_starttag(self, tag, attrs):
-        # 这里重新定义了处理开始标签的函数
-        if tag == 'a':
-            # 判断标签的属性
-            for name,value in attrs:
-                if name == 'href':
-                    print value
-       
+user = 'admin'
+pw = '59715112'
 
-if __name__ == '__main__':
-    a = 'http://www.163.com'
-    
-my = MyParser()
+html = 'http://192.168.1.1/sys_log.htm'
 
+def get_html(login_user,login_pw,html):
+    auth = 'Basic' + base64.b64encode(login_user+':'+login_pw)
+    log_heads = {'Referer': html,
+                 'Authorization' : auth}
+    log_request = urllib2.Request(html,None,log_heads)
+    log_response = urllib2.urlopen(log_request)
+    result = log_response.read()
+    return result
 
-my.feed(a)
+test = get_html(user,pw,html)
