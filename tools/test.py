@@ -43,11 +43,16 @@ ipadd            = result_ipmac[3::5]
 macadd           = result_ipmac[4::5]
 username         = result_ipmac[5::5]
 
-def filter(stri):
-        re_h=re.compile('</?\w+[^>]*>')
-        stri=re_h.sub('',str(stri))
-        return stri
 
+def filter_s(stri):
+    re_h=re.compile('</?\w+[^>]*>')
+    stri=re_h.sub('',str(stri))
+    return stri
+
+def filter_l(l):
+	for x , y in enumerate(l):
+		l[x] = filter_s(y)
+	return l
 
 #rebuild contents_log
 def rebuild(seq, idfun=None):
