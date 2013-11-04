@@ -63,7 +63,7 @@ def rebuild(seq, idfun=None):
        # but in new ones:
        if marker in seen: continue
        seen[marker] = 1
-       x = filter(idfun(item))
+       x = filter_s(idfun(item))
        result.append(x)
    return result
 
@@ -72,13 +72,13 @@ temp_list = rebuild(contents_log)
 result_list=[]
 for i in temp_list[:]:
     if "but" in i:
-    result_list.append(i)
+        result_list.append(i)
 
 for i in rebuild(result_list):
     for j in macadd:
-        if filter(j) in i:
-        num=macadd.index(j)
-        ip = filter(ipadd[num])
-        mac = filter(macadd[num])
-        user = filter(username[num])
-        print "IP : %s , MAC : %s , USERNAME : %s " % (ip,mac,user)
+        if filter_s(j) in i:
+            num=macadd.index(j)
+            ip = filter_s(ipadd[num])
+            mac = filter_s(macadd[num])
+            user = filter_s(username[num])
+            print "IP : %s , MAC : %s , USERNAME : %s " % (ip,mac,user)
