@@ -8,7 +8,7 @@ user = 'admin'
 pw = '59715112'
 
 sys_log_html= 'http://192.168.1.1/sys_log.htm'
-ipmac_binding_html 	= 'http://192.168.1.1/Dhcp_table.htm'
+ipmac_binding_html      = 'http://192.168.1.1/Dhcp_table.htm'
 
 
 def get_html(login_user,login_pw,html):
@@ -31,22 +31,22 @@ soup_log=BeautifulSoup(log)
 result_log = soup_log.findAll('td')
 
 
-dt_log 		 = result_log[1::3]
-kind_log 	 = result_log[2::3]
+dt_log           = result_log[1::3]
+kind_log         = result_log[2::3]
 contents_log = result_log[3::3]
 
 #ipmac html parser
-soup_ipmac	 =BeautifulSoup(ipmac)
+soup_ipmac       =BeautifulSoup(ipmac)
 result_ipmac = soup_ipmac.findAll('td')
 
-ipadd 		 = result_ipmac[3::5]
-macadd		 = result_ipmac[4::5]
-username	 = result_ipmac[5::5]
+ipadd            = result_ipmac[3::5]
+macadd           = result_ipmac[4::5]
+username         = result_ipmac[5::5]
 
 def filter(stri):
-	re_h=re.compile('</?\w+[^>]*>')
-	stri=re_h.sub('',str(stri))
-	return stri
+        re_h=re.compile('</?\w+[^>]*>')
+        stri=re_h.sub('',str(stri))
+        return stri
 
 
 #rebuild contents_log
@@ -63,7 +63,7 @@ def rebuild(seq, idfun=None):
        # but in new ones:
        if marker in seen: continue
        seen[marker] = 1
-       x = filter(idfun(item))
+       x = filter_s(idfun(item))
        result.append(x)
    return result
 
@@ -71,14 +71,14 @@ temp_list = rebuild(contents_log)
 
 result_list=[]
 for i in temp_list[:]:
-	if "but" in i:
-		result_list.append(i)
+    if "but" in i:
+        result_list.append(i)
 
 for i in rebuild(result_list):
-	for j in macadd:
-		if filter(j) in i:
-			num=macadd.index(j)
-			ip = filter(ipadd[num])
-			mac = filter(macadd[num])
-			user = filter(username[num])
-			print "IP : %s , MAC : %s , USERNAME : %s " % (ip,mac,user) 
+    for j in macadd:
+        if filter_s(j) in i:
+            num=macadd.index(j)
+            ip = filter_s(ipadd[num])
+            mac = filter_s(macadd[num])
+            user = filter_s(username[num])
+            print "IP : %s , MAC : %s , USERNAME : %s " % (ip,mac,user)
