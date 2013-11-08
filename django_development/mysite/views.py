@@ -1,6 +1,6 @@
-#from django.template.loader import get_template
-#from django.template import Context
-#from django.http import HttpResponse
+from django.template.loader import get_template
+from django.template import Context
+from django.http import HttpResponse
 import datetime
 from django.shortcuts import render_to_response
 
@@ -32,3 +32,11 @@ def hours_ahead(request, offset):
 	dt = datetime.datetime.now() + datetime.timedelta(hours=offset)
 	html = "<html><body> In %s hour(s), it will be %s.</body></html>" % (offset, dt)
 	return HttpResponse(html)
+
+def display_meta(request):
+	values = request.META.items()
+	values.sort()
+	return render_to_response("index.html",locals())
+
+def search_form(request):
+	return render_to_response('search_form.html')

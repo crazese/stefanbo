@@ -10,7 +10,9 @@ class BookAdmin(admin.ModelAdmin):
 	list_filter=('publication_date',)
 	date_hierarchy= 'publication_date'
 	ordering = ('publication_date',)
-	fields = ('title','authors','Publisher','publication_date')
+	#fields = ('title','authors','Publisher')
+	filter_horizontal = ('authors',)
+	raw_id_fields = ('Publisher',)
 
 admin.site.register(Publisher)
 admin.site.register(Author, AuthorAdmin)

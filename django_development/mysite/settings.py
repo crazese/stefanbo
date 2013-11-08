@@ -1,10 +1,13 @@
 # Django settings for mysite project.
+import os,sys
+SITE_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
+    ('admin','819737724@qq.com'),
 )
 
 MANAGERS = ADMINS
@@ -113,7 +116,8 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(os.path.dirname(__file__),'templates').replace('\\','/'),
+    os.path.join(SITE_ROOT,'templates'),
+    os.path.join(SITE_ROOT,'books/templates'),
 )
 
 INSTALLED_APPS = (
@@ -131,6 +135,13 @@ INSTALLED_APPS = (
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
+
+#admin email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST='smtp.qq.com'
+EMAIL_PORT=25
+EMAIL_HOST_USER='819737724@qq.com'
+EMAIL_HOST_PASSWORD='csmonkey037622'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
