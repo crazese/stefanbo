@@ -98,8 +98,6 @@ class Backup:
         	os.makedirs(self.inc_dir)
         	print """ %s has been created sucessful ! """ % self.inc_dir
 
-<<<<<<< HEAD
-=======
         	
 def last_full_backup_date(self):
         # Finding last full backup date from dir/folder name

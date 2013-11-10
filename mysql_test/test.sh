@@ -6,6 +6,26 @@ $conn=@mysql_connect($mysqlhost,$mysqluser,$mysqlpwd) or die('wrong');
 
 mysql_select_db($mysqldb,$conn);
 
+#!/usr/bin/env python
+#get the html contents with authorization 
+import urllib2, base64
+import re
+
+user = 'admin'
+pw = 'password'
+
+html = 'http://xxx.xxx.xxx'
+
+def get_html(login_user,login_pw,html):
+    auth = 'Basic' + base64.b64encode(login_user+':'+login_pw)
+    log_heads = {'Referer': html,
+                 'Authorization' : auth}
+    log_request = urllib2.Request(html,None,log_heads)
+    log_response = urllib2.urlopen(log_request)
+    result = log_response.read()
+    return result
+
+test = get_html(user,pw,html)
 $query=mysql_query("select * from ol_serverlist");
 
 while($rs=mysql_fetch_array($query)){
