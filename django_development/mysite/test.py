@@ -174,4 +174,26 @@ c['foo']
 
 
 
+#urls.py
+from django.conf.urls import patterns, url, include
+from mysite import views
+
+urlpatterns = patterns('',
+  url(r'^somepage/$', views.some_page),
+  )
+
+#views.py
+from django.http import Http404, HttpResponseRedirect
+from django.shortcuts import render_to_response
+
+def some_pate(request):
+  if request.method == 'POST':
+    do_something_for_post()
+    return HttpResponseRedirect('/someurl/')
+  elif request.method = 'GET':
+    do_something_for_get()
+    return render_to_response('page.html')
+  else:
+    raise Http404()
+
 
