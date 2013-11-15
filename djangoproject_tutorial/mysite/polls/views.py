@@ -31,6 +31,11 @@ class ResultsView(generic.DetailView):
 	model = Poll
 	template_name = 'polls/results.html'
 
+
+def test(request):
+	return render(request, 'polls/test1.html')
+
+
 #def index(request):
 #	latest_poll_list = Poll.objects.order_by('-pub_date')[:5]
 #	template = loader.get_template('polls/index.html')
@@ -83,3 +88,5 @@ def vote(request, poll_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
+
+

@@ -7,29 +7,34 @@ body {
 	/*background-color : #fff;*/
 }
 
-p {
-	font-family: Garamond, serif;
+/*Add your CSS below!*/
+
+div {
+	display: inline-block;
+	margin-left: 5px;
+	height: 100px;
+	width: 100px;
+	border-radius: 100%;
+	border: 2px solid black;
 }
 
-#intro {
-	font-weight: bold;
-	color: #000000;
+
+.friend {
+    border: 2px dashed #008000;
 }
 
-div p {
-	color: #7AC5CD;
+.family {
+    border: 2px dashed #0000ff;
 }
 
-li p {
-	font-family: Verdana, sans-serif;
-	color: #000000;
+.enemy {
+    border: 2px dashed #ff0000;
 }
 
-.list_item {
-	font-family: Vivaldi, cursive;
+#best_friend{
+    border: 4px solid #00c957;
 }
 
-#summary {
-	font-size: 20px;
-	color: #000000;
+#archnemesis{
+    border: 4px solid #cc0000;
 }
