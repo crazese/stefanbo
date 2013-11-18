@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Highlights</title>
+        <link rel='stylesheet' type='text/css' href="{% static 'polls/test3.css' %}"/>
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script type='text/javascript' src='{% static 'polls/test3.js' %}.js'></script>
+	</head>
+	<body>
+        <div id="title" class="highlighted">I'm highlighted!</div>
+        <div id="text">Highlight me, too!</div>
+        <p class="blue">Click to toggle</p>
+        <p class="blue highlight">highlight</p>
+        <p class="blue">on these</p>
+        <p class="blue">paragraphs</p>
+	</body>
+</html>

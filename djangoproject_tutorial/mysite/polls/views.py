@@ -33,7 +33,7 @@ class ResultsView(generic.DetailView):
 
 
 def test(request):
-	return render(request, 'polls/test1.html')
+	return render(request, 'polls/test3.html')
 
 
 #def index(request):
