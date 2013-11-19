@@ -56,25 +56,25 @@ cd $cur_dir
 
 tar zxvf autoconf-2.13.tar.gz
 cd autoconf-2.13/
-./configure --prefix=/usr/local/autoconf-2.13
+./configure --prefix=/opt/lnmp/autoconf
 make && make install
 cd ../
 
 cd $cur_dir
 tar zxvf libiconv-1.14.tar.gz
 cd libiconv-1.14/
-./configure
+./configure --prefix=/opt/lnmp/lib/autoconf
 make && make install
 cd ../
 
 cd $cur_dir
 tar zxvf libmcrypt-2.5.8.tar.gz
 cd libmcrypt-2.5.8/
-./configure
+./configure --prefix=/opt/lnmp/lib/libmcrypt
 make && make install
 /sbin/ldconfig
 cd libltdl/
-./configure --enable-ltdl-install
+./configure --enable-ltdl-install --prefix=/opt/lnmp/lib/libmcrypt/libltdl
 make && make install
 cd ../../
 
@@ -86,7 +86,7 @@ ln -s /usr/local/lib/libmcrypt.so.4.4.8 /usr/lib/libmcrypt.so.4.4.8
 cd $cur_dir
 tar zxvf libxml2-2.7.8.tar.gz
 cd libxml2-2.7.8/
-./configure --prefix=/usr
+./configure --prefix=/opt/lnmp/lib/libxml2
 make && make install
 cd ../
 

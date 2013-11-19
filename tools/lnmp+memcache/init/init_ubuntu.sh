@@ -75,7 +75,7 @@ ntpdate pool.ntp.org
 echo '*/20 * * * * /usr/sbin/ntpdate pool.ntp.org > /dev/null 2>&1' > /var/spool/cron/crontabs/root;chmod 600 /var/spool/cron/crontabs/root 
 service cron restart
 
-. ~/.bashrc
+source ~/.bashrc
 
 # mkdir the Install directory
 mkdir /opt/lnmp/php -p
