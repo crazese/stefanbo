@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load utiltags %}
+{% block title %}
+机房带宽日利用率
+{% endblock %}
+{% block content %}
+{% autoescape off %}
+<div id="columnwrap">
+<div id="content-main" style="width:100%">
+<form action="/net_bw/day_report/2/" method="post">
+<table width="100%" border="0" cellspacing="1" cellpadding="2">
+    <tr>
+        <td>
+            查询日期：<input name="time" type="text" value="" onFocus="calendar(EventUtil.getEvent().target)" size="12" maxlength="10" readonly="true" AUTOCOMPLETE="off" />&nbsp;<input type="submit" value=" 查 询 ">&nbsp;&nbsp;<a href='/net_bw/day_isp/1/'>ISP日利用率查看</a>&nbsp;&nbsp;<a href='/net_bw/day_area/1/'>区域日利用率查看</a>
+        </td>
+    </tr>
+</table>
+</form>
+<table width="100%" border="0" cellpadding="3" cellspacing="1" class="bwtable">
+    <thead>
+	<tr class="table_bord_ttl">
+      <th align="center">序号</th>
+      <th align="center">机房编号</th>
+      <th align="center">机房名称</th>
+      <th align="center">最大服务带宽(M)</th>
+      <th align="center">付费带宽(M)</th>
+      <th align="center">日峰值带宽(M)</th>
+      <th align="center">日利用率</th>
+      <th align="center">日期</th>
+	</tr>
+	</thead>
+{% if object_list %}
+{% for bandwidth in object_list %}
+    {% if forloop.counter0|divisibleby:2 %}
+        <tr class="tr_class1" onMouseMove="cell_over(this);" onMouseOut="cell_out(this)" onClick="cell_click(this);">
+    {% else %}
+        <tr class="tr_class2" onMouseMove="cell_over(this);" onMouseOut="cell_out(this)" onClick="cell_click(this);">
+    {% endif %}
+ <td>{{ forloop.counter }}</td>
+ <td>{{ bandwidth.code }}</td>
+ <td>{{ bandwidth.name }}</td>
+ <td align="right">{{ bandwidth.max_BW|floatformat  }}</td>
+ <td align="right">{{ bandwidth.min_BW|floatformat  }}</td>
+ <td align="right">{{ bandwidth.valueBW|floatformat  }}</td>
+ {% if bandwidth.rate == 1 %}
+    <td align="right">100%</td>
+ {% else %}
+    <td align="right">{{ bandwidth.rate|percent_decimal }}</td>
+ {% endif %}
+ <td align="center">{{ bandwidth.time|format_time }}</td>
+</tr>
+{% endfor %}
+{% for band in bandWidthDaily %}
+<tr>
+    <td colspan="3" align="center">全网</td>
+    <td align="right">{{ band.max_BW|floatformat  }}</td>
+    <td align="right">{{ band.min_BW|floatformat  }}</td>
+    <td align="right">{{ band.bw_value|floatformat  }}</td>
+    <td align="right">{{ band.rate|percent_decimal }}</td>
+    <td align="center">{{ time|format_time }}</td>
+</tr>
+{% endfor %}
+{% else %}
+    <tr>
+        <td colspan="8" align="center">无数据</td>
+    </tr>
+{% endif %}
+</table>
+</div>
+</div>
+{% endautoescape %}
+{% endblock %}

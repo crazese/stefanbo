@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% load utiltags %}
+{% block title %}
+机房带宽月利用率
+{% endblock %}
+{% block content %}
+{% autoescape off %}
+    <HEAD>
+    <META content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <script type="text/javascript">
+        function checkForm(){
+            beginTime = document.getElementById("beginTime").value
+            endTime = document.getElementById("endTime").value
+
+            if(beginTime == '' && endTime != ''){
+                alert('请输入开始日期!')
+                return false
+            }
+            if(endTime == '' && beginTime != ''){
+                alert('请输入结束日期!')
+                return false
+            }
+            if(beginTime != '' && endTime != '' && beginTime > endTime){
+                  alert('开始日期不能大于结束日期!')
+                  return false
+            }
+            return true
+        }
+
+        function queryButton(){
+            query_type = document.getElementById("query_type").value
+            window.location.href="/net_bw/month_report/3/" + query_type + "/"
+            return true;
+        }
+    </script>
+</HEAD>
+<div id="columnwrap">
+<div id="content-main" style="width:100%">
+<form action="/net_bw/month_report/2/2/" method="post" onsubmit="return checkForm()">
+<table width="100%" border="0" cellspacing="1" cellpadding="2">
+    <tr>
+        <td>选择年月：
+            <select name='time' id="query_type">
+            {% for month in months %}
+                {% if selectedMonth == month.month %}
+                    <option value="{{ month.month }}" selected="selected">{{ month.month }}</option>
+                {% else %}
+                    <option value="{{ month.month }}">{{ month.month }}</option>
+                {% endif %}
+            {% endfor %}
+            </select>&nbsp;<input type="button" value=" 确 定 " onclick="return queryButton(this)">直接指定期间 开始日期：<input id="beginTime" name="beginTime" type="text" value="{{ beginTime }}" onFocus="calendar(EventUtil.getEvent().target)" size="12" maxlength="10"  AUTOCOMPLETE="off" />
+            结束日期：<input id="endTime" name="endTime" type="text" value="{{ endTime }}" onFocus="calendar(EventUtil.getEvent().target)" size="12" maxlength="10"  AUTOCOMPLETE="off" />&nbsp;&nbsp;&nbsp;
+<input type="submit" value=" 查 询 ">&nbsp;&nbsp;<a href='/net_bw/month_isp/1/'>ISP月利用率查看</a>&nbsp;&nbsp;<a href='/net_bw/month_area/1/'>区域月利用率查看</a>
+        </td>
+    </tr>
+</table>
+</form>
+{% if listChart %}
+<table width="100%" border="0" cellspacing="1" cellpadding="2">
+    <tr>
+        <td align="left"><div id="chartRate" align="left">chartRate</div></td>
+        <td align="right"><div id="chartBW" align="right">chartBW</div></td>
+        <script type="text/javascript">
+        var myChart = new FusionCharts("/site_media/fushionCharts/FCF_Line.swf", "myChartId", "550", "450");
+        var data = "<?xml version='1.0' encoding='UTF-8' ?><graph caption='{{ rateCaption }}' subcaption='{{ time }}' xAxisName='' decimalPrecision='2' yAxisMinValue='0' yAxisMaxValue='100' yAxisName='{{ rateYAxisName }}' baseFontSize='12' decimalPrecision='0' formatNumberScale='0' numberSuffix='%' showNames='1' rotateNames='1' showValues='0' showAlternateHGridColor='1' AlternateHGridColor='00A900' divLineColor='00A900' divLineAlpha='20' alternateHGridAlpha='5'>"
+        {% for object in listChart %}
+            {% if object.rate == 0 %}
+                data = data + "<set name='{{ object.time }}' value='' hoverText='' showName='{{ object.show_name }}'/>"
+            {% else %}
+                data = data + "<set name='{{ object.time }}' value='{{ object.rate }}' hoverText='{{ object.time }}' showName='{{ object.show_name }}'/>"
+            {% endif %}
+        {% endfor %}
+
+        data = data + "</graph>"
+        myChart.setDataXML(data)
+        myChart.render("chartRate");
+
+        var myChartBW = new FusionCharts("/site_media/fushionCharts/FCF_Line.swf", "myChartId", "550", "450");
+        var dataBW = "<?xml version='1.0' encoding='UTF-8' ?><graph caption='{{ bwCaption }}' subcaption='{{ time }}' xAxisName='' yAxisMinValue='0' yAxisName='{{ bwYAxisName }}' baseFontSize='12' decimalPrecision='0' formatNumberScale='0' numberSuffix='M' showNames='1' rotateNames='1' showValues='0' showAlternateHGridColor='1' AlternateHGridColor='00A900' divLineColor='00A900' divLineAlpha='20' alternateHGridAlpha='5'>"
+        {% for object in listChart %}
+            {% if object.rate == 0 %}
+                dataBW = dataBW + "<set name='{{ object.time }}' value='' hoverText=''showName='{{ object.show_name }}' />"
+            {% else %}
+                dataBW = dataBW + "<set name='{{ object.time }}' value='{{ object.bw }}' hoverText='{{ object.time }}' showName='{{ object.show_name }}' />"
+            {% endif %}
+        {% endfor %}
+        dataBW = dataBW + "</graph>"
+        myChartBW.setDataXML(dataBW)
+        myChartBW.render("chartBW");
+    </script>
+    </tr>
+</table>
+{% endif %}
+<table width="100%" border="0" cellpadding="3" cellspacing="1" class="bwtable">
+    <thead>
+	<tr class="table_bord_ttl">
+      <th align="center">序号</th>
+      <th align="center">机房编号</th>
+      <th align="center">机房名称</th>
+      <th align="center">最大服务带宽(M)</th>
+      <th align="center">付费带宽(M)</th>
+      <th align="center">月最大峰值带宽(M)</th>
+      <th align="center">月利用率</th>
+      <th align="center">年月</th>
+      <th align="center">曲线图查看</th>
+	</tr>
+	</thead>
+{% if object_list %}
+{% for object in object_list %}
+    {% if forloop.counter0|divisibleby:2 %}
+        <tr class="tr_class1" onMouseMove="cell_over(this);" onMouseOut="cell_out(this)" onClick="cell_click(this);">
+    {% else %}
+        <tr class="tr_class2" onMouseMove="cell_over(this);" onMouseOut="cell_out(this)" onClick="cell_click(this);">
+    {% endif %}
+ <td>{{ forloop.counter }}</td>
+ <td>{{ object.code }}</td>
+ <td>{{ object.name }}</td>
+ <td align="right">{{ object.max_BW|floatformat  }}</td>
+ <td align="right">{{ object.min_BW|floatformat  }}</td>
+ <td align="right">{{ object.max_value|floatformat  }}</td>
+ <td align="right">{{ object.max_rate|percent_decimal }}</td>
+ <td align="center">{{ time }}</td>
+ <td align="center"><a href='/net_bw/month_chart/{{ object.id }}/{{ time }}/'>曲线图查看</a></td>
+</tr>
+{% endfor %}
+    <tr>
+        <td colspan="3" align="center">全网</td>
+        <td align="right">{{ sum_max_BW|floatformat  }}</td>
+        <td align="right">{{ sum_min_BW|floatformat  }}</td>
+        <td align="right">{{ sum_bw_value|floatformat  }}</td>
+        <td align="right">{{ sum_rate|percent_decimal }}</td>
+        <td align="center">{{ time }}</td>
+    </tr>
+{% else %}
+    <tr>
+        <td colspan="8" align="center">无数据</td>
+    </tr>
+{% endif %}
+</table>
+</div>
+</div>
+{% endautoescape %}
+{% endblock %}

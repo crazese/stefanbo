@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}
+机房带宽修改
+{% endblock %}
+{% block content %}
+{% autoescape off %}
+<HEAD>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<script type="text/javascript">
+    function checkForm(){
+        today = document.getElementById("today").value
+        bw_value = document.getElementById("bw_value").value
+        time = document.getElementById("time").value
+        live_bw = document.getElementById("live_bw").value
+        vod_bw = document.getElementById("vod_bw").value
+        web_bw = document.getElementById("web_bw").value
+
+        if(bw_value < 1){
+            alert('总峰值带宽必须大于0!')
+            return false
+        }
+        if((parseInt(live_bw) + parseInt(vod_bw) + parseInt(web_bw)) > parseInt(bw_value)){
+            alert('点播带宽,直播带宽与web带宽之和不能超过总峰值带宽!')
+            return false
+        }
+        if(today < time){
+            alert('日期不能超过' + today)
+            return false
+        }
+        return true
+    }
+</script>
+</HEAD>
+<div id="columnwrap">
+<div id="content-main" style="width:100%">
+<form action="/net_bw/submit/2/" method="post" onsubmit="return checkForm()">
+    <table width="100%" border="0" cellspacing="1" cellpadding="2">
+        <tr>
+            <td height="22" align="right" width="12%">机房编号 ：</td>
+            <td width="88%"><label>{{ bandwidth.room.room_code }}</label><input name="today" id="today" type="hidden" value="{{ today }}" /></td>
+        </tr>
+        <tr>
+            <td height="22" align="right">点播峰值带宽(M)<font color=#ff0000>*</font>：</td>
+            <td><input name="vod_bw" id="vod_bw" type="text" maxlength="30" value="{{ bandwidth.vod_bw_value|floatformat }}"/></td>
+        </tr>
+        <tr>
+            <td height="22" align="right">直播峰值带宽(M)<font color=#ff0000>*</font>：</td>
+            <td><input name="live_bw" id="live_bw" type="text" maxlength="30" value="{{ bandwidth.live_bw_value|floatformat }}"/></td>
+        </tr>
+        <tr>
+            <td height="22" align="right">Web峰值带宽(M)<font color=#ff0000>*</font>：</td>
+            <td><input name="web_bw" id="web_bw" type="text" maxlength="30" value="{{ bandwidth.web_bw_value|floatformat }}"/></td>
+        </tr>
+        <tr>
+            <td height="22" align="right">总峰值带宽(M)<font color=#ff0000>*</font>：</td>
+            <td><input name="bw_value" id="bw_value" type="text" maxlength="30" value="{{ bandwidth.bw_value|floatformat }}"/></td>
+        </tr>
+        <tr>
+            <td height="22" align="right">日期<font color=#ff0000>*</font>：</td>
+            <td><input name="time" id="time" type="text" value="{{ bandwidth.time }}" onFocus="calendar(EventUtil.getEvent().target)" size="12" maxlength="10" readonly="true" AUTOCOMPLETE="off" /></td>
+        </tr>
+        <tr>
+            <td align="center">&nbsp;
+                <input name="bw_id" type="hidden" value="{{ bandwidth.id }}"/></td>
+            <td height="50">
+                <input type="submit" value=" 提 交 ">
+                <input name="Submit" type="button" value=" 取 消 " onClick="history.back(1)">
+            </td>
+        </tr>
+    </table>
+</form>
+</div>
+</div>
+{% endautoescape %}
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}
+修改机房信息</a>
+{% endblock %}
+{% block content %}
+{% autoescape off %}
+ <div id="columnwrap">
+ <div id="content-main" style="width:100%">
+<form action="/net_bw/modifyHandle/{{ rooma.id }}/" method="post" enctype="multipart/form-data">
+<table width="100%" border="0" cellspacing="1" cellpadding="2">
+<tr>
+<td height="22" align="right" width="12%">
+    机房编码：</td><td>{{ rooma.room_code }}<input type="hidden" name='room_code' value={{ rooma.room_code }} ></td></tr>
+<tr>
+<td height="22" align="right" width="12%">
+    机房中文名称：</td><td><input type='text' name='room_cn_name' value={{ rooma.room_cn_name }}></td></tr>
+<tr>
+<td height="22" align="right" width="12%">
+    机房英文名称：</td><td><input type='text' name='room_en_name' value={{ rooma.room_en_name }}></td></tr>
+<tr>
+<td height="22" align="right" width="12%">
+    机房详细地址：</td><td><input type='text' name='room_address' size='40' value={{ rooma.room_address }}></td></tr>
+    <tr>
+        <td height="22" align="right" width="12%">ISP：</td>
+    <td>
+    <select name='isp'>
+    <option value="{{rooma.room_isp_id}}" selected="selected">
+    {{ rooma.room_isp }}</option>
+    {% for isp in isps %}
+        {% if isp != rooma.room_isp %}:
+        <option value="{{ isp.id }}">{{ isp.isp_cn_name }}</option>
+        {% endif %}
+    {% endfor %}
+    </select></td></tr>
+    <!--读取城市信息加入下拉框-->
+<tr>
+<td height="22" align="right" width="12%">
+    所在城市：</td><td>
+    <select name='room_city'>
+    <option selected="selected" value="{{rooma.room_city_id}}">{{rooma.room_city}}</option>
+    {% for ct in citys %}
+        {% if ct != rooma.room_city %}
+            <option value="{{ct.id}}">{{ct.city_cn_name}}</option>
+        {% endif %}
+    {%endfor%}
+    </select></td></tr>
+<tr>
+<td height="22" align="right" width="12%">
+    机房付费类型：</td>
+    <td><select name='pay_type'>
+     <option value="{{rooma.room_pay_id}}" selected="selected">{{rooma.room_pay}}</option>
+    {% for pay in pays %}
+        {% if pay != rooma.room_pay %}
+            <option value='{{ pay.id }}'>{{ pay.pay_cn_name }}</option>
+        {% endif %}
+    {% endfor %}
+    </select></td></tr>
+<tr>
+<td height="22" align="right" width="12%">
+    机房服务类型：</td>
+<td>
+    <select name='biz_type' multiple>
+    {% for biz in rooma.room_biz.all %}
+    <option  selected="selected" value="{{biz.id}}">
+    {{ biz }}
+</option>
+    {% endfor %}
+    {% for biz in bizs %}
+        {% if biz not in rooma.room_biz.all %}
+            <option value='{{ biz.id }}'>{{ biz.biz_cn_name }}</option>
+        {% endif %}
+    {% endfor %}
+    </select></td></tr>
+</table>
+    <fieldset>
+        <legend><b>带宽信息:</b></legend>
+        <a href='/net_bw/show_bw_modify/'>查看带宽变更信息</a><br>
+        <table width="100%" border="0" cellspacing="1" cellpadding="2">
+        <td height="22" align="right" width="12%">
+                    最大服务带宽(M)：</td><td><input type='text' name='max_BW' value='{{ rooma.max_BW }}'></td></tr>
+        <td height="22" align="right" width="12%">
+                    最少付费带宽(M)：</td><td><input type='text' name='min_BW' value='{{ rooma.min_BW }}'></td></tr>
+        <td height="22" align="right" width="12%">
+                    最大可用带宽(M)：</td><td><input type='text' name='max_available_BW' value='{{ rooma.max_available_BW }}'></td></tr>
+            </table>
+     </fieldset>
+
+    <input type="submit" value="保存" />
+    <input name="Submit" type="button" value=" 取 消 " onClick="history.back(1)">
+</form>
+ </div>
+</div>
+{% endautoescape %}
+{% endblock %}

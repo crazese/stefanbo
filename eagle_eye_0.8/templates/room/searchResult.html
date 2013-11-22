@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}
+机房管理</a>
+{% endblock %}
+{% block content %}
+{% autoescape off %}
+
+<body>
+    <a  href="/net_bw/showRoom/">返回</a>
+    <table width="100%" border="0" cellspacing="1" cellpadding="2">
+    <tr>
+        <td align="right"><a href="/net_bw/addRoom/">添加机房</a></td>
+    </tr>
+</table>
+
+<div id="columnwrap">
+<div id="content-main" style="width:100%">
+ <table width="100%" border="0" cellpadding="3" cellspacing="1" class="bwtable">
+    <thead>
+	<tr>
+        <th align="center">序号</th>
+      <th align="center">机房编号</th>
+      <th align="center">ISP</th>
+      <th align="center">中文名称</th>
+      <th align="center">机房详细地址</th>
+      <th align="center">最大服务带宽（M）</th>
+      <th align="center">最少付费带宽（M）</th>
+      <th align="center">机房所在城市</th>
+      <th align="center">机房付费类型</th>
+	</tr>
+	</thead>
+    <tbody>
+
+{% for room in rooms %}
+{% if forloop.counter0|divisibleby:2 %}
+        <tr class="tr_class1" onMouseMove="cell_over(this);" onMouseOut="cell_out(this)" onClick="cell_click(this);">
+    {% else %}
+        <tr class="tr_class2" onMouseMove="cell_over(this);" onMouseOut="cell_out(this)" onClick="cell_click(this);">
+    {% endif %}
+ <td align="center">{{ forloop.counter }}</td>
+ <td align="center">{{ room.room_code }}</td>
+ <td align="center">{{ room.room_isp }}</td>
+ <td align="center">{{ room.room_cn_name }}</td>
+ <td align="center">{{ room.room_address }}</td>
+ <td align="center">{{ room.max_BW }}</td>
+ <td align="center">{{ room.min_BW }}</td>
+ <td align="center">{{ room.room_city }}</td>
+ <td align="center">{{ room.room_pay }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+{% endautoescape %}
+{% endblock %}
+</body>

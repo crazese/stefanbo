@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+{% block title %}
+添加机房</a>
+{% endblock %}
+{% block content %}
+{% autoescape off %}
+    <html>
+    <HEAD>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <script type="text/javascript">
+
+function validate_code(field)
+{
+with (field)
+  {
+  if (value==null||value=="")
+    {
+        document.getElementById("codeErr").innerHTML="<font color='red'>机房编码不能为空</font>"
+        return false;
+    } else {
+      return true;
+  }
+  }
+}
+function validate_cn_name(field)
+{
+with (field)
+  {
+  if (value==null||value=="")
+    {
+        document.getElementById("cn_nameErr").innerHTML="<font color='red'>中文名称不能为空</font>"
+        return false;
+    } else {
+      return true;
+  }
+  }
+}
+
+function validate_en_name(field)
+{
+with (field)
+  {
+  if (value==null||value=="")
+    {
+        document.getElementById("en_nameErr").innerHTML="<font color='red'>英文名称不能为空</font>"
+        return false;
+    } else {
+      return true;
+  }
+  }
+}
+
+function validate_address(field)
+{
+with (field)
+  {
+  if (value==null||value=="")
+    {
+        document.getElementById("addressErr").innerHTML="<font color='red'>地址不能为空</font>"
+        return false;
+    } else {
+      return true;
+  }
+  }
+}
+function validate_bizType(field)
+{
+with (field)
+  {
+  if (value==null||value=="")
+    {
+        document.getElementById("bizTypeErr").innerHTML="<font color='red'>机房服务类型必须选择</font>"
+        return false;
+    } else {
+      return true;
+  }
+  }
+}
+function addContactConfirm(strTemp)
+{
+    if(strTemp == null) strTemp="添加成功，是否要继续添加联系人信息和IP设置？";
+    if(confirm(strTemp))
+        window.location.href="/contactIP/"
+        return true;
+    return false;
+}
+
+function validate_form(thisform)
+{
+    document.getElementById("codeErr").value='';
+    document.getElementById("cn_nameErr").value='';
+    document.getElementById("en_nameErr").value='';
+    document.getElementById("addressErr").value='';
+    document.getElementById("bizTypeErr").value='';
+
+with (thisform)
+  {
+      count=0;
+  if (!validate_code(room_code)){
+        room_code.focus();
+        count ++;
+    } 
+  if (!validate_cn_name(room_cn_name)){
+        room_cn_name.focus();
+        count ++;
+    }
+  if (!validate_en_name(room_en_name)){
+        room_en_name.focus();
+        count ++;
+    }
+  if (!validate_address(room_address)){
+        room_address.focus();
+        count ++;
+    }
+  if (!validate_bizType(biz_type)){
+        biz_type.focus();
+        count ++;
+    }
+  if(count==0){
+      addContactConfirm();
+  }else{
+      return false;
+  }
+  }
+}
+
+</script>
+    </HEAD>
+<body>
+<form action="/net_bw/r_add/" method="post" enctype="multipart/form-data" onsubmit="return validate_form(this)">
+<table width="100%" border="0" cellspacing="1" cellpadding="2">
+<tr>
+<td height="22" align="right" width="12%">
+    机房编码：</td>
+    <td><input type="text" name='room_code'><span id='codeErr'></span></td></tr>
+<tr><td height="22" align="right" width="12%">
+    机房中文名称：</td><td><input type='text' name='room_cn_name'><span id='cn_nameErr'></span></td></tr>
+<tr><td height="22" align="right" width="12%">
+    机房英文名称：</td><td><input type='text' name='room_en_name'><span id='en_nameErr'></span></td></tr>
+<tr><td height="22" align="right" width="12%">
+    机房详细地址：</td><td><input type='text' name='room_address' size='40'><span id='addressErr'></span></td></tr>
+<tr><td height="22" align="right" width="12%">
+    ISP：</td><td><select name='isp'>
+    {% for isp in isps %}
+    <option value="{{ isp.id }}">{{ isp.isp_cn_name }}</option>
+    {% endfor %}
+    </select></td></tr>
+    <!--读取城市信息加入下拉框-->
+<tr><td height="22" align="right" width="12%">
+    所在城市：</td><td><select name='room_city'>
+    {% for c in citys %}
+    <option value="{{c.id}}">{{c.city_cn_name}}</option>
+    {%endfor%}
+    </select></td></tr>
+<tr><td height="22" align="right" width="12%">
+    机房付费类型：</td><td><select name='pay_type'>
+    {% for pay in pays %}
+    <option value='{{ pay.id }}'>{{ pay.pay_cn_name }}</option>
+    {% endfor %}
+    </select></td></tr>
+<tr><td height="22" align="right" width="12%">
+    机房服务类型：</td><td><select name='biz_type' multiple>
+    {% for biz in bizs %}
+    <option value='{{ biz.id }}'>{{ biz.biz_cn_name }}</option>
+    {% endfor %}
+    </select><span id='bizTypeErr'></span></td></tr>
+</table>
+    <fieldset>
+        <legend><b>带宽信息:</b></legend>
+        <table width="100%" border="0" cellspacing="1" cellpadding="2">
+            <tr><td height="22" align="right" width="12%">
+                    最大服务带宽(M)：</td><td><input type='text' name='max_BW'></td></tr>
+            <tr><td height="22" align="right" width="12%">
+                    最少付费带宽(M)：</td><td><input type='text' name='min_BW'></td></tr>
+            <tr><td height="22" align="right" width="12%">
+                    最大可用带宽(M)：</td><td><input type='text' name='max_available_BW'></td></tr>
+            </table>
+     </fieldset>
+
+    <input type="submit" value="保存">
+    <input name="Submit" type="button" value=" 取 消 " onClick="history.back(1)">
+</form>
+{% endautoescape %}
+{% endblock %}
+</body>
+</html>

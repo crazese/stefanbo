@@ -24,7 +24,11 @@ dpkg -P php5 php5-common php5-cgi php5-mysql php5-curl php5-gd
 apt-get purge `dpkg -l | grep php| awk '{print $2}'`
 
 # Install needed packages
-apt-get -y install gcc g++ make autoconf libjpeg8 libjpeg8-dev libpng12-0 libpng12-dev libpng3 libfreetype6 libfreetype6-dev libxml2 libxml2-dev zlib1g zlib1g-dev libc6 libc6-dev libglib2.0-0 libglib2.0-dev bzip2 libzip-dev libbz2-1.0 libncurses5 libncurses5-dev curl libcurl3 libcurl4-openssl-dev e2fsprogs libkrb5-3 libkrb5-dev libltdl-dev libidn11 libidn11-dev openssl libtool libevent-dev slapd ldap-utils libnss-ldap bison libsasl2-dev libxslt1-dev vim zip unzip tmux htop wget
+apt-get install gcc g++ make curl vim zip unzip wget openssl libssl0.9.8 libssl-dev libpcre3 libpcre3-dev<<EOF
+y
+y
+EOF
+apt-get install libncurses5-dev -y
 
 if [ ! -z "`cat /etc/issue | grep 13`" ];then
        apt-get -y install libcloog-ppl1
@@ -83,6 +87,13 @@ mkdir /opt/lnmp/mysql -p
 mkdir /opt/lnmp/nginx -p
 mkdir /opt/lnmp/memcached -p
 mkdir /opt/lnmp/tar_package -p
+mkdir /opt/lnmp/lib -p
+mkdir /opt/lnmp/libexec -p
+mkdir /opt/lnmp/bin -p
+
+cat > ~/.profile <<EOF
+export PATH=$PATH:/opt/lnmp/bin/
+EOF
 
 #Disable SeLinux
 if [ -s /etc/selinux/config ]; then
@@ -91,3 +102,17 @@ fi
 
 if [ -s /etc/ld.so.conf.d/libc6-xen.conf ]; then
 sed -i 's/hwcap 1 nosegneg/hwcap 0 nosegneg/g' /etc/ld.so.conf.d/libc6-xen.conf
+
+if [ ! `grep -l "/lib"    '/etc/ld.so.conf'` ]; then
+	echo "/lib" >> /etc/ld.so.conf
+fi
+
+if [ ! `grep -l '/usr/lib'    '/etc/ld.so.conf'` ]; then
+	echo "/usr/lib" >> /etc/ld.so.conf
+fi
+
+if [ ! `grep -l '/opt/lnmp/lib'    '/etc/ld.so.conf'` ]; then
+	echo "/opt/lnmp/lib" >> /etc/ld.so.conf
+fi
+
+ldconfig

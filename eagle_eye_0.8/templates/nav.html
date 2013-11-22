@@ -1,0 +1,19 @@
+<table border="0" >
+    <tr align="right">
+      <td>
+        {% if has_previous %}
+        <a href="{{pagenav}}">首页</a>
+        {%endif%}
+        {% if has_previous %}
+        <a href="{{pagenav}}page={{ previous }}">上一页</a>
+        {% endif %} 
+        {% if has_next %}
+        <a href="{{pagenav}}page={{ next }}">下一页</a>
+        {% endif %}
+        {% if has_next %}
+        <a href="{{pagenav}}page={{pages}}">尾页</a>        
+        {% endif %}
+        </td>
+       <td align="right">总共 {{pages}} 页 {{hits}}条记录,当前第{{page}}页，每页显示{{results_per_page}} 条 </td> 
+        </tr>
+</table>

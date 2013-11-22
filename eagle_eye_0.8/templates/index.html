@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}
+Net-Base新功能列表</a>
+{% endblock %}
+{% block content %}
+{% autoescape off %}
+<div id="columnwrap">
+<div id="content-main" style="width:100%">
+ <table class="bwtable">
+    <thead>
+	<tr>
+      <th align="center">版本号</th>
+      <th align="center">分类</th>
+      <th align="center">菜单</th>
+      <th align="center">描述</th>
+      <th align="center">开发者</th>
+      <th align="center">发布时间</th>
+	</tr>
+	</thead>
+    <tbody>
+{% for object in object_list %}
+<tr class="{% cycle odd,even %}">
+
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+{% endautoescape %}
+{% endblock %}

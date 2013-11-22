@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}
+    IP查找机房
+{% endblock %}
+{% block content %}
+{% autoescape off %}
+<body>
+    <form  action='/net_bw/ip_search/' method="post">
+<div id="columnwrap">
+<div id="content-main" style="width:100%">
+ <table width="100%" border="0" cellpadding="3" cellspacing="1" class="bwtable">
+    <thead>
+	<tr>
+        <th align="center">序号</th>
+      <th align="center">机房编号</th>
+      <th align="center">ISP</th>
+      <th align="center">中文名称</th>
+      <th align="center">接入方式</th>
+      <th align="center">内网IP</th>
+      <th align="center">外网IP</th>
+      <th align="center">互联IP</th>
+      <th align="center">机房所在城市</th>
+	</tr>
+	</thead>
+     <tr>
+     <td align="center"></td>
+        <td align="center"><input type='text' name='r_code' size='10'></td>
+        <td align="center"><select name='r_isp'>
+        <option value=''>全部</option>
+    {% for isp in isps %}
+    <option value="{{ isp.id }}">{{ isp.isp_cn_name }}</option>
+    {% endfor %}
+        </select></td>
+
+        <td align="center"><input type='text'size='10' name='r_cn_name'></td>
+      <td align="center"><select name='style'>
+          <option value="">全部</option>
+         <option value="TWO">二层</option>
+         <option value="THREE">三层</option>
+     </select></td>
+        <td align="center"><input type='text' name='inner' ></td>
+        <td align="center"><input type='text' name='out' ></td>
+        <td align="center"><input type='text' name='internet'></td>
+        <td align="center"><select name='r_city'>
+        <option value="">全部</option>
+    {% for c in citys %}
+    <option value="{{c.id}}">{{c.city_cn_name}}</option>
+    {%endfor%}
+    </select><input type="submit" value="查询"></td>
+    </tr>
+
+{% for room in results.object_list %}
+{% if forloop.counter0|divisibleby:2 %}
+        <tr class="tr_class1" onMouseMove="cell_over(this);" onMouseOut="cell_out(this)" onClick="cell_click(this);">
+    {% else %}
+        <tr class="tr_class2" onMouseMove="cell_over(this);" onMouseOut="cell_out(this)" onClick="cell_click(this);">
+    {% endif %}
+    <td align="center">{{ forloop.counter }}</td>
+    <td align="center">{{ room.room_code }}</td>
+    <td align="center">{{ room.room_isp }}</td>
+    <td align="center">{{ room.room_cn_name }}</td>
+    <td align="center">{{ room.style }}</td>
+    <td align="center">{% for i in room.inner_IP.all %}{{ i.start }}<br>-<br>{{ i.end }}<br>{% endfor %}</td>
+    <td align="center">{% for i in room.out_IP.all %}{{ i.start }}<br>-<br>{{ i.end }}<br>{% endfor %}</td>
+    <td align="center">{% for i in room.internet_IP.all %}{{ i.start }}<br>-<br>{{ i.end }}<br>{% endfor %}</td>
+    <td align="center">{{ room.room_city }}</td>
+ {% endfor %}
+</table>
+{% include "paginator.html" %}
+</div>
+</div>
+    </form>
+{% endautoescape %}
+{% endblock %}
+</body>

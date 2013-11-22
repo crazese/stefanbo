@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}
+联系人信息和IP设置
+{% endblock %}
+{% block content %}
+{% autoescape off %}
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<form action="/net_bw/contactIP_add/{{ rooma.id }}/" method="post" enctype="multipart/form-data">
+
+    机房编号：<input type='text' name='room_code' value={{ rooma.room_code }}><br>
+     <fieldset>
+        <legend><b>机房联系人信息</b></legend>
+         <table width="100%" border="0" cellspacing="1" cellpadding="2">
+         <tr>
+            <td height="22" align="right"><font color="red">*</font> 联系人姓名：</td>
+         <td><input type='text' name='contact_name'></td>
+         </tr>
+             <tr>
+            <td height="22" align="right"><font color="red">*</font> 性别：</td>
+         <td><select name='contact_sex' id='sex'>
+        <option value='MAN'>男</option>
+        <option value='FEMALE'>女</option>
+            </select></td></tr>
+             <tr>
+        <td height="22" align="right"><font color="red">*</font> 联系电话：</td>
+         <td><input type='text' name='phone'></td>
+                 </tr>
+             <tr>
+        <td height="22" align="right"> e-mail：</td>
+         <td><input type='text' name='mail'></td></tr>
+             </table>
+    </fieldset>
+     <fieldset>
+        <legend><b>IP设置</b></legend>
+            接入方式<select name='style' id='select1'>
+            <option value="TWO">二层</option>
+            <option value="THREE">三层</option>
+            </select><br>
+		<!--验证是IP地址-->
+        内网IP：<br/>
+         <input name="addinnerTag" type="button" value="添加内部IP" onclick="addInnerTags()"/>
+         <div id="tags"></div>
+        外网IP：<br/>
+         <input name="addoutTag" type="button" value="添加外部IP" onclick="addOutTags()"/>
+         <div id="tags1"></div>
+        互联IP：<br/>
+         <input name="addinternetTag" type="button" value="添加互联IP" onclick="addInternetTags()"/>
+         <div id="tags2"></div>
+    </fieldset>
+    <input type="submit" value="保存" />
+    <input name="Submit" type="button" value=" 取 消 " onClick="history.back(1)">
+</form>
+{% endautoescape %}
+{% endblock %}
+</body>
+</html>
