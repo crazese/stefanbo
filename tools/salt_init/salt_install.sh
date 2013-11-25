@@ -62,13 +62,19 @@ EOF
 
 
 
-root@ubuntu:/srv/salt# tree /srv/salt
-/srv/salt
+root@ubuntu:/srv/salt# tree
+.
+├── authserver
+├── dev
 ├── global.sls
-├── nginx
-│   ├── default
-│   ├── herouser
-│   └── init.sls
+├── herouser
+│   ├── init.sls
+│   ├── mysql
+│   ├── nginx
+│   │   ├── default
+│   │   └── herouser
+│   └── php
+├── prod
 └── top.sls
 
 

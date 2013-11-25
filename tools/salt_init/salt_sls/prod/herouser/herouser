@@ -1,0 +1,26 @@
+server {
+        listen 81;
+        root /var/www/herouser;
+        index index.php index.html index.htm;
+
+        server_name localhost;
+
+        location /doc {
+                root /usr/share;
+                autoindex on;
+                allow 127.0.0.1;
+                deny all;
+        }
+
+        location /images {
+                root /usr/share;
+                autoindex off;
+        }
+
+        location ~ \.php$ {
+                fastcgi_pass 127.0.0.1:9000;
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME /var/www/herouser$fastcgi_script_name;
+                include fastcgi_params;
+        }
+}

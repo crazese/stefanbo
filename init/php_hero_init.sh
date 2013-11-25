@@ -93,7 +93,7 @@ server {
         server_name  localhost;
 
         access_log  /var/log/nginx/localhost.80.access.log;
-        root   /var/www/herouser;
+        root   /var/www/authserver;
         index  index.php index.html index.htm;
         
         location /doc {
@@ -111,7 +111,7 @@ server {
         location ~ \.php$ {
                 fastcgi_pass   127.0.0.1:9000;
                 fastcgi_index  index.php;
-                fastcgi_param  SCRIPT_FILENAME  /var/www/herouser$fastcgi_script_name;
+                fastcgi_param  SCRIPT_FILENAME  /var/www/authserver$fastcgi_script_name;
                 include fastcgi_params;
         }
 }
@@ -126,7 +126,7 @@ server {
 	server_name localhost;
 
 	access_log  /var/log/nginx/localhost.81.access.log;
-	root /var/www/authserver;
+	root /var/www/herouser;
 	index index.php index.html index.htm;
 
 	location /doc {
@@ -144,7 +144,7 @@ server {
 	location ~ \.php$ {
 		fastcgi_pass 	127.0.0.1:9000;
 		fastcgi_index 	index.php;
-		fastcgi_params	SCRIPT_FILENAME /var/www/authserver$fastcgi_script_name;
+		fastcgi_params	SCRIPT_FILENAME /var/www/herouser$fastcgi_script_name;
 		include 		fastcgi_params;
 	}
 }
