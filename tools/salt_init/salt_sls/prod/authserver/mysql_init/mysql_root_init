@@ -1,0 +1,30 @@
+include:
+  - mysql_init
+
+root:
+  mysql_user.present:
+    - host: localhost
+    - password: 123456
+    - require:
+    - pkg: mysql-python
+
+/srv/salt/prod/authserver/:
+  file.directory:
+    - user: root
+    - group: root
+    - file_mode: 744
+    - dir_mode: 755
+    - makedirs: True
+
+init_auth_sql:
+  pkg:
+    - installed
+    - required:
+      - file: /srv/salt/prod/authserver/init_auth_sql.sh
+
+/srv/salt/prod/authserver/init_auth_sql.sh:
+  cmd:
+    - wait
+    - require: init_auth_sql
+  file.managed
+    - source: salt://prod/authserver/init_auth_sql.sh
