@@ -84,4 +84,51 @@ memcached_start:
 		- require:
 			- pkg: memcached
 
+/etc/php5/fpm/php.ini:
+  file.managed
+    - source: salt://prod/authserver/php.ini
+    - require:
+      - pkg: php5-fpm
 
+php5-fpm_restart:
+  cmd:
+    - name: /etc/init.d/php5-fpm restart
+    - wait
+    - watch:
+      file: /etc/php5/fpm/php.ini
+
+/var/www/authserver:
+  file.directory:
+    - user: root
+    - group: root
+    - file_mode: 744
+    - dir_mode: 755
+    - makedirs: True
+    - recurse: 
+      - user
+      - group
+      - mode
+  file.recurse:
+    - source: salt://prod/authserver/authServer
+    - include_empty: True
+
+/srv/salt/prod/authserver/:
+  file.directory:
+    - user: root
+    - group: root
+    - file_mode: 744
+    - dir_mode: 755
+    - makedirs: True
+
+init_auth_sql:
+  pkg:
+    - installed
+    - required:
+      - file: /srv/salt/prod/authserver/init_auth_sql.sh
+
+/srv/salt/prod/authserver/init_auth_sql.sh:
+  cmd:
+    - wait
+    - require: init_auth_sql
+  file.managed
+    - source: salt://prod/authserver/init_auth_sql.sh
