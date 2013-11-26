@@ -17,12 +17,12 @@ root:
     - makedirs: True
 
 init_auth_sql:
-  cmd:
-    - run
+  cmd.run:
+    - name: /srv/salt/prod/authserver/init_auth_sql.sh
     - watch:
       - file: init_auth_sql_file
 
 init_auth_sql_file:
   file.managed:
-    - name: /srv/salt/prod/herouser/init_auth_sql.sh
-    - source: salt://prod/herouser/template/init_auth_sql.sh
+    - name: /srv/salt/prod/authserver/init_auth_sql.sh
+    - source: salt://prod/authserver/template/init_auth_sql.sh

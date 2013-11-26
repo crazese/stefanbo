@@ -3,21 +3,17 @@ include:
 
 site_authserver:
   file.managed:
-    - name: /etc/nginx/site-available/authserver
+    - name: /etc/nginx/sites-enable/authserver
     - source: salt://prod/authserver/template/authserver
-    - user: root
-    - group: root
     - require:
       - pkg: nginx
 
-/etc/nginx/site-available/authserver:  
+/etc/nginx/sites-available/authserver:  
   file.symlink:
-    - target: /etc/nginx/site-enable/authserver
+    - target: /etc/nginx/sites-enable/authserver
 
 /var/www/authserver:
   file.directory:
-    - user: root
-    - group: root
     - file_mode: 744
     - dir_mode: 755
     - makedirs: True
@@ -31,3 +27,15 @@ dir_authserver:
     - name: /var/www/authserver
     - source: salt://prod/authserver/authServer
     - include_empty: True
+
+remove_default1:
+  file.rename:
+    - name: /tmp/default1
+    - source: /etc/nginx/sites-enable/default
+    - force: True
+
+remove_default2:
+  file.rename:
+    - name: /tmp/default2
+    - source: /etc/nginx/sites-available/default
+    - force: True

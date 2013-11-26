@@ -17,8 +17,8 @@ root:
     - makedirs: True
 
 init_hero_sql:
-  cmd:
-    - run
+  cmd.run:
+    - name: /srv/salt/prod/herouser/init_hero_sql.sh
     - watch:
       - file: init_hero_sql_file
 
@@ -26,3 +26,4 @@ init_hero_sql_file:
   file.managed:
     - name: /srv/salt/prod/herouser/init_hero_sql.sh
     - source: salt://prod/herouser/template/init_hero_sql.sh
+    - mode: 744

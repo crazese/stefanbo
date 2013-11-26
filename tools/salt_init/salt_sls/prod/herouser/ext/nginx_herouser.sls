@@ -3,27 +3,21 @@ include:
 
 site_herouser:
   file.managed:
-    - name: /etc/nginx/site-available/herouser
+    - name: /etc/nginx/sites-available/herouser
     - source: salt://prod/herouser/template/herouser
-    - user: root
-    - group: root
     - require:
       - pkg: nginx
 
-/etc/nginx/site-available/herouser:  
+/etc/nginx/sites-enable/herouser:  
   file.symlink:
-    - target: /etc/nginx/site-enable/herouser
+    - target: /etc/nginx/sites-available/herouser
 
 /var/www/herouser:
   file.directory:
-    - user: root
-    - group: root
     - file_mode: 744
     - dir_mode: 755
     - makedirs: True
     - recurse: 
-      - user
-      - group
       - mode
 
 dir_herouser:

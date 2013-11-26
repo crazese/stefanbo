@@ -14,6 +14,12 @@ init_packages_installed:
       - libssl-dev
       - libpcre3
       - libpcre3-dev
+      - libcurl3
+      - libevent-dev
+      - libevent-core
+      - libevent-extra
+      - libevent-openssl
+      - libevent-pthreads
 
 sourcelist:
   file.managed:
@@ -21,9 +27,8 @@ sourcelist:
     - source: salt://global/sources.list
 
 apt-get_update:
-  cmd:
+  cmd.wait:
     - name: apt-get update
-    - wait
     - watch:
       - file: sourcelist
 
