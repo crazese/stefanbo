@@ -56,54 +56,10 @@ EOF
 apt-get install salt-common salt-minion -y
 
 cat >> /etc/salt/minion <<EOF
-master 192.168.1.203
+master: 192.168.1.203
+id: p-herouser204
 EOF
 
 
 
 
-root@ubuntu:/srv/salt# tree
-.
-├── authserver
-├── dev
-├── global.sls
-├── herouser
-│   ├── init.sls
-│   ├── mysql
-│   ├── nginx
-│   │   ├── default
-│   │   └── herouser
-│   └── php
-├── prod
-└── top.sls
-
-
-
-# sls template init the hero lamp environment 
-nginx:
-  pkg:
-    - installed
-  service:
-    - running
-    - watch:
-      - pkg: nginx
-      - file: /etc/nginx/nginx.conf
-      - user: root
-  user.present:
-    - uid: 0
-    - gid: 0
-    - home: /var/www/herouser
-    - shell: /bin/nologin
-    - require:
-      - group: root 
-  group.present:
-    - gid: 0
-    - require:
-      - pkg: nginx
-
-/etc/nginx/nginx.conf:
-  file.managed:
-    - source: salt://nginx/httpd.conf
-    - user: root
-    - group: root
-    - mode: 644
