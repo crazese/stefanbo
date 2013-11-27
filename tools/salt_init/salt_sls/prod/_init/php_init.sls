@@ -27,9 +27,7 @@ apc:
       - pkg: php-pear
 
 igbinary:
-  pecl.installed:
-    - require:
-      - pkg: apc
+  pecl.installed
 
 libmemcached_tar_get:
   file.managed:
