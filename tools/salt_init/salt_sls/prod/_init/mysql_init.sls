@@ -1,5 +1,6 @@
-ifupdown:
-  pkg.installed:
+apt-get_fix:
+  cmd.run:
+    - name: apt-get -f install -y
 
 mysqld:
   pkg:
@@ -7,10 +8,10 @@ mysqld:
     - name: mysql-server
   service:
     - running
-    - name: mysqld
+    - name: mysql
     - enable: True
     - watch:
-      - pkg: ifupdown
+      - file: /etc/mysql/my.cnf
 
 mysql-client:
   pkg.installed:

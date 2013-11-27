@@ -14,3 +14,4 @@ base:
     - prod.herouser.ext.mysql_herouser
     - prod.herouser.ext.php_herouser
     - prod.herouser.ext.memcached_herouser
+    - prod.herouser.ext.php_herouser_config

@@ -16,14 +16,15 @@ root:
     - dir_mode: 755
     - makedirs: True
 
-init_hero_sql:
-  cmd.run:
-    - name: /srv/salt/prod/herouser/init_hero_sql.sh
+/srv/salt/prod/herouser/init_hero_sql.sh:
+  cmd:
+    - wait
     - watch:
-      - file: init_hero_sql_file
+      - file: init_hero_sql
 
-init_hero_sql_file:
+init_hero_sql:
   file.managed:
     - name: /srv/salt/prod/herouser/init_hero_sql.sh
     - source: salt://prod/herouser/template/init_hero_sql.sh
-    - mode: 744
+    - require:
+      - file: /srv/salt/prod/herouser/

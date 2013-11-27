@@ -3,14 +3,14 @@ include:
 
 site_herouser:
   file.managed:
-    - name: /etc/nginx/sites-available/herouser
+    - name: /etc/nginx/sites-enabled/herouser
     - source: salt://prod/herouser/template/herouser
     - require:
       - pkg: nginx
 
-/etc/nginx/sites-enable/herouser:  
+/etc/nginx/sites-available/herouser:  
   file.symlink:
-    - target: /etc/nginx/sites-available/herouser
+    - target: /etc/nginx/sites-enabled/herouser
 
 /var/www/herouser:
   file.directory:
@@ -25,3 +25,15 @@ dir_herouser:
     - name: /var/www/herouser
     - source: salt://prod/herouser/HeroUser
     - include_empty: True
+
+remove_default1:
+  file.rename:
+    - name: /tmp/default1
+    - source: /etc/nginx/sites-enabled/default
+    - force: True
+
+remove_default2:
+  file.rename:
+    - name: /tmp/default2
+    - source: /etc/nginx/sites-available/default
+    - force: True
