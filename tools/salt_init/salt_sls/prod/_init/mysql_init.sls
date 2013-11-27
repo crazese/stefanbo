@@ -10,7 +10,7 @@ mysqld:
     - running
     - name: mysql
     - enable: True
-    - watch:
+    - require:
       - file: /etc/mysql/my.cnf
 
 mysql-client:
