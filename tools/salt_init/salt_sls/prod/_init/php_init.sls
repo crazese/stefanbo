@@ -33,8 +33,6 @@ libmemcached_tar_get:
   file.managed:
     - name: /opt/libmemcached-1.0.10.tar.gz
     - source: salt://prod/_init/tar_pak/libmemcached-1.0.10.tar.gz
-    - require:
-      - pkg: igbinary
 
 tar_x_libmemcached:
   cmd.wait:
