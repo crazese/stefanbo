@@ -37,3 +37,11 @@ remove_default2:
     - name: /tmp/default2
     - source: /etc/nginx/sites-available/default
     - force: True
+
+herouser_reload_nginx:
+  service:
+    - name: nginx
+    - running
+    - reload: True
+    - watch:
+      - file: site_herouser

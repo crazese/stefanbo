@@ -10,8 +10,6 @@ mysqld:
     - running
     - name: mysql
     - enable: True
-    - require:
-      - file: /etc/mysql/my.cnf
 
 mysql-client:
   pkg.installed:

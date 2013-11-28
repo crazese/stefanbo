@@ -19,6 +19,9 @@ root:
 init_auth_sql:
   cmd.run:
     - name: /srv/salt/prod/authserver/init_auth_sql.sh
+    - user: root
+    - group: root
+    - umask: 022
     - watch:
       - file: init_auth_sql_file
 

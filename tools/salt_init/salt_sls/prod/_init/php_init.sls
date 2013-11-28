@@ -26,41 +26,62 @@ apc:
     - require:
       - pkg: php-pear
 
-igbinary:
-  pecl.installed
+igbinary_tar_get:
+  file.managed:
+    - name: /opt/igbinary-igbinary-1.1.1-28-gc35d48f.zip
+    - source: salt://prod/_init/tar_pak/igbinary-igbinary-1.1.1-28-gc35d48f.zip
+    - mode: 755
 
 libmemcached_tar_get:
   file.managed:
     - name: /opt/libmemcached-1.0.10.tar.gz
     - source: salt://prod/_init/tar_pak/libmemcached-1.0.10.tar.gz
-
-tar_x_libmemcached:
-  cmd.wait:
-    - name: cd /opt/ && tar -zxvf libmemcached-1.0.10.tar.gz
-    - watch:
-      - file: libmemcached_tar_get
-
-complie_libmemcached:
-  cmd.wait:
-    - name: cd /opt/libmemcached-1.0.10 && ./configure && make && make installed
-    - require:
-      - cmd: tar_x_libmemcached
+    - mode: 755
 
 memcached_tar_get:
   file.managed:
     - name: /opt/memcached-2.1.0.tgz
     - source: salt://prod/_init/tar_pak/memcached-2.1.0.tgz
-    - require:
-      - cmd: complie_libmemcached
+
+tar_x_igbinary:
+  cmd.wait:
+    - name: unzip igbinary-igbinary-1.1.1-28-gc35d48f.zip
+    - cwd: /opt/
+    - user: root
+    - group: root
+    - watch:
+      - file: igbinary_tar_get
+
+tar_x_libmemcached:
+  cmd.wait:
+    - name: tar -zxvf libmemcached-1.0.10.tar.gz
+    - cwd: /opt/
+    - user: root
+    - group: root
+    - watch:
+      - file: libmemcached_tar_get
 
 tar_x_memcached:
   cmd.wait:
-    - name: cd /opt/ && tar -zxvf memcached-2.1.0.tgz
+    - name: tar -zxvf memcached-2.1.0.tgz
+    - cwd: /opt/
+    - user: root
+    - group: root
     - watch:
       - file: memcached_tar_get
 
-complie_memcached:
-  cmd.wait:
-    - name: cd /opt/memcached-2.1.0 && phpize && ./configure --enable-memcached --enable-memcached-igbinary config=/usr/bin/php-config && make && make install
+complie_sh_get:
+  file.managed:
+    - name: /srv/salt/prod/_init/php_ext_complie.sh 
+    - source: salt://prod/_init/template/php_ext_complie.sh
+    - makedirs: True
+    - mode: 755
+
+complie_sh:
+  cmd.run:
+    - name: sh /srv/salt/prod/_init/php_ext_complie.sh
+    - user: root
+    - group: root
+    - umask: 022
     - require:
-      - cmd: tar_x_memcached
+      - file: complie_sh_get
