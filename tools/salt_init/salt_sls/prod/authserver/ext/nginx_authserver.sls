@@ -26,14 +26,34 @@ dir_authserver:
     - source: salt://prod/authserver/authServer
     - include_empty: True
 
+default_test1:
+  file.exists:
+    - name: /etc/nginx/sites-enabled/default 
+
+default_test2:
+  file.exists:
+    - name: /etc/nginx/sites-available/default
+
 remove_default1:
   file.rename:
     - name: /tmp/default1
     - source: /etc/nginx/sites-enabled/default
     - force: True
+    - require: 
+      - file: default_test1
 
 remove_default2:
   file.rename:
     - name: /tmp/default2
     - source: /etc/nginx/sites-available/default
-    - force: True
+    - force: 
+    - require:
+      - file: default_test2
+
+authserver_reload_nginx:
+  service:
+    - name: nginx
+    - running
+    - reload: True
+    - watch:
+      - file: site_authserver

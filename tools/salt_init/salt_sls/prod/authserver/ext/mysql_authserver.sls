@@ -12,20 +12,23 @@ root:
   file.directory:
     - user: root
     - group: root
-    - file_mode: 744
+    - file_mode: 775
     - dir_mode: 755
     - makedirs: True
+    - recurse:
+      - mode
 
 init_auth_sql:
   cmd.run:
-    - name: /srv/salt/prod/authserver/init_auth_sql.sh
+    - name: sh /srv/salt/prod/authserver/init_auth_sql.sh
     - user: root
     - group: root
     - umask: 022
-    - watch:
+    - require:
       - file: init_auth_sql_file
 
 init_auth_sql_file:
   file.managed:
     - name: /srv/salt/prod/authserver/init_auth_sql.sh
     - source: salt://prod/authserver/template/init_auth_sql.sh
+    - mode: 755

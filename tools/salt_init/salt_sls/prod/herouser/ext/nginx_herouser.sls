@@ -26,17 +26,29 @@ dir_herouser:
     - source: salt://prod/herouser/HeroUser
     - include_empty: True
 
+default_test1:
+  file.exists:
+    - name: /etc/nginx/sites-enabled/default 
+
+default_test2:
+  file.exists:
+    - name: /etc/nginx/sites-available/default
+
 remove_default1:
   file.rename:
     - name: /tmp/default1
     - source: /etc/nginx/sites-enabled/default
     - force: True
+    - require: 
+      - file: default_test1
 
 remove_default2:
   file.rename:
     - name: /tmp/default2
     - source: /etc/nginx/sites-available/default
     - force: True
+    - require:
+      - file: default_test2
 
 herouser_reload_nginx:
   service:
