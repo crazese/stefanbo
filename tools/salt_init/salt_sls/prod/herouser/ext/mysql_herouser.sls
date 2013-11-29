@@ -1,13 +1,6 @@
 include:
   - prod._init.mysql_init
 
-root:
-  mysql_user.present:
-    - host: localhost
-    - password: 123456
-    - require:
-      - pkg: mysql-python
-
 /srv/salt/prod/herouser/:
   file.directory:
     - user: root

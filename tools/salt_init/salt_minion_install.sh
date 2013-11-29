@@ -23,5 +23,5 @@ apt-get install salt-common salt-minion -y
 
 cat >> /etc/salt/minion <<EOF
 master: 192.168.1.203
-id: p-herouser204
+id: p-herouser205
 EOF

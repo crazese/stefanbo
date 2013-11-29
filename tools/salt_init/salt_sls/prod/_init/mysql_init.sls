@@ -27,3 +27,9 @@ mysql-python:
     - require:
       - pkg: mysql-common
 
+root:
+  mysql_user.present:
+    - host: localhost
+    - password: 123456
+    - require:
+      - pkg: mysql-python
