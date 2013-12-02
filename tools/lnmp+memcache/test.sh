@@ -1,16 +1,17 @@
 #!/bin/bash
-# directory
+# directory init
 mkdir -p /opt/lnmp/tar_package
 mkdir -p /opt/lnmp/app/
-cd /opt/lnmp/app
-mkdir sbin lib 
+mkdir -p /opt/lnmp/sbin
+mkdir -p /opt/lnmp/lib 
+# global variable
+export PATH=/opt/lnmp/sbin:$PATH
 
-export PATH=/opt/lnmp/app/sbin:$PATH
-export LD_LIBRARY_PATH=/opt/lnmp/app/lib:$LD_LIBRARY_PATH 
-
+# ftp 
 cd /opt/lnmp/tar_package
 cur_dir=$(pwd)
 # ftp get
+ftp_get() {
 server="hut.jofgame.com"
 username="zhubo"
 passwd="Jof1Game8yzl"
@@ -25,15 +26,14 @@ lcd /opt/lnmp/tar_package
 mget * 
 bye
 EOF
-
-# install gcc from apt
-apt-get update
-apt-get upgrade -y
-apt-get install -y build-essential gcc g++ make
+}
 
 # init install from source 
 init_install()
 {
+apt-get update
+apt-get upgrade -y
+apt-get install -y build-essential gcc g++ make
 cd $cur_dir
 tar -zxvf m4-1.4.9.tar.gz
 cd m4-1.4.9
@@ -74,33 +74,48 @@ cd libxml2-2.7.8/
 make && make install
 cd ../
 }
-init_install
+#init_install
 
-InstallNginx()
-{
+InstallNginx() {
 echo "============================Install Nginx================================="
 groupadd www-data
 useradd -s /sbin/nologin -g www-data www-data
 
-mkdir -p /opt/lnmp/app/www/root
-mkdir -p /opt/lnmp/app/www/logs
-touch /opt/lnmp/app/www/logs/nginx_error.log
-chown -R www-data.www-data /opt/lnmp/app/www 
-chmod -R 755 /opt/lnmp/app/www 
+mkdir -p /opt/lnmp/app/nginx/www/
+chown -R www-data.www-data /opt/lnmp/app/nginx/www 
+chmod -R 755 /opt/lnmp/app/nginx/www 
 
 # nginx
 cd $cur_dir
 tar -zxvf pcre-8.30.tar.gz
+cd pcre-8.30
+./configure --prefix=/opt/lnmp/app/pcre8 
+make && make install 
+cd ..
+
 tar -zxvf openssl-1.0.1e.tar.gz
+cd openssl-1.0.1e
+./config --prefix=/opt/lnmp/app/openssl 
+make && make install
+cd ..
+
 tar -zxvf zlib-1.2.8.tar.gz
+cd zlib-1.2.8
+./configure --prefix=/opt/lnmp/app/zlib 
+make && make install
+cd ..
 
 tar zxvf nginx-1.0.9.tar.gz
+
+mkdir -p /opt/lnmp/log/nginx/
+
 cd nginx-1.0.9/
 ./configure \
+--prefix=/opt/lnmp/app/nginx \
+--sbin-path=/opt/lnmp/sbin/ \
+--pid-path=/opt/lnmp/app/nginx/nginx.pid \
 --user=www-data \
 --group=www-data \
---prefix=/opt/lnmp/app/nginx \
---pid-path=/opt/lnmp/app/nginx/nginx.pid \
 --with-http_stub_status_module \
 --with-http_ssl_module \
 --with-http_gzip_static_module \
@@ -114,12 +129,12 @@ make && make install
 cd ../
 
 cd $cur_dir
-mkdir -p /opt/lnmp/app/nginx/etc/sites-enabled
-mkdir -p /opt/lnmp/app/nginx/etc/sites-available
-cat > /opt/lnmp/app/nginx/etc/nginx.conf <<EOF
+mkdir -p /opt/lnmp/app/nginx/conf/sites-enabled
+mkdir -p /opt/lnmp/app/nginx/conf/sites-available
+cat > /opt/lnmp/app/nginx/conf/nginx.conf <<EOF
 user www-data;
 worker_processes 4;
-pid /var/run/nginx.pid;
+pid /opt/lnmp/app/nginx/nginx.pid;
 
 events {
 	worker_connections 768;
@@ -142,15 +157,15 @@ http {
 	# server_names_hash_bucket_size 64;
 	# server_name_in_redirect off;
 
-	include /etc/nginx/mime.types;
+	include /opt/lnmp/app/nginx/conf/mime.types;
 	default_type application/octet-stream;
 
 	##
 	# Logging Settings
 	##
 
-	access_log /var/log/nginx/access.log;
-	error_log /var/log/nginx/error.log;
+	access_log /opt/lnmp/app/nginx/logs/access.log;
+	error_log /opt/lnmp/app/nginx/logs/error.log;
 
 	##
 	# Gzip Settings
@@ -187,21 +202,136 @@ http {
 	# Virtual Host Configs
 	##
 
-	include /etc/nginx/conf.d/*.conf;
-	include /etc/nginx/sites-enabled/*;
+	include /opt/lnmp/app/nginx/conf/conf.d/*.conf;
+	include /opt/lnmp/app/nginx/conf/sites-enabled/*;
 }
 EOF
 
+mkdir /opt/lnmp/app/nginx/bin -p
+cat > /opt/lnmp/app/nginx/bin/nginx <<EOF
+#!/bin/sh
 
-cat > /opt/lnmp/app/nginx/etc/nginx/sites-enabled/herouser <<EOF
+### BEGIN INIT INFO
+# Provides:	  nginx
+# Required-Start:    $local_fs $remote_fs $network $syslog $named
+# Required-Stop:     $local_fs $remote_fs $network $syslog $named
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: starts the nginx web server
+# Description:       starts nginx using start-stop-daemon
+### END INIT INFO
+
+PATH=/opt/lnmp/app/nginx/sbin/:$PATH
+DAEMON=/opt/lnmp/app/nginx/sbin/nginx
+NAME=nginx
+DESC=nginx
+
+# Include nginx defaults if available
+if [ -f /etc/default/nginx ]; then
+	. /etc/default/nginx
+fi
+
+test -x $DAEMON || exit 0
+
+set -e
+
+. /lib/lsb/init-functions
+
+PID=$(awk -F'[ ;]' '/[^#]pid/ {print $2}' /opt/lnmp/app/nginx/conf/nginx.conf)
+if [ -z "$PID" ]
+then
+  PID=/var/run/nginx.pid
+fi
+
+# Check if the ULIMIT is set in /etc/default/nginx
+if [ -n "$ULIMIT" ]; then
+  # Set the ulimits
+  ulimit $ULIMIT
+fi
+
+test_nginx_config() {
+		$DAEMON -t $DAEMON_OPTS >/dev/null 2>&1
+		retvar=$?
+		if [ $retvar -ne 0 ]
+		then
+			exit $retvar
+		fi
+}
+
+start() {
+		start-stop-daemon --start --quiet --pidfile $PID \
+			--retry 5 --exec $DAEMON --oknodo -- $DAEMON_OPTS
+}
+
+stop() {
+		start-stop-daemon --stop --quiet --pidfile $PID \
+			--retry 5 --oknodo --exec $DAEMON
+}
+
+case "$1" in
+	start)
+		test_nginx_config
+		log_daemon_msg "Starting $DESC" "$NAME"
+		start
+		log_end_msg $?
+		;;
+
+	stop)
+		log_daemon_msg "Stopping $DESC" "$NAME"
+		stop
+		log_end_msg $?
+		;;
+
+	restart|force-reload)
+		test_nginx_config
+		log_daemon_msg "Restarting $DESC" "$NAME"
+		stop
+		sleep 1
+		start
+		log_end_msg $?
+		;;
+
+	reload)
+		test_nginx_config
+		log_daemon_msg "Reloading $DESC configuration" "$NAME"
+		start-stop-daemon --stop --signal HUP --quiet --pidfile $PID \
+			--oknodo --exec $DAEMON
+		log_end_msg $?
+		;;
+
+	configtest|testconfig)
+		log_daemon_msg "Testing $DESC configuration"
+		if test_nginx_config; then
+			log_daemon_msg "$NAME"
+		else
+			exit $?
+		fi
+		log_end_msg $?
+		;;
+
+	status)
+		status_of_proc -p $PID "$DAEMON" nginx
+		;;
+
+	*)
+		echo "Usage: $NAME {start|stop|restart|reload|force-reload|status|configtest}" >&2
+		exit 1
+		;;
+esac
+
+exit 0
+EOF
+chmod +x /opt/lnmp/app/nginx/bin/nginx
+
+cat > /opt/lnmp/app/nginx/conf/sites-enabled/herouser <<EOF
 #configure the nginx and php
 
 server {
         listen   80 default;
         server_name  localhost;
 
-        access_log  /opt/lnmp/app/www/logs/localhost.80.access.log;
-        root   /opt/lnmp/app/www/herouser;
+        access_log  /opt/lnmp/app/nginx/logs/localhost.80.access.log;
+        root   /opt/lnmp/app/nginx/www/herouser;
         index  index.php index.html index.htm;
         
         location /doc {
@@ -219,10 +349,89 @@ server {
         location ~ \.php$ {
                 fastcgi_pass   127.0.0.1:9000;
                 fastcgi_index  index.php;
-                fastcgi_param  SCRIPT_FILENAME  /opt/lnmp/app/www/herouser$fastcgi_script_name;
+                fastcgi_param  SCRIPT_FILENAME  /opt/lnmp/app/nginx/www/herouser$fastcgi_script_name;
                 include fastcgi_params;
         }
 }
 EOF
 
+}
+
+install_mysql() {
+echo "============================Install MySQL================================="
+export APP=/opt/lnmp/app
+export LD_LIBRARY_PATH=$APP/libiconv/lib:$APP/libmcrypt/lib:$APP/libxml2/lib:$APP/ncurses/lib:$APP/openssl/lib:$APP/pcre8/lib:$APP/zlib/lib:$APP/termcap/lib:$LD_LIBRARY_PATH 
+
+cd $cur_dir
+tar -zxvf termcap-1.3.1.tar.gz
+cd termcap-1.3.1
+./configure --prefix=/opt/lnmp/app/termcap 
+make && make install
+
+tar -zxvf ncurses.tar.gz 
+cd ncurses-5.9
+./configure --prefix=/opt/lnmp/app/ncurses \
+--with-shared \
+--with-profile \
+--with-termlib \
+--with-ticlib \
+--without-debug
+make && make install
+cd ..
+
+mkdir -p /opt/lnmp/app/mysql/data -p 
+
+groupadd mysql 
+useradd -g mysql -d /opt/lnmp/app/mysql/ -M mysql 
+
+cd $cur_dir
+tar -zxvf mysql-5.0.27.tar.gz
+cd mysql-5.0.27
+./configure --prefix=/opt/lnmp/app/mysql \
+--sysconfdir=/opt/lnmp/app/mysql/etc/ \
+--localstatedir=/opt/lnmp/app/mysql/data \
+--with-mysqld-user=mysql \
+--enable-assember \
+--enable-local-infile \
+--enable-thread-safe-client \
+--with-pthread \
+--with-charset=utf8 \
+--with-collation=utf8_general_ci \
+--with-extra-charset=all \
+--with-big-tables \
+--with-zlib-dir=/opt/lnmp/app/zlib \
+--with-innodb \
+--with-mysqld-ldflags=-all-static \
+--with-client-ldflags=-all-static \
+--with-plugins=partition,innobase,innodb_plugin \
+--without-ndb-debug \
+--with-named-curses-libs=/opt/lnmp/app/ncurses/lib/libncurses.so.5.9
+
+--with-openssl=/opt/lnmp/app/openssl \
+--with-openssl-libs=/opt/lnmp/app/openssl/lib \
+--with-openssl-includes=/opt/lnmp/app/openssl/include
+
+./configure \
+--prefix=/usr/local/mysql \
+--enable-assembler \
+--enable-local-infile \
+--enable-thread-safe-client \
+--with-big-tables \
+--with-charset=utf8 \
+--with-client-ldflags=-all-static   \
+--with-collation=utf8_general_ci \
+--with-extra-charsets=all \
+--with-mysqld-ldflags=-all-static \
+--with-mysqld-user=mysql \
+--with-plugins=partition,xtradb,myisammrg \
+--with-pthread \
+--with-unix-socket-path=/tmp/mysql5.sock \
+--without-ndb-debug
+
+
+sed -i '/^LIBS/{s/$/ -ldl/}' vio/Makefile
+sed -i '/^LIBS/{s/$/ -ldl/}' client/Makefile
+sed -i '/^LIBS/{s/$/ -ldl/}' tests/Makefile
+
+make && make install
 }

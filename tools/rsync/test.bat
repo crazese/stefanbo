@@ -1,0 +1,1 @@
+rsync -av  /cygdrive/c/cwrsync/upload  rsync://192.168.1.150:52326/upload
