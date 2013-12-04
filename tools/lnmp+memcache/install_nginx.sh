@@ -27,7 +27,7 @@ mget *
 bye
 EOF
 }
-
+ftp_get
 # init install from source 
 init_install()
 {
@@ -74,7 +74,7 @@ cd libxml2-2.7.8/
 make && make install
 cd ../
 }
-#init_install
+init_install
 
 InstallNginx() {
 echo "============================Install Nginx================================="
@@ -107,12 +107,13 @@ cd ..
 
 tar zxvf nginx-1.0.9.tar.gz
 
-mkdir -p /opt/lnmp/log/nginx/
+mkdir -p /opt/lnmp/app/nginx/logs/
+mkdir -p /opt/lnmp/app/nginx/sbin/
 
 cd nginx-1.0.9/
 ./configure \
 --prefix=/opt/lnmp/app/nginx \
---sbin-path=/opt/lnmp/sbin/ \
+--sbin-path=/opt/lnmp/app/nginx/sbin/ \
 --pid-path=/opt/lnmp/app/nginx/nginx.pid \
 --user=www-data \
 --group=www-data \
@@ -354,84 +355,6 @@ server {
         }
 }
 EOF
-
+chown -R www-data.www-data /opt/lnmp/app/nginx
 }
-
-install_mysql() {
-echo "============================Install MySQL================================="
-export APP=/opt/lnmp/app
-export LD_LIBRARY_PATH=$APP/libiconv/lib:$APP/libmcrypt/lib:$APP/libxml2/lib:$APP/ncurses/lib:$APP/openssl/lib:$APP/pcre8/lib:$APP/zlib/lib:$APP/termcap/lib:$LD_LIBRARY_PATH 
-
-cd $cur_dir
-tar -zxvf termcap-1.3.1.tar.gz
-cd termcap-1.3.1
-./configure --prefix=/opt/lnmp/app/termcap 
-make && make install
-
-tar -zxvf ncurses.tar.gz 
-cd ncurses-5.9
-./configure --prefix=/opt/lnmp/app/ncurses \
---with-shared \
---with-profile \
---with-termlib \
---with-ticlib \
---without-debug
-make && make install
-cd ..
-
-mkdir -p /opt/lnmp/app/mysql/data -p 
-
-groupadd mysql 
-useradd -g mysql -d /opt/lnmp/app/mysql/ -M mysql 
-
-cd $cur_dir
-tar -zxvf mysql-5.0.27.tar.gz
-cd mysql-5.0.27
-./configure --prefix=/opt/lnmp/app/mysql \
---sysconfdir=/opt/lnmp/app/mysql/etc/ \
---localstatedir=/opt/lnmp/app/mysql/data \
---with-mysqld-user=mysql \
---enable-assember \
---enable-local-infile \
---enable-thread-safe-client \
---with-pthread \
---with-charset=utf8 \
---with-collation=utf8_general_ci \
---with-extra-charset=all \
---with-big-tables \
---with-zlib-dir=/opt/lnmp/app/zlib \
---with-innodb \
---with-mysqld-ldflags=-all-static \
---with-client-ldflags=-all-static \
---with-plugins=partition,innobase,innodb_plugin \
---without-ndb-debug \
---with-named-curses-libs=/opt/lnmp/app/ncurses/lib/libncurses.so.5.9
-
---with-openssl=/opt/lnmp/app/openssl \
---with-openssl-libs=/opt/lnmp/app/openssl/lib \
---with-openssl-includes=/opt/lnmp/app/openssl/include
-
-./configure \
---prefix=/usr/local/mysql \
---enable-assembler \
---enable-local-infile \
---enable-thread-safe-client \
---with-big-tables \
---with-charset=utf8 \
---with-client-ldflags=-all-static   \
---with-collation=utf8_general_ci \
---with-extra-charsets=all \
---with-mysqld-ldflags=-all-static \
---with-mysqld-user=mysql \
---with-plugins=partition,xtradb,myisammrg \
---with-pthread \
---with-unix-socket-path=/tmp/mysql5.sock \
---without-ndb-debug
-
-
-sed -i '/^LIBS/{s/$/ -ldl/}' vio/Makefile
-sed -i '/^LIBS/{s/$/ -ldl/}' client/Makefile
-sed -i '/^LIBS/{s/$/ -ldl/}' tests/Makefile
-
-make && make install
-}
+InstallNginx
