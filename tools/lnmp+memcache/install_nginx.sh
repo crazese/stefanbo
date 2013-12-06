@@ -1,4 +1,19 @@
 #!/bin/bash
+# apt source update
+cat > /etc/apt/sources.list <<EOF
+deb http://mirrors.163.com/ubuntu/ lucid main universe restricted multiverse
+deb-src http://mirrors.163.com/ubuntu/ lucid main universe restricted multiverse
+deb http://mirrors.163.com/ubuntu/ lucid-security universe main multiverse restricted
+deb-src http://mirrors.163.com/ubuntu/ lucid-security universe main multiverse restricted
+deb http://mirrors.163.com/ubuntu/ lucid-updates universe main multiverse restricted
+deb http://mirrors.163.com/ubuntu/ lucid-proposed universe main multiverse restricted
+deb-src http://mirrors.163.com/ubuntu/ lucid-proposed universe main multiverse restricted
+deb http://mirrors.163.com/ubuntu/ lucid-backports universe main multiverse restricted
+deb-src http://mirrors.163.com/ubuntu/ lucid-backports universe main multiverse restricted
+deb-src http://mirrors.163.com/ubuntu/ lucid-updates universe main multiverse restricted
+EOF
+
+apt-get update
 # directory init
 mkdir -p /opt/lnmp/tar_package
 mkdir -p /opt/lnmp/app/
@@ -81,9 +96,7 @@ echo "============================Install Nginx=================================
 groupadd www-data
 useradd -s /sbin/nologin -g www-data www-data
 
-mkdir -p /opt/lnmp/app/nginx/www/
-chown -R www-data.www-data /opt/lnmp/app/nginx/www 
-chmod -R 755 /opt/lnmp/app/nginx/www 
+
 
 # nginx
 cd $cur_dir
@@ -355,6 +368,18 @@ server {
         }
 }
 EOF
+
+mkdir -p /opt/lnmp/app/nginx/www/herouser/
+cat > /opt/lnmp/app/nginx/www/herouser/index.html<<EOF
+welcome to the nginx!
+It is just test!
+EOF
+
 chown -R www-data.www-data /opt/lnmp/app/nginx
+chmod -R 755 /opt/lnmp/app/nginx/www 
+
 }
 InstallNginx
+
+
+

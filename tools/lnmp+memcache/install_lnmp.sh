@@ -355,6 +355,7 @@ server {
 }
 EOF
 }
+InstallNginx
 
 install_mysql() {
 echo "============================Install MySQL================================="
@@ -600,7 +601,6 @@ sed -i '/^LIBS/{s/$/ -ldl/}' tests/Makefile
 --with-mysqld-user=mysql \
 --with-big-tables \
 --with-plugins=partition,innobase,innodb_plugin \
---with-zlib-dir=/opt/lnmp/app/zlib \
 --enable-local-infile \
 --with-charset=utf8 \
 --with-collation=utf8_general_ci \
@@ -643,13 +643,29 @@ sed -i '/^LIBS/{s/$/ -ldl/}' tests/Makefile
 -DEXTRA_CHARSETS=all \
 -DDEFAULT_CHARSET=utf8 \
 -DDEFAULT_COLLATION=utf8_general_ci \
--DWITH_READLINE=1 \
--DWITH_EMBEDDED_SERVER=1 \
 -DENABLED_LOCAL_INFILE=1 \
+-DWITH_READLINE=1 \
+-DWITH_DEBUG=0 \
+-DWITH_EMBEDDED_SERVER=1 \
+-DWITH_INNOBASE_STORAGE_ENGINE=1 \
 -DCURSES_LIBRARY=/opt/lnmp/app/ncurses/lib/libncurses.so \
--DCURSES_INCLUDE_PATH=/opt/lnmp/app/ncurses/include 
+-DCURSES_INCLUDE_PATH=/opt/lnmp/app/ncurses/include
+
+cmake . \
+-DCMAKE_INSTALL_PREFIX=/usr/mysql \
+-DMYSQL_DATADIR=/usr/mysql/data
+-DDEFAULT_CHARSET=utf8 \
+-DDEFAULT_COLLATION=utf8_general_ci \
+-DMYSQL_UNIX_ADDR=/tmp/mysqld.sock \
+-DWITH_DEBUG=0 \
+-DWITH_INNOBASE_STORAGE_ENGINE=1
 
 OPENSSL_ROOT_DIR (missing:  OPENSSL_LIBRARIES OPENSSL_INCLUDE_DIR) 
+
+
+
+/opt/lnmp/tar_package/mysql/scripts/mysql_install_db --user=mysql --defaults-file=/opt/lnmp/app/mysql/etc/my.cnf --datadir=/opt/lnmp/app/mysql/data --basedir=/opt/lnmp/app/mysql
+
 
 #5.0
 ./configure \

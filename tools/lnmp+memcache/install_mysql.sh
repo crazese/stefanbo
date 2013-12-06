@@ -13,17 +13,13 @@ echo "============================Install MySQL=================================
 #/opt/lnmp/app/termcap/lib
 #EOF
 
+
 ldconfig 
 cd /opt/lnmp/tar_package
+apt-get install -y build-essential gcc g++ make
 apt-get install libncurses5-dev -y
 cur_dir=$(pwd)
-
-tar -zxvf glibc-2.18.tar.gz
-cd glibc-2.18
-mkdir build
-cd build
-../configure --prefix=/opt/lnmp/app/glibc
-make -j2 && make install
+apt-get install libxp-dev libmotif-dev libxt-dev libstdc++6 -y
 
 tar -zxvf ncurses.tar.gz 
 cd ncurses-5.9
@@ -44,30 +40,66 @@ mkdir -p /opt/lnmp/app/mysql/log -p
 groupadd mysql 
 useradd -g mysql -d /opt/lnmp/app/mysql/ -M mysql 
 
-cd $cur_dir
-tar -zxvf mysql-5.0.27.tar.gz
-cd mysql-5.0.27
+#cd $cur_dir
+#tar -zxvf mysql-5.0.27.tar.gz
+#cd mysql-5.0.27#
+#
 
+#./configure \
+#--prefix=/opt/lnmp/app/mysql \
+#--with-unix-socket-path=/opt/lnmp/app/mysql/mysql.sock \
+#--localstatedir=/opt/lnmp/app/mysql/data \
+#--sysconfdir=/opt/lnmp/app/mysql/etc/ \
+#--enable-assembler \
+#--enable-local-infile \
+#--enable-thread-safe-client \
+#--with-mysqld-user=mysql \
+#--with-big-tables \
+#--with-plugins=partition,innobase,innodb_plugin \
+#--with-charset=utf8 \
+#--with-collation=utf8_general_ci \
+#--with-extra-charset=all#
+#
 
-./configure \
---prefix=/opt/lnmp/app/mysql \
---with-unix-socket-path=/opt/lnmp/app/mysql/mysql.sock \
---localstatedir=/opt/lnmp/app/mysql/data \
---with-mysqld-user=mysql \
---sysconfdir=/opt/lnmp/app/mysql/etc/ \
---with-named-curses-libs=/opt/lnmp/app/ncurses/lib/libncurses.so \
---with-plugins=partition,innobase,innodb_plugin 
+# \
+#--with-zlib-dir=/opt/lnmp/app/zlib \
+#--with-named-curses-libs=/opt/lnmp/app/ncurses/lib/libncurses.so
+#--with-client-ldflags="-all-static -ltinfo" \
+#--with-mysqld-ldflags="-all-static -ltinfo" \#
+#
 
---with-charset=utf8 \
---with-collation=utf8_general_ci \
-
-make -j2 && make install
-cd ../
+#make -j2 && make install
+#cd ../
 
 
 #cp /opt/lnmp/app/mysql/share/mysql/my-medium.cnf /opt/lnmp/app/mysql/etc/my.cnf
 #sed -i 's/skip-locking/skip-external-locking/g' /opt/lnmp/app/mysql/etc/my.cnf
 #sed -i 's:#innodb:innodb:g' /opt/lnmp/app/mysql/etc/my.cnf
+
+cd $cur_dir
+tar -zxvf cmake-2.8.12.1.tar.gz
+cd cmake-2.8.12.1
+./configure --prefix=/opt/lnmp/app/cmake
+make -j2 && make install
+cd ..
+
+tar -zxvf mysql-5.5.34.tar.gz
+cd mysql-5.5.34
+/opt/lnmp/app/cmake/bin/cmake \
+-DCMAKE_INSTALL_PREFIX=/opt/lnmp/app/mysql \
+-DMYSQL_DATADIR=/opt/lnmp/app/mysql/data \
+-DSYSCONFDIR=/opt/lnmp/app/mysql/etc \
+-DEXTRA_CHARSETS=all \
+-DDEFAULT_CHARSET=utf8 \
+-DDEFAULT_COLLATION=utf8_general_ci \
+-DENABLED_LOCAL_INFILE=1 \
+-DWITH_READLINE=1 \
+-DWITH_DEBUG=0 \
+-DWITH_EMBEDDED_SERVER=1 \
+-DWITH_INNOBASE_STORAGE_ENGINE=1
+
+make -j2 && make install 
+
 
 cat > /opt/lnmp/app/mysql/etc/my.cnf <<EOF
 # Example MySQL config file for medium systems.
@@ -76,11 +108,11 @@ cat > /opt/lnmp/app/mysql/etc/my.cnf <<EOF
 # an important part, or systems up to 128M where MySQL is used together with
 # other programs (such as a web server)
 #
-# You can copy this file to
-# /etc/my.cnf to set global options,
-# mysql-data-dir/my.cnf to set server-specific options (in this
-# installation this directory is /opt/lnmp/app/mysql/data) or
-# ~/.my.cnf to set user-specific options.
+# MySQL programs look for option files in a set of
+# locations which depend on the deployment platform.
+# You can copy this option file to one of those
+# locations. For information about these locations, see:
+# http://dev.mysql.com/doc/mysql/en/option-files.html
 #
 # In this file, you can use all long options that a program supports.
 # If you want to know which options a program supports, run the program
@@ -98,10 +130,10 @@ socket          = /opt/lnmp/app/mysql/mysql.sock
 [mysqld]
 port            = 3306
 socket          = /opt/lnmp/app/mysql/mysql.sock
-skip-locking
-key_buffer = 16M
+skip-external-locking
+key_buffer_size = 16M
 max_allowed_packet = 1M
-table_cache = 64
+table_open_cache = 64
 sort_buffer_size = 512K
 net_buffer_length = 8K
 read_buffer_size = 256K
@@ -119,6 +151,9 @@ myisam_sort_buffer_size = 8M
 # Replication Master Server (default)
 # binary logging is required for replication
 log-bin=mysql-bin
+
+# binary logging format - mixed recommended
+binlog_format=mixed
 
 # required unique id between 1 and 2^32 - 1
 # defaults to 1 if master-host is not set
@@ -180,19 +215,10 @@ server-id       = 1
 # binary logging - not required for slaves, but recommended
 #log-bin=mysql-bin
 
-# Point the following paths to different dedicated disks
-#tmpdir         = /tmp/
-#log-update     = /path-to-dedicated-directory/hostname
-
-# Uncomment the following if you are using BDB tables
-#bdb_cache_size = 4M
-#bdb_max_lock = 10000
-
 # Uncomment the following if you are using InnoDB tables
-innodb_data_home_dir = /opt/lnmp/app/mysql/data/
+innodb_data_home_dir = /opt/lnmp/app/mysql/data
 innodb_data_file_path = ibdata1:10M:autoextend
-innodb_log_group_home_dir = /opt/lnmp/app/mysql/data/
-innodb_log_arch_dir = /opt/lnmp/app/mysql/data/
+innodb_log_group_home_dir = /opt/lnmp/app/mysql/data
 # You can set .._buffer_pool_size up to 50 - 80 %
 # of RAM but beware of setting memory usage too high
 innodb_buffer_pool_size = 16M
@@ -212,14 +238,8 @@ no-auto-rehash
 # Remove the next comment character if you are not familiar with SQL
 #safe-updates
 
-[isamchk]
-key_buffer = 20M
-sort_buffer_size = 20M
-read_buffer = 2M
-write_buffer = 2M
-
 [myisamchk]
-key_buffer = 20M
+key_buffer_size = 20M
 sort_buffer_size = 20M
 read_buffer = 2M
 write_buffer = 2M
@@ -228,19 +248,17 @@ write_buffer = 2M
 interactive-timeout
 EOF
 
+chmod +x /opt/lnmp/tar_package/mysql-5.5.34/scripts/mysql_install_db 
 
-/opt/lnmp/app/mysql/bin/mysql_install_db --user=mysql --defaults-file=/opt/lnmp/app/mysql/etc/my.cnf --datadir=/opt/lnmp/app/mysql/data
-cp /opt/lnmp/app/mysql/share/mysql/mysql.server /opt/lnmp/app/mysql/etc/init.d/mysql
-sed -i 's/source/./' /opt/lnmp/app/mysql/etc/init.d/mysql
-chmod 755 /opt/lnmp/app/mysql/etc/init.d/mysql
+/opt/lnmp/tar_package/mysql-5.5.34/scripts/mysql_install_db \
+--user=mysql \
+--defaults-file=/opt/lnmp/app/mysql/etc/my.cnf \
+--datadir=/opt/lnmp/app/mysql/data \
+--basedir=/opt/lnmp/app/mysql
 
-cat >> /etc/ld.so.conf.d/mysql.conf<<EOF
-/opt/lnmp/app/mysql/lib/mysql
-/opt/lnmp/app/lib
-EOF
-ldconfig
-
-export PATH=/opt/lnmp/app/mysql/bin:$PATH
+cp /opt/lnmp/tar_package/mysql-5.5.34/support-files/mysql.server /opt/lnmp/app/mysql/etc/init.d/mysql 
+chmod +x /opt/lnmp/app/mysql/etc/init.d/mysql 
+chown -R mysql.mysql /opt/lnmp/app/mysql 
 
 /opt/lnmp/app/mysql/etc/init.d/mysql start
 /opt/lnmp/app/mysql/bin/mysqladmin -u root password 123456
@@ -256,10 +274,7 @@ flush privileges;
 EOF
 
 /opt/lnmp/app/mysql/bin/mysql -u root -p123456 -h localhost < /tmp/mysql_sec_script
-
-rm -f /tmp/mysql_sec_script
-
-/etc/init.d/mysql restart
-/etc/init.d/mysql stop
+/opt/lnmp/app/mysql/etc/init.d/mysql stop
+/opt/lnmp/app/mysql/etc/init.d/mysql start
 }
 install_mysql
