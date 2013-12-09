@@ -226,7 +226,7 @@ cat > /opt/lnmp/app/nginx/bin/nginx <<EOF
 #!/bin/sh
 
 ### BEGIN INIT INFO
-# Provides:	  nginx
+# Provides:       nginx
 # Required-Start:    $local_fs $remote_fs $network $syslog $named
 # Required-Stop:     $local_fs $remote_fs $network $syslog $named
 # Default-Start:     2 3 4 5
@@ -235,14 +235,14 @@ cat > /opt/lnmp/app/nginx/bin/nginx <<EOF
 # Description:       starts nginx using start-stop-daemon
 ### END INIT INFO
 
-PATH=/opt/lnmp/app/nginx/sbin/:$PATH
+PATH=/opt/lnmp/app/nginx/sbin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 DAEMON=/opt/lnmp/app/nginx/sbin/nginx
 NAME=nginx
 DESC=nginx
 
 # Include nginx defaults if available
 if [ -f /etc/default/nginx ]; then
-	. /etc/default/nginx
+        . /etc/default/nginx
 fi
 
 test -x $DAEMON || exit 0
@@ -264,73 +264,73 @@ if [ -n "$ULIMIT" ]; then
 fi
 
 test_nginx_config() {
-		$DAEMON -t $DAEMON_OPTS >/dev/null 2>&1
-		retvar=$?
-		if [ $retvar -ne 0 ]
-		then
-			exit $retvar
-		fi
+                $DAEMON -t $DAEMON_OPTS >/dev/null 2>&1
+                retvar=$?
+                if [ $retvar -ne 0 ]
+                then
+                        exit $retvar
+                fi
 }
 
 start() {
-		start-stop-daemon --start --quiet --pidfile $PID \
-			--retry 5 --exec $DAEMON --oknodo -- $DAEMON_OPTS
+                start-stop-daemon --start --quiet --pidfile $PID \
+                        --retry 5 --exec $DAEMON --oknodo -- $DAEMON_OPTS
 }
 
 stop() {
-		start-stop-daemon --stop --quiet --pidfile $PID \
-			--retry 5 --oknodo --exec $DAEMON
+                start-stop-daemon --stop --quiet --pidfile $PID \
+                        --retry 5 --oknodo --exec $DAEMON
 }
 
 case "$1" in
-	start)
-		test_nginx_config
-		log_daemon_msg "Starting $DESC" "$NAME"
-		start
-		log_end_msg $?
-		;;
+        start)
+                test_nginx_config
+                log_daemon_msg "Starting $DESC" "$NAME"
+                start
+                log_end_msg $?
+                ;;
 
-	stop)
-		log_daemon_msg "Stopping $DESC" "$NAME"
-		stop
-		log_end_msg $?
-		;;
+        stop)
+                log_daemon_msg "Stopping $DESC" "$NAME"
+                stop
+                log_end_msg $?
+                ;;
 
-	restart|force-reload)
-		test_nginx_config
-		log_daemon_msg "Restarting $DESC" "$NAME"
-		stop
-		sleep 1
-		start
-		log_end_msg $?
-		;;
+        restart|force-reload)
+                test_nginx_config
+                log_daemon_msg "Restarting $DESC" "$NAME"
+                stop
+                sleep 1
+                start
+                log_end_msg $?
+                ;;
 
-	reload)
-		test_nginx_config
-		log_daemon_msg "Reloading $DESC configuration" "$NAME"
-		start-stop-daemon --stop --signal HUP --quiet --pidfile $PID \
-			--oknodo --exec $DAEMON
-		log_end_msg $?
-		;;
+        reload)
+                test_nginx_config
+                log_daemon_msg "Reloading $DESC configuration" "$NAME"
+                start-stop-daemon --stop --signal HUP --quiet --pidfile $PID \
+                        --oknodo --exec $DAEMON
+                log_end_msg $?
+                ;;
 
-	configtest|testconfig)
-		log_daemon_msg "Testing $DESC configuration"
-		if test_nginx_config; then
-			log_daemon_msg "$NAME"
-		else
-			exit $?
-		fi
-		log_end_msg $?
-		;;
+        configtest|testconfig)
+                log_daemon_msg "Testing $DESC configuration"
+                if test_nginx_config; then
+                        log_daemon_msg "$NAME"
+                else
+                        exit $?
+                fi
+                log_end_msg $?
+                ;;
 
-	status)
-		status_of_proc -p $PID "$DAEMON" nginx
-		;;
+        status)
+                status_of_proc -p $PID "$DAEMON" nginx
+                ;;
 
-	*)
-		echo "Usage: $NAME {start|stop|restart|reload|force-reload|status|configtest}" >&2
-		exit 1
-		;;
+        *)
+                echo "Usage: $NAME {start|stop|restart|reload|force-reload|status|configtest}" >&2
+                exit 1
+                ;;
 esac
 
 exit 0

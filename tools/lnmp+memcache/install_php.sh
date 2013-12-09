@@ -194,12 +194,12 @@ user = www-data
 group = www-data
 pm = dynamic
 pm.max_children = 10
-pm.start_servers = 2
-pm.min_spare_servers = 1
+pm.start_servers = 4
+pm.min_spare_servers = 2
 pm.max_spare_servers = 6
 request_terminate_timeout = 100
+listen = 127.0.0.1:9000
 EOF
-
 
 rm -f /usr/bin/php
 ln -s /usr/local/php/bin/php /usr/bin/php
@@ -207,9 +207,73 @@ ln -s /usr/local/php/bin/phpize /usr/bin/phpize
 ln -s /usr/local/php/sbin/php-fpm /usr/bin/php-fpm
 
 echo "Copy new php configure file."
-mkdir -p /usr/local/php/etc
-cp php.ini-production /usr/local/php/etc/php.ini
+mkdir -p /opt/lnmp/app/php/etc 
+cp php.ini-production /opt/lnmp/app/php/etc/php.ini
+sed -i 's#;date.timezone =#date.timezone = Asia/Shanghai' /opt/lnmp/app/php/etc/php.ini
 
+/opt/lnmp/app/php/etc/init.d/php-fpm restart
 echo "============================PHP 5.3.10 install completed======================"
 }
 install_php
+
+install_phpextend() {
+cd /opt/lnmp/tar_package
+cur_dir=$(pwd)
+
+tar -zxvf bz2-1.0.tgz
+cd bz2-1.0
+./configure \
+--prefix=/opt/lnmp/app/phpextend \
+--with-php-config=/opt/lnmp/app/php/bin/php-config
+
+tar zxvf APC-3.1.9.tgz
+cd APC-3.1.9
+/opt/lnmp/app/php/bin/phpize
+./configure \
+--prefix=/opt/lnmp/app/phpextend/ \
+--enable-apc \
+--enable-apc-mmap \
+--with-php-config=/opt/lnmp/app/php/bin/php-config
+make && make install
+cd ..
+
+unzip  igbinary-igbinary-1.1.1-28-gc35d48f.zip
+cd igbinary-igbinary-c35d48f
+/opt/lnmp/app/php/bin/phpize
+./configure  \
+--prefix=/opt/lnmp/app/phpextend \
+--enable-igbinary \
+--with-php-config=/opt/lnmp/app/php/bin/php-config
+make && make install
+cd ..
+
+tar zxvf libmemcached-1.0.10.tar.gz
+cd libmemcached-1.0.10
+./configure --prefix=/opt/lnmp/app/phpextend 
+make && make install
+cd ..
+
+tar zxvf memcached-2.1.0.tgz
+cd memcached-2.1.0
+/opt/lnmp/app/php/bin/phpize
+./configure  \
+--prefix=/opt/lnmp/app/phpextend \
+--enable-memcached \
+--enable-memcached-igbinary \
+--with-php-config=/opt/lnmp/app/php/bin/php-config \
+--with-zlib-dir=/opt/lnmp/app/zlib/ \
+--with-libmemcached-dir=/opt/lnmp/app/phpextend
+
+make && make install
+cd ..
+
+cat >> /opt/lnmp/app/php/etc/php.ini <<EOF
+extension=igbinary.so
+extension=memcached.so
+extension=apc.so
+apc.shm_size=250m
+cgi.fix_pathinfo = 0
+cgi.fix_pathinfo=1
+EOF
+}
+install_phpextend
