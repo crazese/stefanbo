@@ -3,28 +3,15 @@
 from ftplib import FTP 
 import os, shlex, subprocess
 import ConfigParser, io
-import tarfile
+import tarfile, zipfile
 
-ftp_conf = """
-[FTP]
-ftp_host = hut.jofgame.com
-ftp_user = zhubo
-ftp_pw = Jof1Game8yzl
-c_path = /opt/lnmp/tar_package
-r_path = /lnmp
-"""
-
-class ftp_get:
-	def __init__(self,conf='ftp_conf'):
-		con = ConfigParser.RawConfigParser()
-		con.readfp(io.BytesIO(ftp_conf))
-		bolme = con.sections()
-		FTP_G = bolme[0]
-		self.host = con.get(FTP_G,"ftp_host")
-		self.user = con.get(FTP_G,"ftp_user")
-		self.pw = con.get(FTP_G,"ftp_pw")
-		self.c_path = con.get(FTP_G,"c_path")
-		self.r_path = con.get(FTP_G,"r_path")
+class ftp_get(object):
+	def __init__(self):
+		self.host = 'hut.jofgame.com'
+		self.user = 'zhubo'
+		self.pw = 'Jof1Game8yzl'
+		self.c_path = '/opt/lnmp/tar_package'
+		self.r_path = '/lnmp'
 
 	def ftp_download(self):
 		ftp = FTP(self.host)
@@ -39,18 +26,17 @@ class ftp_get:
 		ftp.quit()
 		print "ftp download OK!"
 
-class package_manage:
-	def __init__(self,name,uname):
+class enviroment_init(object):
+	def __init__(self,name):
 		self.name = name
-		self.uname = uname
 		if name == 'mysql':
-			u_name = name
-		elif name == 'php':
-			u_name = 'www-data'
-		elif name == 'nginx':
-			u_name = 'www-data'
+			self.u_name = name
+		elif name == 'php' or name == 'nginx':
+			self.u_name = 'www-data'
 		else:
-			print "no else username define"
+			print "no else username will be add!"
+		self.init_base = '/opt/lnmp/app/extend'
+		self.tar_base  = '/opt/lnmp/tar_package'
 
 	def user_add(self):
 		order = 'id %s' %(self.uname)
@@ -59,13 +45,62 @@ class package_manage:
 		if not(u_name in str(j_name.stdout.read())):
 			os.system('groupadd %s && useradd -g %s %s' %(uname, uname, uname))
 		name_folder = '/opt/lnmp/app/' + name
-		if not(os.path.exists(name_folder)
+		if not(os.path.exists(name_folder)):
 			os.makedirs(name_folder)
 			os.chown(name_folder,uname,uname)
 
-	def targz(self):
-		init_base = '/opt/lnmp/app/extend'
-		tar_base = '/opt/lnmp/tar_package'
+	def apt_update(self):
+		apt_conf = """
+		deb http://mirrors.163.com/ubuntu/ lucid main universe restricted multiverse
+		deb-src http://mirrors.163.com/ubuntu/ lucid main universe restricted multiverse
+		deb http://mirrors.163.com/ubuntu/ lucid-security universe main multiverse restricted
+		deb-src http://mirrors.163.com/ubuntu/ lucid-security universe main multiverse restricted
+		deb http://mirrors.163.com/ubuntu/ lucid-updates universe main multiverse restricted
+		deb http://mirrors.163.com/ubuntu/ lucid-proposed universe main multiverse restricted
+		deb-src http://mirrors.163.com/ubuntu/ lucid-proposed universe main multiverse restricted
+		deb http://mirrors.163.com/ubuntu/ lucid-backports universe main multiverse restricted
+		deb-src http://mirrors.163.com/ubuntu/ lucid-backports universe main multiverse restricted
+		deb-src http://mirrors.163.com/ubuntu/ lucid-updates universe main multiverse restricted
+		"""
+		apt_file=open('/etc/apt/sources.list','w+')
+		self.apt_file.write(apt_conf)
+		os.system('apt-get update')
+
+	def install_init(self):
+		apt_file=open('/etc/apt/sources.list','r')
+		count = len(apt_file.readlines())
+		soft_list = ['build-essential','gcc','g++','make']
+		if count != 10:
+			self.apt_update()
+		else:
+			os.system('apt-get -y upgrade')
+			for soft in soft_list:
+				os.system('apt-get install -y' + soft)
+
+	def extract_file(self,path,to_directory='.'):
+		self.path = path
+		self.to_directory = to_directory
+		if path.endswith('.zip'):
+			opener, mode = zipfile.ZipFile, 'r'
+		elif path.endswith('.tar.gz') or path.endswith('.tgz'):
+			opener, mode = tarfile.open, 'r:gz'
+		elif path.endswith('tar.bz2') or path.endswith('.tbz'):
+			opener, mode = tarfile.open, 'r:bz2'
+		else:
+			raise ValueError, "Could not extract `%s` as no appropriate extractor is found" % path
+		cwd = os.getcwd()
+		os.chdir(to_directory)
+
+		try:
+			file = opener(path, mode)
+			try: file.extractall()
+			finally: file.close()
+		finally:
+			os.chdir(cwd)
+
+
+
+	def package_install(self):
 		package_list = ['m4-1.4.9.tar.gz',
 		 				'autoconf-2.13.tar.gz',
 		 				'libiconv-1.14.tar.gz',
@@ -90,9 +125,15 @@ class package_manage:
 		folder_list = []
 		
 		def filter(stri):
-			re_h=re.compile('.tar.gz')
-			stri=re_h.sub('',str(stri))
-			return stri
+			if '.tar.gz' in stri:
+				stri.strip('.tar.gz')
+				return stri
+			elif '.tar.bz2' in stri:
+				stri.strip('.tar.bz2')
+				return stri
+			elif '.zip' in stri:
+				stri.strip('.zip')
+				return stri
 
 		for package in package_list:
 			tar = tarfile.open(package)
@@ -109,7 +150,7 @@ class package_manage:
 
 
 
-	def install_init(self):
+
 
 
 
