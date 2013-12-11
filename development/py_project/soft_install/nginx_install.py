@@ -3,6 +3,7 @@
 
 import environment_init
 import tools
+from environment_init import os
 
 # config
 base = {
@@ -13,7 +14,7 @@ base = {
 	'user_name'		: 	'www-data'
 }
 
-nginx_path = os.path.join(base['soft_path'],base['base['soft_name']'])
+nginx_path = os.path.join(base['soft_path'],base['soft_name'])
 cwd = os.getcwd()
 
 # need package
@@ -29,8 +30,9 @@ init_package = ['m4-1.4.9.tar.gz',
 
 nginx_package = 'nginx-1.0.9.tar.gz'
 # prepare work
+
 environment_init.folder_and_user_init(base['soft_name'],base['user_name'])
-environment_init.ftp_download(base['tar_path'],base['ftp_bath'])
+environment_init.ftp_download(base['tar_path'],base['ftp_path'])
 environment_init.apt_update()
 environment_init.install_init()
 
@@ -54,8 +56,7 @@ openssl_path = os.path.join(base['tar_path'],tools.filter(init_package[6]))
 zlib_path = os.path.join(base['tar_path'],tools.filter(init_package[7]))
 
 # configure options
-options = 
-"""
+options = """
 --sbin-path=%s/sbin/ \
 --pid-path=%s/nginx.pid \
 --user=%s \

@@ -10,7 +10,7 @@ cd memcached-1.4.9
 
 make && make install
 
-/opt/lnmp/app/memcache/bin/memcached -m 64 -p 11211 -u nobody -l 127.0.0.1
+/opt/lnmp/app/memcache/bin/memcached -m 64 -p 11211 -u www-data -l 127.0.0.1
 
 cat > /opt/lnmp/app/nginx/www/herouser/test.php <<EOF
 < ?php

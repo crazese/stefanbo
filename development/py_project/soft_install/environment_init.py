@@ -1,6 +1,6 @@
 from ftplib import FTP
-import os, subprocess
-
+import os, subprocess,shlex
+import pwd
 
 def ftp_download(c_path,r_path):
 	host = 'hut.jofgame.com'
@@ -75,7 +75,9 @@ def folder_and_user_init(name,uname):
 		os.system('groupadd %s && useradd -g %s %s' % (uname, uname, uname))
 	if not(os.path.exists(install_name)):
 		os.makedirs(install_name)
-		os.chown(install_name, uname, uname)
+		t_uid = pwd.getpwnam(uname).pw_uid
+		t_gid = pwd.getpwnam(uname).pw_gid
+		os.chown(install_name, t_uid,t_gid)
 	if not(os.path.exists(tar_name)):
 		os.makedirs(tar_name)
 

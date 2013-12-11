@@ -57,14 +57,16 @@ def pak_make(f_name, tar_base):
 
 def filter(stri):
     if '.tar.gz' in stri:
-        stri.strip('.tar.gz')
+        stri = stri.strip('.tar.gz')
         return stri
     elif '.tar.bz2' in stri:
-        stri.strip('.tar.bz2')
+        stri = stri.strip('.tar.bz2')
         return stri
     elif '.zip' in stri:
-        stri.strip('.zip')
+        stri = stri.strip('.zip')
         return stri
+    else:
+        return None
 
 def write_file(file_name,stri):
     temp_file = open(file_name,'w')
