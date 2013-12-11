@@ -136,43 +136,52 @@ cd $cur_dir
 tar zxvf php-5.3.10.tar.gz
 cd php-5.3.10/
 ./configure --prefix=/opt/lnmp/app/php \
+--with-bz2 \
 --with-config-file-path=/opt/lnmp/app/php/etc \
---enable-fpm \
+--with-curl \
+--with-freetype-dir=/opt/lnmp/app/phpextend \
 --with-fpm-user=www-data \
 --with-fpm-group=www-data \
---with-mysql=/opt/lnmp/app/mysql \
---with-iconv-dir=/opt/lnmp/app/libiconv \
---with-freetype-dir=/opt/lnmp/app/phpextend \
+--with-gettext \
+--with-gd \
 --with-jpeg-dir=/opt/lnmp/app/phpextend \
---with-png-dir=/opt/lnmp/app/phpextend \
---with-zlib-dir=/opt/lnmp/app/zlib \
 --with-libxml-dir=/opt/lnmp/app/libxml2 \
---enable-xml \
---disable-rpath \
---enable-magic-quotes \
---enable-safe-mode \
+--with-mysql=/opt/lnmp/app/mysql \
+--with-mhash \
+--with-mysqli \
+--with-openssl-dir=/opt/lnmp/app/openssl \
+--with-png-dir=/opt/lnmp/app/phpextend \
+--with-pdo-mysql=/opt/lnmp/app/mysql \
+--with-xmlrpc \
+--with-zlib-dir=/opt/lnmp/app/zlib \
+--without-pear \
 --enable-bcmath \
---enable-shmop \
---enable-sysvsem \
+--enable-calendar \
+--enable-dba \
+--enable-exif \
+--enable-fpm \
+--enable-fileinfo \
+--enable-ftp \
+--enable-gd-native-ttf \
 --enable-inline-optimization \
---with-curl=/opt/lnmp/app/curl \
---with-curlwrappers \
 --enable-mbregex \
 --enable-mbstring \
---with-mcrypt=/opt/lnmp/app/libmcrypt \
---enable-ftp \
---with-gd \
---enable-gd-native-ttf \
---with-openssl-dir=/opt/lnmp/app/openssl \
---with-mhash \
+--enable-magic-quotes \
+--enable-embedded-mysqli \
 --enable-pcntl \
+--enable-pdo \
+--enable-safe-mode \
+--enable-shmop \
+--enable-sysvsem \
+--enable-sysvmsg \
 --enable-sockets \
---with-xmlrpc \
---enable-zip \
 --enable-soap \
---without-pear \
---with-gettext \
---disable-fileinfo
+--enable-tokenizer \
+--enable-wddx \
+--enable-xml \
+--enable-zip \
+--disable-rpath
+
 
 make 
 make install
@@ -267,12 +276,20 @@ cd memcached-2.1.0
 make && make install
 cd ..
 
+tar -xvf memcache-2.2.7.tgz
+cd memcache-2.2.7
+/opt/lnmp/app/php/bin/phpize
+./configure \
+--prefix=/opt/lnmp/app/phpextend \
+--with-php-config=/opt/lnmp/app/php/bin/php-config 
+make && make install
+
 cat >> /opt/lnmp/app/php/etc/php.ini <<EOF
 extension=igbinary.so
 extension=memcached.so
+extension=memcache.so
 extension=apc.so
 apc.shm_size=250m
-cgi.fix_pathinfo = 0
 cgi.fix_pathinfo=1
 EOF
 }

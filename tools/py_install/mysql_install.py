@@ -4,6 +4,7 @@
 import environment_init
 import tools
 
+# config
 base = {
 	'tar_path' 		: 	'/opt/lnmp/tar_package/mysql',
 	'ftp_path' 		: 	'/lnmp/mysql',
@@ -13,7 +14,6 @@ base = {
 }
 
 mysql_path = os.path.join(base['soft_path'],base['soft_name'])
-
 cwd = os.getcwd()
 
 init_package = ['ncurses-5.9.tar.gz',
@@ -23,17 +23,17 @@ init_package = ['ncurses-5.9.tar.gz',
 soft_package = 'mysql-5.5.34.tar.gz'
 # prepare work
 environment_init.folder_and_user_init(base['soft_name'],base['user_name'])
-environment_init.ftp_download(tar_mysql_base,ftp_mysql_base)
+environment_init.ftp_download(base['tar_base'],base['ftp_path'])
 environment_init.apt_update()
 environment_init.install_init()
 
 # install init_package
-os.chdir(tar_mysql_base)
+os.chdir(base['tar_base'])
 for soft in init_package:
 	tools.extract_file(soft)
 	folder_name = tools.filter(soft)
-	tools.pak_configure(folder_name,folder_name,install_base,tar_mysql_base)
-	tools.pak_make(folder_name,tar_mysql_base)
+	tools.pak_configure(folder_name,folder_name,base['soft_path'],base['tar_base'])
+	tools.pak_make(folder_name,base['tar_base'])
 
 # install mysql
 # extract mysql.tar
@@ -57,17 +57,17 @@ options =
 """ % (os.path.join(mysql_path,'data'),os.path.join(mysql_path,'etc'))
 
 # configure
-tools.pak_configure(soft_name,soft_name,install_base,tar_mysql_base,options)
+tools.pak_configure(base['soft_name'],base['soft_name'],base['soft_path'],base['tar_base'],options)
 
 # make
-tools.pak_make(tools.filter(mysql_package),tar_mysql_base)
+tools.pak_make(tools.filter(mysql_package),base['tar_base'])
 
 # config mysql
 # directory create init.d
 tools.make_dir('init.d',os.path.join(mysql_path,'etc'))
 
 # mysql_install_db
-installdb_path = os.path.join(tar_mysql_base,tools.filter(mysql_package),'scripts')
+installdb_path = os.path.join(base['tar_base'],tools.filter(mysql_package),'scripts')
 installdb_file = install_path + '/mysql_install_db'
 installdb_options = """
 --user=%s \
@@ -90,5 +90,5 @@ for file in ['my.cnf','mysql.server']:
 
 
 # config
-os.system('chown -R %s.%s %s' % (user_name, user_name, mysql_path))
+os.system('chown -R %s.%s %s' % (base['user_name'], base['user_name'], mysql_path))
 os.system('chmod -R 755 %s' % mysql_path)
