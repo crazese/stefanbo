@@ -87,9 +87,5 @@ for file in ['my.cnf','mysql.server']:
 
 
 # config
-
-
-
-
 os.system('chown -R %s.%s %s' % (user_name, user_name, mysql_path))
 os.system('chmod -R 755 %s' % mysql_path)
