@@ -4,22 +4,25 @@
 import environment_init
 import tools
 
-tar_mysql_base = '/opt/lnmp/tar_package/mysql'
-ftp_mysql_base = '/lnmp/mysql'
-install_base = '/opt/lnmp/app'
-mysql_path = os.path.join(install_base,soft_name)
+base = {
+	'tar_path' 		: 	'/opt/lnmp/tar_package/mysql',
+	'ftp_path' 		: 	'/lnmp/mysql',
+	'soft_path'		: 	'/opt/lnmp/app',
+	'soft_name'		: 	'mysql',
+	'user_name'		: 	'mysql'
+}
 
-soft_name = 'mysql'
-user_name = 'mysql'
+mysql_path = os.path.join(base['soft_path'],base['soft_name'])
+
 cwd = os.getcwd()
 
 init_package = ['ncurses-5.9.tar.gz',
 				'cmake-2.8.12.1.tar.gz'
 				]
 
-mysql_package = 'mysql-5.5.34.tar.gz'
+soft_package = 'mysql-5.5.34.tar.gz'
 # prepare work
-environment_init.folder_and_user_init(soft_name,user_name)
+environment_init.folder_and_user_init(base['soft_name'],base['user_name'])
 environment_init.ftp_download(tar_mysql_base,ftp_mysql_base)
 environment_init.apt_update()
 environment_init.install_init()
