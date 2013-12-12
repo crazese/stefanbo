@@ -1,9 +1,12 @@
 #!/usr/bin/env python
 # install nginx
 
-import environment_init
+import environment_init as e_init
 import tools
-from environment_init import os
+import os
+
+# system init
+e_init.install_init()
 
 # config
 base = {
@@ -31,10 +34,8 @@ init_package = ['m4-1.4.9.tar.gz',
 nginx_package = 'nginx-1.0.9.tar.gz'
 # prepare work
 
-environment_init.folder_and_user_init(base['soft_name'],base['user_name'])
-environment_init.ftp_download(base['tar_path'],base['ftp_path'])
-environment_init.apt_update()
-environment_init.install_init()
+e_init.folder_and_user_init(base['soft_name'],base['user_name'])
+tools.ftp_download(base['tar_path'],base['ftp_path'])
 
 # install init_package
 os.chdir(base['tar_path'])
@@ -45,8 +46,9 @@ for soft in init_package:
 	tools.pak_make(folder_name,base['tar_path'])
 	if 'mcrypt' in soft:
 		temp_base = os.path.join(base['tar_path'],folder_name)
-		tools.pak_configure(folder_name,'libltdl',install_base,temp_base,'--enable-ltdl-install')
-		tools.pak_make(folder_name,temp_base)
+		print temp_base
+		tools.pak_configure('libltdl','libltdl',base['soft_path'],temp_base,'--enable-ltdl-install')
+		tools.pak_make('libltdl',temp_base)
 
 # install nginx
 tools.extract_file(nginx_package)
@@ -70,11 +72,11 @@ options = """
 """ % (nginx_path,nginx_path,base['user_name'],base['user_name'],pcre_path,openssl_path,zlib_path)
 
 # configure
-tools.pak_configure(base['soft_name'],base['soft_name'],base['soft_path'],base['tar_path'],options)
+tools.pak_configure(base['soft_name'],tools.filter(nginx_package),base['soft_path'],base['tar_path'],options)
 
 # change the Makefile to tend to adjust the init
-makefile_fix = os.path.join(base['tar_path'],nginx_package,'/objs/Makefile')
-makefile = tools.read_file(makefile_fix)
+makefile_fix = os.path.join(base['tar_path'],nginx_package,'/objs')
+makefile = tools.read_file('makefile_fix' + '/Makefile')
 result_1 = re.sub(r'./configure','./configure --prefix=/opt/lnmp/app/init',makefile)
 result = re.sub(r'./configure --prefix=/opt/lnmp/app/init --disable-shared','./configure --prefix=/opt/lnmp/app/init',result_1)
 tools.write_file(makefile_fix,result)
