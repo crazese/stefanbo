@@ -57,14 +57,11 @@ def pak_make(f_name, tar_base):
 
 def filter(stri):
     if '.tar.gz' in stri:
-        stri = stri.strip('.tar.gz')
-        return stri
+        return stri.replace('.tar.gz','')
     elif '.tar.bz2' in stri:
-        stri = stri.strip('.tar.bz2')
-        return stri
+        return stri.replace('.tar.bz2','')
     elif '.zip' in stri:
-        stri = stri.strip('.zip')
-        return stri
+        return stri.replace('.zip','')
     else:
         return None
 
