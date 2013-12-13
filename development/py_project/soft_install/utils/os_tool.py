@@ -6,12 +6,14 @@ import shlex
 
 def os_cmd(order):
 	try:
+		print "I will run the command %s on the system!" % order
 		retcode = subprocess.call(order, shell=True)
 		if retcode < 0:
 			print >>sys.stderr, "Child was terminated by singal", -retcode
 		else:
 			print >>sys.stderr, "Child returned", retcode
 	except OSError as e:
+		print "Something wrong here with the command  %s executed" % order
 		print >>sys.stderr, "Execution Falied: ", e
 
 
@@ -33,7 +35,7 @@ def write_file(file_name, stri):
 	temp_file.write(stri)
 
 
-def filter(stri):
+def filter_tar(stri):
 	if '.tar.gz' in stri:
 		return stri.replace('.tar.gz','')
 	elif '.tar.bz2' in stri:
@@ -71,5 +73,3 @@ def j_folder_chown(uname, grp , path):
 			print >>sys.stdout, "Execution Falied: ", e
 	else:
 		print "The %s is own %s %s now. keep it !" % (path, uname ,grp)
-
-

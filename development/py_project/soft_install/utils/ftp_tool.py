@@ -41,5 +41,3 @@ def upload(host, user, pw, r_path, c_path='.'):
     ftp.set_debuglevel(0)
     ftp.quit()
     print "Ftp upload successfully!"
- 
-  
