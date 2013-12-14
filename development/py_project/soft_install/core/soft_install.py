@@ -60,6 +60,7 @@ class install_soft(object):
 								 pcre_path,
 								 openssl_path,
 								 zlib_path)
+
 		elif name == 'mysql':
 			self.conf = {
 				'tar_path'		: 	'/opt/lnmp/tar_package/mysql',
@@ -103,6 +104,7 @@ class install_soft(object):
 				 self.conf['ftp_path'],
 				 self.conf['tar_path'])
 
+
 	def init_pak_install(self):
 		''' extract the 'init_package' , and configure it , make install it '''
 		print "I will change to directory %s" % self.conf['tar_path']
@@ -122,6 +124,7 @@ class install_soft(object):
 							self.conf['init_path'])
 				file_make(temp_path)
 
+
 	def soft_install(self):
 		''' install soft in the system '''
 		print " I will change to directory %s" % self.conf['tar_path']
@@ -135,22 +138,21 @@ class install_soft(object):
 		file_config(os.path.join(path, folder_name),
 					self.conf['soft_path'])
 
-		# change the Makefile to tend to adjust the init if soft name is nginx
-		makefile = os.path.join(path,folder_name,'/objs/Makefile')
-		makefile = read_file(makefile)
-		result_1 = re.sub(r'./configure','./configure --prefix=/opt/lnmp/app/init',makefile)
-		result = re.sub(r'./configure --prefix=/opt/lnmp/app/init --disable-shared','./configure --prefix=/opt/lnmp/app/init',result_1)
-		write_file(makefile, result)
+		# if the soft name is nginx, it need to change the Makefile 
+		if self.name = 'nginx':
+			# change the Makefile to tend to adjust the init if soft name is nginx
+			makefile = os.path.join(path,folder_name,'/objs/Makefile')
+			makefile = read_file(makefile)
+			result_1 = re.sub(r'./configure','./configure --prefix=/opt/lnmp/app/init',makefile)
+			result = re.sub(r'./configure --prefix=/opt/lnmp/app/init --disable-shared','./configure --prefix=/opt/lnmp/app/init',result_1)
+			write_file(makefile, result)
 
 		# make file with file_make()
 		file_make(os.path.join(path, folder_name))
 
-	def mysql_install(self):
-		''' install mysql soft in the system '''
-		print " I will change to directory %s" % self.conf['tar_path']
-
-
-	def nginx_conf(self):
-
+	
+	def soft_init(self):
+		''' Initialization the soft install , include  conf and others scripts need to run. '''
+		
 
 		
