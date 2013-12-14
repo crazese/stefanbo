@@ -122,14 +122,35 @@ class install_soft(object):
 							self.conf['init_path'])
 				file_make(temp_path)
 
-	def nginx_install(self):
-		''' install nginx soft in the system '''
+	def soft_install(self):
+		''' install soft in the system '''
 		print " I will change to directory %s" % self.conf['tar_path']
 		path = self.conf['tar_path']
 		os.chdir(path)
 
-		# install soft with file_config(), file_make()
 		# extract file with extract_file()
 		extract_file(self.soft_package)
+		# cofigure file with file_config()
+		folder_name = filter_tar(self.soft_package)
+		file_config(os.path.join(path, folder_name),
+					self.conf['soft_path'])
+
+		# change the Makefile to tend to adjust the init if soft name is nginx
+		makefile = os.path.join(path,folder_name,'/objs/Makefile')
+		makefile = read_file(makefile)
+		result_1 = re.sub(r'./configure','./configure --prefix=/opt/lnmp/app/init',makefile)
+		result = re.sub(r'./configure --prefix=/opt/lnmp/app/init --disable-shared','./configure --prefix=/opt/lnmp/app/init',result_1)
+		write_file(makefile, result)
+
+		# make file with file_make()
+		file_make(os.path.join(path, folder_name))
+
+	def mysql_install(self):
+		''' install mysql soft in the system '''
+		print " I will change to directory %s" % self.conf['tar_path']
+
+
+	def nginx_conf(self):
+
 
 		
