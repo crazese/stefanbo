@@ -4,7 +4,7 @@ import zipfile
 from os_tool import os_cmd
 
 
-def extract_file(path, to_directory='.'):
+def extract_file(soft, to_directory='.'):
     ''' 
     It can extract file in format zip, tar.gz, tgz, tar.bz2, tbz . 
     '''
@@ -21,8 +21,10 @@ def extract_file(path, to_directory='.'):
     os.chdir(to_directory)
     
     try:
-        file = opener(path, mode)
-        try: file.extractall()
+        file = opener(soft, mode)
+        try: 
+            file.extractall()
+            print "I complete the extract !"
         finally: file.close()
     finally:
         os.chdir(cwd)
