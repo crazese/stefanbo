@@ -39,6 +39,7 @@ class Install(object):
 		print "-- nginx"
 		print "-- php"
 		print "-- mysql"
+		print "-- memcache"
 		print "-- init 		# init the system"
 		print "-- quit		# exit the soft install procedure"
 
@@ -60,6 +61,10 @@ class Install(object):
 			print "######## I will init the system with apt tools! ########"
 			return 'init_install'
 		
+		elif action == "memcache":
+			print "######## I will install memcahce next! ########"
+			return 'memcache_install'
+
 		elif action == "end":
 			print "######## You will quit the soft install procedure! ########"
 			return 'install_end'
@@ -151,7 +156,173 @@ class Install(object):
 
 		# download tar package from server
 		self.get_tar(conf['tar_path'], conf['ftp_path'])
+
+		# install init package
+		self.init_pak_install(init_package, conf['tar_path'], conf['init_path'])
+
+		# install nginx soft
+		self.soft_install(conf['soft_name'],
+						   soft_package, 
+						   conf['tar_path'],
+						   conf['soft_path'], 
+						   soft_options)
+
+		# nginx conf and website's configuration deployment
+		for dir in ['sites-enabled', 'sites-available']:
+			make_dir(os.path.join(conf['soft_path'], 'conf', dir))
+
+		for dir in ['bin', 'www', 'log']:
+			make_dir(os.path.join(conf['soft_path'], dir))
+
+		# configuration file loading
+		for file in ['nginx.conf', 'nginx.sh', 'herouser_virtualhost']:
+			# load file into temp_content
+			temp_content = read_file(os.path.join('../conf', file))
+			
+			# write file to the path
+			if 'conf' in file:
+				file_path = os.path.join(conf['soft_path'], 'conf', file)
+				print "I will add the file %s" % file_path
+				write_file(file_path, temp_content)
+
+			elif 'sh' in file:
+				file_path = os.path.join(conf['soft_path'], 'bin', file)
+				print "I will add the file %s" % file_path
+				write_file(file_path, temp_content)
+
+			elif 'herouser' in file:
+				for t_path in ['sites-available', 'sites-enabled']
+					file_path = os.path.join(conf['soft_path'], t_path, file)
+					print "I will add the file %s" % file_path
+					write_file(file_path, temp_content)
+
+			else:
+				print "######## Something Wrong! ########"
 		
+		# chown the nginx install path
+		j_folder_chown(conf['user_name'], conf['user_name'], conf['soft_path'])
+
+
+	def mysql_install(self):
+		'''
+		Install mysql on the system!
+		'''
+		# soft need to download from ftp server
+		init_package = ['ncurses-5.9.tar.gz',
+						'cmake-2.8.12.1.tar.gz'
+					   ]
+		# mysql soft
+		soft_package = 'mysql-5.5.34.tar.gz'
+
+		# install procedure setting
+		conf = {
+				'tar_path' 		: 	'/opt/lnmp/tar_package/mysql',
+				'ftp_path' 		: 	'/lnmp/mysql',
+				'init_path'		: 	'/opt/lnmp/app/init'
+				'soft_path'		: 	'/opt/lnmp/app/mysql',
+				'soft_name'		: 	'mysql',
+				'user_name'		: 	'mysql'
+				}
+
+		# configure options
+		soft_options = '''
+			-DMYSQL_DATADIR=%s \
+			-DSYSCONFDIR=%s \
+			-DEXTRA_CHARSETS=all \
+			-DDEFAULT_CHARSET=utf8 \
+			-DDEFAULT_COLLATION=utf8_general_ci \
+			-DENABLED_LOCAL_INFILE=1 \
+			-DWITH_READLINE=1 \
+			-DWITH_DEBUG=0 \
+			-DWITH_EMBEDDED_SERVER=1 \
+			-DWITH_INNOBASE_STORAGE_ENGINE=1''' % (os.path.join(conf['soft_path'],'data'),
+												   os.path.join(conf['soft_path'],'etc'))
+
+		# add user
+		add_user(conf['user_name'], conf['user_name'])
+
+		# make directory
+		for dir in [conf['init_path'], conf['soft_path']]:
+			make_dir(dir)
+
+		for dir in ['data', 'etc', 'log']:
+			make_dir(os.path.join(conf['soft_path'], dir))
+			if dir == 'etc':
+				make_dir(os.path.join(conf['soft_path'], dir, 'init.d'))
+
+		# download tar package from server
+		self.get_tar(conf['tar_path'], conf['ftp_path'])
+
+		# install init package
+		self.init_pak_install(init_package, conf['tar_path'], conf['init_path'])
+
+		# install mysql soft
+		self.soft_install(conf['soft_name'], 
+						  soft_package,
+						  conf['tar_path'], 
+						  conf['soft_path'],
+						  soft_options)
+
+		# mysql conf and run the scripts
+		# configuration file loading
+		for file in ['my.cnf', 'mysql.server']:
+			# load file into temp_content
+			temp_content = read_file(os.path.join('../conf', file))
+
+			# write file to the path
+			if 'cnf' in file:
+				file_path = os.path.join(conf['soft_path'], 'etc', file)
+				print "I will add the file %s" % file_path
+				write_file(file_path, temp_content)
+
+			elif 'mysql.server' in file:
+				file_path = os.path.join(conf['soft_path'], 'etc/init.d', file)
+				print "I will add the file %s" % file_path
+				write_file(file_path, temp_content)
+
+			else:
+				print "Something Wrong!"
+
+		# mysql_install_db file path
+		install_file = os.path.join(conf['tar_path'], 
+										filter_tar(conf['soft_package']),
+										'scripts/mysql_install_db')
+		# run the install_file
+		# add +x to the scripts
+		os_cmd('chmod +x %s' % install_file)
+		# install_options
+		install_options = '''
+		--user=%s \
+		--defaults-file=%s \
+		--datadir=%s \
+		--basedir=%s ''' % (conf['user_name'], 
+							os.path.join(conf['soft_path'], 'etc/my.cnf'),
+							os.path.join(conf['soft_path'], 'data'),
+							conf['soft_path'])
+		print "I will run the scripts"
+		try:
+			os_cmd('%s %s' % (install_file, install_options))
+		except OSError as e:
+			print >>sys.stdout, "Execution Failed", e
+
+		# mysql initialization
+		j_folder_chown(conf['user_name'], conf['user_name'])
+
+		# start mysql service
+		print "I will start the mysql server"
+		os_cmd('%s/etc/init.d/mysql.server %s' % (conf['soft_path'],  'start'))
+		
+		# add privileges
+		print "I will add the priviledge to mysql"
+		os_cmd('%s/bin/mysqladmin -u root password 123456' % conf['soft_path'])
+
+		
+
+
+
+
+
+
 
 	def get_tar(self, tar_path, ftp_path):
 		make_dir(tar_path)
@@ -186,27 +357,41 @@ class Install(object):
 
 
 
-	def soft_install(self):
+	def soft_install(self, name, soft_package, tar_path, soft_path, options):
 		''' install soft in the system '''
-		print " I will change to directory %s" % self.conf['tar_path']
-		path = self.conf['tar_path']
-		os.chdir(path)
+		print " I will change to directory %s" % tar_path
+		os.chdir(tar_path)
 
 		# extract file with extract_file()
-		extract_file(self.soft_package)
+		extract_file(soft_package)
+
 		# cofigure file with file_config()
-		folder_name = filter_tar(self.soft_package)
-		file_config(os.path.join(path, folder_name),
-					self.conf['soft_path'])
+		folder_name = filter_tar(soft_package)
+		file_config(os.path.join(tar_path, folder_name), soft_path, options)
 
 		# if the soft name is nginx, it need to change the Makefile 
-		if self.name = 'nginx':
+		if name == 'nginx':
 			# change the Makefile to tend to adjust the init if soft name is nginx
 			makefile = os.path.join(path,folder_name,'/objs/Makefile')
 			makefile = read_file(makefile)
 			result_1 = re.sub(r'./configure','./configure --prefix=/opt/lnmp/app/init',makefile)
 			result = re.sub(r'./configure --prefix=/opt/lnmp/app/init --disable-shared','./configure --prefix=/opt/lnmp/app/init',result_1)
 			write_file(makefile, result)
+
+		elif name == 'mysql':
+			# do nothing
+			pass
+
+		elif name == 'php':
+			#
+			pass
+
+		elif name == 'memcache':
+			#
+			pass
+
+		else:
+			pass
 
 		# make file with file_make()
 		file_make(os.path.join(path, folder_name))
