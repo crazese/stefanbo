@@ -151,7 +151,7 @@ class Install(object):
 		add_user(conf['user_name'], conf['user_name'])
 		
 		# make directory
-		for dir in [conf['init_path'], conf['soft_path']]:
+		for dir in [conf['init_path'], conf['soft_path'], conf['tar_path']]:
 			make_dir(dir)
 
 		# download tar package from server
@@ -342,7 +342,116 @@ class Install(object):
 
 
 	def php_install(self):
-		
+		'''
+		Install the php soft 
+		'''
+		# soft need to download from ftp server
+		init_package = ['jpegsrc.v9.tar.gz',
+						'libevent-2.0.21.stable.tar.gz',
+						'freetype-2.4.12.tar.gz',
+						'mhash-0.9.9.9.tar.gz',
+						'curl-7.33.0.tar.gz',
+						'libpng-1.6.7.tar.gz',
+						'pkg-config-0.24.tar.gz',
+						'xproto-7.0.14.tar.bz2',
+						'xextproto-7.0.4.tar.bz2',
+						'xtrans-1.2.7.tar.bz2',
+						'xcb-proto-1.5.tar.bz2',
+						'libxslt-1.1.24.tar.gz',
+						'gd-2.0.35.tar.gz']
+		soft_package =	'php-5.3.10.tar.gz'
+
+		# install procedure setting
+		conf = {
+				'tar_path'		:		'/opt/lnmp/tar_package/php',
+				'ftp_path'		:		'/lnmp/php',
+				'init_path'		:		'/opt/lnmp/app/init',
+				'soft_path'		:		'/opt/lnmp/app/php',
+				'soft_name'		:		'php',
+				'user_name'		:		'www-data',
+				'mysql_path'	:		'/opt/lnmp/app/mysql'
+		}
+
+		# php configure options
+		soft_options = '''
+				--with-bz2 \
+				--with-config-file-path=%s \
+				--with-curl \
+				--with-freetype-dir=%s \
+				--with-fpm-user=%s \
+				--with-fpm-group=%s \
+				--with-gettext \
+				--with-gd \
+				--with-jpeg-dir=%s \
+				--with-libxml-dir=%s \
+				--with-mysql=%s \
+				--with-mhash \
+				--with-mysqli \
+				--with-openssl-dir=%s \
+				--with-png-dir=%s \
+				--with-pdo-mysql=%s \
+				--with-xmlrpc \
+				--with-zlib-dir=%s \
+				--without-pear \
+				--enable-bcmath \
+				--enable-calendar \
+				--enable-dba \
+				--enable-exif \
+				--enable-fpm \
+				--enable-fileinfo \
+				--enable-ftp \
+				--enable-gd-native-ttf \
+				--enable-inline-optimization \
+				--enable-mbregex \
+				--enable-mbstring \
+				--enable-magic-quotes \
+				--enable-embedded-mysqli \
+				--enable-pcntl \
+				--enable-pdo \
+				--enable-safe-mode \
+				--enable-shmop \
+				--enable-sysvsem \
+				--enable-sysvmsg \
+				--enable-sockets \
+				--enable-soap \
+				--enable-tokenizer \
+				--enable-wddx \
+				--enable-xml \
+				--enable-zip \
+				--disable-rpath
+				''' % (os.path.join(conf['soft_path'], 'etc'),
+					   conf['init_path'],
+					   conf['user_name'],
+					   conf['user_name'],
+					   conf['init_path'],
+					   conf['init_path'],
+					   conf['mysql_path'],
+					   conf['init_path'],
+					   conf['init_path'],
+					   conf['mysql_path'],
+					   conf['init_path'])
+
+		# add user
+		add_user(conf['user_name'], conf['user_name'])
+
+		# make directory
+		for dir in [conf['init_path'], conf['soft_path'], conf['tar_path']]:
+			make_dir(dir)
+
+		# download tar package from server
+		self.get_tar(conf['tar_path'], conf['ftp_path'])
+
+		# install init_package
+		self.init_pak_install(init_package, conf['tar_path'], conf['init_path'])
+
+		# install php soft
+		self.soft_install(conf['soft_name'],
+						  soft_package,
+						  conf['tar_path'],
+						  conf['soft_path'],
+						  soft_options)
+
+		# php conf settings
 
 
 
@@ -377,7 +486,14 @@ class Install(object):
 				file_config(temp_path, init_path)
 				file_make(temp_path)
 
-			elif :
+			elif 'jpegsrc' in folder_name:
+				temp_options = '--enable-shared --enable-static'
+				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
+				file_make(os.path.join(path, folder_name))
+
+			elif 'libpng' in folder_name:
+				os_cmd('''export LDFLAGS="-L%s" ''' % os.path.join(init_path, 'lib')
+				os_cmd('''export CPPFLAGS=')
 
 
 
