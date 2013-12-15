@@ -221,7 +221,9 @@ class Install(object):
 				'init_path'		: 	'/opt/lnmp/app/init'
 				'soft_path'		: 	'/opt/lnmp/app/mysql',
 				'soft_name'		: 	'mysql',
-				'user_name'		: 	'mysql'
+				'user_name'		: 	'mysql',
+				'mysql_user'	: 	'root',
+				'mysql_pw'		:	'123456'
 				}
 
 		# configure options
@@ -314,10 +316,33 @@ class Install(object):
 		
 		# add privileges
 		print "I will add the priviledge to mysql"
-		os_cmd('%s/bin/mysqladmin -u root password 123456' % conf['soft_path'])
+		os_cmd('%s/bin/mysqladmin -u %s password %s' % (conf['soft_path'],
+														conf['mysql_user'], 
+														conf['mysql_pw']))
 
+		# load the sql to sql_content 
+		sql_content = read_file('../conf/mysql_sec_script.sql')
+		sql_file = os.path.join(conf['soft_path'], 'mysql_sec_script.sql')
+		# write the sql to local system 
+		try:
+			write_file(sql_file, sql_content)
+		except OSError as e:
+			print >>sys.stdout , 'Execution Failed', e
+
+		# run the mysql_sec_script.sql
+		print "I will run the sql to complete the initialization !"
+		mysql_bin = os.path.join(conf['soft_path'], 'bin', 'mysql')
+		os_cmd('%s -u %s -p%s <%s ' % (mysql_bin, 
+									   conf['mysql_user'], 
+									   conf['mysql_pw'], 
+									   sql_file))
+
+		print "Mysql install complete ! "
+		print "To start/stop the mysql, to run %s start/stop" % os.path.join(conf['soft_path'], 'etc/init.d/mysql.server')
+
+
+	def php_install(self):
 		
-
 
 
 
