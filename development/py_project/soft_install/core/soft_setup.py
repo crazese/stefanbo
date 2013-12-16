@@ -558,7 +558,7 @@ class Install(object):
 			# some soft need install additional options
 			if 'mcrypt' in folder_name:
 				temp_path = os.path.join(tar_path, folder_name, 'libltdl')
-				file_config(temp_path, init_path)
+				file_config(temp_path, init_path, '--enable-ltdl-install')
 				file_make(temp_path)
 
 			elif 'jpegsrc' in folder_name:
