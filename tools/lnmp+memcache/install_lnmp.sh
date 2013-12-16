@@ -21,7 +21,7 @@ cd /opt/lnmp/tar_package
 ftp -n $server <<EOF
 prompt off
 user $username $passwd
-cd lnmp
+cd lnmp/php
 lcd /opt/lnmp/tar_package
 mget * 
 bye

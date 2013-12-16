@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 # import Python Lib
+import re
 import sys
 sys.path.append('..')
 
 # import some function from utils
 from utils.apt_tool import *
 from utils.ftp_tool import *
-from util.os_tool import *
+from utils.os_tool import *
+from utils.con_tool import *
+
 from utils.apt_tool import Apt
+
 
 class Install(object):
 
@@ -36,11 +40,11 @@ class Install(object):
 		# You need to choose what soft you want to install
 		# nginx or mysql or php
 		print "What soft do you want to install next or others ?"
+		print "-- init 		# you must run it first if you run the scripts first on the host"
 		print "-- nginx"
 		print "-- php"
 		print "-- mysql"
 		print "-- memcache"
-		print "-- init 		# init the system"
 		print "-- quit		# exit the soft install procedure"
 
 		action = raw_input(">>>")
@@ -127,7 +131,7 @@ class Install(object):
 		# nginx insatll pcre , openssl and zlib source path
 		pcre_path = os.path.join(conf['tar_path'], filter_tar(init_package[5]))
 		openssl_path = os.path.join(conf['tar_path'], filter_tar(init_package[6]))
-		zlib_path = os.path.join(self.conf['tar_path'], filter_tar(init_package[7]))
+		zlib_path = os.path.join(conf['tar_path'], filter_tar(init_package[7]))
 		
 		# configure options
 		soft_options = '''
@@ -191,7 +195,7 @@ class Install(object):
 				write_file(file_path, temp_content)
 
 			elif 'herouser' in file:
-				for t_path in ['sites-available', 'sites-enabled']
+				for t_path in ['sites-available', 'sites-enabled']:
 					file_path = os.path.join(conf['soft_path'], t_path, file)
 					print "I will add the file %s" % file_path
 					write_file(file_path, temp_content)
@@ -202,6 +206,8 @@ class Install(object):
 		# chown the nginx install path
 		j_folder_chown(conf['user_name'], conf['user_name'], conf['soft_path'])
 
+		# come back to function start_point
+		return 'start_point'
 
 	def mysql_install(self):
 		'''
@@ -218,7 +224,7 @@ class Install(object):
 		conf = {
 				'tar_path' 		: 	'/opt/lnmp/tar_package/mysql',
 				'ftp_path' 		: 	'/lnmp/mysql',
-				'init_path'		: 	'/opt/lnmp/app/init'
+				'init_path'		: 	'/opt/lnmp/app/init',
 				'soft_path'		: 	'/opt/lnmp/app/mysql',
 				'soft_name'		: 	'mysql',
 				'user_name'		: 	'mysql',
@@ -340,6 +346,8 @@ class Install(object):
 		print "Mysql install complete ! "
 		print "To start/stop the mysql, to run %s start/stop" % os.path.join(conf['soft_path'], 'etc/init.d/mysql.server')
 
+		# return to the function start_point
+		return 'start_point'
 
 	def php_install(self):
 		'''
@@ -360,7 +368,12 @@ class Install(object):
 						'libxslt-1.1.24.tar.gz',
 						'gd-2.0.35.tar.gz']
 		soft_package =	'php-5.3.10.tar.gz'
-
+		extend_package = ['APC-3.1.9.tgz',
+						  'igbinary-igbinary-1.1.1-28-gc35d48f.zip',
+						  'libmemcached-1.0.10.tar.gz',
+						  'memcached-2.1.0.tgz',
+						  'memcache-2.2.7.tgz'
+						  ]
 		# install procedure setting
 		conf = {
 				'tar_path'		:		'/opt/lnmp/tar_package/php',
@@ -369,7 +382,9 @@ class Install(object):
 				'soft_path'		:		'/opt/lnmp/app/php',
 				'soft_name'		:		'php',
 				'user_name'		:		'www-data',
-				'mysql_path'	:		'/opt/lnmp/app/mysql'
+				'mysql_path'	:		'/opt/lnmp/app/mysql',
+				'php_config'	:		'/opt/lnmp/app/php/bin/php-config',
+				'phpize_bin'	:		'/opt/lnmp/app/php/bin/phpize'
 		}
 
 		# php configure options
@@ -438,6 +453,9 @@ class Install(object):
 		for dir in [conf['init_path'], conf['soft_path'], conf['tar_path']]:
 			make_dir(dir)
 
+		for dir in ['etc','etc/init.d/']:
+			make_dir(os.path.join(conf['soft_path'], dir))
+
 		# download tar package from server
 		self.get_tar(conf['tar_path'], conf['ftp_path'])
 
@@ -452,10 +470,63 @@ class Install(object):
 						  soft_options)
 
 		# php conf settings
+		# php.ini and php-fpm configuration
+		for file in ['php.ini', 'php-fpm.conf']:
+			temp_file = read_file(os.path.join('../conf', file))
+			write_file(os.path.join(conf['soft_path'], 'etc', file ), temp_file)
+
+		# php-fpm start scripts
+		phpfpm = read_file('../conf/php-fpm.sh')
+		write_file(os.path.join(conf['soft_path'], 'etc/init.d/php-fpm'), phpfpm)
+
+		self.extentd_soft_install(extend_package, 
+								  conf['tar_path'],
+								  conf['init_path'],
+								  conf['phpize_path'],
+								  conf['phpconfig_path'])
+
+		print "php soft install complete successfully!"
+
+		return 'start_point'
 
 
+	def memcache_install(self):
+		''' Install memcache soft in the system 
+		'''
+		# soft need to download from ftp server
+		soft_package = 'memcached-1.4.9.tar.gz'
 
+		# install procedure configuration
+		conf = {
+				'tar_path'		:		'/opt/lnmp/tar_package/memcache',
+				'ftp_path'		:		'/lnmp/memcache',
+				'init_path'		:		'/opt/lnmp/app/init',
+				'soft_path'		:		'/opt/lnmp/app/memcache',
+				'soft_name'		:		'memcache'
+		}
 
+		# configure options
+		soft_options = '--with-libevent=%s' % conf['init_path']
+
+		# make directory
+		for dir in [conf['init_path'], conf['soft_path'], conf['tar_path']]:
+			make_dir(dir)
+
+		# download tar package from ftp server
+		self.get_tar(conf['tar_path'], conf['ftp_path'])
+
+		# install memcache soft
+		self.soft_install(conf['soft_name'],
+						  soft_package,
+						  conf['tar_path'],
+						  conf['soft_path'],
+						  soft_options)
+
+		print "Memcache install complete!"
+		print '''######## to start memcache, you need to run follow scripts in root:
+				/opt/lnmp/app/memcache/bin/memcached -m 64 -p 11211 -u www-data -l 127.0.0.1'''
+
+		return 'start_point'
 
 
 	def get_tar(self, tar_path, ftp_path):
@@ -477,8 +548,12 @@ class Install(object):
 		for soft in soft_list:
 			extract_file(soft)
 			folder_name = filter_tar(soft)
+			# export PATH AND LD_LIBRARY_PATH
+			self.export_tool(init_path)
+			# configure the soft
 			file_config(os.path.join(tar_path, folder_name), init_path)
-			file_make(os.path.join(path, folder_name))
+			file_make(os.path.join(tar_path, folder_name))
+			#os.chdir(tar_path)
 			
 			# some soft need install additional options
 			if 'mcrypt' in folder_name:
@@ -489,13 +564,104 @@ class Install(object):
 			elif 'jpegsrc' in folder_name:
 				temp_options = '--enable-shared --enable-static'
 				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
-				file_make(os.path.join(path, folder_name))
+				file_make(os.path.join(tar_path, folder_name))
 
 			elif 'libpng' in folder_name:
-				os_cmd('''export LDFLAGS="-L%s" ''' % os.path.join(init_path, 'lib')
-				os_cmd('''export CPPFLAGS=')
+				os_cmd('''export LDFLAGS="-L%s" ''' % os.path.join(init_path, 'lib'))
+				os_cmd('''export CPPFLAGS="-I%s" ''' % os.path.join(init_path, 'include'))
+				file_config(os.path.join(tar_path, folder_name), init_path)
+				file_make(os.path.join(tar_path, folder_name))
+
+			elif 'libxslt' in folder_name:
+				temp_options = '--with-libxml-prefix=%s' % init_path
+				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
+				file_make(os.path.join(tar_path, folder_name))
+
+			elif 'gd' in folder_name:
+				temp_options = '''--with-png=%s \
+								  --with-freetype=%s \
+								  --with-jpeg=%s''' % (init_path, init_path, init_path)
+				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
+				
+				# change 'zlib.h' to /opt/lnmp/app/init/include/zlib.h
+				temp_file = os.path.join(tar_path, folder_name, 'gd_gd2.c')
+				temp_content = read_file(temp_file)
+				result = re.sub(r'zlib.h','%s/zlib.h' % os.path.join(init_path, 'include'), temp_content)
+				write_file(temp_file, result)
+				
+				file_make(os.path.join(tar_path, folder_name))
+
+			elif 'autoconf' in folder_name:
+				file_config(os.path.join(tar_path, folder_name), init_path)
+				
+				temp_file = os.path.join(tar_path, folder_name, 'Makefile')
+				temp_content = read_file(temp_file)
+				result = re.sub(r'M4 = m4','M4 = %s/m4' % os.path.join(init_path, 'bin') , temp_content)
+				write_file(temp_file, result)
+
+				file_make(os.path.join(tar_path, folder_name))
+
+			else:
+				pass
+
+			os.chdir(tar_path)
+			test = raw_input('>>>')
 
 
+	def extentd_soft_install(self, soft_list, tar_path, init_path, phpize_path, phpconfig_path):
+		''' Install phpextend soft 
+		'''
+		print "I will change to directory %s" % tar_path
+		os.chdir(tar_path)
+
+		# configure file with phpize and configure
+		for soft in soft_list:
+			extract_file(soft)
+			folder_name = filter_tar(soft)
+
+			if 'bz2-1' in folder_name:
+				temp_options = '--with-php-config=%s' % phpconfig_path
+				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
+				file_make(os.path.join(tar_path, folder_name))
+			
+			elif 'libmemc' in folder_name:
+				file_config(os.path.join(tar_path, folder_name), init_path)
+				file_make(os.path.join(tar_path, folder_name))
+			
+			elif 'APC' in folder_name:
+				temp_options = '--enable-apc --with-apc-mmap --with-php-config=%s' % phpconfig_path
+				self.phpize(os.path.join(tar_path, folder_name), phpize_path)
+				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
+				file_make(os.path.join(tar_path, folder_name))
+
+			elif 'igbinary' in folder_name:
+				temp_options = '--enable-igbinary --with-php-config=%s' % phpconfig_path
+				self.phpize(os.path.join(tar_path, folder_name), phpize_path)
+				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
+				file_make(os.path.join(tar_path, folder_name))
+
+			elif 'memcached-2.1.0' == folder_name:
+				temp_options = '''--enable-memcached \
+								  --enable-memcached-igbinary \
+								  --with-php-config=%s \
+								  --with-zlib-dir=%s \
+								  --with-libmemcached-dir=%s''' % (phpconfig_path,
+								  								   init_path,
+								  								   init_path)
+				self.phpize(os.path.join(tar_path, folder_name), phpize_path)
+				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
+				file_make(os.path.join(tar_path, folder_name))
+
+			elif 'memcache-2.2.7' == folder_name:
+				temp_options = '--with-php-config=%s' % phpconfig_path
+				self.phpize(os.path.join(tar_path, folder_name), phpize_path)
+				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
+				file_make(os.path.join(tar_path, folder_name))
+
+			else:
+				pass
+
+			os.chdir(tar_path)
 
 
 	def soft_install(self, name, soft_package, tar_path, soft_path, options):
@@ -513,9 +679,9 @@ class Install(object):
 		# if the soft name is nginx, it need to change the Makefile 
 		if name == 'nginx':
 			# change the Makefile to tend to adjust the init if soft name is nginx
-			makefile = os.path.join(path,folder_name,'/objs/Makefile')
-			makefile = read_file(makefile)
-			result_1 = re.sub(r'./configure','./configure --prefix=/opt/lnmp/app/init',makefile)
+			makefile = os.path.join(tar_path,folder_name,'/objs/Makefile')
+			makefile_content = read_file(makefile)
+			result_1 = re.sub(r'./configure','./configure --prefix=/opt/lnmp/app/init',makefile_content)
 			result = re.sub(r'./configure --prefix=/opt/lnmp/app/init --disable-shared','./configure --prefix=/opt/lnmp/app/init',result_1)
 			write_file(makefile, result)
 
@@ -537,6 +703,25 @@ class Install(object):
 		# make file with file_make()
 		file_make(os.path.join(path, folder_name))
 
+		# export PATH and LD_LIBRARY_PATH
+		self.export_tool(soft_path)
+
+		os.chdir(tar_path)
+		test = raw_input('>>>')
+
+
+	def export_tool(self, path):
+		'''
+		Export the LD_LIBRARY_PATH to 'libpath' example like : /opt/lnmp/app/init/
+		It will change to the directory /opt/lnmp/app/init/lib
+		'''
+		os_cmd('export LD_LIBRARY_PATH=%s:$LD_LIBRARY_PATH' % os.path.join(path, 'lib'))
+		os_cmd('export PATH=%s:$PATH' % os.path.join(path, 'bin'))
+
+	def phpize(self, path, phpize_cmd):
+		'''phpize the path '''
+		os.chdir(path)
+		os_cmd(phpize_cmd)
 
 
 		
@@ -544,5 +729,5 @@ class Install(object):
 
 
 
-a_install = Install("init_install")
+a_install = Install("start_point")
 a_install.install_start()

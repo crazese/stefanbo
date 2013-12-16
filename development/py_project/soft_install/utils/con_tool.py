@@ -8,11 +8,11 @@ def extract_file(soft, to_directory='.'):
     ''' 
     It can extract file in format zip, tar.gz, tgz, tar.bz2, tbz . 
     '''
-    if path.endswith('.zip'):
+    if soft.endswith('.zip'):
         opener, mode = zipfile.ZipFile, 'r'
-    elif path.endswith('.tar.gz') or path.endswith('.tgz'):
+    elif soft.endswith('.tar.gz') or soft.endswith('.tgz'):
         opener, mode = tarfile.open, 'r:gz'
-    elif path.endswith('.tar.bz2') or path.endswith('.tbz'):
+    elif soft.endswith('.tar.bz2') or soft.endswith('.tbz'):
         opener, mode = tarfile.open, 'r:bz2'
     else: 
         raise ValueError, "Could not extract `%s` as no appropriate extractor is found" % path
@@ -23,6 +23,7 @@ def extract_file(soft, to_directory='.'):
     try:
         file = opener(soft, mode)
         try: 
+            print "I begin to extract %s" % soft
             file.extractall()
             print "I complete the extract !"
         finally: file.close()
@@ -43,19 +44,19 @@ def file_config(path, prefix, *options):
     # del the ' ' in the options
     options = ' '.join(options)
     if os.path.exists(os.path.join(path, config_cmd[0].strip('./'))): 
-        con_list = [config_cmd , '--prefix=', prefix, options]
+        con_list = [config_cmd[0] , '--prefix=%s' % prefix, options]
         con = ' '.join(con_list)
         os.chdir(path)
         os_cmd(con)
     elif os.path.exists(os.path.join(path, config_cmd[1].strip('./'))):
-        con_list = [config_cmd, '--prefix=', prefix, options]
+        con_list = [config_cmd[1], '--prefix=%s' % prefix, options]
         con = ' '.join(con_list)
         os.chdir(path)
         os_cmd(con)
     else:
         cmake_cmd = '/opt/lnmp/app/init/bin/cmake'
         if os.path.exists(cmake_cmd):
-            con_list = [cmake_cmd, '-DCMAKE_INSTALL_PREFIX=', prefix, options]
+            con_list = [cmake_cmd, '-DCMAKE_INSTALL_PREFIX=%s' % prefix, options]
             con = ' '.join(con_list)
             os.chdir(path)
             os_cmd(con)
@@ -70,3 +71,4 @@ def file_make(path):
     except OSError as e:
         print "Something wrong during make the soft"
         print >>sys.stderr, "Execution Failed!", e
+    

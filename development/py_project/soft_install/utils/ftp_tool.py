@@ -12,6 +12,7 @@ def download(host, user, pw, r_path, c_path='.'):
     for fname in file_list:
         f = open(fname, 'wb').write
         try:
+            print "I am downloading the %s from ftp server" % fname
             ftp.retrbinary('RETR %s'%fname, f, 1024)
             #open(fname,'wb').close
         except ftplib.error_perm:
