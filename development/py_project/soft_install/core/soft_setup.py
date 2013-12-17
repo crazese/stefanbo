@@ -288,9 +288,9 @@ class Install(object):
 				write_file(file_path, temp_content)
 
 			elif 'mysql.server' in file:
-				file_path = os.path.join(conf['soft_path'], 'etc/init.d', file)
+				file_path = os.path.join(conf['tar_path'], filter_tar(soft_package), 'supports', file)
 				print "I will add the file %s" % file_path
-				write_file(file_path, temp_content)
+				os_cmd('cp %s %s' % (file_path, os.path.join(conf['soft_path'], 'etc/init.d/mysql.server')))
 
 			else:
 				print "Something Wrong!"
