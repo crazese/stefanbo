@@ -1,0 +1,53 @@
+bieeadmin
+just_456#$
+
+
+
+C:\test_biee\instances\instance1\bifoundation\OracleBIServerComponent\coreapplication_obis1\repository
+
+
+类型: 企业安装 - 创建新 BI 系统
+	安装详细资料
+		中间件主目录: C:\test_biee
+		BI Oracle 主目录: C:\test_biee\Oracle_BI1
+		WebLogic Server 主目录: C:\test_biee\wlserver_10.3
+		BI 域主目录: C:\test_biee\user_projects\domains\bifoundation_domain
+		BI 域名: bifoundation_domain
+		实例主目录: C:\test_biee\instances\instance1
+		例程名: instance1
+	配置组件
+		WebLogic 控制台
+			http://bieeserver:7001/console
+		Oracle Enterprise Manager
+			http://bieeserver:7001/em
+		Business Intelligence 企业版
+			http://bieeserver:9704/analytics
+		Business Intelligence Publisher
+			http://bieeserver:9704/xmlpserver
+		Real-Time Decisions
+			http://bieeserver:9704/ui
+		Calculation Manager
+			http://bieeserver:9704/workspace
+		Financial Reports
+			http://bieeserver:9704/workspace
+		Workspace
+			http://bieeserver:9704/workspace
+		Essbase Suite
+		APS
+			http://bieeserver:9704/aps
+		Essbase 服务器
+		Essbase Studio
+			bieeserver
+		Essbase 管理服务
+			bieeserver:9704
+
+--查询数据库状态
+select name,user_access,user_access_desc,
+	snapshot_isolation_state,snapshot_isolation_state_desc,
+	is_read_committed_snapshot_on
+from sys.databases
+--设置数据库为SINGLE_USER模式,减少锁定时间
+ALTER DATABASE dbname SET SINGLE_USER WITH ROLLBACK IMMEDIATE
+ALTER DATABASE dbname SET ALLOW_SNAPSHOT_ISOLATION ON
+ALTER DATABASE dbname SET READ_COMMITTED_SNAPSHOT ON
+ALTER DATABASE dbname SET MULTI_USER

@@ -21,6 +21,8 @@ class Install(object):
 		self.user = 'zhubo'
 		self.pw = 'Jof1Game8yzl'
 
+		self.cwd = os.getcwd()
+
 		self.start = start
 
 	def install_start(self):
@@ -134,18 +136,18 @@ class Install(object):
 		zlib_path = os.path.join(conf['tar_path'], filter_tar(init_package[7]))
 		
 		# configure options
-		soft_options = '''
-			--sbin-path=%s/sbin/ \
-			--pid-path=%s/nginx.pid \
+		soft_options = ''' \
+			--sbin-path=%s \
+			--pid-path=%s \
 			--user=%s \
 			--group=%s \
 			--with-http_stub_status_module \
 			--with-http_ssl_module \
-			--whti-http_gzip_static_module \
+			--with-http_gzip_static_module \
 			--with-pcre=%s \
 			--with-openssl=%s \
-			--with-zlib=%s''' % (conf['soft_path'],
-								 conf['soft_path'],
+			--with-zlib=%s''' % (os.path.join(conf['soft_path'], 'sbin', 'nginx'),
+								 os.path.join(conf['soft_path'], 'nginx.pid'),
 								 conf['user_name'],
 								 conf['user_name'],
 								 pcre_path,
@@ -181,6 +183,7 @@ class Install(object):
 		# configuration file loading
 		for file in ['nginx.conf', 'nginx.sh', 'herouser_virtualhost']:
 			# load file into temp_content
+			os.chdir(self.cwd)
 			temp_content = read_file(os.path.join('../conf', file))
 			
 			# write file to the path
@@ -196,7 +199,7 @@ class Install(object):
 
 			elif 'herouser' in file:
 				for t_path in ['sites-available', 'sites-enabled']:
-					file_path = os.path.join(conf['soft_path'], t_path, file)
+					file_path = os.path.join(conf['soft_path'], 'conf', t_path, file)
 					print "I will add the file %s" % file_path
 					write_file(file_path, temp_content)
 
@@ -233,7 +236,7 @@ class Install(object):
 				}
 
 		# configure options
-		soft_options = '''
+		soft_options = ''' \
 			-DMYSQL_DATADIR=%s \
 			-DSYSCONFDIR=%s \
 			-DEXTRA_CHARSETS=all \
@@ -275,6 +278,7 @@ class Install(object):
 		# configuration file loading
 		for file in ['my.cnf', 'mysql.server']:
 			# load file into temp_content
+			os.chdir(self.cwd)
 			temp_content = read_file(os.path.join('../conf', file))
 
 			# write file to the path
@@ -388,7 +392,7 @@ class Install(object):
 		}
 
 		# php configure options
-		soft_options = '''
+		soft_options = ''' \
 				--with-bz2 \
 				--with-config-file-path=%s \
 				--with-curl \
@@ -472,10 +476,12 @@ class Install(object):
 		# php conf settings
 		# php.ini and php-fpm configuration
 		for file in ['php.ini', 'php-fpm.conf']:
+			os.chdir(self.cwd)
 			temp_file = read_file(os.path.join('../conf', file))
 			write_file(os.path.join(conf['soft_path'], 'etc', file ), temp_file)
 
 		# php-fpm start scripts
+		os.chdir(self.cwd)
 		phpfpm = read_file('../conf/php-fpm.sh')
 		write_file(os.path.join(conf['soft_path'], 'etc/init.d/php-fpm'), phpfpm)
 
@@ -605,7 +611,7 @@ class Install(object):
 				pass
 
 			os.chdir(tar_path)
-			test = raw_input('>>>')
+			#test = raw_input('>>>')
 
 
 	def extentd_soft_install(self, soft_list, tar_path, init_path, phpize_path, phpconfig_path):
@@ -675,14 +681,16 @@ class Install(object):
 		# cofigure file with file_config()
 		folder_name = filter_tar(soft_package)
 		file_config(os.path.join(tar_path, folder_name), soft_path, options)
+		test = raw_input('>>>')
 
 		# if the soft name is nginx, it need to change the Makefile 
 		if name == 'nginx':
 			# change the Makefile to tend to adjust the init if soft name is nginx
-			makefile = os.path.join(tar_path,folder_name,'/objs/Makefile')
+			makefile = '%s/objs/Makefile' % os.path.join(tar_path, folder_name)
+			print makefile
 			makefile_content = read_file(makefile)
 			result_1 = re.sub(r'./configure','./configure --prefix=/opt/lnmp/app/init',makefile_content)
-			result = re.sub(r'./configure --prefix=/opt/lnmp/app/init --disable-shared','./configure --prefix=/opt/lnmp/app/init',result_1)
+			result = re.sub(r'./configure --prefix=/opt/lnmp/app/init --disable-shared','./configure --prefix=/opt/lnmp/app/init ', result_1)
 			write_file(makefile, result)
 
 		elif name == 'mysql':
@@ -701,7 +709,7 @@ class Install(object):
 			pass
 
 		# make file with file_make()
-		file_make(os.path.join(path, folder_name))
+		file_make(os.path.join(tar_path, folder_name))
 
 		# export PATH and LD_LIBRARY_PATH
 		self.export_tool(soft_path)
