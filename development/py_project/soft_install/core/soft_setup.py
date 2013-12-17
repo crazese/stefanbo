@@ -35,7 +35,7 @@ class Install(object):
 
 	def install_end(self):
 		print "######## Thanks for you use the soft! #########"
-		exit(0)
+		sys.exit(0)
 
 
 	def start_point(self):
@@ -71,7 +71,7 @@ class Install(object):
 			print "######## I will install memcahce next! ########"
 			return 'memcache_install'
 
-		elif action == "end":
+		elif action == "quit":
 			print "######## You will quit the soft install procedure! ########"
 			return 'install_end'
 
@@ -297,7 +297,7 @@ class Install(object):
 
 		# mysql_install_db file path
 		install_file = os.path.join(conf['tar_path'], 
-										filter_tar(conf['soft_package']),
+										filter_tar(soft_package),
 										'scripts/mysql_install_db')
 		# run the install_file
 		# add +x to the scripts
@@ -318,7 +318,7 @@ class Install(object):
 			print >>sys.stdout, "Execution Failed", e
 
 		# mysql initialization
-		j_folder_chown(conf['user_name'], conf['user_name'])
+		j_folder_chown(conf['user_name'], conf['user_name'], conf['soft_path'])
 
 		# start mysql service
 		print "I will start the mysql server"

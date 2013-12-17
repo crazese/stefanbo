@@ -68,7 +68,8 @@ def j_folder_chown(uname, grp , path):
 		try:
 			print "The %s is now own others " % path
 			print "I will change to own %s %s !" % (uname, grp)
-			os.chown(path, t_uid, t_gid)
+			os_cmd('chown -R %s.%s %s' % (uname, grp, path))
+			os_cmd('chmod -R 755 %s' % path)
 		except OSError as e:
 			print >>sys.stdout, "Execution Falied: ", e
 	else:

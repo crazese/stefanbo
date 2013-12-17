@@ -250,7 +250,7 @@ EOF
 
 chmod +x /opt/lnmp/tar_package/mysql-5.5.34/scripts/mysql_install_db 
 
-/opt/lnmp/tar_package/mysql-5.5.34/scripts/mysql_install_db \
+/opt/lnmp/tar_package/mysql/mysql-5.5.34/scripts/mysql_install_db \
 --user=mysql \
 --defaults-file=/opt/lnmp/app/mysql/etc/my.cnf \
 --datadir=/opt/lnmp/app/mysql/data \
