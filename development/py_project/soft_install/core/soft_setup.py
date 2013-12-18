@@ -288,9 +288,10 @@ class Install(object):
 				write_file(file_path, temp_content)
 
 			elif 'mysql.server' in file:
-				file_path = os.path.join(conf['tar_path'], filter_tar(soft_package), 'supports', file)
+				file_path = os.path.join(conf['tar_path'], filter_tar(soft_package), 'support-files', file)
 				print "I will add the file %s" % file_path
-				os_cmd('cp %s %s' % (file_path, os.path.join(conf['soft_path'], 'etc/init.d/mysql.server')))
+				os_cmd('cp %s %s' % (file_path, os.path.join(conf['soft_path'], 'etc/init.d', file)))
+				os_cmd('chmod +x %s' % os.path.join(conf['soft_path'], 'etc/init.d', file))
 
 			else:
 				print "Something Wrong!"
@@ -303,7 +304,7 @@ class Install(object):
 		# add +x to the scripts
 		os_cmd('chmod +x %s' % install_file)
 		# install_options
-		install_options = '''
+		install_options = ''' \
 		--user=%s \
 		--defaults-file=%s \
 		--datadir=%s \
