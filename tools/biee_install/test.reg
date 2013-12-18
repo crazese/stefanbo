@@ -1,0 +1,9 @@
+Windows Registry Editor Version 5.00  
+  
+[HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft]  
+  
+[HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment]  
+"CurrentVersion" = "1.1.0"  
+  
+[HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment\1.6.0]  
+"JavaHome" = "C:\\biee_11\Oracle_BI1\jdk"  

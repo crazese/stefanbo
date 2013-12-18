@@ -360,7 +360,7 @@ class Install(object):
 		'''
 		# soft need to download from ftp server
 		init_package = ['jpegsrc.v9.tar.gz',
-						'libevent-2.0.21.stable.tar.gz',
+						'libevent-2.0.21-stable.tar.gz',
 						'freetype-2.4.12.tar.gz',
 						'mhash-0.9.9.9.tar.gz',
 						'curl-7.33.0.tar.gz',
@@ -374,6 +374,7 @@ class Install(object):
 						'gd-2.0.35.tar.gz']
 		soft_package =	'php-5.3.10.tar.gz'
 		extend_package = ['APC-3.1.9.tgz',
+						  'bz2-1.0.tgz',
 						  'igbinary-igbinary-1.1.1-28-gc35d48f.zip',
 						  'libmemcached-1.0.10.tar.gz',
 						  'memcached-2.1.0.tgz',
@@ -394,7 +395,6 @@ class Install(object):
 
 		# php configure options
 		soft_options = ''' \
-				--with-bz2 \
 				--with-config-file-path=%s \
 				--with-curl \
 				--with-freetype-dir=%s \
@@ -558,36 +558,30 @@ class Install(object):
 			# export PATH AND LD_LIBRARY_PATH
 			self.export_tool(init_path)
 			# configure the soft
-			file_config(os.path.join(tar_path, folder_name), init_path)
-			file_make(os.path.join(tar_path, folder_name))
-			#os.chdir(tar_path)
-			
 			# some soft need install additional options
-			if 'mcrypt' in folder_name:
-				temp_path = os.path.join(tar_path, folder_name, 'libltdl')
-				file_config(temp_path, init_path, '--enable-ltdl-install')
-				file_make(temp_path)
-
-			elif 'jpegsrc' in folder_name:
+			if 'jpegsrc' in folder_name:
+				folder_name = 'jpeg-9'
 				temp_options = '--enable-shared --enable-static'
 				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
-				file_make(os.path.join(tar_path, folder_name))
 
 			elif 'libpng' in folder_name:
-				os_cmd('''export LDFLAGS="-L%s" ''' % os.path.join(init_path, 'lib'))
-				os_cmd('''export CPPFLAGS="-I%s" ''' % os.path.join(init_path, 'include'))
+				#os_cmd('''export LDFLAGS="-L%s" ''' % os.path.join(init_path, 'lib'))
+				#os_cmd('''export CPPFLAGS="-I%s" ''' % os.path.join(init_path, 'include'))
+				print '''I will add LDFLAGS="-L%s"'''  % os.path.join(init_path, 'lib')
+				print '''I will add CPPFLAGS="-L%s"'''  % os.path.join(init_path, 'include')
+				#os.environ['LDFLAGS'] = '-L%s' % os.path.join(init_path, 'lib')
+				#os.environ['CPPFLAGS'] = '-I%s' % os.path.join(init_path, 'include')
+				os.environ.setdefault('LDFLAGS','-L%s' % os.path.join(init_path, 'lib'))
+				os.environ.setdefault('CPPFLAGS','-I%s' % os.path.join(init_path, 'include'))
+
 				file_config(os.path.join(tar_path, folder_name), init_path)
-				file_make(os.path.join(tar_path, folder_name))
 
 			elif 'libxslt' in folder_name:
 				temp_options = '--with-libxml-prefix=%s' % init_path
 				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
-				file_make(os.path.join(tar_path, folder_name))
 
 			elif 'gd' in folder_name:
-				temp_options = '''--with-png=%s \
-								  --with-freetype=%s \
-								  --with-jpeg=%s''' % (init_path, init_path, init_path)
+				temp_options = '''--with-png=%s --with-freetype=%s --with-jpeg=%s''' % (init_path, init_path, init_path)
 				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
 				
 				# change 'zlib.h' to /opt/lnmp/app/init/include/zlib.h
@@ -595,8 +589,6 @@ class Install(object):
 				temp_content = read_file(temp_file)
 				result = re.sub(r'zlib.h','%s/zlib.h' % os.path.join(init_path, 'include'), temp_content)
 				write_file(temp_file, result)
-				
-				file_make(os.path.join(tar_path, folder_name))
 
 			elif 'autoconf' in folder_name:
 				file_config(os.path.join(tar_path, folder_name), init_path)
@@ -606,13 +598,20 @@ class Install(object):
 				result = re.sub(r'M4 = m4','M4 = %s/m4' % os.path.join(init_path, 'bin') , temp_content)
 				write_file(temp_file, result)
 
-				file_make(os.path.join(tar_path, folder_name))
-
 			else:
-				pass
+				file_config(os.path.join(tar_path, folder_name), init_path)
 
+			file_make(os.path.join(tar_path, folder_name))
+			print "The soft %s install complete!" % folder_name
+
+			if 'mcrypt' in folder_name:
+				temp_path = os.path.join(tar_path, folder_name, 'libltdl')
+				file_config(temp_path, init_path, '--enable-ltdl-install')
+				file_make(temp_path)
+
+			print "I will change to the %s" % tar_path
 			os.chdir(tar_path)
-			#test = raw_input('>>>')
+			test = raw_input('>>>')
 
 
 	def extentd_soft_install(self, soft_list, tar_path, init_path, phpize_path, phpconfig_path):
@@ -629,23 +628,19 @@ class Install(object):
 			if 'bz2-1' in folder_name:
 				temp_options = '--with-php-config=%s' % phpconfig_path
 				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
-				file_make(os.path.join(tar_path, folder_name))
 			
 			elif 'libmemc' in folder_name:
 				file_config(os.path.join(tar_path, folder_name), init_path)
-				file_make(os.path.join(tar_path, folder_name))
 			
 			elif 'APC' in folder_name:
 				temp_options = '--enable-apc --with-apc-mmap --with-php-config=%s' % phpconfig_path
 				self.phpize(os.path.join(tar_path, folder_name), phpize_path)
 				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
-				file_make(os.path.join(tar_path, folder_name))
 
 			elif 'igbinary' in folder_name:
 				temp_options = '--enable-igbinary --with-php-config=%s' % phpconfig_path
 				self.phpize(os.path.join(tar_path, folder_name), phpize_path)
 				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
-				file_make(os.path.join(tar_path, folder_name))
 
 			elif 'memcached-2.1.0' == folder_name:
 				temp_options = '''--enable-memcached \
@@ -657,18 +652,21 @@ class Install(object):
 								  								   init_path)
 				self.phpize(os.path.join(tar_path, folder_name), phpize_path)
 				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
-				file_make(os.path.join(tar_path, folder_name))
 
 			elif 'memcache-2.2.7' == folder_name:
 				temp_options = '--with-php-config=%s' % phpconfig_path
 				self.phpize(os.path.join(tar_path, folder_name), phpize_path)
 				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
-				file_make(os.path.join(tar_path, folder_name))
 
 			else:
-				pass
+				file_config(os.path.join(tar_path, folder_name), init_path)
 
+			file_make(os.path.join(tar_path, folder_name))
+			print "The soft %s install complete!"
+
+			print "I will change to the %s" % tar_path
 			os.chdir(tar_path)
+			test = raw_input('>>>')
 
 
 	def soft_install(self, name, soft_package, tar_path, soft_path, options):
@@ -724,8 +722,29 @@ class Install(object):
 		Export the LD_LIBRARY_PATH to 'libpath' example like : /opt/lnmp/app/init/
 		It will change to the directory /opt/lnmp/app/init/lib
 		'''
-		os_cmd('export LD_LIBRARY_PATH=%s:$LD_LIBRARY_PATH' % os.path.join(path, 'lib'))
-		os_cmd('export PATH=%s:$PATH' % os.path.join(path, 'bin'))
+		#os_cmd('export LD_LIBRARY_PATH=%s:$LD_LIBRARY_PATH' % os.path.join(path, 'lib'))
+		#os_cmd('export PATH=%s:$PATH' % os.path.join(path, 'bin'))
+		libpath = 'LD_LIBRARY_PATH'
+		binpath = 'PATH'
+
+		L_key = [libpath, binpath]
+		L_val = ['lib', 'bin']
+
+		for key , val in zip(L_key, L_val):
+			if not os.environ.has_key(key):
+				os.environ.setdefault(key, os.path.join(path, val))
+			else:
+				os.environ[key] = '%s:%s' % (os.path.join(path, val), os.environ[key])
+
+			print "I will add %s = %s" % (key, os.path.join(path, val))
+
+		#if not os.environ.has_key(binpath):
+#			os.environ.setdefault(binpath, os.path.join(path, 'bin'))
+#		else:
+#			os.environ[binpath] = '%s:%s' % (os.path.join(path, 'bin')), os.environ[binpath]#
+
+#		os.environ['LD_LIBRARY_PATH'] = '%s:%s' % (os.path.join(path, 'lib'), os.environ['LD_LIBRARY_PATH'])
+#		os.environ['PATH'] = '%s:%s' % (os.path.join(path, 'bin'), os.environ['PATH'])
 
 	def phpize(self, path, phpize_cmd):
 		'''phpize the path '''

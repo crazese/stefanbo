@@ -13,33 +13,34 @@ C:\test_biee\instances\instance1\bifoundation\OracleBIServerComponent\coreapplic
 		WebLogic Server 主目录: C:\biee_11\wlserver_10.3
 		BI 域主目录: C:\biee_11\user_projects\domains\bifoundation_domain
 		BI 域名: bifoundation_domain
-		实例主目录: C:\biee_11\instances\instance3
-		例程名: instance3
+		实例主目录: C:\biee_11\instances\instance1
+		例程名: instance1
 	配置组件
 		WebLogic 控制台
-			http://bieeserver:7001/console
+			http://WIN-GBMVNNETBKK:7001/console
 		Oracle Enterprise Manager
-			http://bieeserver:7001/em
+			http://WIN-GBMVNNETBKK:7001/em
 		Business Intelligence 企业版
-			http://bieeserver:9704/analytics
+			http://WIN-GBMVNNETBKK:9704/analytics
 		Business Intelligence Publisher
-			http://bieeserver:9704/xmlpserver
+			http://WIN-GBMVNNETBKK:9704/xmlpserver
 		Real-Time Decisions
-			http://bieeserver:9704/ui
+			http://WIN-GBMVNNETBKK:9704/ui
 		Calculation Manager
-			http://bieeserver:9704/workspace
+			http://WIN-GBMVNNETBKK:9704/workspace
 		Financial Reports
-			http://bieeserver:9704/workspace
+			http://WIN-GBMVNNETBKK:9704/workspace
 		Workspace
-			http://bieeserver:9704/workspace
+			http://WIN-GBMVNNETBKK:9704/workspace
 		Essbase Suite
 		APS
-			http://bieeserver:9704/aps
+			http://WIN-GBMVNNETBKK:9704/aps
 		Essbase 服务器
 		Essbase Studio
-			bieeserver
+			WIN-GBMVNNETBKK
 		Essbase 管理服务
-			bieeserver:9704
+			WIN-GBMVNNETBKK:9704
+
 
 
 --查询数据库状态
