@@ -96,9 +96,7 @@ class Install(object):
 				 'libxp-dev',
 				 'libmotif-dev',
 				 'libxt-dev',
-				 'libstdc++6',
-				 'libgd2-xpm',
-				 'libgd2-xpm-dev']
+				 'libstdc++6']
 		for soft in soft_list:
 			apt.apt_install(soft)
 
@@ -363,19 +361,7 @@ class Install(object):
 		Install the php soft 
 		'''
 		# soft need to download from ftp server
-		init_package = ['jpegsrc.v9.tar.gz',
-						'libevent-2.0.21-stable.tar.gz',
-						'freetype-2.4.12.tar.gz',
-						'mhash-0.9.9.9.tar.gz',
-						'curl-7.33.0.tar.gz',
-						'libpng-1.6.7.tar.gz',
-						'pkg-config-0.24.tar.gz',
-						'xproto-7.0.14.tar.bz2',
-						'xextproto-7.0.4.tar.bz2',
-						'xtrans-1.2.7.tar.bz2',
-						'xcb-proto-1.5.tar.bz2',
-						'libxslt-1.1.24.tar.gz',
-						'gd-2.0.35.tar.gz']
+		init_package = ['gd-2.0.35.tar.gz']
 		soft_package =	'php-5.3.10.tar.gz'
 		extend_package = ['APC-3.1.9.tgz',
 						  'bz2-1.0.tgz',
@@ -466,7 +452,7 @@ class Install(object):
 			make_dir(os.path.join(conf['soft_path'], dir))
 
 		# download tar package from server
-		self.get_tar(conf['tar_path'], conf['ftp_path'])
+		#self.get_tar(conf['tar_path'], conf['ftp_path'])
 
 		# install init_package
 		self.init_pak_install(init_package, conf['tar_path'], conf['init_path'])
@@ -740,6 +726,9 @@ class Install(object):
 				os.environ[key] = '%s:%s' % (os.path.join(path, val), os.environ[key])
 
 			print "I will add %s = %s" % (key, os.path.join(path, val))
+
+		# print the PATH and LD_LIBRARY_PATH
+		os_cmd('echo $PATH && echo $LD_LIBRARY_PATH')
 
 		#if not os.environ.has_key(binpath):
 #			os.environ.setdefault(binpath, os.path.join(path, 'bin'))
