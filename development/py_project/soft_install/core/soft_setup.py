@@ -2,6 +2,7 @@
 # import Python Lib
 import re
 import sys
+import os
 sys.path.append('..')
 
 # import some function from utils
@@ -166,6 +167,7 @@ class Install(object):
 		self.get_tar(conf['tar_path'], conf['ftp_path'])
 
 		# install init package
+		self.export_tool(conf['init_path'])
 		self.init_pak_install(init_package, conf['tar_path'], conf['init_path'])
 
 		# install nginx soft
@@ -268,6 +270,7 @@ class Install(object):
 		self.get_tar(conf['tar_path'], conf['ftp_path'])
 
 		# install init package
+		self.export_tool(conf['init_path'])
 		self.init_pak_install(init_package, conf['tar_path'], conf['init_path'])
 
 		# install mysql soft
@@ -394,18 +397,18 @@ class Install(object):
 				'user_name'		:		'www-data',
 				'mysql_path'	:		'/opt/lnmp/app/mysql',
 				'php_config'	:		'/opt/lnmp/app/php/bin/php-config',
-				'phpize_bin'	:		'/opt/lnmp/app/php/bin/phpize'
+				'phpize_path'	:		'/opt/lnmp/app/php/bin/phpize'
 		}
 
 		# php configure options
 		soft_options = ''' \
 				--with-config-file-path=%s \
-				--with-curl \
+				--with-curl=%s \
 				--with-freetype-dir=%s \
 				--with-fpm-user=%s \
 				--with-fpm-group=%s \
 				--with-gettext \
-				--with-gd \
+				--with-gd=%s \
 				--with-jpeg-dir=%s \
 				--with-libxml-dir=%s \
 				--with-mysql=%s \
@@ -445,8 +448,10 @@ class Install(object):
 				--disable-rpath
 				''' % (os.path.join(conf['soft_path'], 'etc'),
 					   conf['init_path'],
+					   conf['init_path'],
 					   conf['user_name'],
 					   conf['user_name'],
+					   conf['init_path'],
 					   conf['init_path'],
 					   conf['init_path'],
 					   conf['mysql_path'],
@@ -469,8 +474,13 @@ class Install(object):
 		self.get_tar(conf['tar_path'], conf['ftp_path'])
 
 		# install init_package
+		self.export_tool(conf['init_path'])
+		
 		self.init_pak_install(init_package, conf['tar_path'], conf['init_path'])
 
+		# export PATH again
+		self.export_tool(conf['init_path'])
+		self.export_tool('/opt/lnmp/app/mysql')
 		# install php soft
 		self.soft_install(conf['soft_name'],
 						  soft_package,
@@ -494,7 +504,7 @@ class Install(object):
 								  conf['tar_path'],
 								  conf['init_path'],
 								  conf['phpize_path'],
-								  conf['phpconfig_path'])
+								  conf['php_config'])
 
 		print "######## The system install php complete successfully! #########"
 		return 'start_point'
@@ -553,13 +563,13 @@ class Install(object):
 		''' extract the 'init_package' , and configure it , make install it '''
 		print "I will change to directory %s" % tar_path
 		os.chdir(tar_path)
-
+		
 		# install soft with file_config(), file_make()
 		for soft in soft_list:
 			extract_file(soft)
 			folder_name = filter_tar(soft)
 			# export PATH AND LD_LIBRARY_PATH
-			self.export_tool(init_path)
+			# self.export_tool(init_path)
 			# configure the soft
 			# some soft need install additional options
 			if 'jpegsrc' in folder_name:
@@ -584,14 +594,28 @@ class Install(object):
 				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
 
 			elif 'gd' in folder_name:
+				os.environ['PATH'] = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games'
 				temp_options = '''--with-png=%s --with-freetype=%s --with-jpeg=%s''' % (init_path, init_path, init_path)
 				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
 				
+				#os.environ['PATH'] = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games'
+
 				# change 'zlib.h' to /opt/lnmp/app/init/include/zlib.h
 				temp_file = os.path.join(tar_path, folder_name, 'gd_gd2.c')
 				temp_content = read_file(temp_file)
 				result = re.sub(r'zlib.h','%s/zlib.h' % os.path.join(init_path, 'include'), temp_content)
 				write_file(temp_file, result)
+				
+				for target in ['LDFLAGS', 'CPPFLAGS','LD_LIBRARY_PATH']:
+					if os.environ.has_key(target):
+						os.environ.pop(target)
+				
+				test = os.environ.items()
+				print test
+				test = raw_input('>>>')
+				# first make
+				# file_make(os.path.join(tar_path, folder_name))
+				# test = raw_input('>>>')
 
 			elif 'autoconf' in folder_name:
 				file_config(os.path.join(tar_path, folder_name), init_path)
@@ -600,6 +624,10 @@ class Install(object):
 				temp_content = read_file(temp_file)
 				result = re.sub(r'M4 = m4','M4 = %s/m4' % os.path.join(init_path, 'bin') , temp_content)
 				write_file(temp_file, result)
+
+			elif 'cmake' in folder_name:
+				self.export_c_tool(init_path)
+				file_config(os.path.join(tar_path, folder_name), init_path)
 
 			else:
 				file_config(os.path.join(tar_path, folder_name), init_path)
@@ -614,7 +642,7 @@ class Install(object):
 
 			print "I will change to the %s" % tar_path
 			os.chdir(tar_path)
-			test = raw_input('>>>')
+			#test = raw_input('>>>')
 
 
 	def extentd_soft_install(self, soft_list, tar_path, init_path, phpize_path, phpconfig_path):
@@ -741,6 +769,21 @@ class Install(object):
 
 			print "I will add %s = %s" % (key, os.path.join(path, val))
 
+
+	def export_c_tool(self, path):
+		'''
+		Export the C_INCLUDE_PATH and CPLUS_INCLUDE_PATH to cpath and cpluspath
+		'''
+		cpath = 'C_INCLUDE_PATH'
+		cpluspath = 'CPLUS_INCLUDE_PATH'
+
+		for c_path in [cpath, cpluspath]:
+			if not os.environ.has_key(c_path):
+				os.environ.setdefault(key, '%s:/usr/include' % os.path.join(path, 'include'))
+			else:
+				os.environ[c_path] = '%s:%s' % (os.path.join(path, 'include'), os.environ[c_path])#
+
+			print "I will add %s = %s" % (c_path, os.path.join(path, 'include'))
 		#if not os.environ.has_key(binpath):
 #			os.environ.setdefault(binpath, os.path.join(path, 'bin'))
 #		else:

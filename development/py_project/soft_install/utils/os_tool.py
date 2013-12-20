@@ -42,6 +42,10 @@ def filter_tar(stri):
 		return stri.replace('.tar.bz2','')
 	elif '.zip' in stri:
 		return stri.replace('.zip','')
+	elif '.tgz' in stri:
+		return stri.replace('.tgz')
+	elif '.tbz' in stri:
+		return stri.replace('.tbz')
 	else:
 		return "I do nothing"
 

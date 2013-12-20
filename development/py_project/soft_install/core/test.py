@@ -545,7 +545,7 @@ class Install(object):
 			extract_file(soft)
 			folder_name = filter_tar(soft)
 			# export PATH AND LD_LIBRARY_PATH
-			self.export_tool(init_path)
+			# self.export_tool(init_path)
 			# configure the soft
 			# some soft need install additional options
 			if 'jpegsrc' in folder_name:
@@ -578,6 +578,15 @@ class Install(object):
 				temp_content = read_file(temp_file)
 				result = re.sub(r'zlib.h','%s/zlib.h' % os.path.join(init_path, 'include'), temp_content)
 				write_file(temp_file, result)
+				for target in ['LDFLAGS', 'CPPFLAGS','LD_LIBRARY_PATH']:
+					if os.environ.has_key(target):
+						os.environ.pop(target)
+				test = os.environ.items()
+				print test
+				test = raw_input('>>>')
+				# first make
+				# file_make(os.path.join(tar_path, folder_name))
+				# test = raw_input('>>>')
 
 			elif 'autoconf' in folder_name:
 				file_config(os.path.join(tar_path, folder_name), init_path)
