@@ -1,5 +1,5 @@
 """
-Django settings for depot project.
+Django settings for django_test project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -10,14 +10,14 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-#BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-BASE_DIR = os.getcwd()
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'q#!99_q5w_0_7f1zp(!m1eez08jk_fz*j=e$(+n0nk7ue1%0a%'
+SECRET_KEY = '2tsfvme^7qo(chr9y22+(v!$#sf-a$rc%a2-p949j*_hsgq=u3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,8 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'depot.depotapp',
-    'django-groundwork',
+    'article',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,9 +48,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'depot.urls'
+ROOT_URLCONF = 'django_test.urls'
 
-WSGI_APPLICATION = 'depot.wsgi.application'
+WSGI_APPLICATION = 'django_test.wsgi.application'
 
 
 # Database
@@ -60,21 +59,17 @@ WSGI_APPLICATION = 'depot.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join('/opt/project/depot', 'db','development.sqlite3'),
-        #'NAME': 'D:\GitHub\stefanbo\development\django_development\depot\depot\db\development.sqlite3',
-        'USER':'',
-        'PASSWORD':'',
-        'HOST':'',
-        'PORT':'',
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+	'NAME': '/root/django-monkey/django_test/django_test/dbmysite.db',
     }
 }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-cn'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -87,3 +82,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+TEMPLATE_DIRS = (
+    #'/root/django-monkey/django_test/template',
+    os.path.join(os.path.dirname(__file__), 'templates'),
+    )
+
+STATICFILES_DIRS = (
+    ('assets', '/root/django-monkey/django_test/static'),
+)
+
