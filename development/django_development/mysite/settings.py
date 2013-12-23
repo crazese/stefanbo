@@ -1,12 +1,13 @@
 # Django settings for mysite project.
-import os, django
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+import os,sys
+SITE_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
+    ('admin','819737724@qq.com'),
 )
 
 MANAGERS = ADMINS
@@ -14,7 +15,10 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'testDB.db3',                      # Or path to database file if using sqlite3.
+        #'NAME': '/Users/apple/project/stefanbo/django_development/sqlite3/django.db3',                      # Or path to database file if using sqlite3.
+
+        #'NAME': 'django.db3',                      # Or path to database file if using sqlite3.
+        'NAME': 'D:\GitHub\stefanbo\development\django_development\sqlite3\django.db3',
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -31,7 +35,7 @@ ALLOWED_HOSTS = []
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'Asia/Chongqing'
+TIME_ZONE = ''
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -85,7 +89,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '^orki(v_qa#1gik36nk7l@k61$#&kd(#pu*mo(+jen78(5541s'
+SECRET_KEY = '%678#b+h&prvl(n6@06rb=601om)+0qwcvy(r&d+6s4rzg!ndy'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -109,11 +113,14 @@ ROOT_URLCONF = 'mysite.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
+import os.path
+
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(BASE_DIR, 'templates'),
+    os.path.join(SITE_ROOT,'templates'),
+    os.path.join(SITE_ROOT,'books/templates'),
 )
 
 INSTALLED_APPS = (
@@ -127,10 +134,17 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'polls',
+    'mysite.books',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
+
+#admin email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST='smtp.qq.com'
+EMAIL_PORT=25
+EMAIL_HOST_USER='819737724@qq.com'
+EMAIL_HOST_PASSWORD='csmonkey037622'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

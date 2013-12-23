@@ -99,7 +99,8 @@ class Install(object):
 				 'libxt-dev',
 				 'libstdc++6',
 				 'libgd2-xpm',
-				 'libgd2-xpm-dev']
+				 'libgd2-xpm-dev',
+				 'libbz2-dev']
 		for soft in soft_list:
 			apt.apt_install(soft)
 
@@ -382,7 +383,7 @@ class Install(object):
 		soft_package =	'php-5.3.10.tar.gz'
 		extend_package = ['APC-3.1.9.tgz',
 						  'bz2-1.0.tgz',
-						  'igbinary-igbinary-1.1.1-28-gc35d48f.zip',
+						  'igbinary-igbinary-c35d48f.zip',
 						  'libmemcached-1.0.10.tar.gz',
 						  'memcached-2.1.0.tgz',
 						  'memcache-2.2.7.tgz'
@@ -658,6 +659,7 @@ class Install(object):
 
 			if 'bz2-1' in folder_name:
 				temp_options = '--with-php-config=%s' % phpconfig_path
+				self.phpize(os.path.join(tar_path, folder_name), phpize_path)
 				file_config(os.path.join(tar_path, folder_name), init_path, temp_options)
 			
 			elif 'libmemc' in folder_name:
@@ -693,7 +695,7 @@ class Install(object):
 				file_config(os.path.join(tar_path, folder_name), init_path)
 
 			file_make(os.path.join(tar_path, folder_name))
-			print "The soft %s install complete!"
+			print "The soft %s install complete!" % soft
 
 			print "I will change to the %s" % tar_path
 			os.chdir(tar_path)
