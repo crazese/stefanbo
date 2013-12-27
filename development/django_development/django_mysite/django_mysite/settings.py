@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'polls',
     'bootstrap_toolkit',
+    'demo_app',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -84,9 +85,39 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+MEDIA_URL = '/media/'
+
 STATIC_URL = '/static/'
 
-TEMPLATE_DIR = [
-        os.path.join(BASE_DIR, 'templates'),
-        os.path.join(BASE_DIR, 'account/templates'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+#     'django.template.loaders.eggs.Loader',
+)
+
+TEMPLATE_DIRS = [
+        os.path.join(BASE_DIR, 'templates')
     ]
+
+BOOTSTRAP_BASE_URL      = os.path.join(STATIC_ROOT, 'bootstrap')
+BOOTSTRAP_CSS_BASE_URL  = os.path.join(BOOTSTRAP_BASE_URL, 'css')
+#BOOTSTRAP_CSS_URL       = BOOTSTRAP_CSS_BASE_URL + 'bootstrap.css'
+BOOTSTRAP_JS_BASE_URL   = os.path.join(BOOTSTRAP_BASE_URL, 'js')
+
+# Enable for single bootstrap.js file
+#BOOTSTRAP_JS_URL        = BOOTSTRAP_JS_BASE_URL + 'bootstrap.js'
+
+STATICFILES_DIRS = (
+    ('b_css', BOOTSTRAP_CSS_BASE_URL),
+    ('b_js',  BOOTSTRAP_JS_BASE_URL),
+    STATIC_URL,
+)
