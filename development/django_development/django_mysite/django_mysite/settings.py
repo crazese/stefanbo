@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'polls',
     'bootstrap_toolkit',
     'demo_app',
+    'blog',
 )
 
 MIDDLEWARE_CLASSES = (

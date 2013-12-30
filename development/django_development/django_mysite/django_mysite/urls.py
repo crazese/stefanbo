@@ -14,4 +14,7 @@ urlpatterns = patterns('',
 
     # bootstrap toolkit
     url(r'^bootstrap/', include('demo_app.urls', namespace="demo_app")),
+
+    # blog
+    url(r'^blog/', include('blog.urls', namespace="blog")),
 )
