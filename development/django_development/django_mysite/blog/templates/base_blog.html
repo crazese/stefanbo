@@ -1,12 +1,18 @@
 <html>
+<head>
+	<title>Blog - {% block title %}{% endblock %}</title>
+
 	<style type="text/css">
-	body { color: #efd; background: #453; padding: 0 5em; margin: 0; }
-	h1 { padding: 2em 1em; background: #675 }
-	h2 { color: #bf8; border-top: 1px dotted #fff; margin-top: 2em }
-	p { margin: 1em 0 }
+	body { margin: 30px; font-family: sans-serif; background: #fff; }
+	h1 { background: #ccf; padding: 20px; }
+	h2 { background: #ddf; padding: 10px 20px; }
+	h3 { background: #eef; padding: 5px 10px; }
+	table { width: 100%; }
+	table th {text-align: left; }
 	</style>
+</head>
 	<body>
-		<h1>django_mysite.example.com</h1>
+		<h1>Blog</h1>
 		{% block content %}
 		{% endblock %}
 	</body>

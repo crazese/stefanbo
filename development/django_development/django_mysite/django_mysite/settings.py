@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -122,3 +123,6 @@ STATICFILES_DIRS = (
     ('b_js',  BOOTSTRAP_JS_BASE_URL),
     STATIC_URL,
 )
+
+
+

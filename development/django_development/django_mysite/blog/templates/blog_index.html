@@ -1,0 +1,32 @@
+{% extends "base_blog.html" %}
+
+{% block title %} Home {% endblock %}
+{% block content %}
+
+<h2>Wecome to the Blog</h2>
+<p>dddddddddddddddddddddddddddddddddddd</p>
+
+<h3>Showcase</h3>
+<table>
+	<tr>
+		{% if latest_item_list %}
+		{% for item in latest_item_list %}
+		<td>
+			<b>{{ item.name }}</b><br />
+			{% if item.photo_set.count %}
+				<img src="{{ item.photo_set.get_thumb_url }}" />
+			{% else %}
+				<span>No Photos (yet)</span>
+			{% endif %}
+			</a>
+		</td>
+		{% endfor %}
+		{% else %}
+		<p>No item_lists !</p>
+		{% endif %}
+	</tr>
+</table>
+
+<p><a href="http://www.baidu.com">View the full list &raquo;</a></p>
+
+{% endblock %}
