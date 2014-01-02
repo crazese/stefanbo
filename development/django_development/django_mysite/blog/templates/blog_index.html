@@ -2,10 +2,12 @@
 
 {% block title %} Home {% endblock %}
 {% block content %}
-
+{% load thumbnail %}
 <h2>Wecome to the Blog</h2>
 <p>dddddddddddddddddddddddddddddddddddd</p>
-
+{% thumbnail Photo.image "200" as im %}
+<img src="{{ im.url }}" alt="">
+{% endthumbnail %}
 <h3>Showcase</h3>
 <table>
 	<tr>
@@ -14,7 +16,7 @@
 		<td>
 			<b>{{ item.name }}</b><br />
 			{% if item.photo_set.count %}
-				<img src="{{ item.photo_set.get_thumb_url }}" />
+				<img src="{{ photo.image.avatar.url }}" alt="" />
 			{% else %}
 				<span>No Photos (yet)</span>
 			{% endif %}
@@ -26,6 +28,7 @@
 		{% endif %}
 	</tr>
 </table>
+
 
 <p><a href="http://www.baidu.com">View the full list &raquo;</a></p>
 

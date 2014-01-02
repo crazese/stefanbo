@@ -17,3 +17,4 @@ urlpatterns += patterns('',
 	# test 
 	url(r'^item/$', views.item_test, name='item_test'),
 )
+

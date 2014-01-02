@@ -1,6 +1,5 @@
 from django.db import models
-from blog.thumbs import ThumbnailImageField
-
+from sorl.thumbnail import ImageField
 ############################################################
 
 class BlogPost(models.Model):
@@ -27,16 +26,18 @@ class Item(models.Model):
 class Photo(models.Model):
 	item = models.ForeignKey(Item)
 	title = models.CharField(max_length=100)
-	image = ThumbnailImageField(upload_to='photos')
+	image = ImageField(upload_to='photos')
 	caption = models.CharField(max_length=250, blank=True)
 
-	class Meta:
-		ordering = ['title']
-
 	def __unicode__(self):
-		return self.title
+		return self.image
+	#class Meta:
+	#	ordering = ['title']
 
-	@models.permalink
-	def get_absolute_url(self):
-		return ('photo_detail', None, {'object_id': self.id})
+	#def __unicode__(self):
+	#	return self.title
+
+	#@models.permalink
+	#def get_absolute_url(self):
+	#	return ('photo_detail', None, {'object_id': self.id})
 

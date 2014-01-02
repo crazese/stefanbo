@@ -41,6 +41,9 @@ INSTALLED_APPS = (
     'bootstrap_toolkit',
     'demo_app',
     'blog',
+    'sorl.thumbnail',
+    #'easy_thumbnails',
+    'debug_toolbar',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -121,8 +124,47 @@ BOOTSTRAP_JS_BASE_URL   = os.path.join(BOOTSTRAP_BASE_URL, 'js')
 STATICFILES_DIRS = (
     ('b_css', BOOTSTRAP_CSS_BASE_URL),
     ('b_js',  BOOTSTRAP_JS_BASE_URL),
-    STATIC_URL,
 )
 
+#THUMBNAIL_ALIASES = {
+#    '': {
+#        'avatar': {'size': (125, 125), 'crop': True},
+#    },
+#}#
 
+#THUMBNAIL_DEBUG = True
+#THUMBNAIL_PRESERVE_EXTENSIONS = ('png','jpeg',)
+
+
+#if DEBUG:
+#    INTERNAL_IPS = ('192.168.2.195',)
+#    MIDDLEWARE_CLASSES += (
+#        'debug_toolbar.middleware.DebugToolbarMiddleware',
+#    )#
+
+#    INSTALLED_APPS += (
+#        'debug_toolbar',
+#    )#
+
+#    DEBUG_TOOLBAR_PANELS = (
+#        'debug_toolbar.panels.versions.VersionsPanel',
+#        'debug_toolbar.panels.timer.TimerPanel',
+#        'debug_toolbar.panels.settings.SettingsPanel',
+#        'debug_toolbar.panels.headers.HeadersPanel',
+#        'debug_toolbar.panels.request.RequestPanel',
+#        'debug_toolbar.panels.sql.SQLPanel',
+#        'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+#        'debug_toolbar.panels.templates.TemplatesPanel',
+#        'debug_toolbar.panels.cache.CachePanel',
+#        'debug_toolbar.panels.signals.SignalsPanel',
+#        'debug_toolbar.panels.logging.LoggingPanel',
+#        'debug_toolbar.panels.redirects.RedirectsPanel',#
+
+#    )#
+
+#    DEBUG_TOOLBAR_CONFIG = {
+#        'INTERCEPT_REDIRECTS': False,
+#    }
+
+INTERNAL_IPS = ('192.168.2.195',)
 

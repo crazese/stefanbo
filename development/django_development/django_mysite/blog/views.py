@@ -24,7 +24,9 @@ class IndexView(generic.ListView):
 
 def blog_index(request):
 	latest_item_list = Item.objects.all()
-	context = {'latest_item_list': latest_item_list}
+	photo_item_list = Photo.objects.all()
+	context = {'latest_item_list': latest_item_list, 
+			   'photo_item_list':  photo_item_list}
 	return render(request, 'blog_index.html', context)
 
 
@@ -34,5 +36,5 @@ class testView(generic.ListView):
 
 def item_test(request):
 	test_list = Item.objects.all()
-	context = {'item_lists': test_list }
+	context = {'item_lists': test_list}
 	return render(request, 'test.html', context)
