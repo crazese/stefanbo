@@ -2,12 +2,9 @@
 
 {% block title %} Home {% endblock %}
 {% block content %}
-{% load thumbnail %}
 <h2>Wecome to the Blog</h2>
 <p>dddddddddddddddddddddddddddddddddddd</p>
-{% thumbnail Photo.image "200" as im %}
-<img src="{{ im.url }}" alt="">
-{% endthumbnail %}
+{% load thumbnail %}
 <h3>Showcase</h3>
 <table>
 	<tr>
@@ -16,7 +13,7 @@
 		<td>
 			<b>{{ item.name }}</b><br />
 			{% if item.photo_set.count %}
-				<img src="{{ photo.image.avatar.url }}" alt="" />
+                            <img src="{{ item.photo_set.all.0.image.avatar.url }}" >
 			{% else %}
 				<span>No Photos (yet)</span>
 			{% endif %}

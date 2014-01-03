@@ -4,6 +4,7 @@ from blog.models import BlogPost, Item, Photo
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
+from easy_thumbnails.files import get_thumbnailer
 
 def archive(request):
 	posts = BlogPost.objects.all()
@@ -15,7 +16,7 @@ def archive(request):
 
 class IndexView(generic.ListView):
 	template_name = 'blog_index.html'
-	context_object_name = 'latest_item_list'
+	model = Item
 
 	def get_queryset(self):
 		"""Return the last five published Items."""
@@ -24,9 +25,9 @@ class IndexView(generic.ListView):
 
 def blog_index(request):
 	latest_item_list = Item.objects.all()
-	photo_item_list = Photo.objects.all()
-	context = {'latest_item_list': latest_item_list, 
-			   'photo_item_list':  photo_item_list}
+	latest_photo_list = Photo.objects.all()
+	context = {'latest_item_list': latest_item_list,
+			   'latest_photo_list': latest_photo_list}
 	return render(request, 'blog_index.html', context)
 
 

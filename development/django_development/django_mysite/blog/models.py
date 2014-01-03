@@ -1,5 +1,9 @@
 from django.db import models
-from sorl.thumbnail import ImageField
+# import easy_thumbnail
+from easy_thumbnails.fields import ThumbnailerImageField
+
+
+
 ############################################################
 
 class BlogPost(models.Model):
@@ -26,11 +30,11 @@ class Item(models.Model):
 class Photo(models.Model):
 	item = models.ForeignKey(Item)
 	title = models.CharField(max_length=100)
-	image = ImageField(upload_to='photos')
+	image = ThumbnailerImageField(upload_to='photos', blank=True)
 	caption = models.CharField(max_length=250, blank=True)
 
 	def __unicode__(self):
-		return self.image
+		return self.title
 	#class Meta:
 	#	ordering = ['title']
 

@@ -9,7 +9,7 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += patterns('',
-	url(r'^$', views.IndexView.as_view(), name='blog_index'),
+	url(r'^$', views.blog_index, name='blog_index'),
 	#url(r'^item/(?P<pk>\d+)$', views.ItemListView.as_view(), name='item_list'),
 	#url(r'^item/(?P<pk>\d+)$', views.ItemDetailView.as_view(), name='item_detail'), 
 	#url(r'^photos/(?P<pk>\d+)/$', views.PhotoDetailView.as_view(), name='photo_detail'),
