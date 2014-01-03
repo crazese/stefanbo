@@ -125,6 +125,7 @@ BOOTSTRAP_JS_BASE_URL   = os.path.join(BOOTSTRAP_BASE_URL, 'js')
 STATICFILES_DIRS = (
     ('b_css', BOOTSTRAP_CSS_BASE_URL),
     ('b_js',  BOOTSTRAP_JS_BASE_URL),
+    ('chart_js', os.path.join(STATIC_ROOT, 'js'))
 )
 
 THUMBNAIL_ALIASES = {
