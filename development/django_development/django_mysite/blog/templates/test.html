@@ -78,16 +78,40 @@
 
     {% block content %}
 	{% if item_lists %}
-	<ul>
-		{% for poll in item_lists %}
-			<li>{{ poll.name }}</li>
-			<li>{{ poll.description }}</li>
-		{% endfor %}
-	</ul>
+
+                <table class="table table-bordered" contenteditable="true">
+                  <thead>
+                    <tr>
+                      <th>name</th>
+                      <th>description</th>
+		      <th>chart</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for poll in item_lists %}
+                    <tr class="info">
+						<td>{{ poll.name }}</td>
+						<td>{{ poll.description }}</td>
+						<td><img src="http://192.168.1.203:82/chart2.php?graphid=519&period=3600&stime=20150106104236&updateProfile=1&profileIdx=web.screens&profileIdx2=519&sid=e9383121dda6defd&width=400&height=180&curtime=1388979966967" alt=""></td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
 	{% else %}
 	<p>No items are available.</p>
 	{% endif %}
     {% endblock %}
+
+<article id="lineChart" class="hidden">
+			<div class="half">
+				<h2>曲线图（Line charts）</h2>
+				<p>Line graphs are probably the most widely used graph for showing trends.</p>
+				<p>Chart.js has a ton of customisation features for line graphs, along with support for multiple datasets to be plotted on one chart.</p>
+			</div>
+			<div class="canvasWrapper">
+				<canvas id="canvasbarchart" width="449" height="300"></canvas>		
+			</div>
+		</article>
 
 	<h2>Bar Chart</h2>
 	<canvas id="canvasbarchart" height="450" width="600"></canvas>
