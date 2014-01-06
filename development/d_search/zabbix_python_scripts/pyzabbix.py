@@ -4,7 +4,6 @@ import json
 
 
 class _NullHandler(logging.Handler):
-
     def emit(self, record):
         pass
 
@@ -13,7 +12,6 @@ logger.addHandler(_NullHandler())
 
 
 class ZabbixAPIException(Exception):
-
     """ generic zabbix api exception
     code list:
          -32602 - Invalid params (eg already exists)
@@ -23,7 +21,6 @@ class ZabbixAPIException(Exception):
 
 
 class ZabbixAPI(object):
-
     def __init__(self,
                  server='http://localhost/zabbix',
                  session=None,
@@ -53,35 +50,15 @@ class ZabbixAPI(object):
         self.url = server + '/api_jsonrpc.php'
         logger.info("JSON-RPC Server Endpoint: %s", self.url)
 
-    def login(self, user, password):
-        user_info = {'user': user,
-                     'password': password}
-        obj = self.json_obj('user.login', user_info)
-        content = self.postRequest(obj)
-        try:
-            self.auth = content['result']
-        except KeyError, e:
-            e = content['error']['data']
-            print e
+    def login(self, user='', password=''):
+        """Convenience method for calling user.authenticate and storing the resulting auth token
+           for further commands.
+           If use_authenticate is set, it uses the older (Zabbix 1.8) authentication command"""
 
-    def json_obj(self, method, params):
-        obj = {'jsonrpc': '2.0',
-               'method': method,
-               'params': params,
-               'auth': self.auth,
-               'id': self.id}
-        return json.dumps(obj)
-
-    def postRequest(self, json_obj):
-        # print 'Post: %s' % json_obj
-        headers = {'Content-Type': 'application/json-rpc',
-                   'User-Agent': 'python/zabbix_api'}
-        req = urllib2.Request(self.url, json_obj, headers)
-        opener = urllib2.urlopen(req)
-        content = json.loads(opener.read())
-        self.id += 1
-        # print 'Receive: %s' % content
-        return content
+        if self.use_authenticate:
+            self.auth = self.user.authenticate(user=user, password=password)
+        else:
+            self.auth = self.user.login(user=user, password=password)
 
     def confimport(self, format='', source='', rules=''):
         """Alias for configuration.import because it clashes with
@@ -147,7 +124,6 @@ class ZabbixAPI(object):
 
 
 class ZabbixAPIObjectClass(object):
-
     def __init__(self, name, parent):
         self.name = name
         self.parent = parent
