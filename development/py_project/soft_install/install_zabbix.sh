@@ -19,7 +19,7 @@ cd /opt/lnmp/
 tar -zxvf zabbix-2.2.1.tar.gz
 cd zabbix-2.2.1
 ./configure \
---prefix=/opt/lnmp/zabbix \
+--prefix=/opt/lnmp/zabbix_pptv \
 --enable-server \
 --enable-agent \
 --with-mysql \
