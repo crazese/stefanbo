@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+{% load bootstrap_toolkit %}
+{% load url from future %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>django-bootstrap-toolkit = Bootstrap support for Django</title>
+    <meta name="description" content="">
+    <meta name="author" content="Dylan Verheul">
+    <link href="{{ STATIC_URL }}b_css/bootstrap.bak.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+        }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    {% block extra_head %}{% endblock %}
+	<script src="{{ STATIC_URL }}chart_js/Chart.js"></script>
+	<meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
+	<style>
+		canvas{
+		}
+	</style>
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="/">django-bootstrap-toolkit</a>
+            <div class="nav-collapse collapse">
+            <ul class="nav">
+                <li><a href="{% url 'demo_app:home' %}" class="">Home</a></li>
+                <li><a href="{% url 'demo_app:demo_form' %}">Form</a></li>
+                <li><a href="{% url 'demo_app:demo_formset' %}">Formset</a></li>
+                <li><a href="{% url 'demo_app:demo_tabs' %}">Tabs &amp; Pills</a></li>
+                <li><a href="{% url 'demo_app:demo_pagination' %}">Pagination</a></li>
+                <li><a href="{% url 'demo_app:buttons' %}">Buttons</a></li>
+                <li><a href="{% url 'demo_app:contact' %}">Contact</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Forms<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'demo_app:demo_form' %}?layout=vertical">Vertical</a></li>
+                        <li><a href="{% url 'demo_app:demo_form' %}?layout=horizontal">Horizontal</a></li>
+                        <li><a href="{% url 'demo_app:demo_form_inline' %}?layout=inline">Inline</a></li>
+                        <li><a href="{% url 'demo_app:demo_form_inline' %}?layout=search">Search</a></li>
+                        <li><a href="{% url 'demo_app:demo_form_with_template' %}?layout=horizontal">Using template</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+
+
+    <p><hr></p>
+
+    {% block content %}
+	{% if item_lists %}
+
+                <table class="table table-bordered" contenteditable="true">
+                  <thead>
+                    <tr>
+                      <th>name</th>
+                      <th>description</th>
+		      <th>chart</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for poll in item_lists %}
+                    <tr class="info">
+						<td>{{ poll.name }}</td>
+						<td>{{ poll.description }}</td>
+						<td><img src="http://192.168.1.203:82/chart2.php?graphid=519&period=3600&stime=20150106104236&updateProfile=1&profileIdx=web.screens&profileIdx2=519&sid=e9383121dda6defd&width=400&height=180&curtime=1388979966967" alt=""></td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+	{% else %}
+	<p>No items are available.</p>
+	{% endif %}
+    {% endblock %}
+
+<article id="lineChart" class="hidden">
+			<div class="half">
+				<h2>曲线图（Line charts）</h2>
+				<p>Line graphs are probably the most widely used graph for showing trends.</p>
+				<p>Chart.js has a ton of customisation features for line graphs, along with support for multiple datasets to be plotted on one chart.</p>
+			</div>
+			<div class="canvasWrapper">
+				<canvas id="canvasbarchart" width="449" height="300"></canvas>		
+			</div>
+		</article>
+
+	<h2>Bar Chart</h2>
+	<canvas id="canvasbarchart" height="450" width="600"></canvas>
+
+
+	<script>
+
+		var barChartData = {
+			labels : ["January","February","March","April","May","June","July"],
+			datasets : [
+				{
+					fillColor : "rgba(220,220,220,0.5)",
+					strokeColor : "rgba(220,220,220,1)",
+					data : [65,59,90,81,56,55,40]
+				},
+				{
+					fillColor : "rgba(151,187,205,0.5)",
+					strokeColor : "rgba(151,187,205,1)",
+					data : [28,48,40,19,96,27,100]
+				}
+			]
+			
+		}
+
+	var myLine = new Chart(document.getElementById("canvasbarchart").getContext("2d")).Bar(barChartData);
+	
+	</script>
+
+	<h2>Doughnut Chart</h2>
+
+	<canvas id="canvasdoughnutchart" height="450" width="450"></canvas>
+
+
+	<script>
+
+		var doughnutData = [
+				{
+					value: 30,
+					color:"#F7464A"
+				},
+				{
+					value : 50,
+					color : "#46BFBD"
+				},
+				{
+					value : 100,
+					color : "#FDB45C"
+				},
+				{
+					value : 40,
+					color : "#949FB1"
+				},
+				{
+					value : 120,
+					color : "#4D5360"
+				}
+			
+			];
+
+	var myDoughnut = new Chart(document.getElementById("canvasdoughnutchart").getContext("2d")).Doughnut(doughnutData);
+	
+	</script>
+
+	<h2>Line Chart</h2>
+
+	<canvas id="canvaslinechart" height="450" width="600"></canvas>
+
+
+	<script>
+
+		var lineChartData = {
+			labels : ["January","February","March","April","May","June","July"],
+			datasets : [
+				{
+					fillColor : "rgba(220,220,220,0.5)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					data : [65,59,90,81,56,55,40]
+				},
+				{
+					fillColor : "rgba(151,187,205,0.5)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					data : [28,48,40,19,96,27,100]
+				},
+				{
+					fillColor : "rgba(151,187,205,0.5)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					data : [Math.random()*100,Math.random()*100,Math.random()*100,Math.random()*100,Math.random()*100,Math.random()*100,Math.random()*100]
+				}
+			]
+			
+		}
+
+	var myLine = new Chart(document.getElementById("canvaslinechart").getContext("2d")).Line(lineChartData);
+	
+	</script>
+
+	<h2>Pie Chart</h2>
+
+	<canvas id="canvaspiechart" height="450" width="450"></canvas>
+
+
+	<script>
+
+		var pieData = [
+				{
+					value: 30,
+					color:"#F38630"
+				},
+				{
+					value : 50,
+					color : "#E0E4CC"
+				},
+				{
+					value : 100,
+					color : "#69D2E7"
+				}
+			
+			];
+
+	var myPie = new Chart(document.getElementById("canvaspiechart").getContext("2d")).Pie(pieData);
+	
+	</script>
+
+	<h2>Polar Area Chart</h2>
+
+	<canvas id="canvaspachart" height="400" width="400"></canvas>
+
+
+	<script>
+	var chartData = [
+			{
+				value : Math.random(),
+				color: "#D97041"
+			},
+			{
+				value : Math.random(),
+				color: "#C7604C"
+			},
+			{
+				value : Math.random(),
+				color: "#21323D"
+			},
+			{
+				value : Math.random(),
+				color: "#9D9B7F"
+			},
+			{
+				value : Math.random(),
+				color: "#7D4F6D"
+			},
+			{
+				value : Math.random(),
+				color: "#584A5E"
+			}
+		];
+	var myPolarArea = new Chart(document.getElementById("canvaspachart").getContext("2d")).PolarArea(chartData);
+	</script>
+
+	<h2>Radar Chart</h2>
+
+	<canvas id="canvasradarchart" height="450" width="450"></canvas>
+
+
+	<script>
+
+		var radarChartData = {
+			labels : ["Eating","Drinking","Sleeping","Designing","Coding","Partying","Running"],
+			datasets : [
+				{
+					fillColor : "rgba(220,220,220,0.5)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					data : [65,59,90,81,56,55,40]
+				},
+				{
+					fillColor : "rgba(151,187,205,0.5)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					data : [28,48,40,19,96,27,100]
+				}
+			]
+			
+		}
+
+	var myRadar = new Chart(document.getElementById("canvasradarchart").getContext("2d")).Radar(radarChartData,{scaleShowLabels : false, pointLabelFontSize : 10});
+	
+	</script>
+
+	<h2>Doughnut Chart</h2>
+
+	<div style="width:600px;height:600px;">
+			<canvas id="doughnut" height="300" width="200"></canvas>
+			<canvas id="line" height="300" width="200"></canvas>
+			<canvas id="polarArea" height="300" width="200"></canvas>
+			<canvas id="bar" height="300" width="200"></canvas>
+			<canvas id="pie" height="300" width="200"></canvas>
+			<canvas id="radar" height="300" width="200"></canvas>
+		</div>
+
+
+	<script>
+
+		var doughnutData = [
+				{
+					value: 30,
+					color:"#F7464A"
+				},
+				{
+					value : 50,
+					color : "#46BFBD"
+				},
+				{
+					value : 100,
+					color : "#FDB45C"
+				},
+				{
+					value : 40,
+					color : "#949FB1"
+				},
+				{
+					value : 120,
+					color : "#4D5360"
+				}
+			
+			];
+		var lineChartData = {
+			labels : ["","","","","","",""],
+			datasets : [
+				{
+					fillColor : "rgba(220,220,220,0.5)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					data : [65,59,90,81,56,55,40]
+				},
+				{
+					fillColor : "rgba(151,187,205,0.5)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					data : [28,48,40,19,96,27,100]
+				}
+			]
+			
+		};
+		var pieData = [
+				{
+					value: 30,
+					color:"#F38630"
+				},
+				{
+					value : 50,
+					color : "#E0E4CC"
+				},
+				{
+					value : 100,
+					color : "#69D2E7"
+				}
+			
+			];
+		var barChartData = {
+			labels : ["January","February","March","April","May","June","July"],
+			datasets : [
+				{
+					fillColor : "rgba(220,220,220,0.5)",
+					strokeColor : "rgba(220,220,220,1)",
+					data : [65,59,90,81,56,55,40]
+				},
+				{
+					fillColor : "rgba(151,187,205,0.5)",
+					strokeColor : "rgba(151,187,205,1)",
+					data : [28,48,40,19,96,27,100]
+				}
+			]
+			
+		};
+	var chartData = [
+			{
+				value : Math.random(),
+				color: "#D97041"
+			},
+			{
+				value : Math.random(),
+				color: "#C7604C"
+			},
+			{
+				value : Math.random(),
+				color: "#21323D"
+			},
+			{
+				value : Math.random(),
+				color: "#9D9B7F"
+			},
+			{
+				value : Math.random(),
+				color: "#7D4F6D"
+			},
+			{
+				value : Math.random(),
+				color: "#584A5E"
+			}
+		];
+		var radarChartData = {
+			labels : ["","","","","","",""],
+			datasets : [
+				{
+					fillColor : "rgba(220,220,220,0.5)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					data : [65,59,90,81,56,55,40]
+				},
+				{
+					fillColor : "rgba(151,187,205,0.5)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					data : [28,48,40,19,96,27,100]
+				}
+			]
+			
+		};
+	new Chart(document.getElementById("doughnut").getContext("2d")).Doughnut(doughnutData);
+	new Chart(document.getElementById("line").getContext("2d")).Line(lineChartData);
+	new Chart(document.getElementById("radar").getContext("2d")).Radar(radarChartData);
+	new Chart(document.getElementById("polarArea").getContext("2d")).PolarArea(chartData);
+	new Chart(document.getElementById("bar").getContext("2d")).Bar(barChartData);
+	new Chart(document.getElementById("pie").getContext("2d")).Pie(pieData);
+	
+	</script>
+
+    
+    <footer class="row">
+        <div class="span6">
+            <p>This is <a href="https://github.com/dyve/django-bootstrap-toolkit">django-bootstrap-toolkit</a></p>
+        </div>
+        <div class="span6" style="text-align:right">
+            <p>
+                &copy; <a href="http://twitter.com/dyve">Dylan Verheul</a> 2012
+                |
+                <a href="https://raw.github.com/dyve/django-bootstrap-toolkit/master/LICENSE">license</a>
+            </p>
+        </div>
+    </footer>
+
+</div> <!-- container -->
+
+    <script src="{{ STATIC_URL }}b_js/jquery.js"></script>
+    <script src="{{ STATIC_URL }}b_js/bootstrap-transition.js"></script>
+    <script src="{{ STATIC_URL }}b_js/bootstrap-alert.js"></script>
+    <script src="{{ STATIC_URL }}b_js/bootstrap-modal.js"></script>
+    <script src="{{ STATIC_URL }}b_js/bootstrap-dropdown.js"></script>
+    <script src="{{ STATIC_URL }}b_js/bootstrap-scrollspy.js"></script>
+    <script src="{{ STATIC_URL }}b_js/bootstrap-tab.js"></script>
+    <script src="{{ STATIC_URL }}b_js/bootstrap-tooltip.js"></script>
+    <script src="{{ STATIC_URL }}b_js/bootstrap-popover.js"></script>
+    <script src="{{ STATIC_URL }}b_js/bootstrap-button.js"></script>
+    <script src="{{ STATIC_URL }}b_js/bootstrap-collapse.js"></script>
+    <script src="{{ STATIC_URL }}b_js/bootstrap-carousel.js"></script>
+    <script src="{{ STATIC_URL }}b_js/bootstrap-typeahead.js"></script>
+
+</body>
+</html>
+
+

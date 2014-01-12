@@ -1,0 +1,343 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>ubuntu-zabbix: Custom graphs [refreshed every 30 sec]</title>
+	<meta name="Author" content="Zabbix SIA" />
+	<meta charset="utf-8" />
+	<link rel="shortcut icon" href="images/general/zabbix.ico" />
+	<link rel="stylesheet" type="text/css" href="styles/default.css" />
+	<link rel="stylesheet" type="text/css" href="styles/color.css" />
+	<link rel="stylesheet" type="text/css" href="styles/icon.css" />
+	<link rel="stylesheet" type="text/css" href="styles/blocks.css" />
+	<link rel="stylesheet" type="text/css" href="styles/pages.css" />
+	<link rel="stylesheet" type="text/css" href="styles/themes/darkorange/main.css" />
+	<style type="text/css">.disaster { background: #FF3838 !important; }
+.high { background: #FF9999 !important; }
+.average { background: #FFB689 !important; }
+.warning { background: #FFF6A5 !important; }
+.information { background: #D6F6FF !important; }
+.not_classified { background: #DBDBDB !important; }</style>
+	<script>var PHP_TZ_OFFSET = 28800;</script>
+	<script src="js/browsers.js"></script>
+	<script src="jsLoader.php?ver=2.2.1&amp;lang=en_GB&showGuiMessaging=1"></script>
+	<script src="jsLoader.php?ver=2.2.1&amp;lang=en_GB&showGuiMessaging=1&amp;files[]=class.calendar.js&amp;files[]=gtlc.js&amp;files[]=flickerfreescreen.js&amp;files[]=servercheck.js"></script>
+</head>
+<body class="darkorange">
+	<div id="message-global-wrap">
+		<div id="message-global"></div>
+	</div>
+	<table class="maxwidth page_header" cellspacing="0" cellpadding="5">
+		<tr>
+			<td class="page_header_l">
+				<a class="image" href="http://www.zabbix.com/" target="_blank">
+					<div class="zabbix_logo">&nbsp;</div>
+				</a>
+			</td>
+			<td class="maxwidth page_header_r">
+				<a class="small_font" href="http://www.zabbix.com/documentation/" target="_blank">Help</a>
+				|
+				<a class="small_font" href="http://www.zabbix.com/support.php" target="_blank">Get support</a>
+				|
+				<a class="small_font print-link" href="">Print</a>
+				|
+				<a class="small_font" href="profile.php">Profile</a>
+				|
+				<a class="small_font" href="index.php?reconnect=1&sid=e9383121dda6defd">Logout</a>
+			</td>
+		</tr>
+	</table>
+	<script type="text/javascript">// <![CDATA[
+MMenu.def_label = 'view'
+// ]]></script>
+	<div class="textwhite" id="mmenu">
+		<table class="maxwidth">
+			<tr>
+				<td>
+					<table class="menu pointer" cellspacing="0" cellpadding="5">
+						<tr>
+							<td class="active" id="view" onclick="javascript: redirect('dashboard.php');" onmouseover="javascript: MMenu.mouseOver('view');" onmouseout="javascript: MMenu.mouseOut();">Monitoring</td>
+							<td class="horizontal_menu_n" id="cm" onclick="javascript: redirect('hostinventoriesoverview.php');" onmouseover="javascript: MMenu.mouseOver('cm');" onmouseout="javascript: MMenu.mouseOut();">Inventory</td>
+							<td class="horizontal_menu_n" id="reports" onclick="javascript: redirect('report1.php');" onmouseover="javascript: MMenu.mouseOver('reports');" onmouseout="javascript: MMenu.mouseOut();">Reports</td>
+							<td class="horizontal_menu_n" id="config" onclick="javascript: redirect('hostgroups.php');" onmouseover="javascript: MMenu.mouseOver('config');" onmouseout="javascript: MMenu.mouseOut();">Configuration</td>
+							<td class="horizontal_menu_n" id="admin" onclick="javascript: redirect('proxies.php');" onmouseover="javascript: MMenu.mouseOver('admin');" onmouseout="javascript: MMenu.mouseOut();">Administration</td>
+						</tr>
+					</table>
+				</td>
+				<td class="right" style="line-height: 1.8em;">
+					<table style="width: 100%;">
+						<tr>
+							<td style="padding-right: 5px;">
+								<span class="textcolorstyles">ubuntu-zabbix</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<table class="sub_menu maxwidth ui-widget-header">
+			<tr>
+				<td>
+					<div id="sub_view" onmouseover="javascript: MMenu.submenu_mouseOver();" onmouseout="javascript: MMenu.mouseOut();" style="display: block;">
+						<a class="highlight nowrap" href="dashboard.php?ddreset=1&sid=e9383121dda6defd">Dashboard</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="overview.php?ddreset=1&sid=e9383121dda6defd">Overview</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="httpmon.php?ddreset=1&sid=e9383121dda6defd">Web</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="latest.php?ddreset=1&sid=e9383121dda6defd">Latest data</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="tr_status.php?ddreset=1&sid=e9383121dda6defd">Triggers</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="events.php?ddreset=1&sid=e9383121dda6defd">Events</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<span class="active nowrap">
+							<a class="highlight nowrap" href="charts.php?ddreset=1&sid=e9383121dda6defd">Graphs</a>
+						</span>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="screens.php?ddreset=1&sid=e9383121dda6defd">Screens</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="maps.php?ddreset=1&sid=e9383121dda6defd">Maps</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="discovery.php?ddreset=1&sid=e9383121dda6defd">Discovery</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="srv_status.php?ddreset=1&sid=e9383121dda6defd">IT services</a>
+					</div>
+					<div id="sub_cm" onmouseover="javascript: MMenu.submenu_mouseOver();" onmouseout="javascript: MMenu.mouseOut();" style="display: none;">
+						<a class="highlight nowrap" href="hostinventoriesoverview.php?ddreset=1&sid=e9383121dda6defd">Overview</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="hostinventories.php?ddreset=1&sid=e9383121dda6defd">Hosts</a>
+					</div>
+					<div id="sub_reports" onmouseover="javascript: MMenu.submenu_mouseOver();" onmouseout="javascript: MMenu.mouseOut();" style="display: none;">
+						<a class="highlight nowrap" href="report1.php?ddreset=1&sid=e9383121dda6defd">Status of Zabbix</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="report2.php?ddreset=1&sid=e9383121dda6defd">Availability report</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="report5.php?ddreset=1&sid=e9383121dda6defd">Triggers top 100</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="report6.php?ddreset=1&sid=e9383121dda6defd">Bar reports</a>
+					</div>
+					<div id="sub_config" onmouseover="javascript: MMenu.submenu_mouseOver();" onmouseout="javascript: MMenu.mouseOut();" style="display: none;">
+						<a class="highlight nowrap" href="hostgroups.php?ddreset=1&sid=e9383121dda6defd">Host groups</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="templates.php?ddreset=1&sid=e9383121dda6defd">Templates</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="hosts.php?ddreset=1&sid=e9383121dda6defd">Hosts</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="maintenance.php?ddreset=1&sid=e9383121dda6defd">Maintenance</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="actionconf.php?ddreset=1&sid=e9383121dda6defd">Actions</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="screenconf.php?ddreset=1&sid=e9383121dda6defd">Screens</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="slideconf.php?ddreset=1&sid=e9383121dda6defd">Slide shows</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="sysmaps.php?ddreset=1&sid=e9383121dda6defd">Maps</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="discoveryconf.php?ddreset=1&sid=e9383121dda6defd">Discovery</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="services.php?ddreset=1&sid=e9383121dda6defd">IT services</a>
+					</div>
+					<div id="sub_admin" onmouseover="javascript: MMenu.submenu_mouseOver();" onmouseout="javascript: MMenu.mouseOut();" style="display: none;">
+						<a class="highlight nowrap" href="adm.gui.php?ddreset=1&sid=e9383121dda6defd">General</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="proxies.php?ddreset=1&sid=e9383121dda6defd">DM</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="authentication.php?ddreset=1&sid=e9383121dda6defd">Authentication</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="usergrps.php?ddreset=1&sid=e9383121dda6defd">Users</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="media_types.php?ddreset=1&sid=e9383121dda6defd">Media types</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="scripts.php?ddreset=1&sid=e9383121dda6defd">Scripts</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="auditlogs.php?ddreset=1&sid=e9383121dda6defd">Audit</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="queue.php?ddreset=1&sid=e9383121dda6defd">Queue</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="report4.php?ddreset=1&sid=e9383121dda6defd">Notifications</a>
+						<span class="divider">&nbsp; | &nbsp;</span>
+						<a class="highlight nowrap" href="setup.php?ddreset=1&sid=e9383121dda6defd">Installation</a>
+					</div>
+					<div id="sub_empty" style="display: none;">&nbsp;</div>
+				</td>
+				<td>
+					<div class="zbx_search" id="zbx_search">
+						<form method="get" action="search.php" accept-charset="utf-8">
+							<input type="hidden" id="sid" name="sid" value="e9383121dda6defd" />
+							<input type="hidden" id="form_refresh" name="form_refresh" value="1" />
+							<input class="input text search" type="text" id="search" name="search" size="20" maxlength="255" autocomplete="off" />
+							<input class="input input button ui-button ui-widget ui-state-default ui-corner-all" type="submit" id="searchbttn" name="searchbttn" value="Search" />
+						</form>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<table class="history left">
+		<tr>
+			<td class="caption">History:</td>
+			<td>
+				&nbsp;
+				<a class="history" href="profile.php?sid=e9383121dda6defd">User profile</a>
+				&nbsp;
+				<span class="delimiter">&raquo;</span>
+				&nbsp;
+				<a class="history" href="charts.php?sid=e9383121dda6defd">Custom graphs</a>
+				&nbsp;
+				<span class="delimiter">&raquo;</span>
+				&nbsp;
+				<a class="history" href="profile.php?sid=e9383121dda6defd">User profile</a>
+				&nbsp;
+				<span class="delimiter">&raquo;</span>
+				&nbsp;
+				<a class="history" href="charts.php?sid=e9383121dda6defd">Custom graphs</a>
+				&nbsp;
+				<span class="delimiter">&raquo;</span>
+				&nbsp;
+				<a class="history" href="profile.php?sid=e9383121dda6defd">User profile</a>
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+	<script type="text/javascript">// <![CDATA[
+timeControl.addObject("graph_full", {"period":'3600',"stime":'20140106102858',"stimeNow":'20150106102858',"starttime":'20140106100000',"usertime":'20140106112858',"isNow":'1'}, {"id":'graph_full',"containerid":'graph_container',"src":'chart2.php?graphid=519&period=3600&stime=20150106102858&updateProfile=1&profileIdx=web.screens&profileIdx2=519',"objDims":{"shiftYtop":35,"yaxis":2,"graphtype":'0',"graphHeight":'200',"shiftXleft":85,"shiftXright":85},"loadSBox":1,"loadImage":1,"dynamic":1,"periodFixed":'1',"sliderMaximumTimePeriod":63072000});
+// ]]></script>
+	<div>
+		<div>
+			<table class="ui-widget-header ui-corner-all header maxwidth" cellspacing="0" cellpadding="1">
+				<tr>
+					<td class="header_l left">GRAPHS</td>
+					<td class="header_r right">
+						<div class="floatright">
+							<span class="fullscreen menu_icon shadow" title="Fullscreen" onclick="javascript: document.location = 'charts.php?sid=e9383121dda6defd&fullscreen=1';">&nbsp;</span>
+						</div>
+						<div class="floatright">&nbsp;</div>
+						<div class="floatright">
+							<span class="iconreset menu_icon shadow" title="Reset" onclick="javascript: timeControl.objectReset();">&nbsp;</span>
+						</div>
+						<div class="floatright">&nbsp;</div>
+						<div class="floatright">
+							<span class="iconplus menu_icon shadow" title="Add to favourites" onclick="javascript: add2favorites(&quot;graphid&quot;, &quot;519&quot;);" id="addrm_fav">&nbsp;</span>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<table class="header_wide maxwidth" cellspacing="0" cellpadding="1">
+				<tr class="first">
+					<td class="header_l left">Zabbix server performance</td>
+					<td class="header_r right">
+						<div class="floatright">
+							<form method="get" action="charts.php" accept-charset="utf-8">
+								<input type="hidden" id="sid" name="sid" value="e9383121dda6defd" />
+								<input type="hidden" id="form_refresh" name="form_refresh" value="1" />
+								<input type="hidden" id="fullscreen" name="fullscreen" value="0" />
+								Group&nbsp;
+								<select class="input select" id="groupid" name="groupid" size="1" onchange="javascript: submit();">
+									<option value="0">all</option>
+									<option value="4" selected="selected">Zabbix servers</option>
+								</select>
+								&nbsp;Host&nbsp;
+								<select class="input select" id="hostid" name="hostid" size="1" onchange="javascript: submit();">
+									<option value="0" selected="selected">all</option>
+									<option value="10084">Zabbix server</option>
+								</select>
+								&nbsp;Graph&nbsp;
+								<select class="input select" id="graphid" name="graphid" size="1" onchange="javascript: submit();">
+									<option value="0">not selected</option>
+									<option value="523">CPU jumps</option>
+									<option value="524">CPU load</option>
+									<option value="525">CPU utilization</option>
+									<option value="548">Disk space usage /</option>
+									<option value="549">Disk space usage /boot</option>
+									<option value="534">Memory usage</option>
+									<option value="547">Network traffic on eth0</option>
+									<option value="526">Swap usage</option>
+									<option value="528">Value cache effectiveness</option>
+									<option value="520">Zabbix cache usage, % free</option>
+									<option value="518">Zabbix data gathering process busy %</option>
+									<option value="517">Zabbix internal process busy %</option>
+									<option value="519" selected="selected">Zabbix server performance</option>
+								</select>
+							</form>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<table width="100%" cellpadding="0" cellspacing="0">
+			<tr class="textcolorstyles pointer">
+				<td>
+					<table class="textwhite maxwidth middle flicker" cellspacing="0" cellpadding="1" id="filter_icon" onclick="javascript: changeFlickerState('flicker_hat_charts');">
+						<tr>
+							<td class="flicker_c" align="center" colspan="1">
+								<table class="textwhite">
+									<tr>
+										<td>
+											<div class="dbl_arrow_up" id="flicker_icon_l" title="Maximize/Minimize">&nbsp;&nbsp;</div>
+										</td>
+										<td>
+											<span>&nbsp;Filter&nbsp;</span>
+										</td>
+										<td>
+											<div class="dbl_arrow_up" id="flicker_icon_r" title="Maximize/Minimize">&nbsp;&nbsp;</div>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div id="flicker_hat_charts">
+						<div id="scrollbar_cntr"></div>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<div class="w" id="hat_charts">
+			<br />
+			<table class="maxwidth">
+				<tr>
+					<td>
+						<div class="flickerfreescreen" id="flickerfreescreen_graph_full" data-timestamp="1388978938" style="position: relative;">
+							<div class="center" id="graph_container"></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<table class="textwhite bold maxwidth ui-widget-header ui-corner-all page_footer">
+		<tr>
+			<td class="center">
+				<a class="highlight" href="http://www.zabbix.com">Zabbix 2.2.1 Copyright 2001-2013 by Zabbix SIA</a>
+			</td>
+			<td class="right">
+				<span class="divider">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+				<span class="footer_sign">Connected as 'Admin'</span>
+			</td>
+		</tr>
+	</table>
+	<script type="text/javascript">// <![CDATA[
+var page_refresh = null;
+jQuery(function() {
+var msglistid = initMessages({});
+window.flickerfreeScreen.add({"id":'graph_full',"isFlickerfree":true,"pageFile":'charts.php',"resourcetype":18,"mode":2,"timestamp":1388978938,"interval":'30',"screenitemid":null,"screenid":null,"groupid":null,"hostid":null,"timeline":{"period":'3600',"stime":'20140106102858',"stimeNow":'20150106102858',"starttime":'20140106100000',"usertime":'20140106112858',"isNow":'1'},"profileIdx":'web.screens',"profileIdx2":'519',"updateProfile":true,"data":{"graphid":'519'}});
+timeControl.addObject("scrollbar", {"period":'3600',"stime":'20140106102858',"stimeNow":'20150106102858',"starttime":'20140106100000',"usertime":'20140106112858',"isNow":'1'}, {"id":'scrollbar',"loadScroll":1,"mainObject":1,"periodFixed":'1',"sliderMaximumTimePeriod":63072000});
+timeControl.useTimeRefresh(30);
+timeControl.processObjects();
+window.flickerfreeScreenShadow.timeout = 30 * 1000;
+window.flickerfreeScreenShadow.responsiveness = 10 * 1000;
+cookie.init();
+chkbxRange.init();
+});
+
+// ]]></script>
+</body>
+</html>
