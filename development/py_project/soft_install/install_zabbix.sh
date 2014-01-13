@@ -16,7 +16,7 @@
 #apt-get install snmp -y
 
 
-
+# install server
 cd /usr/local/lnmp/tar_package/zabbix/
 tar -zxvf zabbix-2.2.1.tar.gz
 cd zabbix-2.2.1
@@ -25,6 +25,16 @@ cd zabbix-2.2.1
 --enable-server \
 --enable-agent \
 --with-mysql \
+--enable-ipv6 \
+--with-net-snmp \
+--with-libcurl \
+--with-libxml2 \
+--with-jabber
+
+# install agent
+./configure \
+--prefix=/usr/local/app/zabbix \
+--enable-agent \
 --enable-ipv6 \
 --with-net-snmp \
 --with-libcurl \
