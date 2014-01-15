@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>midframe</title>
+<link href="CSS/menu.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<table height="100%" border="1" align="left" cellspacing="0" class="midFrame">
+	<tr height="45%"><td></td></tr>
+	<tr>
+	  <td valign="middle" align="left" width="7"><img border="0" 
+		src="images/menu/arrow_hide.gif" onClick="switchBar(this)" title="close left manage menu" style="cursor: pointer;" />
+	  </td>
+	</tr>
+	<tr height="45%"><td></td></tr>
+</table>
+</body>
+</html>
+<script language="javascript">
+<!--
+var displayBar=true;
+function switchBar(obj)
+{
+	if (displayBar){
+		window.top.document.getElementById("rightFrame").cols="0,*";
+		displayBar=false;
+		obj.src="images/menu/arrow_show.gif";
+		obj.title="open left manage menu";
+	}else{
+		window.top.document.getElementById("rightFrame").cols="206,*";
+		displayBar=true;
+		obj.src="images/menu/arrow_hide.gif";
+		obj.title="close left manage menu";
+	}
+
+}
+-->
+</script>
