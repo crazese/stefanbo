@@ -1,0 +1,1223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sothink_tree>
+  <description>
+    <temp_depict></temp_depict>
+    <temp_title></temp_title>
+    <version>2.30</version>
+    <prog_id>PageletServer.MenuTree</prog_id>
+    <update_time></update_time>
+    <preview_path></preview_path>
+  </description>
+  <global>
+    <top_state>2</top_state>
+    <tree_name>tree003e</tree_name>
+    <tree_width>-1</tree_width>
+    <tree_height>-1</tree_height>
+    <tree_align>0</tree_align>
+    <node_indent>-1</node_indent>
+    <show_line>0</show_line>
+    <show_expand>0</show_expand>
+    <show_expand_top>0</show_expand_top>
+    <expand_top_allalong>0</expand_top_allalong>
+    <click_text_expand>1</click_text_expand>
+    <show_row_bg>1</show_row_bg>
+    <single_expand>1</single_expand>
+    <spacing>0</spacing>
+    <padding>0</padding>
+    <bg_color>#FFFFF7</bg_color>
+    <bg_transparent>1</bg_transparent>
+    <bg_image></bg_image>
+    <bg_tile>3</bg_tile>
+    <border_style>0</border_style>
+    <border_width>1</border_width>
+    <border_color>#000000</border_color>
+    <border_synchronize>1</border_synchronize>
+    <expand_img>D:\Program Files\SourceTec\Sothink Tree Menu\resource\defButton_f .gif</expand_img>
+    <collapse_img>D:\Program Files\SourceTec\Sothink Tree Menu\resource\defButton_uf.gif</collapse_img>
+    <expandbt_width>9</expandbt_width>
+    <expandbt_height>9</expandbt_height>
+    <button_align>1</button_align>
+    <line_top>D:\Program Files\SourceTec\Sothink Tree Menu\resource\line_def0.gif</line_top>
+    <line_center>D:\Program Files\SourceTec\Sothink Tree Menu\resource\line_def1.gif</line_center>
+    <line_bottom>D:\Program Files\SourceTec\Sothink Tree Menu\resource\line_def2.gif</line_bottom>
+    <line_vertical>D:\Program Files\SourceTec\Sothink Tree Menu\resource\line_def3.gif</line_vertical>
+    <cursor_nolink>default</cursor_nolink>
+    <cursor_link>hand</cursor_link>
+    <script_path>/include/js_dmenu/js_common</script_path>
+    <image_path>/images/images_dmenu</image_path>
+    <link_prefix></link_prefix>
+    <highlight>0</highlight>
+    <save_state>0</save_state>
+    <encode>1</encode>
+  </global>
+  <ul>
+    <li class="pop_item"><a href="/product/flashdecompiler/index.htm" target="_self">硕思闪客精灵</a></li>
+    <ul>
+      <li class="item"><a href="/product/flashdecompiler/index.htm" target="_self">产品简介</a></li>
+      <li class="item"><a href="/product/flashdecompiler/features.htm" target="_self">主要特性</a></li>
+      <li class="item"><a href="/product/flashdecompiler/download.htm" target="_self">免费下载</a></li>
+      <li class="item"><a href="/shopping/?ProductID=1" target="_self">在线定购</a></li>
+      <li class="item"><a href="/product/flashdecompiler/screenshot.htm" target="_self">产品截图</a></li>
+      <li class="item"><a href="/product/flashdecompiler/awards.htm" target="_self">所获奖项</a></li>
+      <li class="item"><a href="/product/flashdecompiler/review.htm" target="_self">用户评价</a></li>
+      <li class="item"><a href="/product/flashdecompiler/whatsnew.htm" target="_self">版本历史</a></li>
+      <li class="item"><a href="/product/flashdecompiler/faq.htm" target="_self">常见问题</a></li>
+      <li class="item"><a href="/product/flashdecompiler/upgrade.htm" target="_self">升级方法</a></li>
+      <li class="item"><a href="/support/support.htm" target="_self">客户支持</a></li>
+    </ul>
+    <li class="item"><a href="" target="_self"></a></li>
+    <li class="pop_item"><a href="/product/swfquicker/index.htm" target="_self">硕思闪客之锤</a></li>
+    <ul>
+      <li class="item"><a href="/product/swfquicker/index.htm" target="_self">产品简介</a></li>
+      <li class="item"><a href="/product/swfquicker/features.htm" target="_self">主要特性</a></li>
+      <li class="item"><a href="/product/swfquicker/download.htm" target="_self">免费下载</a></li>
+      <li class="item"><a href="/shopping/?ProductID=2" target="_self">在线定购</a></li>
+      <li class="item"><a href="/product/swfquicker/screenshot.htm" target="_self">产品截图</a></li>
+      <li class="item"><a href="/product/swfquicker/awards.htm" target="_self">所获奖项</a></li>
+      <li class="item"><a href="/product/swfquicker/review.htm" target="_self">用户评价</a></li>
+      <li class="item"><a href="http://www.sothink.com/product/swfquicker/samples/index.htm" target="_self">范例欣赏</a></li>
+      <li class="item"><a href="http://www.sothink.com/product/swfquicker/customers.htm" target="_self">用户作品</a></li>
+      <li class="item"><a href="/product/swfquicker/whatsnew.htm" target="_self">版本历史</a></li>
+      <li class="item"><a href="/product/swfquicker/faq.htm" target="_self">常见问题</a></li>
+      <li class="item"><a href="http://www.sothink.com/product/swfquicker/tutorial.htm" target="_self">教程中心</a></li>
+      <li class="item"><a href="/support/support.htm" target="_self">客户支持</a></li>
+      <li class="item"><a href="/product/swfquicker/upgrade.htm" target="_self">升级方法</a></li>
+    </ul>
+    <li class="item"><a href="" target="_self"></a></li>
+    <li class="pop_item"><a href="/product/swfeasy/index.htm" target="_self">硕思闪客巫师</a></li>
+    <ul>
+      <li class="item"><a href="/product/swfeasy/index.htm" target="_self">产品简介</a></li>
+      <li class="item"><a href="/product/swfeasy/features.htm" target="_self">主要特性</a></li>
+      <li class="item"><a href="/product/swfeasy/download.htm" target="_self">免费下载</a></li>
+      <li class="item"><a href="/shopping/?ProductID=3" target="_self">在线定购</a></li>
+      <li class="item"><a href="/product/swfeasy/screenshot.htm" target="_self">产品截图</a></li>
+      <li class="item"><a href="/product/swfeasy/awards.htm" target="_self">所获奖项</a></li>
+      <li class="item"><a href="/product/swfeasy/review.htm" target="_self">用户评价</a></li>
+      <li class="item"><a href="http://www.sothink.com/product/swfeasy/samples/index.htm" target="_self">范例欣赏</a></li>
+      <li class="item"><a href="http://www.sothink.com/product/swfeasy/customers.htm" target="_self">用户作品</a></li>
+      <li class="item"><a href="/product/swfeasy/whatsnew.htm" target="_self">版本历史</a></li>
+      <li class="item"><a href="/product/swfeasy/faq.htm" target="_self">常见问题</a></li>
+      <li class="item"><a href="http://www.sothink.com/product/swfeasy/tutorial.htm" target="_self">教程中心</a></li>
+      <li class="item"><a href="/support/support.htm" target="_self">客户支持</a></li>
+      <li class="item"><a href="/product/swfeasy/upgrade.htm" target="_self">升级方法</a></li>
+    </ul>
+    <li class="item"><a href="" target="_self"></a></li>
+    <li class="pop_item"><a href="/product/dhtmlmenu/index.htm" target="_self">硕思魔法菜单</a></li>
+    <ul>
+      <li class="item"><a href="/product/dhtmlmenu/index.htm" target="_self">产品简介</a></li>
+      <li class="item"><a href="/product/dhtmlmenu/features.htm" target="_self">主要特性</a></li>
+      <li class="item"><a href="/product/dhtmlmenu/download.htm" target="_self">免费下载</a></li>
+      <li class="item"><a href="/shopping/?ProductID=4" target="_self">在线定购</a></li>
+      <li class="item"><a href="/product/dhtmlmenu/screenshot.htm" target="_self">产品截图</a></li>
+      <li class="item"><a href="/product/dhtmlmenu/samples/index.htm" target="_self">范例欣赏</a></li>
+      <li class="item"><a href="http://www.sothink.com/product/dhtmlmenu/customers.htm" target="_self">用户作品</a></li>
+      <li class="item"><a href="/product/dhtmlmenu/awards.htm" target="_self">所获奖项</a></li>
+      <li class="item"><a href="/product/dhtmlmenu/review.htm" target="_self">用户评价</a></li>
+      <li class="item"><a href="/product/dhtmlmenu/whatsnew.htm" target="_self">版本历史</a></li>
+      <li class="item"><a href="/product/dhtmlmenu/faq.htm" target="_self">常见问题</a></li>
+      <li class="item"><a href="http://www.sothink.com/tutorials/index.php?c=3&amp;sid=e3a5533e6644a4d013beb08adfc10a52" target="_self">教程中心</a></li>
+      <li class="item"><a href="http://www.sothink.com/product/dhtmlmenu/troubleshooter/index.htm" target="_self">疑难解答</a></li>
+      <li class="item"><a href="/product/dhtmlmenu/upgrade.htm" target="_self">升级方法</a></li>
+    </ul>
+    <li class="item"><a href="" target="_self"></a></li>
+    <li class="pop_item"><a href="/product/fvec/index.htm" target="_self">FVEC</a></li>
+    <ul>
+      <li class="item"><a href="/product/fvec/index.htm" target="_self">产品简介</a></li>
+      <li class="item"><a href="http://flashvideo.sothinkmedia.com/flash-video-encoder-command-line/" target="_self">在线演示</a></li>
+      <li class="item"><a href="/product/fvec/download.htm" target="_self">免费下载</a></li>
+      <li class="item"><a href="/product/fvec/solution.htm" target="_self">视频分享解决方案</a></li>
+      <li class="item"><a href="/product/fvec/order.htm" target="_self">在线定购</a></li>
+      <li class="item"><a href="/product/fvec/license.htm" target="_self">许可信息</a></li>
+      <li class="item"><a href="/product/fvec/help.htm" target="_self">用户手册</a></li>
+      <li class="item"><a href="/product/fvec/awards.htm" target="_self">所获奖项</a></li>
+      <li class="item"><a href="/product/fvec/whatsnew.htm" target="_self">版本历史</a></li>
+    </ul>
+    <li class="item"><a href="" target="_self"></a></li>
+    <li class="pop_item"><a href="/product/videochat/index.htm" target="_self">硕思视频聊天系统</a></li>
+    <ul>
+      <li class="item"><a href="/product/videochat/index.htm" target="_self">产品简介</a></li>
+      <li class="item"><a href="/product/videochat/features.htm" target="_self">主要特性</a></li>
+      <li class="item"><a href="/product/videochat/download.htm" target="_self">免费下载</a></li>
+      <li class="item"><a href="/product/videochat/order.htm" target="_self">在线定购</a></li>
+      <li class="item"><a href="/product/videochat/screenshot.htm" target="_self">产品截图</a></li>
+      <li class="item"><a href="/product/videochat/faq.htm" target="_self">常见问题</a></li>
+      <li class="item"><a href="/product/videochat/help/" target="_self">用户手册</a></li>
+    
+    </ul>
+    <li class="item"><a href="" target="_self"></a></li>
+  </ul>
+  <layer>
+    <setting is_expand="0" apply_sub_level="0"></setting>
+    <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="1" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="5" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="1" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="1" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="1" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="1" bg_over_tile="0" bg_sel_out_color="#FFFFFF" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#FFFFFF" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="-1" advanced_disable="0">
+      <tip_text></tip_text>
+      <status></status>
+      <expand></expand>
+      <collapse></collapse>
+      <child></child>
+      <bg_out_image>C:\www\source\leftmenu\bg_menu1.gif</bg_out_image>
+      <bg_over_image>C:\www\source\leftmenu\bg_menu1.gif</bg_over_image>
+      <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+      <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+      <prefix>function hightlight(name)\r\n{\r\n   var menu=_STJS.getStructByName(name)\s\r\n     if(menu&amp;&amp;menu.className=="UITree")\r\n     {\r\n        for(var j=menu.subTrees.length-1\sj&gt;=0\sj--)\r\n               for(var k=0\sk&lt;menu.subTrees[j].nodes.length\sk++)\r\n                {\r\n                     var n=menu.subTrees[j].nodes[k]\s\r\n                      if(n.link!="#_nolink"&amp;&amp;_STJS.getABS(n.link)==window.location)\r\n                      { \r\n                               n.select()\s\r\n                               stExpandSubTree(name,n.pSubTreeId)\s\r\n                                  return\s\r\n                       }\r\n                 }\r\n      }\r\n}\r\n\r\n_STJS.loads.push(new Function("hightlight('tree003e')"))\s\r\n</prefix>
+      <suffix></suffix>
+    
+      <layer>
+        <setting is_expand="0" apply_sub_level="0"></setting>
+        <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+          <tip_text></tip_text>
+          <status></status>
+          <expand></expand>
+          <collapse></collapse>
+          <child></child>
+          <bg_out_image></bg_out_image>
+          <bg_over_image></bg_over_image>
+          <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+          <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+          <prefix></prefix>
+          <suffix></suffix>
+        </node>
+        <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+          <tip_text></tip_text>
+          <status></status>
+          <expand></expand>
+          <collapse></collapse>
+          <child></child>
+          <bg_out_image></bg_out_image>
+          <bg_over_image></bg_over_image>
+          <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+          <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+          <prefix></prefix>
+          <suffix></suffix>
+        </node>
+        <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+          <tip_text></tip_text>
+          <status></status>
+          <expand></expand>
+          <collapse></collapse>
+          <child></child>
+          <bg_out_image></bg_out_image>
+          <bg_over_image></bg_over_image>
+          <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+          <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+          <prefix></prefix>
+          <suffix></suffix>
+        </node>
+        <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+          <tip_text></tip_text>
+          <status></status>
+          <expand></expand>
+          <collapse></collapse>
+          <child></child>
+          <bg_out_image></bg_out_image>
+          <bg_over_image></bg_over_image>
+          <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+          <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+          <prefix></prefix>
+          <suffix></suffix>
+        </node>
+        <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+          <tip_text></tip_text>
+          <status></status>
+          <expand></expand>
+          <collapse></collapse>
+          <child></child>
+          <bg_out_image></bg_out_image>
+          <bg_over_image></bg_over_image>
+          <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+          <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+          <prefix></prefix>
+          <suffix></suffix>
+        </node>
+        <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+          <tip_text></tip_text>
+          <status></status>
+          <expand></expand>
+          <collapse></collapse>
+          <child></child>
+          <bg_out_image></bg_out_image>
+          <bg_over_image></bg_over_image>
+          <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+          <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+          <prefix></prefix>
+          <suffix></suffix>
+        </node>
+        <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+          <tip_text></tip_text>
+          <status></status>
+          <expand></expand>
+          <collapse></collapse>
+          <child></child>
+          <bg_out_image></bg_out_image>
+          <bg_over_image></bg_over_image>
+          <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+          <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+          <prefix></prefix>
+          <suffix></suffix>
+        </node>
+        <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+          <tip_text></tip_text>
+          <status></status>
+          <expand></expand>
+          <collapse></collapse>
+          <child></child>
+          <bg_out_image></bg_out_image>
+          <bg_over_image></bg_over_image>
+          <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+          <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+          <prefix></prefix>
+          <suffix></suffix>
+        </node>
+        <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+          <tip_text></tip_text>
+          <status></status>
+          <expand></expand>
+          <collapse></collapse>
+          <child></child>
+          <bg_out_image></bg_out_image>
+          <bg_over_image></bg_over_image>
+          <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+          <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+          <prefix></prefix>
+          <suffix></suffix>
+        </node>
+        <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+          <tip_text></tip_text>
+          <status></status>
+          <expand></expand>
+          <collapse></collapse>
+          <child></child>
+          <bg_out_image></bg_out_image>
+          <bg_over_image></bg_over_image>
+          <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+          <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+          <prefix></prefix>
+          <suffix></suffix>
+        </node>
+        <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+          <tip_text></tip_text>
+          <status></status>
+          <expand></expand>
+          <collapse></collapse>
+          <child></child>
+          <bg_out_image></bg_out_image>
+          <bg_over_image></bg_over_image>
+          <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+          <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+          <prefix></prefix>
+          <suffix></suffix>
+        </node>
+    </layer></node>
+    <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="1" font_out_size_unit="0" font_out_style="1" font_over_face="Arial" font_over_color="#000000" font_over_size="1" font_over_size_unit="0" font_over_style="5" font_sel_out_face="Arial" font_sel_out_color="#000000" font_sel_out_size="1" font_sel_out_size_unit="0" font_sel_out_style="1" font_sel_over_face="Arial" font_sel_over_color="#000000" font_sel_over_size="1" font_sel_over_size_unit="0" font_sel_over_style="1" icon_width="177" icon_height="1" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#FFFFFF" bg_sel_out_transparent="0" bg_sel_out_tile="0" bg_sel_over_color="#FFFFFF" bg_sel_over_transparent="0" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+        <tip_text></tip_text>
+        <status></status>
+        <expand></expand>
+        <collapse></collapse>
+        <child></child>
+        <bg_out_image></bg_out_image>
+        <bg_over_image></bg_over_image>
+        <bg_sel_out_image></bg_sel_out_image>
+        <bg_sel_over_image></bg_sel_over_image>
+        <prefix></prefix>
+        <suffix></suffix>
+    </node>
+    <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="1" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="5" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="1" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="1" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="1" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="1" bg_over_tile="0" bg_sel_out_color="#FFFFFF" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#FFFFFF" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+        <tip_text></tip_text>
+        <status></status>
+        <expand></expand>
+        <collapse></collapse>
+        <child></child>
+        <bg_out_image>C:\www\source\leftmenu\bg_menu1.gif</bg_out_image>
+        <bg_over_image>C:\www\source\leftmenu\bg_menu1.gif</bg_over_image>
+        <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+        <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+        <prefix></prefix>
+        <suffix></suffix>
+    
+        <layer>
+          <setting is_expand="0" apply_sub_level="0"></setting>
+          <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+            <tip_text></tip_text>
+            <status></status>
+            <expand></expand>
+            <collapse></collapse>
+            <child></child>
+            <bg_out_image></bg_out_image>
+            <bg_over_image></bg_over_image>
+            <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+            <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+            <prefix></prefix>
+            <suffix></suffix>
+          </node>
+          <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+            <tip_text></tip_text>
+            <status></status>
+            <expand></expand>
+            <collapse></collapse>
+            <child></child>
+            <bg_out_image></bg_out_image>
+            <bg_over_image></bg_over_image>
+            <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+            <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+            <prefix></prefix>
+            <suffix></suffix>
+          </node>
+          <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+            <tip_text></tip_text>
+            <status></status>
+            <expand></expand>
+            <collapse></collapse>
+            <child></child>
+            <bg_out_image></bg_out_image>
+            <bg_over_image></bg_over_image>
+            <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+            <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+            <prefix></prefix>
+            <suffix></suffix>
+          </node>
+          <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+            <tip_text></tip_text>
+            <status></status>
+            <expand></expand>
+            <collapse></collapse>
+            <child></child>
+            <bg_out_image></bg_out_image>
+            <bg_over_image></bg_over_image>
+            <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+            <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+            <prefix></prefix>
+            <suffix></suffix>
+          </node>
+          <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+            <tip_text></tip_text>
+            <status></status>
+            <expand></expand>
+            <collapse></collapse>
+            <child></child>
+            <bg_out_image></bg_out_image>
+            <bg_over_image></bg_over_image>
+            <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+            <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+            <prefix></prefix>
+            <suffix></suffix>
+          </node>
+          <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+            <tip_text></tip_text>
+            <status></status>
+            <expand></expand>
+            <collapse></collapse>
+            <child></child>
+            <bg_out_image></bg_out_image>
+            <bg_over_image></bg_over_image>
+            <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+            <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+            <prefix></prefix>
+            <suffix></suffix>
+          </node>
+          <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+            <tip_text></tip_text>
+            <status></status>
+            <expand></expand>
+            <collapse></collapse>
+            <child></child>
+            <bg_out_image></bg_out_image>
+            <bg_over_image></bg_over_image>
+            <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+            <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+            <prefix></prefix>
+            <suffix></suffix>
+          </node>
+          <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+            <tip_text></tip_text>
+            <status></status>
+            <expand></expand>
+            <collapse></collapse>
+            <child></child>
+            <bg_out_image></bg_out_image>
+            <bg_over_image></bg_over_image>
+            <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+            <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+            <prefix></prefix>
+            <suffix></suffix>
+          </node>
+          <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+            <tip_text></tip_text>
+            <status></status>
+            <expand></expand>
+            <collapse></collapse>
+            <child></child>
+            <bg_out_image></bg_out_image>
+            <bg_over_image></bg_over_image>
+            <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+            <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+            <prefix></prefix>
+            <suffix></suffix>
+          </node>
+          <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+            <tip_text></tip_text>
+            <status></status>
+            <expand></expand>
+            <collapse></collapse>
+            <child></child>
+            <bg_out_image></bg_out_image>
+            <bg_over_image></bg_over_image>
+            <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+            <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+            <prefix></prefix>
+            <suffix></suffix>
+          </node>
+          <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+            <tip_text></tip_text>
+            <status></status>
+            <expand></expand>
+            <collapse></collapse>
+            <child></child>
+            <bg_out_image></bg_out_image>
+            <bg_over_image></bg_over_image>
+            <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+            <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+            <prefix></prefix>
+            <suffix></suffix>
+          </node>
+          <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+            <tip_text></tip_text>
+            <status></status>
+            <expand></expand>
+            <collapse></collapse>
+            <child></child>
+            <bg_out_image></bg_out_image>
+            <bg_over_image></bg_over_image>
+            <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+            <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+            <prefix></prefix>
+            <suffix></suffix>
+          </node>
+          <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+            <tip_text></tip_text>
+            <status></status>
+            <expand></expand>
+            <collapse></collapse>
+            <child></child>
+            <bg_out_image></bg_out_image>
+            <bg_over_image></bg_over_image>
+            <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+            <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+            <prefix></prefix>
+            <suffix></suffix>
+          </node>
+          <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+            <tip_text></tip_text>
+            <status></status>
+            <expand></expand>
+            <collapse></collapse>
+            <child></child>
+            <bg_out_image></bg_out_image>
+            <bg_over_image></bg_over_image>
+            <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+            <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+            <prefix></prefix>
+            <suffix></suffix>
+          </node>
+    </layer></node>
+    <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="1" font_out_size_unit="0" font_out_style="1" font_over_face="Arial" font_over_color="#000000" font_over_size="1" font_over_size_unit="0" font_over_style="5" font_sel_out_face="Arial" font_sel_out_color="#000000" font_sel_out_size="1" font_sel_out_size_unit="0" font_sel_out_style="1" font_sel_over_face="Arial" font_sel_over_color="#000000" font_sel_over_size="1" font_sel_over_size_unit="0" font_sel_over_style="1" icon_width="1" icon_height="1" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#FFFFFF" bg_sel_out_transparent="0" bg_sel_out_tile="0" bg_sel_over_color="#FFFFFF" bg_sel_over_transparent="0" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+          <tip_text></tip_text>
+          <status></status>
+          <expand></expand>
+          <collapse></collapse>
+          <child></child>
+          <bg_out_image></bg_out_image>
+          <bg_over_image></bg_over_image>
+          <bg_sel_out_image></bg_sel_out_image>
+          <bg_sel_over_image></bg_sel_over_image>
+          <prefix></prefix>
+          <suffix></suffix>
+    </node>
+    <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="1" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="5" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="1" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="1" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="1" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="1" bg_over_tile="0" bg_sel_out_color="#FFFFFF" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#FFFFFF" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+          <tip_text></tip_text>
+          <status></status>
+          <expand></expand>
+          <collapse></collapse>
+          <child></child>
+          <bg_out_image>C:\www\source\leftmenu\bg_menu1.gif</bg_out_image>
+          <bg_over_image>C:\www\source\leftmenu\bg_menu1.gif</bg_over_image>
+          <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+          <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+          <prefix></prefix>
+          <suffix></suffix>
+    
+          <layer>
+            <setting is_expand="0" apply_sub_level="0"></setting>
+            <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+              <tip_text></tip_text>
+              <status></status>
+              <expand></expand>
+              <collapse></collapse>
+              <child></child>
+              <bg_out_image></bg_out_image>
+              <bg_over_image></bg_over_image>
+              <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+              <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+              <prefix></prefix>
+              <suffix></suffix>
+            </node>
+            <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+              <tip_text></tip_text>
+              <status></status>
+              <expand></expand>
+              <collapse></collapse>
+              <child></child>
+              <bg_out_image></bg_out_image>
+              <bg_over_image></bg_over_image>
+              <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+              <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+              <prefix></prefix>
+              <suffix></suffix>
+            </node>
+            <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+              <tip_text></tip_text>
+              <status></status>
+              <expand></expand>
+              <collapse></collapse>
+              <child></child>
+              <bg_out_image></bg_out_image>
+              <bg_over_image></bg_over_image>
+              <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+              <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+              <prefix></prefix>
+              <suffix></suffix>
+            </node>
+            <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+              <tip_text></tip_text>
+              <status></status>
+              <expand></expand>
+              <collapse></collapse>
+              <child></child>
+              <bg_out_image></bg_out_image>
+              <bg_over_image></bg_over_image>
+              <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+              <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+              <prefix></prefix>
+              <suffix></suffix>
+            </node>
+            <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+              <tip_text></tip_text>
+              <status></status>
+              <expand></expand>
+              <collapse></collapse>
+              <child></child>
+              <bg_out_image></bg_out_image>
+              <bg_over_image></bg_over_image>
+              <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+              <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+              <prefix></prefix>
+              <suffix></suffix>
+            </node>
+            <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+              <tip_text></tip_text>
+              <status></status>
+              <expand></expand>
+              <collapse></collapse>
+              <child></child>
+              <bg_out_image></bg_out_image>
+              <bg_over_image></bg_over_image>
+              <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+              <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+              <prefix></prefix>
+              <suffix></suffix>
+            </node>
+            <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+              <tip_text></tip_text>
+              <status></status>
+              <expand></expand>
+              <collapse></collapse>
+              <child></child>
+              <bg_out_image></bg_out_image>
+              <bg_over_image></bg_over_image>
+              <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+              <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+              <prefix></prefix>
+              <suffix></suffix>
+            </node>
+            <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+              <tip_text></tip_text>
+              <status></status>
+              <expand></expand>
+              <collapse></collapse>
+              <child></child>
+              <bg_out_image></bg_out_image>
+              <bg_over_image></bg_over_image>
+              <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+              <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+              <prefix></prefix>
+              <suffix></suffix>
+            </node>
+            <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+              <tip_text></tip_text>
+              <status></status>
+              <expand></expand>
+              <collapse></collapse>
+              <child></child>
+              <bg_out_image></bg_out_image>
+              <bg_over_image></bg_over_image>
+              <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+              <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+              <prefix></prefix>
+              <suffix></suffix>
+            </node>
+            <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+              <tip_text></tip_text>
+              <status></status>
+              <expand></expand>
+              <collapse></collapse>
+              <child></child>
+              <bg_out_image></bg_out_image>
+              <bg_over_image></bg_over_image>
+              <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+              <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+              <prefix></prefix>
+              <suffix></suffix>
+            </node>
+            <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+              <tip_text></tip_text>
+              <status></status>
+              <expand></expand>
+              <collapse></collapse>
+              <child></child>
+              <bg_out_image></bg_out_image>
+              <bg_over_image></bg_over_image>
+              <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+              <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+              <prefix></prefix>
+              <suffix></suffix>
+            </node>
+            <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+              <tip_text></tip_text>
+              <status></status>
+              <expand></expand>
+              <collapse></collapse>
+              <child></child>
+              <bg_out_image></bg_out_image>
+              <bg_over_image></bg_over_image>
+              <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+              <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+              <prefix></prefix>
+              <suffix></suffix>
+            </node>
+            <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+              <tip_text></tip_text>
+              <status></status>
+              <expand></expand>
+              <collapse></collapse>
+              <child></child>
+              <bg_out_image></bg_out_image>
+              <bg_over_image></bg_over_image>
+              <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+              <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+              <prefix></prefix>
+              <suffix></suffix>
+            </node>
+            <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+              <tip_text></tip_text>
+              <status></status>
+              <expand></expand>
+              <collapse></collapse>
+              <child></child>
+              <bg_out_image></bg_out_image>
+              <bg_over_image></bg_over_image>
+              <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+              <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+              <prefix></prefix>
+              <suffix></suffix>
+            </node>
+    </layer></node>
+    <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="1" font_out_size_unit="0" font_out_style="1" font_over_face="Arial" font_over_color="#000000" font_over_size="1" font_over_size_unit="0" font_over_style="5" font_sel_out_face="Arial" font_sel_out_color="#000000" font_sel_out_size="1" font_sel_out_size_unit="0" font_sel_out_style="1" font_sel_over_face="Arial" font_sel_over_color="#000000" font_sel_over_size="1" font_sel_over_size_unit="0" font_sel_over_style="1" icon_width="1" icon_height="1" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#FFFFFF" bg_sel_out_transparent="0" bg_sel_out_tile="0" bg_sel_over_color="#FFFFFF" bg_sel_over_transparent="0" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+            <tip_text></tip_text>
+            <status></status>
+            <expand></expand>
+            <collapse></collapse>
+            <child></child>
+            <bg_out_image></bg_out_image>
+            <bg_over_image></bg_over_image>
+            <bg_sel_out_image></bg_sel_out_image>
+            <bg_sel_over_image></bg_sel_over_image>
+            <prefix></prefix>
+            <suffix></suffix>
+    </node>
+    <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="1" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="5" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="1" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="1" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="1" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="1" bg_over_tile="0" bg_sel_out_color="#FFFFFF" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#FFFFFF" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+            <tip_text></tip_text>
+            <status></status>
+            <expand></expand>
+            <collapse></collapse>
+            <child></child>
+            <bg_out_image>C:\www\source\leftmenu\bg_menu1.gif</bg_out_image>
+            <bg_over_image>C:\www\source\leftmenu\bg_menu1.gif</bg_over_image>
+            <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+            <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+            <prefix></prefix>
+            <suffix></suffix>
+    
+            <layer>
+              <setting is_expand="0" apply_sub_level="0"></setting>
+              <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                <tip_text></tip_text>
+                <status></status>
+                <expand></expand>
+                <collapse></collapse>
+                <child></child>
+                <bg_out_image></bg_out_image>
+                <bg_over_image></bg_over_image>
+                <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                <prefix></prefix>
+                <suffix></suffix>
+              </node>
+              <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                <tip_text></tip_text>
+                <status></status>
+                <expand></expand>
+                <collapse></collapse>
+                <child></child>
+                <bg_out_image></bg_out_image>
+                <bg_over_image></bg_over_image>
+                <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                <prefix></prefix>
+                <suffix></suffix>
+              </node>
+              <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                <tip_text></tip_text>
+                <status></status>
+                <expand></expand>
+                <collapse></collapse>
+                <child></child>
+                <bg_out_image></bg_out_image>
+                <bg_over_image></bg_over_image>
+                <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                <prefix></prefix>
+                <suffix></suffix>
+              </node>
+              <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                <tip_text></tip_text>
+                <status></status>
+                <expand></expand>
+                <collapse></collapse>
+                <child></child>
+                <bg_out_image></bg_out_image>
+                <bg_over_image></bg_over_image>
+                <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                <prefix></prefix>
+                <suffix></suffix>
+              </node>
+              <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                <tip_text></tip_text>
+                <status></status>
+                <expand></expand>
+                <collapse></collapse>
+                <child></child>
+                <bg_out_image></bg_out_image>
+                <bg_over_image></bg_over_image>
+                <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                <prefix></prefix>
+                <suffix></suffix>
+              </node>
+              <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                <tip_text></tip_text>
+                <status></status>
+                <expand></expand>
+                <collapse></collapse>
+                <child></child>
+                <bg_out_image></bg_out_image>
+                <bg_over_image></bg_over_image>
+                <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                <prefix></prefix>
+                <suffix></suffix>
+              </node>
+              <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                <tip_text></tip_text>
+                <status></status>
+                <expand></expand>
+                <collapse></collapse>
+                <child></child>
+                <bg_out_image></bg_out_image>
+                <bg_over_image></bg_over_image>
+                <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                <prefix></prefix>
+                <suffix></suffix>
+              </node>
+              <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                <tip_text></tip_text>
+                <status></status>
+                <expand></expand>
+                <collapse></collapse>
+                <child></child>
+                <bg_out_image></bg_out_image>
+                <bg_over_image></bg_over_image>
+                <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                <prefix></prefix>
+                <suffix></suffix>
+              </node>
+              <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                <tip_text></tip_text>
+                <status></status>
+                <expand></expand>
+                <collapse></collapse>
+                <child></child>
+                <bg_out_image></bg_out_image>
+                <bg_over_image></bg_over_image>
+                <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                <prefix></prefix>
+                <suffix></suffix>
+              </node>
+              <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                <tip_text></tip_text>
+                <status></status>
+                <expand></expand>
+                <collapse></collapse>
+                <child></child>
+                <bg_out_image></bg_out_image>
+                <bg_over_image></bg_over_image>
+                <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                <prefix></prefix>
+                <suffix></suffix>
+              </node>
+              <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                <tip_text></tip_text>
+                <status></status>
+                <expand></expand>
+                <collapse></collapse>
+                <child></child>
+                <bg_out_image></bg_out_image>
+                <bg_over_image></bg_over_image>
+                <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                <prefix></prefix>
+                <suffix></suffix>
+              </node>
+              <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                <tip_text></tip_text>
+                <status></status>
+                <expand></expand>
+                <collapse></collapse>
+                <child></child>
+                <bg_out_image></bg_out_image>
+                <bg_over_image></bg_over_image>
+                <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                <prefix></prefix>
+                <suffix></suffix>
+              </node>
+              <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                <tip_text></tip_text>
+                <status></status>
+                <expand></expand>
+                <collapse></collapse>
+                <child></child>
+                <bg_out_image></bg_out_image>
+                <bg_over_image></bg_over_image>
+                <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                <prefix></prefix>
+                <suffix></suffix>
+              </node>
+              <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                <tip_text></tip_text>
+                <status></status>
+                <expand></expand>
+                <collapse></collapse>
+                <child></child>
+                <bg_out_image></bg_out_image>
+                <bg_over_image></bg_over_image>
+                <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                <prefix></prefix>
+                <suffix></suffix>
+              </node>
+    </layer></node>
+    <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="1" font_out_size_unit="0" font_out_style="1" font_over_face="Arial" font_over_color="#000000" font_over_size="1" font_over_size_unit="0" font_over_style="5" font_sel_out_face="Arial" font_sel_out_color="#000000" font_sel_out_size="1" font_sel_out_size_unit="0" font_sel_out_style="1" font_sel_over_face="Arial" font_sel_over_color="#000000" font_sel_over_size="1" font_sel_over_size_unit="0" font_sel_over_style="1" icon_width="1" icon_height="1" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#FFFFFF" bg_sel_out_transparent="0" bg_sel_out_tile="0" bg_sel_over_color="#FFFFFF" bg_sel_over_transparent="0" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+              <tip_text></tip_text>
+              <status></status>
+              <expand></expand>
+              <collapse></collapse>
+              <child></child>
+              <bg_out_image></bg_out_image>
+              <bg_over_image></bg_over_image>
+              <bg_sel_out_image></bg_sel_out_image>
+              <bg_sel_over_image></bg_sel_over_image>
+              <prefix></prefix>
+              <suffix></suffix>
+    </node>
+    <node state="2" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="1" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="5" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="1" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="1" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="1" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="1" bg_over_tile="0" bg_sel_out_color="#FFFFFF" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#FFFFFF" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+              <tip_text></tip_text>
+              <status></status>
+              <expand></expand>
+              <collapse></collapse>
+              <child></child>
+              <bg_out_image>C:\www\source\leftmenu\bg_menu1.gif</bg_out_image>
+              <bg_over_image>C:\www\source\leftmenu\bg_menu1.gif</bg_over_image>
+              <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+              <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+              <prefix></prefix>
+              <suffix></suffix>
+    
+              <layer>
+                <setting is_expand="0" apply_sub_level="0"></setting>
+                <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                  <tip_text></tip_text>
+                  <status></status>
+                  <expand></expand>
+                  <collapse></collapse>
+                  <child></child>
+                  <bg_out_image></bg_out_image>
+                  <bg_over_image></bg_over_image>
+                  <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                  <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                  <prefix></prefix>
+                  <suffix></suffix>
+                </node>
+                <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                  <tip_text></tip_text>
+                  <status></status>
+                  <expand></expand>
+                  <collapse></collapse>
+                  <child></child>
+                  <bg_out_image></bg_out_image>
+                  <bg_over_image></bg_over_image>
+                  <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                  <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                  <prefix></prefix>
+                  <suffix></suffix>
+                </node>
+                <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                  <tip_text></tip_text>
+                  <status></status>
+                  <expand></expand>
+                  <collapse></collapse>
+                  <child></child>
+                  <bg_out_image></bg_out_image>
+                  <bg_over_image></bg_over_image>
+                  <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                  <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                  <prefix></prefix>
+                  <suffix></suffix>
+                </node>
+                <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                  <tip_text></tip_text>
+                  <status></status>
+                  <expand></expand>
+                  <collapse></collapse>
+                  <child></child>
+                  <bg_out_image></bg_out_image>
+                  <bg_over_image></bg_over_image>
+                  <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                  <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                  <prefix></prefix>
+                  <suffix></suffix>
+                </node>
+                <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                  <tip_text></tip_text>
+                  <status></status>
+                  <expand></expand>
+                  <collapse></collapse>
+                  <child></child>
+                  <bg_out_image></bg_out_image>
+                  <bg_over_image></bg_over_image>
+                  <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                  <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                  <prefix></prefix>
+                  <suffix></suffix>
+                </node>
+                <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                  <tip_text></tip_text>
+                  <status></status>
+                  <expand></expand>
+                  <collapse></collapse>
+                  <child></child>
+                  <bg_out_image></bg_out_image>
+                  <bg_over_image></bg_over_image>
+                  <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                  <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                  <prefix></prefix>
+                  <suffix></suffix>
+                </node>
+                <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                  <tip_text></tip_text>
+                  <status></status>
+                  <expand></expand>
+                  <collapse></collapse>
+                  <child></child>
+                  <bg_out_image></bg_out_image>
+                  <bg_over_image></bg_over_image>
+                  <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                  <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                  <prefix></prefix>
+                  <suffix></suffix>
+                </node>
+                <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                  <tip_text></tip_text>
+                  <status></status>
+                  <expand></expand>
+                  <collapse></collapse>
+                  <child></child>
+                  <bg_out_image></bg_out_image>
+                  <bg_over_image></bg_over_image>
+                  <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                  <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                  <prefix></prefix>
+                  <suffix></suffix>
+                </node>
+                <node state="1" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                  <tip_text></tip_text>
+                  <status></status>
+                  <expand></expand>
+                  <collapse></collapse>
+                  <child></child>
+                  <bg_out_image></bg_out_image>
+                  <bg_over_image></bg_over_image>
+                  <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                  <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                  <prefix></prefix>
+                  <suffix></suffix>
+                </node>
+    </layer></node>
+    <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="1" font_out_size_unit="0" font_out_style="1" font_over_face="Arial" font_over_color="#000000" font_over_size="1" font_over_size_unit="0" font_over_style="5" font_sel_out_face="Arial" font_sel_out_color="#000000" font_sel_out_size="1" font_sel_out_size_unit="0" font_sel_out_style="1" font_sel_over_face="Arial" font_sel_over_color="#000000" font_sel_over_size="1" font_sel_over_size_unit="0" font_sel_over_style="1" icon_width="1" icon_height="1" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#FFFFFF" bg_sel_out_transparent="0" bg_sel_out_tile="0" bg_sel_over_color="#FFFFFF" bg_sel_over_transparent="0" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                <tip_text></tip_text>
+                <status></status>
+                <expand></expand>
+                <collapse></collapse>
+                <child></child>
+                <bg_out_image></bg_out_image>
+                <bg_over_image></bg_over_image>
+                <bg_sel_out_image></bg_sel_out_image>
+                <bg_sel_over_image></bg_sel_over_image>
+                <prefix></prefix>
+                <suffix></suffix>
+    </node>
+    <node state="2" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="1" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="5" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="1" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="1" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="1" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="1" bg_over_tile="0" bg_sel_out_color="#FFFFFF" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#FFFFFF" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                <tip_text></tip_text>
+                <status></status>
+                <expand></expand>
+                <collapse></collapse>
+                <child></child>
+                <bg_out_image>C:\www\source\leftmenu\bg_menu1.gif</bg_out_image>
+                <bg_over_image>C:\www\source\leftmenu\bg_menu1.gif</bg_over_image>
+                <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                <prefix></prefix>
+                <suffix></suffix>
+    
+                <layer>
+                  <setting is_expand="0" apply_sub_level="0"></setting>
+                  <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                    <tip_text></tip_text>
+                    <status></status>
+                    <expand></expand>
+                    <collapse></collapse>
+                    <child></child>
+                    <bg_out_image></bg_out_image>
+                    <bg_over_image></bg_over_image>
+                    <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                    <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                    <prefix></prefix>
+                    <suffix></suffix>
+                  </node>
+                  <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                    <tip_text></tip_text>
+                    <status></status>
+                    <expand></expand>
+                    <collapse></collapse>
+                    <child></child>
+                    <bg_out_image></bg_out_image>
+                    <bg_over_image></bg_over_image>
+                    <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                    <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                    <prefix></prefix>
+                    <suffix></suffix>
+                  </node>
+                  <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                    <tip_text></tip_text>
+                    <status></status>
+                    <expand></expand>
+                    <collapse></collapse>
+                    <child></child>
+                    <bg_out_image></bg_out_image>
+                    <bg_over_image></bg_over_image>
+                    <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                    <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                    <prefix></prefix>
+                    <suffix></suffix>
+                  </node>
+                  <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                    <tip_text></tip_text>
+                    <status></status>
+                    <expand></expand>
+                    <collapse></collapse>
+                    <child></child>
+                    <bg_out_image></bg_out_image>
+                    <bg_over_image></bg_over_image>
+                    <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                    <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                    <prefix></prefix>
+                    <suffix></suffix>
+                  </node>
+                  <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                    <tip_text></tip_text>
+                    <status></status>
+                    <expand></expand>
+                    <collapse></collapse>
+                    <child></child>
+                    <bg_out_image></bg_out_image>
+                    <bg_over_image></bg_over_image>
+                    <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                    <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                    <prefix></prefix>
+                    <suffix></suffix>
+                  </node>
+                  <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                    <tip_text></tip_text>
+                    <status></status>
+                    <expand></expand>
+                    <collapse></collapse>
+                    <child></child>
+                    <bg_out_image></bg_out_image>
+                    <bg_over_image></bg_over_image>
+                    <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                    <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                    <prefix></prefix>
+                    <suffix></suffix>
+                  </node>
+                  <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="9" font_out_size_unit="0" font_out_style="0" font_over_face="Arial" font_over_color="#000000" font_over_size="9" font_over_size_unit="0" font_over_style="4" font_sel_out_face="Arial" font_sel_out_color="#FFFFFF" font_sel_out_size="9" font_sel_out_size_unit="0" font_sel_out_style="0" font_sel_over_face="Arial" font_sel_over_color="#FFFFFF" font_sel_over_size="9" font_sel_over_size_unit="0" font_sel_over_style="0" icon_width="18" icon_height="18" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="0" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="0" bg_sel_out_color="#CCCCCC" bg_sel_out_transparent="1" bg_sel_out_tile="0" bg_sel_over_color="#CCCCCC" bg_sel_over_transparent="1" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                    <tip_text></tip_text>
+                    <status></status>
+                    <expand></expand>
+                    <collapse></collapse>
+                    <child></child>
+                    <bg_out_image></bg_out_image>
+                    <bg_over_image></bg_over_image>
+                    <bg_sel_out_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_out_image>
+                    <bg_sel_over_image>C:\www\source\leftmenu\bg_menu2.gif</bg_sel_over_image>
+                    <prefix></prefix>
+                    <suffix></suffix>
+                  </node>
+    </layer></node>
+    <node state="0" status_default="1" text_type="0" text_horz_align="0" text_vert_align="1" text_width="0" text_height="0" font_out_face="Arial" font_out_color="#000000" font_out_size="1" font_out_size_unit="0" font_out_style="1" font_over_face="Arial" font_over_color="#000000" font_over_size="1" font_over_size_unit="0" font_over_style="5" font_sel_out_face="Arial" font_sel_out_color="#000000" font_sel_out_size="1" font_sel_out_size_unit="0" font_sel_out_style="1" font_sel_over_face="Arial" font_sel_over_color="#000000" font_sel_over_size="1" font_sel_over_size_unit="0" font_sel_over_style="1" icon_width="177" icon_height="9" bg_out_color="#FFFFFF" bg_out_transparent="0" bg_out_tile="1" bg_over_color="#FFFFFF" bg_over_transparent="0" bg_over_tile="1" bg_sel_out_color="#FFFFFF" bg_sel_out_transparent="0" bg_sel_out_tile="0" bg_sel_over_color="#FFFFFF" bg_sel_over_transparent="0" bg_sel_over_tile="0" condition_invisible="0" advanced_disable="0">
+                  <tip_text></tip_text>
+                  <status></status>
+                  <expand></expand>
+                  <collapse></collapse>
+                  <child></child>
+                  <bg_out_image>C:\www\source\leftmenu\bg_tmenuend.gif</bg_out_image>
+                  <bg_over_image>C:\www\source\leftmenu\bg_tmenuend.gif</bg_over_image>
+                  <bg_sel_out_image></bg_sel_out_image>
+                  <bg_sel_over_image></bg_sel_over_image>
+                  <prefix></prefix>
+                  <suffix></suffix>
+    </node>
+  </layer>
+</sothink_tree>

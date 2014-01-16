@@ -1,0 +1,2 @@
+str="<a href=\"/\">首页</a> | <a href=\"/product.htm\">主要产品</a> | <a href=\"/shopping/order.php\">在线定购</a> | <a href=\"/contact.htm\">联系我们</a> | <a href=\"/contact.htm#comment\">在线留言</a> |   <a href=\"http://www.miibeian.gov.cn\">鄂ICP备09002038号</a>";
+document.write(str);

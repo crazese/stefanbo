@@ -1,0 +1,24 @@
+﻿stm_bm(["menu35ba",820,"/images/images_dmenu","blank.gif",0,"","",0,0,250,0,1000,1,0,0,"","",0,0,1,2,"default","hand","file:///E|/website/sothinkcn2008"],this);
+stm_bp("p0",[0,4,0,0,3,0,0,0,100,"",-2,"",-2,50,0,0,"#999999","transparent","",3,0,0,"#000000","",-1,-1,0,"#FFFFF7","",3,"",30,30,0,"transparent","",3,"",-1,-1,0,"#FFFFF7","",3,"",30,30,0,"transparent","",3,"","","","",0,0,0,0,0,0,0,0]);
+stm_ai("p0i0",[0,"首页","","",-1,-1,0,"/index.htm","_self","","","","",0,0,0,"","",0,0,0,1,1,"#E6EFF9",1,"#FFFFFF",0,"","",3,3,0,0,"#E6EFF9","#000000","#FFFFFF","#0066FF","bold 8pt Verdana","bold 8pt Verdana",0,0],60,20);
+stm_ai("p0i1",[6,1,"#000000","/images/images_dmenu/line-topmenu.gif",2,23,0]);
+stm_aix("p0i2","p0i0",[0,"产品","","",-1,-1,0,"/product.htm","_self","","","","",0,0,0,"","",-1,-1,0,1,1,"#E6EFF9",1,"#FFFFFF",0,"","",3,3,0,0,"#000000","#999999"],80,20);
+stm_bp("p1",[1,4,0,5,0,2,1,0,90,"stEffect(\"slip\")",-2,"stEffect(\"slip\")",-2,100,0,0,"#999999","#FFFFFF","",3,1,1,"#999999"]);
+stm_aix("p1i0","p0i0",[0,"Flash类软件","","",-1,-1,0,"","_self","","","","",1,1,0,"","",0,0,0,0,1,"#333333",1,"#333333",1,"","",3,3,1,1,"#FFFFFF #CCCCCC #CCCCCC #FFFFFF","#FFFFFF #CCCCCC #CCCCCC #FFFFFF","#000000","#000000","bold 8pt Arial","bold 8pt Arial"],125,0);
+stm_aix("p1i1","p0i0",[0,"硕思闪客精灵","","",-1,-1,0,"http://www.shankejingling.com/","_self","","","","",1,1,0,"","",0,0,0,0,1,"#E6EFF9",1,"#E6EFF9",1,"","",3,3,1,1,"#FFFFFF #CCCCCC #CCCCCC #FFFFFF","#666666","#333333","#000000","8pt Arial","8pt Arial"],125,0);
+stm_aix("p1i2","p1i1",[0,"硕思闪客之锤","","",-1,-1,0,"/product/swfquicker/index.htm"],125,0);
+stm_aix("p1i3","p1i1",[0,"硕思闪客巫师","","",-1,-1,0,"/product/swfeasy/index.htm"],125,0);
+stm_aix("p1i4","p1i0",[0,"菜单类软件"],125,0);
+stm_aix("p1i5","p1i1",[0,"硕思网页魔法菜单","","",-1,-1,0,"http://mofacaidan.com/"],125,0);
+stm_aix("p1i6","p1i0",[0,"服务器类软件"],125,0);
+stm_aix("p1i7","p1i1",[0,"FVEC","","",-1,-1,0,"/product/fvec/index.htm"],125,0);
+
+stm_mc("p1",[6,"#000000",1,0,"",0]);
+stm_ep();
+stm_aix("p0i3","p0i1",[]);
+stm_aix("p0i4","p0i0",[0,"购买","","",-1,-1,0,"/shopping/order.php"],80,20);
+stm_aix("p0i5","p0i1",[]);
+stm_aix("p0i6","p0i0",[0,"支持","","",-1,-1,0,"/support/support.htm"],70,20);
+stm_aix("p0i7","p0i1",[]);
+stm_ep();
+stm_em();

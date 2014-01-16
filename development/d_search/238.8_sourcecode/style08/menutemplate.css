@@ -1,0 +1,192 @@
+/******************************begin menu template*********************************/
+#content-menutemplate {width: 715px !important; width:745px; width:/*ie6*/715px; float:left; padding:15px; clear:both;}
+
+#menutemplate-left1{clear:none; float: left;	width: 255px;    padding-left:60px; padding-right:5px;	}
+	
+#menutemplate-right1{ clear:none; float: right;	width: 255px;  padding-left:5px; padding-right:60px;	}
+
+
+.menutemplate-title1 {	background-image: url(/images/product/menu-template/menu-bgm.gif);	background-repeat: no-repeat;font-size: 13px; clear: both;	float: left;	width: 255px;	height: 45px;	font-weight: bold;	text-indent: 5px;	color: #444444;	}
+	
+.menutemplate-mid1 {	width: 255px;    padding:0px 0px 10px 5px;  }
+
+.menutemplate-bottom1{
+	background-image: url(/images/product/menu-template/buybg.gif);
+	height: 22px;
+	width: 135px;
+	float:left;
+	font-size:11px;
+	text-align:center;
+	vertical-align: middle;
+} 
+.menutemplate-bottom1 a {
+	text-decoration: underline;
+}
+.menutemplate-border {    clear:both;     padding-top:10px;	border-top-width: 1px;	border-top-style: dotted;	border-top-color: #000000;  }
+
+#menutemplate-distop{	width:710px;	height:45px;	background-image: url(/images/product/menu-template/topbg.gif);	font-weight: bold;	text-indent: 5px;	color: #444444;	font-size: 13px;	background-repeat: no-repeat;}
+
+#menutemplate-disbot{
+	width:563px;
+	height:29px;
+	text-indent: 5px;
+	vertical-align: top;
+
+bold; 		background-image: url(/images/product/menu-template/botbg.gif);
+	background-repeat: no-repeat;
+	float:left;
+}
+
+#menutemplate-leftall{text-align:right;	float: left;	padding-right: 10px;	height: 25px;	width: 530px;	clear:both;}
+
+.menutemplate-bot11{
+	float: left;
+	width: 133px;
+	padding-left:2px;
+}
+
+
+
+
+/*---------------------------------menu display-------------------------------------*/
+
+#menutemplate-showcase{	
+width: 723px; 
+}
+
+#menutemplate-dhtmltopbg{	
+
+height: 10px; 
+width: 723px; 
+background-image: url(/images/product/menu-template/dmenutopbg.gif);
+background-repeat: no-repeat;	}
+
+
+#menutemplate-dhtmltbotbg{
+	height: 6px;
+	width: 723px;
+	background-image: url(/images/product/menu-template/dmemubotbg.gif);
+	background-repeat: no-repeat;
+	clear: both;
+	margin-bottom: 20px;
+}
+
+
+#menutemplate-dmenuborder{
+	border-right-width: 2px;
+	border-left-width: 2px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #CBCACA;
+	border-left-color: #CBCACA;
+	width: 719px;
+	clear: both;
+	float: left;
+
+}
+	
+#menutemplate-dmenudisbot{
+	clear:both;
+	width:719px;
+	height:35px;
+	background-image: url(/images/product/menu-template/othertemplates.jpg);
+	background-repeat: no-repeat; font-weight: bold;
+	text-indent: 5px;
+	color: #444444;
+	font-size: 13px;
+	vertical-align: text-top;
+	
+}
+#menutemplate-dmenunum{
+clear:both;
+	height: 17px;
+	width:120px;
+}
+#menutemplate-dmenudisbg{
+	clear:none;
+	height: 210px;
+	background-image: url(/images/product/menu-template/dhtmldisbg.jpg);
+	background-repeat: repeat-y;
+	float: left;
+	width: 719px;
+}
+#menutemplate-dmenudisbg2{
+	clear:both;
+	height: auto;
+	background-image: url(/images/product/menu-template/bg-show2.gif);
+	background-repeat: repeat-y;
+	float: left;
+	width: 399px;
+}
+#menutemplate-dmenudetail1{
+	width:100px;
+	float:left;
+	text-align:right;
+	margin-right: 5px;
+	margin-left: 20px;
+}
+
+
+#menutemplate-dmenudetail2{
+	width:350px;
+	float:left;
+	margin-left: 5px;
+}
+
+	
+#menutemplate-dmenudetail3{
+	padding-top:10px;
+	width:209px;
+	float:left;
+	padding-bottom: 10px;
+
+}
+#menutemplate-tmenudetail1{
+	width:100px;
+	float:left;
+	text-align:right;
+
+}
+#menutemplate-tmenudetail2{
+	width:295px;
+	float:right;
+	}
+#menutemplate-dmenuhelptop{
+	font-weight:bold;
+	text-indent: 5px;
+	color: #444444;
+	font-size: 13px;
+	background-image: url(/images/product/menu-template/dmenuhelptop.gif);
+	background-repeat: no-repeat;
+	height: 32px;
+	width: 207px;
+	vertical-align: middle;
+}
+#menutemplate-dmenuhelpbot{
+	background-image: url(/images/product/menu-template/dmenuhelpbot.gif);
+	background-repeat: no-repeat;
+	height: 118px;
+	width: 197px;
+	padding-left: 5px;
+	padding-right: 5px;
+	}
+
+
+/*---------------------------------template package-------------------------------------*/
+
+
+#menutemplate-left3{float: left;width:177px;background-image: url(/images/product/menu-template/packageleft.gif);background-repeat: no-repeat;text-indent: 5px; padding-left:10px; margin-left:15px;}
+#menutemplate-mid3{	float: left;width:177px;background-image: url(/images/product/menu-template/packageleft.gif);	background-repeat: no-repeat; text-indent: 5px; padding-left:10px; margin-left:45px;}
+#menutemplate-right3{clear: none; float:right;width:177px;background-image: url(/images/product/menu-template/packageright.gif);background-repeat: no-repeat; text-indent: 5px; margin-right:60px;}
+
+
+
+/*---------------------------------template customzation-------------------------------------*/
+#menutemplate-left2{clear: none; float: left;	width:170px; padding-left:15px;  	}
+	
+#menutemplate-right2{float: right;	width:370px; padding-right:60px;}
+
+/******************************end menu template*********************************/
+#content2 #show-dmenu { float:left; width: 300px; padding-left:20px;}
+#content2 #show-dmenuinfo {    float: left;	width: 399px;}
+#content2 #showarea {border-left-width: 2px;border-left-style: solid;border-left-color: #CBCACA;	margin-left: 5px important; margin-left:2px;	padding-left: 10px;	margin-right: 5px;border-right-width: 2px;border-right-style: solid;border-right-color: #CBCACA;padding-right: 10px;float:left;}
