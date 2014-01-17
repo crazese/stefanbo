@@ -17,7 +17,7 @@ patch -Np1 -i ../openssl-1.0.1f-fix_pod_syntax-1.patch &&
 
 
 
-./config --prefix=/usr         \
+./config --prefix=/usr/local/app/openssl-1.0.1f        \
          --openssldir=/etc/ssl \
          --libdir=/lib          \
          shared                \
@@ -151,3 +151,84 @@ postmaster:       root
 root:             LOGIN
 # End /etc/aliases
 EOF
+
+
+
+
+/usr/sbin/alternatives --install /usr/sbin/sendmail mta /usr/sbin/sendmail.postfix 30 \
+--slave /usr/bin/mailq mta-mailq /usr/bin/mailq.postfix \
+--slave /usr/bin/newaliases mta-newaliases /usr/bin/newaliases.postfix \
+--slave /etc/pam.d/smtp mta-pam /etc/pam.d/smtp.postfix \
+--slave /usr/bin/rmail mta-rmail /usr/bin/rmail.postfix \
+--slave /usr/lib/sendmail mta-sendmail /usr/lib/sendmail.postfix \
+--initscript postfix
+
+wget http://ftp.wl0.org/yum/postfix/2.4/rhel4/RPMS.postfix/postfix-2.4.8-1.rhel4.i386.rpm
+
+
+Jan 17 11:33:57 mail postfix/error[5839]: 9E3071824A1: to=<root@localhost.sothink.com>, orig_to=<root@localhost>, relay=none, d
+elay=2636, delays=2636/0/0/0.05, dsn=4.3.0, status=deferred (mail transport unavailable)
+Jan 17 11:36:26 mail postfix/smtpd[6865]: warning: run-time library vs. compile-time header version mismatch: OpenSSL 0.9.7 may
+ not be compatible with OpenSSL 1.0.1
+Jan 17 11:36:26 mail postfix/master[5832]: warning: process /usr/libexec/postfix/smtpd pid 6865 killed by signal 11
+Jan 17 11:36:26 mail postfix/master[5832]: warning: /usr/libexec/postfix/smtpd: bad command startup -- throttling
+
+
+# install clamav 
+# reference http://pkgs.repoforge.org/clamav/
+wget http://pkgs.repoforge.org/clamav/clamav-0.96.2-1.el4.rf.i386.rpm
+wget http://pkgs.repoforge.org/clamav/clamav-devel-0.96.2-1.el4.rf.i386.rpm
+wget http://pkgs.repoforge.org/clamav/clamav-db-0.96.2-1.el4.rf.i386.rpm
+
+
+
+mv  /etc/postfix/transport.rpmsave /etc/postfix/transport
+mv /etc/postfix/master.cf.rpmsave /etc/postfix/master.cf
+mv /etc/postfix/main.cf.rpmsave /etc/postfix/main.cf
+mv /etc/postfix/header_checks.rpmsave /etc/postfix/header_checks
+mv /etc/postfix/aliases.rpmsave /etc/postfix/aliases
+mv /etc/postfix/access.rpmsave /etc/postfix/access
+
+
+wget ftp://ftp.redhat.com/pub/redhat/linux/enterprise/5Server/en/os/SRPMS/postfix-2.3.3-2.1.el5_2.src.rpm 
+rpm -ivh postfix-2.3.3-2.1.el5_2.src.rpm 
+cd /usr/src/redhat/SOURCES/
+wget http://vda.sourceforge.net/VDA/postfix-2.3.3-vda.patch.gz
+gunzip postfix-2.3.3-vda.patch.gz  
+vim /usr/src/redhat/SPECS postfix.spec
+
+rpmbuild -ba postfix.spec
+
+cd /usr/src/redhat/RPMS/i386/
+
+perl -MCPAN -e 'install Date::Calc'
+
+
+
+# reinstall openssl 0.9.7
+wget http://www.openssl.org/source/openssl-0.9.7a.tar.gz
+tar -zxvf openssl-0.9.7a
+cd openssl-0.9.7a
+./config --prefix=/usr/local/app/openssl-0.9.7
+make && make insatll
+cd ..
+
+#rm -rf postfix-2.10.2#
+
+#tar -zxvf postfix-2.10.2.tar.gz
+#cd postfix-2.10.2#
+
+#make CCARGS="-DNO_NIS -DUSE_TLS -I/usr/local/app/openssl-0.9.7/include/openssl   \
+#             -DUSE_SASL_AUTH -DUSE_CYRUS_SASL -I/usr/include/sasl  \
+#             -DHAS_MYSQL -I/usr/include/mysql"                     \
+#     AUXLIBS="-lssl -lcrypto -lsasl2 -L/usr/lib/mysql -lmysqlclient -lz -lm"        \
+#     makefiles &&
+#make#
+#
+#
+
+#sh postfix-install -non-interactive \
+#   daemon_directory=/usr/lib/postfix \
+#   manpage_directory=/usr/share/man \
+#   html_directory=/usr/share/doc/postfix-2.10.2/html \
+#   readme_directory=/usr/share/doc/postfix-2.10.2/readme
