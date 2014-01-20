@@ -97,8 +97,8 @@ sed -i 's#SYS_MYSQL_PASS = db_pass#SYS_MYSQL_PASS = extmail#g' /var/www/extsuite
 
 
 
-
-
+# install perl DBI
+perl -MCPAN -e 'install DBI'
 # install perl DBD::Mysql
 perl -MCPAN -e 'install DBD::mysql'
 # install perl Unix::Syslog
@@ -168,6 +168,10 @@ http://sourceforge.net/projects/phpmyadmin/files/phpMyAdmin/2.11.11.3/phpMyAdmin
 tar -zxvf phpMyAdmin-2.11.11.3-all-languages.tar.gz
 mv phpMyAdmin-2.11.11.3-all-languages /var/www/extsuite/phpmyadmin 
 cp /var/www/extsuite/phpmyadmin/config.sample.inc.php /var/www/extsuite/phpmyadmin/config.inc.php
+
+
+
+testsaslauthd -s smtp -u stefan_bo@sothink.com -p 19880103
 
 
 

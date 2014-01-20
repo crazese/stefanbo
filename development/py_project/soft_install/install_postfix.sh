@@ -232,3 +232,12 @@ cd ..
 #   manpage_directory=/usr/share/man \
 #   html_directory=/usr/share/doc/postfix-2.10.2/html \
 #   readme_directory=/usr/share/doc/postfix-2.10.2/readme
+
+# install postfix 2.5.2 from rpm
+wget http://ftp.wl0.org/official/2.5/RPMS-rhel4-i386/postfix-2.5.2-1.rhel4.i386.rpm
+
+# install zlib-1.2.3
+wget ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/Obesotoma/RedHat_RHEL-4/i386/zlib-1.2.3-16.1.i386.rpm
+wget ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/Obesotoma/RedHat_RHEL-4/i386/zlib-devel-1.2.3-16.1.i386.rpm
+
+
