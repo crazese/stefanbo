@@ -3,15 +3,15 @@
 # install 
 wget http://down1.chinaunix.net/distfiles/maildrop-2.0.2.tar.bz2
 
-tar -jzxv maildrop-2.0.2.tar.bz2
+tar -jxvf maildrop-2.0.2.tar.bz2
 cd maildrop-2.0.2
 ./configure \
---enable-sendmail=/usr/sbin/sendmail \
---enable-trusted-users='root postfix' \
+--enable-sendmail=/usr/sbin/sendmail.postfix \
+--enable-trusted-users='root vmail' \
 --enable-syslog=1 \
 --enable-maildirquota \
---enable-maildrop-uid=1032 \
---enable-maildrop-gid=1032 \
+--enable-maildrop-uid=1033 \
+--enable-maildrop-gid=1033 \
 --with-trashquota \
 --with-dirsync
 
@@ -38,8 +38,8 @@ cd courier-authlib-0.62.4
 --with-mysql-libs=/usr/lib/mysql \
 --with-mysql-includes=/usr/inculde/mysql \
 --with-redhat \
---with-mailuser=postfix \
---with-mailgroup=postfix 
+--with-mailuser=vmail \
+--with-mailgroup=vmail 
 
 make && make install
 
@@ -171,7 +171,24 @@ cp /var/www/extsuite/phpmyadmin/config.sample.inc.php /var/www/extsuite/phpmyadm
 
 
 
-testsaslauthd -s smtp -u stefan_bo@sothink.com -p 19880103
+testsaslauthd -s smtp -u zhongsi@sothink.com -p 1q2w3e?123
+<
+mail from:root@sothink.com
+
+rcpt to:zhongsi@sothink.com
+
+data
+
+subject: Mail test
+new test
+.
+>
 
 
+#smtp 测试
+[root@mail postfix_tar]# perl -e 'use MIME::Base64;print encode_base64("zhongsi\@sothink.com")' 
+emhvbmdzaUBzb3RoaW5rLmNvbQ==
+[root@mail postfix_tar]# perl -e 'use MIME::Base64;print encode_base64("1q2w3e?")'          
+MXEydzNlPw==
 
+echo "test" | maildrop -V 10 -d zhongsi@sothink.com

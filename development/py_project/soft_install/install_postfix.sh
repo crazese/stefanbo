@@ -80,7 +80,26 @@ install -v -m644 doc/{*.{html,txt,fig},ONEWS,TODO} \
     saslauthd/LDAP_SASLAUTHD /usr/share/doc/cyrus-sasl-2.1.22 &&
 install -v -m700 -d /var/lib/sasl /var/run/saslauthd
 
-# make install-cyrus-sasl
+# install cyrus-sasl-2.1.22 with index.html
+tar zxvf cyrus-sasl-2.1.22.tar.gz
+cd cyrus-sasl-2.1.22
+./configure \
+--prefix=/usr/local/sasl2 \
+--disable-gssapi \
+--disable-anon \
+--disable-sample \
+--disable-digest \
+--enable-plain \
+--enable-login \
+--enable-sql  \
+--with-mysql=/usr \
+--with-mysql-includes=/usr/include/mysql/ \
+--with-mysql-libs=/usr/lib/mysql/ \
+--with-authdaemond=/usr/local/courier-authlib/var/spool/authdaemon/socket
+
+make && make install 
+
+#make install-cyrus-sasl
 
 
 # install postfix-2.10.2
@@ -241,3 +260,24 @@ wget ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/Obe
 wget ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/Obesotoma/RedHat_RHEL-4/i386/zlib-devel-1.2.3-16.1.i386.rpm
 
 
+Jan 20 13:48:52 mail postfix/postfix-script: warning: /usr/lib/sendmail and /usr/sbin/sendmail differ
+Jan 20 13:48:52 mail postfix/postfix-script: warning: Replace one by a symbolic link to the other
+Jan 20 13:48:52 mail postfix/postfix-script: starting the Postfix mail system
+Jan 20 13:48:52 mail postfix/master[13233]: daemon started -- version 2.3.3, configuration /etc/postfix
+Jan 20 13:48:52 mail postfix/qmgr[13235]: B577F1821A4: from=<>, size=4608, nrcpt=1 (queue active)
+Jan 20 13:48:52 mail postfix/smtp[13237]: connect to mail.sothink.com[59.175.238.6]: Connection refused (port 25)
+Jan 20 13:48:52 mail postfix/smtp[13237]: B577F1821A4: to=<otrs@sothink.com>, relay=none, delay=75409, delays=75409/0.01/0.34/0, dsn=4.4.1, status=deferred (connect to mail.sothink.com[59.175.238.6]: Connection refused)
+Jan 20 13:49:42 mail postfix/smtpd[14665]: connect from mail[127.0.0.1]
+Jan 20 13:49:45 mail postfix/smtpd[14665]: lost connection after CONNECT from mail[127.0.0.1]
+Jan 20 13:49:45 mail postfix/smtpd[14665]: disconnect from mail[127.0.0.1]
+Jan 20 13:50:23 mail authdaemond: modules="authmysql", daemons=10
+Jan 20 13:50:23 mail authdaemond: Installing libauthmysql
+Jan 20 13:50:23 mail authdaemond: file not found
+Jan 20 13:50:51 mail postfix/postfix-script: warning: /usr/lib/sendmail and /usr/sbin/sendmail differ
+Jan 20 13:50:51 mail postfix/postfix-script: warning: Replace one by a symbolic link to the other
+Jan 20 13:50:56 mail postfix/postfix-script: fatal: usage: postfix start (or stop, reload, abort, flush, check, set-permissions, upgrade-configuration)
+Jan 20 13:51:00 mail postfix/smtpd[14665]: connect from mail[127.0.0.1]
+Jan 20 13:51:03 mail postfix/smtpd[14665]: lost connection after CONNECT from mail[127.0.0.1]
+Jan 20 13:51:03 mail postfix/smtpd[14665]: disconnect from mail[127.0.0.1]
+Jan 20 13:51:37 mail postfix/postfix-script: stopping the Postfix mail system
+Jan 20 13:51:37 mail postfix/master[13233]: terminating on signal 15
