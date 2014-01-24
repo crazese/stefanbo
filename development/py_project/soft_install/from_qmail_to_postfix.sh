@@ -221,7 +221,7 @@ for i in range(1, 178):
 	domain = os.popen("sed -n '%dp' temp |awk '{print $2}'" % i).read().rstrip()
 	password = os.popen("sed -n '%dp' temp |awk '{print $3}'" % i).read().rstrip()
 	
-	code = '''INSERT INTO `mailbox_test` VALUES ('%s@%s', '%s', '%s', '', '', '', '%s/aili/Maildir', '%s/aili', '104857600S', '52428800S', '%s', '1000', '1000', '2008-10-04 00:00:00', '2015-11-08', '1', null, null, null, null, null, null, null, '', '');''' % (username, domain,username,password,domain,domain,domain)
+	code = '''INSERT INTO `mailbox_test` VALUES ('%s@%s', '%s', '%s', '', '', '', '%s/%s/Maildir', '%s/%s', '104857600S', '52428800S', '%s', '1000', '1000', '2008-10-04 00:00:00', '2015-11-08', '1', null, null, null, null, null, null, null, '', '');''' % (username, domain,username,password,domain,username, domain,username, domain)
 	test.write(code)
 	test.write('\n')
 
