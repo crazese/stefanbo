@@ -40,3 +40,22 @@ cd zabbix-2.2.1
 --with-libcurl \
 --with-libxml2 \
 --with-jabber
+
+/data/lnmp/monitor_tools/app
+
+./configure \
+--prefix=/data/lnmp/monitor_tools/app/zabbix \
+--enable-agent \
+--with-libcurl=/data/lnmp/cur/lib/ \
+--with-libxml2=/usr/local/app/locale/libxml2/lib/ \
+--with-jabber
+
+./configure \
+--prefix=/usr/local/app/zabbix \
+--enable-proxy \
+--with-mysql \
+--enable-ipv6 \
+--with-net-snmp \
+--with-libcurl \
+--with-libxml2 \
+--with-jabber
