@@ -1,0 +1,28 @@
+#configure the nginx and php
+
+server {
+        listen   82 default;
+        server_name  localhost;
+
+        access_log  /usr/local/lnmp/app/nginx/logs/localhost.82.access.log;
+        root   /usr/local/lnmp/app/nginx/www/herouser;
+        index  index.php index.html index.htm;
+        
+        location /doc {
+                root   /usr/share;
+                autoindex on;
+                allow 127.0.0.1;
+                deny all;
+        }
+
+        location /images {
+                autoindex off;
+        }
+
+        location ~ \.php$ {
+                fastcgi_pass   127.0.0.1:9000;
+                fastcgi_index  index.php;
+                fastcgi_param  SCRIPT_FILENAME  /usr/local/lnmp/app/nginx/www/herouser$fastcgi_script_name;
+                include fastcgi_params;
+        }
+}

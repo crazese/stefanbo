@@ -1,0 +1,103 @@
+BODY {
+	BACKGROUND: #BDCBE7;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+td {
+	font-size:14px;
+}
+p {
+	font-size:16px;
+}
+a:link {
+	text-decoration: none;
+	color: blue;
+	font-size: 12px;
+}
+a:active {
+	text-decoration: blink;
+}
+a:hover {
+	text-decoration: none;
+	color: white;
+	FONT-WEIGHT: bold;
+} 
+a:visited {
+	text-decoration: none;
+	color: #0099FF;
+	font-size: 12px;
+}
+.topMenu {
+	cursor: pointer;
+	background-color: #EFEBDE;
+	overflow: auto;
+}
+.sec_menu {
+	BORDER-RIGHT: white 1px solid;
+	BACKGROUND: #d6dff7;
+	BORDER-LEFT: white 1px solid;
+	BORDER-BOTTOM: white 1px solid;
+	text-align: center;
+	display: none;
+	width: 100%;
+}
+.sec_menu td {
+	text-align: center;
+}
+.support_menu {
+	BORDER-RIGHT: white 1px solid;
+	BACKGROUND: #d6dff7;
+	OVERFLOW: hidden;
+	BORDER-LEFT: white 1px solid;
+	BORDER-BOTTOM: white 1px solid;
+}
+.support_menu SPAN {
+	LEFT: 0px;
+	TOP: 2px;
+	Font-Size:14px;
+	COLOR: #6666FF;
+	POSITION: relative;
+}
+.menu_title SPAN {
+	FONT-WEIGHT: bold;
+	font-size:16px;
+	COLOR: #6666FF;
+	POSITION: relative;
+	LEFT: 8px;
+	TOP: 2px
+}
+.show_time {
+	background-position: center;
+}
+.show_time div{
+	font-size:14px;
+	color:white;
+}
+.show_time p{
+	font-size:20px;
+	font-weight:bold;
+	color:#FFFFFF;
+}
+.midBlue {
+	color: #0000FF;
+}
+.menuTitle {
+	font-size: 12px;
+	cursor: pointer;
+	background-image: url(../images/menu/menu.JPG);
+}
+.leftTable{
+	border-collapse: collapse;
+	background-color:#000000;
+	font-size:12px;
+	vertical-align: middle;
+}
+.leftTable td{
+	background-color:#EFEBDE;
+}
+.midFrame {
+	border-right-color: #FFFFFF;
+	border-right-width: 1px;
+}
