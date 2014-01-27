@@ -70,7 +70,8 @@ DATABASES = {
         'NAME': 'django_mysite',
 	'USER': 'root',
 	'PASSWORD': '123456',
-	'HOST': '192.168.1.203',
+	#'HOST': '192.168.1.203',
+    'HOST': 'localhost'
     }
 }
 
