@@ -43,6 +43,8 @@ cd zabbix-2.2.1
 
 /data/lnmp/monitor_tools/app
 
+
+
 ./configure \
 --prefix=/data/lnmp/monitor_tools/app/zabbix \
 --enable-agent \
@@ -50,12 +52,14 @@ cd zabbix-2.2.1
 --with-libxml2=/usr/local/app/locale/libxml2/lib/ \
 --with-jabber
 
+
 ./configure \
---prefix=/usr/local/app/zabbix \
+--prefix=/data/lnmp/monitor_tools/app/zabbix \
 --enable-proxy \
---with-mysql \
---enable-ipv6 \
---with-net-snmp \
---with-libcurl \
---with-libxml2 \
---with-jabber
+--with-mysql=/data/lnmp/monitor_tools/app/mysql/bin/mysql_config \
+--with-libcurl=/data/lnmp/cur/bin/curl-config \
+--with-libxml2=/usr/local/app/locale/libxml2/bin/xml2-config
+
+cp_mqq@132_230:/data/lnmp/monitor_tools/app/zabbix> export LID_LIBRARY_PATH=/data/lnmp/monitor_tools/app/mysql/lib/
+cp_mqq@132_230:/data/lnmp/monitor_tools/app/zabbix> sbin/zabbix_proxy  
+sbin/zabbix_proxy: error while loading shared libraries: libmysqlclient.so.18: cannot open shared object file: No such file or directory
