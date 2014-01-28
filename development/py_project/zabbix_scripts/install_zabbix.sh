@@ -3,6 +3,27 @@
 # install packages
 
 
+<<<<<<< HEAD
+# ubuntu 
+apt-get install  libghc6-hsql-mysql-dev -y
+apt-get install libphp-jabber -y
+apt-get install libnet-jabber-loudmouth-perl -y
+apt-get install jabber-dev -y
+apt-get install libiksemel-dev  -y
+apt-get install libcurl4-openssl-dev -y
+apt-get install libsnmp-dev -y
+apt-get install snmp -y
+
+# centos
+yum install zlib-devel libxml2-devel glibc-devel curl-devel gcc automake  libidn-devel openssl-devel net-snmp-devel rpm-devel OpenIPMI-devel
+
+wget http://iksemel.googlecode.com/files/iksemel-1.4.tar.gz  
+cd iksemel-1.4
+./configure
+make && make install
+
+cd /opt/lnmp/
+=======
 #apt-get install  libghc6-hsql-mysql-dev -y#
 
 #apt-get install libphp-jabber -y
@@ -18,6 +39,7 @@
 
 # install server
 cd /usr/local/lnmp/tar_package/zabbix/
+>>>>>>> a3c15da6316bee3265fb06d1d8f67e9d19d1794b
 tar -zxvf zabbix-2.2.1.tar.gz
 cd zabbix-2.2.1
 ./configure \
