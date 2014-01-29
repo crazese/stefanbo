@@ -17,7 +17,7 @@ patch -Np1 -i ../openssl-1.0.1f-fix_pod_syntax-1.patch &&
 
 
 
-./config --prefix=/usr         \
+./config --prefix=/usr/local/app/openssl-1.0.1f        \
          --openssldir=/etc/ssl \
          --libdir=/lib          \
          shared                \
@@ -80,7 +80,26 @@ install -v -m644 doc/{*.{html,txt,fig},ONEWS,TODO} \
     saslauthd/LDAP_SASLAUTHD /usr/share/doc/cyrus-sasl-2.1.22 &&
 install -v -m700 -d /var/lib/sasl /var/run/saslauthd
 
-# make install-cyrus-sasl
+# install cyrus-sasl-2.1.22 with index.html
+tar zxvf cyrus-sasl-2.1.22.tar.gz
+cd cyrus-sasl-2.1.22
+./configure \
+--prefix=/usr/local/sasl2 \
+--disable-gssapi \
+--disable-anon \
+--disable-sample \
+--disable-digest \
+--enable-plain \
+--enable-login \
+--enable-sql  \
+--with-mysql=/usr \
+--with-mysql-includes=/usr/include/mysql/ \
+--with-mysql-libs=/usr/lib/mysql/ \
+--with-authdaemond=/usr/local/courier-authlib/var/spool/authdaemon/socket
+
+make && make install 
+
+#make install-cyrus-sasl
 
 
 # install postfix-2.10.2
@@ -151,3 +170,114 @@ postmaster:       root
 root:             LOGIN
 # End /etc/aliases
 EOF
+
+
+
+
+/usr/sbin/alternatives --install /usr/sbin/sendmail mta /usr/sbin/sendmail.postfix 30 \
+--slave /usr/bin/mailq mta-mailq /usr/bin/mailq.postfix \
+--slave /usr/bin/newaliases mta-newaliases /usr/bin/newaliases.postfix \
+--slave /etc/pam.d/smtp mta-pam /etc/pam.d/smtp.postfix \
+--slave /usr/bin/rmail mta-rmail /usr/bin/rmail.postfix \
+--slave /usr/lib/sendmail mta-sendmail /usr/lib/sendmail.postfix \
+--initscript postfix
+
+wget http://ftp.wl0.org/yum/postfix/2.4/rhel4/RPMS.postfix/postfix-2.4.8-1.rhel4.i386.rpm
+
+
+Jan 17 11:33:57 mail postfix/error[5839]: 9E3071824A1: to=<root@localhost.sothink.com>, orig_to=<root@localhost>, relay=none, d
+elay=2636, delays=2636/0/0/0.05, dsn=4.3.0, status=deferred (mail transport unavailable)
+Jan 17 11:36:26 mail postfix/smtpd[6865]: warning: run-time library vs. compile-time header version mismatch: OpenSSL 0.9.7 may
+ not be compatible with OpenSSL 1.0.1
+Jan 17 11:36:26 mail postfix/master[5832]: warning: process /usr/libexec/postfix/smtpd pid 6865 killed by signal 11
+Jan 17 11:36:26 mail postfix/master[5832]: warning: /usr/libexec/postfix/smtpd: bad command startup -- throttling
+
+
+# install clamav 
+# reference http://pkgs.repoforge.org/clamav/
+wget http://pkgs.repoforge.org/clamav/clamav-0.96.2-1.el4.rf.i386.rpm
+wget http://pkgs.repoforge.org/clamav/clamav-devel-0.96.2-1.el4.rf.i386.rpm
+wget http://pkgs.repoforge.org/clamav/clamav-db-0.96.2-1.el4.rf.i386.rpm
+
+
+
+mv  /etc/postfix/transport.rpmsave /etc/postfix/transport
+mv /etc/postfix/master.cf.rpmsave /etc/postfix/master.cf
+mv /etc/postfix/main.cf.rpmsave /etc/postfix/main.cf
+mv /etc/postfix/header_checks.rpmsave /etc/postfix/header_checks
+mv /etc/postfix/aliases.rpmsave /etc/postfix/aliases
+mv /etc/postfix/access.rpmsave /etc/postfix/access
+
+
+wget ftp://ftp.redhat.com/pub/redhat/linux/enterprise/5Server/en/os/SRPMS/postfix-2.3.3-2.1.el5_2.src.rpm 
+rpm -ivh postfix-2.3.3-2.1.el5_2.src.rpm 
+cd /usr/src/redhat/SOURCES/
+wget http://vda.sourceforge.net/VDA/postfix-2.3.3-vda.patch.gz
+gunzip postfix-2.3.3-vda.patch.gz  
+vim /usr/src/redhat/SPECS postfix.spec
+
+rpmbuild -ba postfix.spec
+
+cd /usr/src/redhat/RPMS/i386/
+
+perl -MCPAN -e 'install Date::Calc'
+
+
+
+# reinstall openssl 0.9.7
+wget http://www.openssl.org/source/openssl-0.9.7a.tar.gz
+tar -zxvf openssl-0.9.7a
+cd openssl-0.9.7a
+./config --prefix=/usr/local/app/openssl-0.9.7
+make && make insatll
+cd ..
+
+#rm -rf postfix-2.10.2#
+
+#tar -zxvf postfix-2.10.2.tar.gz
+#cd postfix-2.10.2#
+
+#make CCARGS="-DNO_NIS -DUSE_TLS -I/usr/local/app/openssl-0.9.7/include/openssl   \
+#             -DUSE_SASL_AUTH -DUSE_CYRUS_SASL -I/usr/include/sasl  \
+#             -DHAS_MYSQL -I/usr/include/mysql"                     \
+#     AUXLIBS="-lssl -lcrypto -lsasl2 -L/usr/lib/mysql -lmysqlclient -lz -lm"        \
+#     makefiles &&
+#make#
+#
+#
+
+#sh postfix-install -non-interactive \
+#   daemon_directory=/usr/lib/postfix \
+#   manpage_directory=/usr/share/man \
+#   html_directory=/usr/share/doc/postfix-2.10.2/html \
+#   readme_directory=/usr/share/doc/postfix-2.10.2/readme
+
+# install postfix 2.5.2 from rpm
+wget http://ftp.wl0.org/official/2.5/RPMS-rhel4-i386/postfix-2.5.2-1.rhel4.i386.rpm
+
+# install zlib-1.2.3
+wget ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/Obesotoma/RedHat_RHEL-4/i386/zlib-1.2.3-16.1.i386.rpm
+wget ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/home:/Obesotoma/RedHat_RHEL-4/i386/zlib-devel-1.2.3-16.1.i386.rpm
+
+
+Jan 20 13:48:52 mail postfix/postfix-script: warning: /usr/lib/sendmail and /usr/sbin/sendmail differ
+Jan 20 13:48:52 mail postfix/postfix-script: warning: Replace one by a symbolic link to the other
+Jan 20 13:48:52 mail postfix/postfix-script: starting the Postfix mail system
+Jan 20 13:48:52 mail postfix/master[13233]: daemon started -- version 2.3.3, configuration /etc/postfix
+Jan 20 13:48:52 mail postfix/qmgr[13235]: B577F1821A4: from=<>, size=4608, nrcpt=1 (queue active)
+Jan 20 13:48:52 mail postfix/smtp[13237]: connect to mail.sothink.com[59.175.238.6]: Connection refused (port 25)
+Jan 20 13:48:52 mail postfix/smtp[13237]: B577F1821A4: to=<otrs@sothink.com>, relay=none, delay=75409, delays=75409/0.01/0.34/0, dsn=4.4.1, status=deferred (connect to mail.sothink.com[59.175.238.6]: Connection refused)
+Jan 20 13:49:42 mail postfix/smtpd[14665]: connect from mail[127.0.0.1]
+Jan 20 13:49:45 mail postfix/smtpd[14665]: lost connection after CONNECT from mail[127.0.0.1]
+Jan 20 13:49:45 mail postfix/smtpd[14665]: disconnect from mail[127.0.0.1]
+Jan 20 13:50:23 mail authdaemond: modules="authmysql", daemons=10
+Jan 20 13:50:23 mail authdaemond: Installing libauthmysql
+Jan 20 13:50:23 mail authdaemond: file not found
+Jan 20 13:50:51 mail postfix/postfix-script: warning: /usr/lib/sendmail and /usr/sbin/sendmail differ
+Jan 20 13:50:51 mail postfix/postfix-script: warning: Replace one by a symbolic link to the other
+Jan 20 13:50:56 mail postfix/postfix-script: fatal: usage: postfix start (or stop, reload, abort, flush, check, set-permissions, upgrade-configuration)
+Jan 20 13:51:00 mail postfix/smtpd[14665]: connect from mail[127.0.0.1]
+Jan 20 13:51:03 mail postfix/smtpd[14665]: lost connection after CONNECT from mail[127.0.0.1]
+Jan 20 13:51:03 mail postfix/smtpd[14665]: disconnect from mail[127.0.0.1]
+Jan 20 13:51:37 mail postfix/postfix-script: stopping the Postfix mail system
+Jan 20 13:51:37 mail postfix/master[13233]: terminating on signal 15
