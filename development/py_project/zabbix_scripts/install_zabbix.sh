@@ -1,9 +1,9 @@
-#!/bin/bash
+a#!/bin/bash
 
 # install packages
 
 
-<<<<<<< HEAD
+
 # ubuntu 
 apt-get install  libghc6-hsql-mysql-dev -y
 apt-get install libphp-jabber -y
@@ -39,7 +39,7 @@ cd /opt/lnmp/
 
 # install server
 cd /usr/local/lnmp/tar_package/zabbix/
->>>>>>> a3c15da6316bee3265fb06d1d8f67e9d19d1794b
+
 tar -zxvf zabbix-2.2.1.tar.gz
 cd zabbix-2.2.1
 ./configure \
@@ -85,3 +85,8 @@ cd zabbix-2.2.1
 cp_mqq@132_230:/data/lnmp/monitor_tools/app/zabbix> export LID_LIBRARY_PATH=/data/lnmp/monitor_tools/app/mysql/lib/
 cp_mqq@132_230:/data/lnmp/monitor_tools/app/zabbix> sbin/zabbix_proxy  
 sbin/zabbix_proxy: error while loading shared libraries: libmysqlclient.so.18: cannot open shared object file: No such file or directory
+
+
+export LD_LIBRARY_PATH='/data/lnmp/monitor_tools/app/mysql/lib:/data/lnmp/cur/lib:/usr/local/app/locale/libxml2/lib'
+
+
