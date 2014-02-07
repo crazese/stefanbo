@@ -57,6 +57,7 @@ cd zabbix-2.2.1
 ./configure \
 --prefix=/usr/local/app/zabbix \
 --enable-agent \
+--enable-proxy \
 --enable-ipv6 \
 --with-net-snmp \
 --with-libcurl \
@@ -68,7 +69,7 @@ cd zabbix-2.2.1
 
 
 ./configure \
---prefix=/data/lnmp/monitor_tools/app/zabbix \
+--prefix=/data/lnmp/monitor_tools/app/zabbix_agent \
 --enable-agent \
 --with-libcurl=/data/lnmp/cur/lib/ \
 --with-libxml2=/usr/local/app/locale/libxml2/lib/ \
@@ -76,11 +77,23 @@ cd zabbix-2.2.1
 
 
 ./configure \
---prefix=/data/lnmp/monitor_tools/app/zabbix \
+--prefix=/data/lnmp/monitor_tools/app/zabbix_proxy \
 --enable-proxy \
+--enable-agent \
 --with-mysql=/data/lnmp/monitor_tools/app/mysql/bin/mysql_config \
 --with-libcurl=/data/lnmp/cur/bin/curl-config \
 --with-libxml2=/usr/local/app/locale/libxml2/bin/xml2-config
+
+# 2014.02.07
+./configure \
+--prefix=/data/lnmp/monitor_tools/app/zabbix_proxy \
+--enable-proxy \
+--enable-agent \
+--with-mysql=/data/lnmp/monitor_tools/app/mysql/bin/mysql_config \
+--with-libcurl=/data/lnmp/cur/bin/curl-config \
+--with-libxml2=/usr/local/app/locale/libxml2/bin/xml2-config
+
+
 
 cp_mqq@132_230:/data/lnmp/monitor_tools/app/zabbix> export LID_LIBRARY_PATH=/data/lnmp/monitor_tools/app/mysql/lib/
 cp_mqq@132_230:/data/lnmp/monitor_tools/app/zabbix> sbin/zabbix_proxy  
