@@ -1,0 +1,5 @@
+# autodiscovery scripts
+UserParameter=custom.disks.discovery_perl,/opt/zabbix_agent/bin/discovery_disks.perl
+UserParameter=custom.proc.discovery_perl,/opt/zabbix_agent/bin/discovery_processes.perl
+UserParameter=custom.services.tcp.discovery_perl,/opt/zabbix_agent/bin/discovery_tcp_services.perl
+UserParameter=custom.services.udp.discovery_perl,/opt/zabbix_agent/bin/discovery_udp_services.perl

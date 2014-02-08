@@ -24,10 +24,7 @@ dpkg -P php5 php5-common php5-cgi php5-mysql php5-curl php5-gd
 apt-get purge `dpkg -l | grep php| awk '{print $2}'`
 
 # Install needed packages
-apt-get install gcc g++ make curl vim zip unzip wget openssl libssl0.9.8 libssl-dev libpcre3 libpcre3-dev<<EOF
-y
-y
-EOF
+apt-get install gcc g++ make curl vim zip unzip wget openssl libssl0.9.8 libssl-dev libpcre3 libpcre3-dev -y
 apt-get install libncurses5-dev -y
 
 if [ ! -z "`cat /etc/issue | grep 13`" ];then
