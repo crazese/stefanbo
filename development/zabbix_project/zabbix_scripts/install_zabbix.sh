@@ -1,10 +1,7 @@
-a#!/bin/bash
-
+#!/bin/bash
 # install packages
 
-
-
-# ubuntu 
+# install server on ubuntu 
 apt-get install  libghc6-hsql-mysql-dev -y
 apt-get install libphp-jabber -y
 apt-get install libnet-jabber-loudmouth-perl -y
@@ -14,27 +11,13 @@ apt-get install libcurl4-openssl-dev -y
 apt-get install libsnmp-dev -y
 apt-get install snmp -y
 
-# centos
+# install server on redhat/centos
 yum install zlib-devel libxml2-devel glibc-devel curl-devel gcc automake  libidn-devel openssl-devel net-snmp-devel rpm-devel OpenIPMI-devel
 
 wget http://iksemel.googlecode.com/files/iksemel-1.4.tar.gz  
 cd iksemel-1.4
 ./configure
 make && make install
-
-cd /opt/lnmp/
-=======
-#apt-get install  libghc6-hsql-mysql-dev -y#
-
-#apt-get install libphp-jabber -y
-#apt-get install libnet-jabber-loudmouth-perl -y
-#apt-get install jabber-dev -y
-#apt-get install libiksemel-dev  -y#
-
-#apt-get install libcurl4-openssl-dev -y#
-
-#apt-get install libsnmp-dev -y
-#apt-get install snmp -y
 
 
 # install server
@@ -53,7 +36,7 @@ cd zabbix-2.2.1
 --with-libxml2 \
 --with-jabber
 
-# install agent
+# install agent and proxy
 ./configure \
 --prefix=/usr/local/app/zabbix \
 --enable-agent \
@@ -64,10 +47,7 @@ cd zabbix-2.2.1
 --with-libxml2 \
 --with-jabber
 
-/data/lnmp/monitor_tools/app
-
-
-
+# install only agent with youxididai server
 ./configure \
 --prefix=/data/lnmp/monitor_tools/app/zabbix_agent \
 --enable-agent \
@@ -75,7 +55,7 @@ cd zabbix-2.2.1
 --with-libxml2=/usr/local/app/locale/libxml2/lib/ \
 --with-jabber
 
-
+# install agent and proxy with youxididai server
 ./configure \
 --prefix=/data/lnmp/monitor_tools/app/zabbix_proxy \
 --enable-proxy \
@@ -84,22 +64,7 @@ cd zabbix-2.2.1
 --with-libcurl=/data/lnmp/cur/bin/curl-config \
 --with-libxml2=/usr/local/app/locale/libxml2/bin/xml2-config
 
-# 2014.02.07
-./configure \
---prefix=/data/lnmp/monitor_tools/app/zabbix_proxy \
---enable-proxy \
---enable-agent \
---with-mysql=/data/lnmp/monitor_tools/app/mysql/bin/mysql_config \
---with-libcurl=/data/lnmp/cur/bin/curl-config \
---with-libxml2=/usr/local/app/locale/libxml2/bin/xml2-config
-
-
-
-cp_mqq@132_230:/data/lnmp/monitor_tools/app/zabbix> export LID_LIBRARY_PATH=/data/lnmp/monitor_tools/app/mysql/lib/
-cp_mqq@132_230:/data/lnmp/monitor_tools/app/zabbix> sbin/zabbix_proxy  
-sbin/zabbix_proxy: error while loading shared libraries: libmysqlclient.so.18: cannot open shared object file: No such file or directory
-
-
+# 230 proxy init scripts
 export LD_LIBRARY_PATH='/data/lnmp/monitor_tools/app/mysql/lib:/data/lnmp/cur/lib:/usr/local/app/locale/libxml2/lib'
 
 

@@ -1,5 +1,4 @@
 #/bin/bash
-
 #add ubuntu source
 echo "deb http://ppa.launchpad.net/nginx/stable/ubuntu lucid main" >> /etc/apt/sources.list
 apt-get update
@@ -14,7 +13,6 @@ apt-get install nginx -y
 
 #install mysql
 apt-get install mysql-server -y
-
 
 #install php5-fpm
 aptitude install python-software-properties -y
@@ -40,7 +38,6 @@ apt-get -y install g++ libevent-dev libcloog-ppl-dev
 wget ftp://ftpuser:5tgb6yhn@59.175.238.4/memcached-2.1.0.tgz
 wget ftp://ftpuser:5tgb6yhn@59.175.238.4/libmemcached-1.0.10.tar.gz
 wget ftp://ftpuser:5tgb6yhn@59.175.238.4/igbinary-igbinary-1.1.1-28-gc35d48f.zip
-
 
 apt-get install unzip -y
 
