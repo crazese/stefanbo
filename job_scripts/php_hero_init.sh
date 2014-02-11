@@ -44,7 +44,7 @@ apt-get install unzip -y
 unzip  igbinary-igbinary-1.1.1-28-gc35d48f.zip
 cd igbinary-igbinary-c35d48f
 phpize
-./configure  --enable-igbinary config=/usr/local/bin/php-config
+./configure  --enable-igbinary config=/usr/bin/php-config
 make 
 make install
 cd ..
