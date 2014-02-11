@@ -1,0 +1,21 @@
+{% extends 'demo/bootstrap.html' %}
+
+{% load bootstrap3 %}
+{% load url from future %}
+{% block bootstrap3_content %}
+    <div class="container">
+        <h1>{% block title %}(no title){% endblock %}</h1>
+
+        <p>
+            <a href="{% url 'demo:home' %}">home</a>
+            <a href="{% url 'demo:form' %}">form</a>
+            <a href="{% url 'demo:form_horizontal' %}">form_horizontal</a>
+            <a href="{% url 'demo:form_inline' %}">form_inline</a>
+        </p>
+
+        {% bootstrap_messages %}
+
+        {% block content %}(no content){% endblock %}
+    </div>
+
+{% endblock %}
