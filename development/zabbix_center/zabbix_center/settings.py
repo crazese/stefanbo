@@ -71,7 +71,9 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+#LANGUAGE_CODE = 'en-us'
+
+LANGUAGE_CODE = 'zh-cn'
 
 TIME_ZONE = 'UTC'
 
@@ -86,6 +88,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# Media files 
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+TEMPLATE_DIRS = (
+        os.path.join(BASE_DIR, 'templates')
+    )
+
+CMS_TEMPLATES = (
+        ('template_1.html', 'Template One'),
+        ('template_2.html', 'Template Two'),
+    )
 
 # debug_toolbar settings
 if DEBUG:
@@ -113,3 +130,38 @@ if DEBUG:
     DEBUG_TOOLBAR_CONFIG = {
         'INTERCEPT_REDIRECTS': False,
     }
+
+# django_cms settings
+
+INSTALLED_APPS += (
+        'cms',
+        'mptt',
+        'menus',
+        'south',
+        'sekizai',
+        'cms.plugins.file',
+        'cms.plugins.flash',
+        'cms.plugins.googlemap',
+        'cms.plugins.picture',
+        'cms.plugins.teaser',
+        'djangocms_link',
+        'djangocms_snippet',
+        'djangocms_text_ckeditor',  # note this needs to be above the 'cms' entry
+    )
+
+MIDDLEWARE_CLASSES += (
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.request',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'cms.context_processors.media',
+    'sekizai.context_processors.sekizai',
+)
