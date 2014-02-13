@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.conf.urls import patterns, include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
-
+from django.conf import settings
 from mezzanine.core.views import direct_to_template
 
 
@@ -16,8 +16,16 @@ admin.autodiscover()
 urlpatterns = i18n_patterns("",
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
-    ("^admin/", include(admin.site.urls)),
+    url(r"^admin/", include(admin.site.urls)),
+    url(r'^bootstrap/', include('demo.urls', namespace="demo")),
 )
+
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
+            {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
+        url(r'', include('django.contrib.staticfiles.urls')),
+    )
 
 urlpatterns += patterns('',
 
@@ -77,7 +85,7 @@ urlpatterns += patterns('',
     # ``mezzanine.urls``, go right ahead and take the parts you want
     # from it, and use them directly below instead of using
     # ``mezzanine.urls``.
-    ("^", include("mezzanine.urls")),
+    ("^mezzanine", include("mezzanine.urls")),
 
     # MOUNTING MEZZANINE UNDER A PREFIX
     # ---------------------------------

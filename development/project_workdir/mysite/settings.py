@@ -171,19 +171,19 @@ ALLOWED_HOSTS = []
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = None
+TIME_ZONE = 'UTC'
 
 # If you set this to True, Django will use timezone-aware datetimes.
 USE_TZ = True
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "zh"
 
 # Supported languages
 _ = lambda s: s
 LANGUAGES = (
-    ('en', _('English')),
+    ('zh', _('Chinese')),
 )
 
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
@@ -198,12 +198,12 @@ SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = False
+#USE_I18N = False
 
 # Tuple of IP addresses, as strings, that:
 #   * See debug comments, when DEBUG is true
 #   * Receive x-headers
-INTERNAL_IPS = ("127.0.0.1",)
+INTERNAL_IPS = ("127.0.0.1","192.168.2.195",)
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -319,6 +319,8 @@ INSTALLED_APPS = (
     "mezzanine.twitter",
     "mezzanine.accounts",
     #"mezzanine.mobile",
+    'mysite.demo',
+    'bootstrap3',
 )
 
 # List of processors used by RequestContext to populate the context.
@@ -358,8 +360,27 @@ MIDDLEWARE_CLASSES = (
     # "mezzanine.core.middleware.SSLRedirectMiddleware",
     "mezzanine.pages.middleware.PageMiddleware",
     "mezzanine.core.middleware.FetchFromCacheMiddleware",
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
+DEBUG_TOOLBAR_PANELS = (
+        'debug_toolbar.panels.versions.VersionsPanel',
+        'debug_toolbar.panels.timer.TimerPanel',
+        'debug_toolbar.panels.settings.SettingsPanel',
+        'debug_toolbar.panels.headers.HeadersPanel',
+        'debug_toolbar.panels.request.RequestPanel',
+        'debug_toolbar.panels.sql.SQLPanel',
+        'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+        'debug_toolbar.panels.templates.TemplatesPanel',
+        'debug_toolbar.panels.cache.CachePanel',
+        'debug_toolbar.panels.signals.SignalsPanel',
+        'debug_toolbar.panels.logging.LoggingPanel',
+        'debug_toolbar.panels.redirects.RedirectsPanel',
+)
+
+DEBUG_TOOLBAR_CONFIG = {
+        'INTERCEPT_REDIRECTS': False,
+}
 # Store these package names here as they may change in the future since
 # at the moment we are using custom forks of them.
 PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
