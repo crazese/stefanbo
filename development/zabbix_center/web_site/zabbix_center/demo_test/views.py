@@ -9,41 +9,44 @@ from django.views.generic import FormView
 from django.views.generic.base import TemplateView
 from django.contrib import messages
 
-from demo.forms import ContactForm
-
-from demo.models import Author, Book
-from django.views import generic
+from demo_test.forms import ContactForm
 
 
 class HomePageView(TemplateView):
-    template_name = 'demo/home.html'
+    template_name = 'demo_test/home.html'
 
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
         messages.info(self.request, 'This is a demo of a message.')
         return context
 
-    #def get_queryset(self):
-
-
 
 class FormView(FormView):
-    template_name = 'demo/form.html'
+    template_name = 'demo_test/form.html'
     form_class = ContactForm
 
 
 class FormHorizontalView(FormView):
-    template_name = 'demo/form_horizontal.html'
+    template_name = 'demo_test/form_horizontal.html'
     form_class = ContactForm
 
 
 class FormInlineView(FormView):
-    template_name = 'demo/form_inline.html'
+    template_name = 'demo_test/form_inline.html'
+    form_class = ContactForm
+
+
+class BootstrapView(FormView):
+    template_name = 'demo_test/bootstrap.html'
+    form_class = ContactForm
+
+class CheckView(FormView):
+    template_name = 'demo_test/test.html'
     form_class = ContactForm
 
 
 class PaginationView(TemplateView):
-    template_name = 'demo/pagination.html'
+    template_name = 'demo_test/pagination.html'
 
     def get_context_data(self, **kwargs):
         context = super(PaginationView, self).get_context_data(**kwargs)

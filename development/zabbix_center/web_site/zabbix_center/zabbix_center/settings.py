@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'bootstrap3',
     'demo',
+    'demo_test',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -99,10 +100,6 @@ TEMPLATE_DIRS = (
         os.path.join(BASE_DIR, 'templates')
     )
 
-CMS_TEMPLATES = (
-        ('template_1.html', 'Template One'),
-        ('template_2.html', 'Template Two'),
-    )
 
 # debug_toolbar settings
 if DEBUG:

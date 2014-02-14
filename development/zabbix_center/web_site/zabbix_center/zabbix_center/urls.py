@@ -12,7 +12,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     
     # bootstrap demo
-    url(r'^bootstrap/', include('demo.urls', namespace="demo")),
+    url(r'^demo/', include('demo.urls', namespace="demo")),
+    url(r'^demo_test/', include('demo_test.urls', namespace="demo_test")),
 )
 
 if settings.DEBUG:

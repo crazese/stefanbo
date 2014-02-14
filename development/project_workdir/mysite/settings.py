@@ -321,6 +321,7 @@ INSTALLED_APPS = (
     #"mezzanine.mobile",
     'mysite.demo',
     'bootstrap3',
+    #'mezzanine.pages.page_processors.processor_for',
 )
 
 # List of processors used by RequestContext to populate the context.
