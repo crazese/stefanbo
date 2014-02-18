@@ -56,9 +56,6 @@ user $username $passwd
 cd /zabbix/libexec
 lcd $zabbix_path/libexec
 get discover_disk.pl
-cd /zabbix/conf
-lcd $zabbix_path/etc/zabbix_agentd.conf.d
-get iostat.conf
 bye
 EOF
 
