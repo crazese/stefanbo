@@ -1,0 +1,89 @@
+alias_database = hash:/etc/postfix/aliases
+alias_maps = hash:/etc/postfix/aliases
+command_directory = /usr/sbin
+config_directory = /etc/postfix
+daemon_directory = /usr/libexec/postfix
+debug_peer_level = 2
+mail_owner = postfix
+mailq_path = /usr/bin/mailq.postfix
+manpage_directory = /usr/share/man
+newaliases_path = /usr/bin/newaliases.postfix
+queue_directory = /var/spool/postfix
+sample_directory = /etc/postfix
+sendmail_path = /usr/sbin/sendmail.postfix
+setgid_group = postdrop
+
+mynetworks = 127.0.0.0/8, hash:/etc/postfix/access
+myhostname = mail.sothink.com
+mydomain = sothink.com
+mydestination = $myhostname
+myorigin = $myhostname
+mail_name = EMOS V1.5 (Postfix)
+smtpd_banner = $myhostname ESMTP $mail_name
+
+smtpd_error_sleep_time = 0s
+unknown_local_recipient_reject_code = 550
+
+virtual_alias_maps = mysql:/etc/postfix/mysql_virtual_alias_maps.cf
+virtual_mailbox_domains = mysql:/etc/postfix/mysql_virtual_domains_maps.cf
+virtual_mailbox_maps = mysql:/etc/postfix/mysql_virtual_mailbox_maps.cf
+virtual_transport = maildrop
+virtual_mailbox_base = /home/domains 
+virtual_uid_maps = static:1033
+virtual_gid_maps = static:1033
+inet_interfaces = all
+maildrop_destination_recipient_limit = 1
+
+smtpd_recipient_restrictions =
+        permit_mynetworks,
+        permit_sasl_authenticated,
+        check_relay_domains,
+        #check_recipient_access hash:/etc/postfix/recipient_access, reject
+        #reject_non_fqdn_hostname,
+        reject_non_fqdn_sender,
+        reject_non_fqdn_recipient,
+        reject_unauth_destination,
+        reject_unauth_pipelining,
+        reject_invalid_hostname,
+        check_policy_service inet:127.0.0.1:10030
+
+header_checks = regexp:/etc/postfix/dspam_header_checks
+
+smtpd_sender_restrictions =
+        permit_mynetworks,
+        #check_sender_access hash:/etc/postfix/sender_access,
+        #reject_sender_login_mismatch,
+        reject_authenticated_sender_login_mismatch
+        #reject_unauthenticated_sender_login_mismatch
+
+smtpd_sender_login_maps =
+        mysql:/etc/postfix/mysql_virtual_sender_maps.cf,
+        mysql:/etc/postfix/mysql_virtual_alias_maps.cf
+
+smtpd_client_restrictions =
+        permit_sasl_authenticated
+        reject_rbl_client multi.uribl.com,
+        reject_rbl_client dsn.rfc-ignorant.org,
+        reject_rbl_client dul.dnsbl.sorbs.net,
+        reject_rbl_client list.dsbl.org,
+        reject_rbl_client sbl-xbl.spamhaus.org,
+        reject_rbl_client bl.spamcop.net,
+        reject_rbl_client dnsbl.sorbs.net,
+        reject_rbl_client cbl.abuseat.org,
+        reject_rbl_client ix.dnsbl.manitu.net,
+        reject_rbl_client combined.rbl.msrbl.net,
+        reject_rbl_client rabl.nuclearelephant.com,
+        permit
+
+broken_sasl_auth_clients = yes
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_local_domain = 
+smtpd_sasl_security_options = noanonymous
+receive_override_options = no_address_mappings
+
+message_size_limit = 31457280
+mailbox_size_limit = 31457280
+show_user_unknown_table_name = no
+
+bounce_queue_lifetime = 1d
+maximal_queue_lifetime = 1d

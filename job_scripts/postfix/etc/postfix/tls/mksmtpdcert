@@ -1,0 +1,33 @@
+#! /bin/sh
+#
+# This is a short script to quickly generate a self-signed X.509 key for
+# SMTP over SSL.  Normally this script would get called by an automatic
+# package installation routine.
+
+test -x /usr/bin/openssl || exit 0
+
+prefix="/etc/postfix/tls"
+
+if test -f /etc/postfix/tls/smtpd.pem
+then
+	echo "$prefix/smtpd.pem already exists."
+	exit 1
+fi
+
+umask 077
+cp /dev/null $prefix/smtpd.pem
+chmod 600 $prefix/smtpd.pem
+chown root $prefix/smtpd.pem
+
+cleanup() {
+	rm -f $prefix/smtpd.pem
+	rm -f $prefix/smtpd.rand
+	exit 1
+}
+
+dd if=/dev/urandom of=$prefix/smtpd.rand count=1 2>/dev/null
+/usr/bin/openssl req -new -x509 -days 365 -nodes \
+	-config $prefix/smtpd.cnf -out $prefix/smtpd.pem -keyout $prefix/smtpd.pem || cleanup
+/usr/bin/openssl gendh -rand $prefix/smtpd.rand 512 >>$prefix/smtpd.pem || cleanup
+/usr/bin/openssl x509 -subject -dates -fingerprint -noout -in $prefix/smtpd.pem || cleanup
+rm -f $prefix/smtpd.rand

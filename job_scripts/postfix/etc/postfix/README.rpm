@@ -1,0 +1,50 @@
+README.rpm
+==========
+
+Documentation
+-------------
+
+Postfix documentation should be available in the directory /usr/share/doc/postfix-2.6.2-documentation/.
+I have also added a symbolic link to the readme_files and html
+directories from /etc/postfix.
+
+The main Postfix web site is http://www.postfix.org.
+
+Packages
+--------
+
+Newer versions of source and standard binary packages may be available from
+http://ftp.WL0.org or the mirrors listed at http://postfix.WL0.org.  Look
+in the appropriate directory according to your distribution.
+
+Mailing List
+------------
+
+I host a mailing list to announce new packages as they are released. If you
+are interested in subscribing take a look at
+http://postfix.WL0.org/en/lists/.  Previous announcements are archived.
+
+Chrooting
+---------
+
+The chroot behaviour of my packages has changed over time. Current
+packages will NOT turn on the chroot environment in Postfix.  Older
+versions did the opposite.  If you upgrade from an older version
+of my package the chroot behaviour will NOT be changed. (Check
+/etc/postfix/master.cf for details.)
+
+I have provided a simple script postfix-chroot.sh which attempts to
+cover most situations and should enable you to disable or enable the
+chroot on your system with little effort.
+
+Package Build Options
+---------------------
+
+This package can be built on several Linux distributions and with several
+optional features.  /etc/postfix/postfix.spec.cf contains the 
+information used to build this version of the rpm. It can also
+be used to build a new rpm with the same options.
+
+Enjoy!
+
+Simon J Mudd, <sjmudd@pobox.com>

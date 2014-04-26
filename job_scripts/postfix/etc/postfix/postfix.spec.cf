@@ -1,0 +1,47 @@
+#
+# This file contains the following information:
+#
+# - configuration options used to build the installed postfix rpm
+#   - generated when the binary rpm was built
+#
+# - Postfix RPM build instructions
+#   - for upgrading the installed rpm with the same options
+#   - for building the rpm with other options
+#
+# 1. CONFIGURATION OPTIONS OF INSTALLED BINARY RPM
+#
+# Package built on: centos-release-5-3.el5.centos.1 (rhel-5.0)
+
+POSTFIX_ALT_PRIO=30
+POSTFIX_CDB=0
+POSTFIX_DB=4
+POSTFIX_DOVECOT=0
+POSTFIX_LDAP=1
+POSTFIX_MYSQL=0
+POSTFIX_MYSQL_PATHS=0
+POSTFIX_MYSQL_REDHAT=1
+POSTFIX_PCRE=1
+POSTFIX_PGSQL=0
+POSTFIX_SASL=2
+POSTFIX_SMTPD_MULTILINE_GREETING=1
+POSTFIX_SPF=0
+POSTFIX_TLS=1
+POSTFIX_VDA=0
+
+# export values to child processes
+export POSTFIX_MYSQL POSTFIX_MYSQL_PATHS POSTFIX_MYSQL_REDHAT \
+ POSTFIX_LDAP POSTFIX_PCRE POSTFIX_PGSQL \
+ POSTFIX_SASL POSTFIX_TLS POSTFIX_VDA \
+ POSTFIX_SMTPD_MULTILINE_GREETING POSTFIX_DB \
+ POSTFIX_INCLUDE_DB POSTFIX_SPF \
+ POSTFIX_CDB POSTFIX_ALT_PRIO POSTFIX_DOVECOT
+
+# other options used in the build (but not explicitly changeable by the user) are:
+# - debug=0
+# - pcre_requires=pcre,
+# - requires_zlib=1,
+# - sasl_library=cyrus-sasl-devel
+# - tlsfix=2
+#
+# /etc/postfix/makedefs.out is also produced by the build and may be of
+# interest if you are building Postfix by hand.
