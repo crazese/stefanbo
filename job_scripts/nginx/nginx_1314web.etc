@@ -1,0 +1,36 @@
+#cat 1314wed
+server {
+        listen       80;
+        if (!-e $request_filename){
+             rewrite /. /index.php last;
+        }
+        server_name  www.1314-wed.com 1314-wed.com;
+        index  index.php;
+        root   /var/www/wed1314/app;
+        location ~ \.php$ {
+                root /var/www/wed1314/app;
+                fastcgi_pass 127.0.0.1:9000;
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME /var/www/wed1314/app$fastcgi_script_name;
+                include fastcgi_params;
+                }
+
+        access_log  /var/log/nginx/wedApp.access.log;
+}
+server {
+        listen       80;
+        if (!-e $request_filename){
+             rewrite /. /index.php last;
+        }
+        server_name  manage-1314.1314-wed.com;
+        index  index.php;
+        root   /var/www/wed1314/manage;
+        location ~ \.php$ {
+                root /var/www/wed1314/manage;
+                fastcgi_pass 127.0.0.1:9000;
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME /var/www/wed1314/manage$fastcgi_script_name;
+                include fastcgi_params;
+                }
+        access_log  /var/log/nginx/wedManage.access.log;
+}
