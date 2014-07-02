@@ -10,8 +10,8 @@ cd maildrop-2.0.2
 --enable-trusted-users='root vmail' \
 --enable-syslog=1 \
 --enable-maildirquota \
---enable-maildrop-uid=1033 \
---enable-maildrop-gid=1033 \
+--enable-maildrop-uid=1000 \
+--enable-maildrop-gid=1000 \
 --with-trashquota \
 --with-dirsync
 
@@ -35,8 +35,8 @@ cd courier-authlib-0.62.4
 --without-authpgsql \
 --without-authcustom \
 --with-authmysql \
---with-mysql-libs=/usr/lib/mysql \
---with-mysql-includes=/usr/inculde/mysql \
+--with-mysql-libs=/usr/local/mysql/lib/ \
+--with-mysql-includes=/usr/local/mysql/inculde/ \
 --with-redhat \
 --with-mailuser=vmail \
 --with-mailgroup=vmail 
@@ -73,7 +73,7 @@ cp courier-imap.sysvinit /etc/rc.d/init.d/courier-imapd
 chmod 755 /etc/rc.d/init.d/courier-imapd 
 chkconfig --level 2345 courier-imapd on 
 
-cat > /usr/lib/sasl2/smtpd.conf <<EOF
+cat > /etc/sasl2/smtpd.conf <<EOF
 pwcheck_method: authdaemond
 mech_list: PLAIN LOGIN
 log_level: 3
